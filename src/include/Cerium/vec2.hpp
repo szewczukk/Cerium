@@ -9,20 +9,20 @@ namespace cerium
     {
         float x, y;
         /*
-            ^[start]
+            ^[name][constructor_zero]
             ^[class][vec2]
             ^[description][Setting 0 as value of attributes of vector]
         */
         vec2(void); //^header
         /*
-            ^[start]
+            ^[name][constructor_one_value]
             ^[class][vec2]
             ^[description][Setting given argument as value of attributes of vector]
             ^[argument]<value>[Value of vector]
         */
         vec2(const float & value); //^header
         /*
-            ^[start]
+            ^[name][constructor_different_values]
             ^[class][vec2]
             ^[description][Setting 0 as value of attributes of vector]
             ^[argument]<valueX>[Value of x attribute of vector]
