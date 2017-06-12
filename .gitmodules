@@ -1,0 +1,3 @@
+[submodule "Bromine"]
+	path = Bromine
+	url = https://github.com/bjornus/Bromine
