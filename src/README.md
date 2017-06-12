@@ -1,13 +1,13 @@
 # Cerium/src
 This is catalogue where the source of engine is
 
-## Cerium/include
+## include
 Here are the headers of engine
 
-## Cerium/source
+## source
 Here are the sources of engine
 
-## Cerium/test
+## test
 Here are the tests of engine
 
 ## Licensing
