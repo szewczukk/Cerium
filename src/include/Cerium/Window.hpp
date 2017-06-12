@@ -47,6 +47,18 @@ namespace cerium
             ^[description][Initializing libraries, interfaces and more]
         */
         static void init(void); //^header
+        /*
+            ^[name][clear]
+            ^[class][Window]
+            ^[description][Clearing window back buffer]
+        */
+        static void clear(void); //^header
+        /*
+            ^[name][render]
+            ^[class][Window]
+            ^[description][Rendering front buffer, swapping buffers]
+        */
+        static void render(void); //^header
     private:
         Window(void);
         ~Window(void);

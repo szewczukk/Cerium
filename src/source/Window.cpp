@@ -47,6 +47,19 @@ namespace cerium
     }
 
 
+    void Window::clear(void)
+    {
+        glClearColor(0.5f, 0.2f, 0.3f, 1.0f);
+        glClear(GL_COLOR_BUFFER_BIT);
+    }
+
+
+    void Window::render(void)
+    {
+        SDL_GL_SwapWindow(instance().m_window);
+    }
+
+
     void Window::init(void)
     {
         SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS);

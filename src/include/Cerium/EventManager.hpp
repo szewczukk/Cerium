@@ -14,13 +14,13 @@ namespace cerium
             ^[description][Returns true if the event of closing window are set]
             ^[returns][true or false]
         */
-        static bool isWindowClosed(void);
+        static bool isWindowClosed(void); //^header
         /*
             ^[name][pollEvents]
             ^[class][EventManager]
             ^[description][Catching events into event container]
         */
-        static void pollEvents(void);
+        static void pollEvents(void); //^header
     private:
         static EventManager & instance(void);
 

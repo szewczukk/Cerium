@@ -6,18 +6,19 @@
 
 int main()
 {
-    std::cout << cerium::Window::getSize() << std::endl;
-
     cerium::Window::setSize({1024, 768});
     cerium::Window::setTitle("Cerium");
 
-    std::cout << cerium::Window::getSize() << std::endl;
-
     cerium::Window::init();
+
+    std::cout << cerium::Window::getSize() << std::endl;
 
     while(!cerium::EventManager::isWindowClosed())
     {
         cerium::EventManager::pollEvents();
+        cerium::Window::clear();
+
+        cerium::Window::render();
     }
 
     return 0;
