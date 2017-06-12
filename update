@@ -1,6 +1,3 @@
 cd Bromine
 ./bromine.py
 cd ..
-
-cmake .
-make
