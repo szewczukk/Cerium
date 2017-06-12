@@ -18,41 +18,41 @@ namespace cerium
             ^[class][Window]
             ^[returns][Static copy of Window instance]
         */
-        static Window & instance(void);
+        static Window & instance(void); //^header
         /*
             ^[name][setSize]
             ^[class][Window]
             ^[argument]<size>[Size of Window]
             ^[description][Setting size of Window by given vector]
         */
-        static void setSize(const vec2 & size);
+        static void setSize(const vec2 & size); //^header
         /*
             ^[name][setTitle]
             ^[class][Window]
             ^[argument]<title>[Title of Window]
             ^[description][Setting title of Window by given string]
         */
-        static void setTitle(const std::string & title);
+        static void setTitle(const std::string & title); //^header
         /*
             ^[name][getSize]
             ^[class][Window]
             ^[description][Getting size of Window as vector]
             ^[returns][Size of Window as vector]
         */
-        static vec2 getSize(void);
+        static vec2 getSize(void); //^header
         /*
             ^[name][getTitle]
             ^[class][Window]
             ^[description][Getting title of Window as string]
             ^[returns][Title of Window as string]
         */
-        static std::string getTitle(void);
+        static std::string getTitle(void); //^header
 /*
             ^[name][init]
             ^[class][Window]
             ^[description][Initializing libraries, interfaces and more]
         */
-        static void init(void);
+        static void init(void); //^header
     private:
         ~Window(void);
         Window(void);
