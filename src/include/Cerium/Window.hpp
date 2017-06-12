@@ -14,12 +14,6 @@ namespace cerium
     {
     public:
         /*
-            ^[name][instance]
-            ^[class][Window]
-            ^[returns][Static copy of Window instance]
-        */
-        static Window & instance(void); //^header
-        /*
             ^[name][setSize]
             ^[class][Window]
             ^[argument]<size>[Size of Window]
@@ -47,15 +41,17 @@ namespace cerium
             ^[returns][Title of Window as string]
         */
         static std::string getTitle(void); //^header
-/*
+        /*
             ^[name][init]
             ^[class][Window]
             ^[description][Initializing libraries, interfaces and more]
         */
         static void init(void); //^header
     private:
-        ~Window(void);
         Window(void);
+        ~Window(void);
+
+        static Window & instance(void);
     private:
         SDL_Window * m_window;
         SDL_GLContext m_context;
