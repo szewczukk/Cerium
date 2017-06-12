@@ -1,5 +1,6 @@
-#include <iostream>
 #include "../include/Cerium/vec2.hpp"
+
+#include <iostream>
 
 int main()
 {
