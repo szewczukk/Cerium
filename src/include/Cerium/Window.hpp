@@ -65,11 +65,11 @@ namespace cerium
 
         static Window & instance(void);
     private:
-        SDL_Window * m_window;
-        SDL_GLContext m_context;
+        SDL_Window * window;
+        SDL_GLContext context;
 
-        std::string m_title;
-        vec2 m_size;
+        std::string title;
+        vec2 size;
     };
 }
 

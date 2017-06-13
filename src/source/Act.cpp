@@ -6,7 +6,7 @@ namespace cerium
 {
     void Act::draw(void)
     {
-        for (auto & person : m_persons)
+        for (auto & person : this->persons)
         {
             person.second->draw();
         }
@@ -15,7 +15,7 @@ namespace cerium
 
     void Act::update(const float & deltaTime)
     {
-        for (auto & person : m_persons)
+        for (auto & person : this->persons)
         {
             person.second->update(deltaTime);
         }
@@ -26,14 +26,14 @@ namespace cerium
     {
         if(!exist(name))
         {
-            m_persons[name] = &person;
+            this->persons[name] = &person;
         }
     }
 
 
     void Act::remove(const std::string name)
     {
-        for(auto & person : m_persons)
+        for(auto & person : this->persons)
         {
             if(person.first == name) delete person.second;
         }
@@ -42,7 +42,7 @@ namespace cerium
 
     void Act::clear(void)
     {
-        for(auto & person : m_persons)
+        for(auto & person : this->persons)
         {
             delete person.second;
         }
@@ -51,7 +51,7 @@ namespace cerium
 
     bool Act::exist(const std::string & name)
     {
-        for(auto & person : m_persons)
+        for(auto & person : this->persons)
         {
             if(person.first == name) return true;
         }
@@ -61,7 +61,7 @@ namespace cerium
 
     Person * Act::get(const std::string & name)
     {
-        for(auto & person : m_persons)
+        for(auto & person : this->persons)
         {
             if(person.first == name) return person.second;
         }

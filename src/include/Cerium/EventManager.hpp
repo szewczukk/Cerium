@@ -27,7 +27,7 @@ namespace cerium
         EventManager(void);
         ~EventManager(void);
     private:
-        SDL_Event * m_event;
+        SDL_Event * event;
     };
 }
 

@@ -4,13 +4,13 @@ namespace cerium
 {
     bool EventManager::isWindowClosed(void)
     {
-        return instance().m_event->type == SDL_QUIT;
+        return instance().event->type == SDL_QUIT;
     }
 
 
     void EventManager::pollEvents(void)
     {
-        SDL_PollEvent(instance().m_event);
+        SDL_PollEvent(instance().event);
     }
 
 
@@ -23,12 +23,12 @@ namespace cerium
 
     EventManager::EventManager(void)
     {
-        m_event = new SDL_Event;
+        event = new SDL_Event;
     }
 
 
     EventManager::~EventManager(void)
     {
-        delete m_event;
+        delete event;
     }
 }

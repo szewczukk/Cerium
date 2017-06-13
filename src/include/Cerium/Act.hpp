@@ -60,7 +60,7 @@ namespace cerium
         */
         Person * get(const std::string & name); //^header
     protected:
-        std::unordered_map<std::string, Person*> m_persons;
+        std::unordered_map<std::string, Person*> persons;
     };
 }
 

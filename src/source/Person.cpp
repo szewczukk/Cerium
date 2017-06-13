@@ -6,13 +6,13 @@ namespace cerium
 {
     Person::Person(Act & baseAct)
     {
-        m_baseAct = &baseAct;
+        this->baseAct = &baseAct;
     }
 
 
     void Person::update(const float & deltaTime)
     {
-        for (auto & prop : m_props)
+        for (auto & prop : this->props)
         {
             prop->update(deltaTime);
         }
@@ -21,36 +21,36 @@ namespace cerium
 
     void Person::setPosition(const vec2 & position)
     {
-        m_position = position;
+        this->position = position;
     }
 
 
     void Person::setRotation(const float & rotation)
     {
-        m_rotation = rotation;
+        this->rotation = rotation;
     }
 
 
     void Person::setSize(const vec2 & size)
     {
-        m_size = size;
+        this->size = size;
     }
 
 
     void Person::move(const vec2 & relative)
     {
-        setPosition(m_position + relative);
+        setPosition(this->position + relative);
     }
 
 
     void Person::rotate(const float & relative)
     {
-        setRotation(m_rotation + relative);
+        setRotation(this->rotation + relative);
     }
 
 
     void Person::addProp(Prop * component)
     {
-        m_props.push_back(component);
+        this->props.push_back(component);
     }
 }

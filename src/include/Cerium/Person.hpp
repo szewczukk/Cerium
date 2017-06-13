@@ -75,11 +75,11 @@ namespace cerium
         */
         void addProp(Prop * component); //^header
     protected:
-        vec2 m_position;
-        vec2 m_size;
-        Act* m_baseAct;
-        float m_rotation;
-        std::vector<Prop*> m_props;
+        vec2 position;
+        vec2 size;
+        Act* baseAct;
+        float rotation;
+        std::vector<Prop*> props;
     };
 }
 
