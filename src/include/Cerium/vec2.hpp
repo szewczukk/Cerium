@@ -35,20 +35,20 @@ namespace cerium
             ^[description][Returning length (sqrt(x*x+y*y) of vector)]
             ^[returns][Length of vector as float]
         */
-        float getLength(void);
+        float getLength(void); //^header
         /*
             ^[name][normalizeSelf]
             ^[class][vec2]
             ^[description][Normalizing (dividing all attributes by length) this vector]
         */
-        void normalizeSelf(void);
+        void normalizeSelf(void); //^header
         /*
             ^[name][normalize]
             ^[class][vec2]
             ^[description][Returning normalized (dividing all attributes by length) vector]
             ^[returns][Normalized vector]
         */
-        vec2 normalize(void);
+        vec2 normalize(void); //^header
 
         vec2 operator+(const vec2 & other);
         vec2 operator-(const vec2 & other);
