@@ -7,8 +7,8 @@
 
 namespace cerium
 {
-    class BaseComponent;
     class Act;
+    class Prop;
     class Person
     {
         /*
@@ -72,13 +72,13 @@ namespace cerium
             ^[description][Adding new Component to Person]
             ^[argument]<component>[Pointer to Component to add]
         */
-        void addComponent(BaseComponent * component); //^header
+        void addComponent(Prop * component); //^header
     private:
         vec2 m_position;
         vec2 m_size;
         Act* m_baseAct;
         float m_rotation;
-        std::vector<BaseComponent*> m_components;
+        std::vector<Prop*> m_props;
     };
 }
 

@@ -1,5 +1,7 @@
 #include "../include/Cerium/Person.hpp"
 
+#include "../include/Cerium/Prop.hpp"
+
 namespace cerium
 {
     Person::Person(Act & baseAct)
@@ -10,9 +12,9 @@ namespace cerium
 
     void Person::update(const float & deltaTime)
     {
-        for (auto * component : m_components)
+        for (auto * prop : m_props)
         {
-            component->update();
+            prop->update(deltaTime);
         }
     }
 
@@ -47,8 +49,8 @@ namespace cerium
     }
 
 
-    void Person::addComponent(BaseComponent * component)
+    void Person::addComponent(Prop * component)
     {
-        m_components.push_back(component);
+        m_props.push_back(component);
     }
 }

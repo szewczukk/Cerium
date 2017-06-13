@@ -238,7 +238,7 @@
     <p>
         <div class='code'>
             <i>
-                void addComponent(BaseComponent * component); 
+                void addComponent(Prop * component); 
             </i>
         </div>
         Name: addComponent <br>
@@ -299,6 +299,29 @@
 
        <!-- argument_template -->
         Description: Setting 0 as value of attributes of vector <br>
+        <i>
+            Returning: 
+        </i>
+        <br>
+    </p>
+    <hr>
+
+    
+
+    <p>
+        <div class='code'>
+            <i>
+                virtual void update(const float & deltaTime) = 0; 
+            </i>
+        </div>
+        Name: update <br>
+        Class: <a href='Prop.html'>Prop</a><br>
+        
+
+    Argument deltaTime = DeltaTime of main game clock <br>
+
+       <!-- argument_template -->
+        Description: Updating Prop with deltaTime <br>
         <i>
             Returning: 
         </i>
