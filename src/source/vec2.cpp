@@ -1,3 +1,4 @@
+#include <cmath>
 #include "../include/Cerium/vec2.hpp"
 
 namespace cerium
@@ -18,6 +19,35 @@ namespace cerium
     {
         x = valueX;
         y = valueY;
+    }
+
+
+    float vec2::getLength(void)
+    {
+        return std::sqrt((x * x) + (y * y));
+    }
+
+
+    void vec2::normalizeSelf(void)
+    {
+        if(getLength() > 0)
+        {
+            x /= getLength();
+            y /= getLength();
+        }
+    }
+
+
+    vec2 vec2::normalize(void)
+    {
+        if(getLength() > 0)
+        {
+            return {x / getLength(), y / getLength()};
+        }
+        else
+        {
+            return {0, 0};
+        }
     }
 
 
