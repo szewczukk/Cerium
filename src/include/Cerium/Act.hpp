@@ -15,14 +15,14 @@ namespace cerium
             ^[class][Act]
             ^[description][Draws all the persons in Act]
         */
-        void draw(void);
+        void draw(void); //^header
         /*
             ^[name][update]
             ^[class][Act]
             ^[description][Updates all the persons in Act]
             ^[argument]<deltaTime>[DeltaTime of main game clock]
         */
-        virtual void update(const float & deltaTime);
+        virtual void update(const float & deltaTime); //^header
         /*
             ^[name][add]
             ^[class][Act]
@@ -30,27 +30,27 @@ namespace cerium
             ^[argument]<name>[Name of new Person]
             ^[argument]<person>[Reference to Person]
         */
-        void add(const std::string & name, Person & person);
+        void add(const std::string & name, Person & person); //^header
         /*
             ^[name][remove]
             ^[class][Act]
             ^[description][Removing person with given name]
             ^[argument]<name>[Name of Person to remove]
         */
-        void remove(const std::string name);
+        void remove(const std::string name); //^header
         /*
             ^[name][clear]
             ^[class][Act]
             ^[description][Removing all Persons]
         */
-        void clear(void);
+        void clear(void); //^header
         /*
             ^[name][exist]
             ^[class][Act]
             ^[description][Checking existing of Person with given name]
             ^[argument]<name>[Name of Person to remove]
         */
-        bool exist(const std::string & name);
+        bool exist(const std::string & name); //^header
         /*
             ^[name][get]
             ^[class][Act]
@@ -58,7 +58,7 @@ namespace cerium
             ^[argument]<name>[Name of Person to remove]
             ^[returns][Pointer to Person with given name]
         */
-        Person * get(const std::string & name);
+        Person * get(const std::string & name); //^header
     protected:
         std::unordered_map<std::string, Person*> m_persons;
     };
