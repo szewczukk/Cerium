@@ -68,12 +68,12 @@ namespace cerium
         */
         void rotate(const float & relative); //^header
         /*
-            ^[name][addComponent]
+            ^[name][addProp]
             ^[class][Person]
-            ^[description][Adding new Component to Person]
-            ^[argument]<component>[Pointer to Component to add]
+            ^[description][Adding new Prop to Person]
+            ^[argument]<component>[Pointer to Prop to add]
         */
-        void addComponent(Prop * component); //^header
+        void addProp(Prop * component); //^header
     protected:
         vec2 m_position;
         vec2 m_size;

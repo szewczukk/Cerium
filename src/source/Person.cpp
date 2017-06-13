@@ -49,7 +49,7 @@ namespace cerium
     }
 
 
-    void Person::addComponent(Prop * component)
+    void Person::addProp(Prop * component)
     {
         m_props.push_back(component);
     }
