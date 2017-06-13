@@ -32,6 +32,13 @@ namespace cerium
 
         vec2 operator+(const vec2 & other);
         vec2 operator-(const vec2 & other);
+        vec2 operator/(const vec2 & other);
+        vec2 operator*(const vec2 & other);
+
+        void operator+=(const vec2 & other);
+        void operator-=(const vec2 & other);
+        void operator/=(const vec2 & other);
+        void operator*=(const vec2 & other);
 
         friend std::ostream & operator<<(std::ostream & o, const vec2 & v);
     };

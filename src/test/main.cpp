@@ -1,6 +1,7 @@
 #include "../include/Cerium/vec2.hpp"
 #include "../include/Cerium/Window.hpp"
 #include "../include/Cerium/EventManager.hpp"
+#include "../include/Cerium/Act.hpp"
 
 #include <rapidxml.hpp>
 #include <rapidxml_utils.hpp>

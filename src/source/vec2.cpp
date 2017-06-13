@@ -32,6 +32,45 @@ namespace cerium
         return {x - other.x, y - other.y};
     }
 
+    vec2 vec2::operator/(const vec2 & other)
+    {
+        return {x / other.x, y / other.y};
+    }
+
+
+    vec2 vec2::operator*(const vec2 & other)
+    {
+        return {x * other.x, y * other.y};
+    }
+
+
+    void vec2::operator+=(const vec2 & other)
+    {
+        x += other.x;
+        y += other.y;
+    }
+
+
+    void vec2::operator-=(const vec2 & other)
+    {
+        x -= other.x;
+        y -= other.y;
+    }
+
+
+    void vec2::operator/=(const vec2 & other)
+    {
+        x /= other.x;
+        y /= other.y;
+    }
+
+
+    void vec2::operator*=(const vec2 & other)
+    {
+        x *= other.x;
+        y *= other.y;
+    }
+
 
     std::ostream & operator<<(std::ostream & o, const vec2 & v)
     {
