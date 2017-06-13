@@ -30,6 +30,9 @@ namespace cerium
         */
         vec2(const float & valueX, const float & valueY); //^header
 
+        vec2 operator+(const vec2 & other);
+        vec2 operator-(const vec2 & other);
+
         friend std::ostream & operator<<(std::ostream & o, const vec2 & v);
     };
 }
