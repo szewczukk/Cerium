@@ -8,6 +8,15 @@ namespace cerium
     }
 
 
+    void Person::update(const float & deltaTime)
+    {
+        for (auto * component : m_components)
+        {
+            component->update();
+        }
+    }
+
+
     void Person::setPosition(const vec2 & position)
     {
         m_position = position;
