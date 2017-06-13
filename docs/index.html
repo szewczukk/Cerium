@@ -77,6 +77,190 @@
     <p>
         <div class='code'>
             <i>
+                Person(Act & baseAct); 
+            </i>
+        </div>
+        Name: Person <br>
+        Class: <a href='Person.html'>Person</a><br>
+        
+
+    Argument baseAct = Act where the Person is <br>
+
+       <!-- argument_template -->
+        Description: Constructor in which we assign Act in which the object is <br>
+        <i>
+            Returning: 
+        </i>
+        <br>
+    </p>
+    <hr>
+
+    
+
+    <p>
+        <div class='code'>
+            <i>
+                virtual void update(const float & deltaTime); 
+            </i>
+        </div>
+        Name: update <br>
+        Class: <a href='Person.html'>Person</a><br>
+        
+
+    Argument deltaTime = DeltaTime of main game clock <br>
+
+       <!-- argument_template -->
+        Description: Abstract class to update the object with deltaTime <br>
+        <i>
+            Returning: 
+        </i>
+        <br>
+    </p>
+    <hr>
+
+    
+
+    <p>
+        <div class='code'>
+            <i>
+                virtual void setPosition(const vec2 & position); 
+            </i>
+        </div>
+        Name: setPosition <br>
+        Class: <a href='Person.html'>Person</a><br>
+        
+
+    Argument position = Position in which the Person have to be <br>
+
+       <!-- argument_template -->
+        Description: Setting position of Person <br>
+        <i>
+            Returning: 
+        </i>
+        <br>
+    </p>
+    <hr>
+
+    
+
+    <p>
+        <div class='code'>
+            <i>
+                virtual void setRotation(const float & rotation); 
+            </i>
+        </div>
+        Name: setRotation <br>
+        Class: <a href='Person.html'>Person</a><br>
+        
+
+    Argument rotation = Rotation of Person in degrees <br>
+
+       <!-- argument_template -->
+        Description: Setting rotation of Person <br>
+        <i>
+            Returning: 
+        </i>
+        <br>
+    </p>
+    <hr>
+
+    
+
+    <p>
+        <div class='code'>
+            <i>
+                virtual void setSize(const vec2 & size); 
+            </i>
+        </div>
+        Name: size <br>
+        Class: <a href='Person.html'>Person</a><br>
+        
+
+    Argument size = Size of Person as vector <br>
+
+       <!-- argument_template -->
+        Description: Setting size of Person where x is width and y is height <br>
+        <i>
+            Returning: 
+        </i>
+        <br>
+    </p>
+    <hr>
+
+    
+
+    <p>
+        <div class='code'>
+            <i>
+                void move(const vec2 & relative); 
+            </i>
+        </div>
+        Name: move <br>
+        Class: <a href='Person.html'>Person</a><br>
+        
+
+    Argument relative = Relative position as vector <br>
+
+       <!-- argument_template -->
+        Description: Moving the Person by the given value in vector <br>
+        <i>
+            Returning: 
+        </i>
+        <br>
+    </p>
+    <hr>
+
+    
+
+    <p>
+        <div class='code'>
+            <i>
+                void rotate(const float & relative); 
+            </i>
+        </div>
+        Name: rotate <br>
+        Class: <a href='Person.html'>Person</a><br>
+        
+
+    Argument relative = Relative rotation <br>
+
+       <!-- argument_template -->
+        Description: Rotating the Person by the given value in vector <br>
+        <i>
+            Returning: 
+        </i>
+        <br>
+    </p>
+    <hr>
+
+    
+
+    <p>
+        <div class='code'>
+            <i>
+                void addComponent(BaseComponent * component); 
+            </i>
+        </div>
+        Name: addComponent <br>
+        Class: <a href='Person.html'>Person</a><br>
+        
+
+    Argument component = Pointer to Component to add <br>
+
+       <!-- argument_template -->
+        Description: Adding new Component to Person <br>
+        <i>
+            Returning: 
+        </i>
+        <br>
+    </p>
+    <hr>
+
+    
+
+    <p>
+        <div class='code'>
+            <i>
                 vec2(const float & value); 
             </i>
         </div>

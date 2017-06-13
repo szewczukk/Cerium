@@ -29,7 +29,7 @@ namespace cerium
     }
 
 
-    virtual void Person::setSize(const vec2 & size)
+    void Person::setSize(const vec2 & size)
     {
         m_size = size;
     }
