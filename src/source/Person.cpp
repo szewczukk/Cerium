@@ -12,7 +12,7 @@ namespace cerium
 
     void Person::update(const float & deltaTime)
     {
-        for (auto * prop : m_props)
+        for (auto & prop : m_props)
         {
             prop->update(deltaTime);
         }

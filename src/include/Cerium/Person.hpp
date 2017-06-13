@@ -11,6 +11,7 @@ namespace cerium
     class Prop;
     class Person
     {
+    public:
         /*
             ^[name][Person]
             ^[class][Person]
@@ -23,7 +24,7 @@ namespace cerium
             ^[class][Person]
             ^[description][Abstract class to draw the object into screen]
         */
-        virtual void draw() = 0; //^header
+        virtual void draw(void) = 0; //^header
         /*
             ^[name][update]
             ^[class][Person]
@@ -73,7 +74,7 @@ namespace cerium
             ^[argument]<component>[Pointer to Component to add]
         */
         void addComponent(Prop * component); //^header
-    private:
+    protected:
         vec2 m_position;
         vec2 m_size;
         Act* m_baseAct;
