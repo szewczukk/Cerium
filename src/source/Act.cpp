@@ -33,10 +33,7 @@ namespace cerium
 
     void Act::remove(const std::string name)
     {
-        for(auto & person : this->persons)
-        {
-            if(person.first == name) delete person.second;
-        }
+        delete persons[name];
     }
 
 

@@ -8,7 +8,6 @@
 
 #include <iostream>
 
-
 cerium::vec2 size_of_window()
 {
     rapidxml::file <> file("settings.xml");

@@ -63,6 +63,9 @@ namespace cerium
         Window(void);
         ~Window(void);
 
+        Window(const Window & other) = delete;
+        void operator=(const Window & other) = delete;
+
         static Window & instance(void);
     private:
         SDL_Window * window;
