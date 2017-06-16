@@ -32,20 +32,20 @@ namespace cerium
             ^[description][Adding resource into storage and name]
             ^[argument]<name>[Name of resource to storage]
         */
-        static void remove(const std::string & name);
+        static void remove(const std::string & name); //^header
         /*
             ^[name][exist]
             ^[class][ResourceManager]
             ^[description][Checking existing of Resource with given name]
             ^[argument]<name>[Name of resource to storage]
         */
-        static bool exist(const std::string & name);
+        static bool exist(const std::string & name); //^header
         /*
             ^[name][clear]
             ^[class][ResourceManager]
             ^[description][Deleting all Resources]
         */
-        static void clear(void);
+        static void clear(void); //^header
     private:
         static ResourceManager & instance();
 
