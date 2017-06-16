@@ -26,6 +26,9 @@ namespace cerium
 
         EventManager(void);
         ~EventManager(void);
+
+        EventManager(const EventManager & other) = delete;
+        void operator=(const EventManager & other) = delete;
     private:
         SDL_Event * event;
     };

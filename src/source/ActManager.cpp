@@ -4,12 +4,6 @@
 
 namespace cerium
 {
-    ActManager::ActManager()
-    {
-
-    }
-
-
     Act * ActManager::get(const std::string & name)
     {
         for(auto & act : instance().acts)
@@ -21,7 +15,7 @@ namespace cerium
 
     void ActManager::add(const std::string & name, Act * act)
     {
-        instance().acts[name] = act;
+        if(!exist(name)) instance().acts[name] = act;
     }
 
 
@@ -37,6 +31,16 @@ namespace cerium
     void ActManager::remove(const std::string & name)
     {
         delete instance().acts[name];
+    }
+
+
+    bool ActManager::exist(const std::string & name)
+    {
+        for(auto & act : instance().acts)
+        {
+            if (act.first == name) return true;
+        }
+        return false;
     }
 
 

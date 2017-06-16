@@ -33,6 +33,13 @@ namespace cerium
         */
         static void remove(const std::string & name); //^header
         /*
+            ^[name][exist]
+            ^[class][ActManager]
+            ^[description][Checking all stored Acts and searching the Act with given name]
+            ^[returns][True if Act with given name exist or False if it isn't]
+        */
+        static bool exist(const std::string & name); //^header
+        /*
             ^[name][clear]
             ^[class][ActManager]
             ^[description][Removing all Acts in ActManager]
@@ -41,7 +48,7 @@ namespace cerium
     private:
         static ActManager & instance();
 
-        ActManager();
+        ActManager() {};
         ActManager(const ActManager & other) = delete;
         void operator=(const ActManager & other) = delete;
     private:

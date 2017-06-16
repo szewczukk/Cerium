@@ -33,7 +33,6 @@ namespace cerium
             ^[description][Binding vertexBuffer to GL state machine]
         */
         void bindBuffer(void); //^header
-
         virtual void update(const float & deltaTime) override;
         virtual void draw(void) override;
     private:
