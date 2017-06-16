@@ -2,8 +2,7 @@
 
 namespace cerium
 {
-    template <class T>
-    Resource * ResourceManager::get(const std::string & name)
+    template <class T> Resource * ResourceManager::get(const std::string & name)
     {
         for(auto & resource : instance().resources)
         {

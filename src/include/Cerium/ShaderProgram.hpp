@@ -2,6 +2,7 @@
 #define CERIUM_SHADERPRORAM_HPP
 
 #include "vec2.hpp"
+#include "Resource.hpp"
 
 #include <string>
 
@@ -9,7 +10,7 @@
 
 namespace cerium
 {
-    class ShaderProgram
+    class ShaderProgram : public Resource
     {
     public:
         /*
@@ -31,7 +32,7 @@ namespace cerium
             ^[class][ShaderProgram]
             ^[description][Activating GL program]
         */
-        void use(void); //^header
+        virtual void use(void) override; //^header
     private:
         GLuint program;
     };

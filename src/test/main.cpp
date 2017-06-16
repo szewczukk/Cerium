@@ -6,6 +6,8 @@
 #include "../include/Cerium/Prop.hpp"
 #include "../include/Cerium/Act.hpp"
 #include "../include/Cerium/ActManager.hpp"
+#include "../include/Cerium/ResourceManager.hpp"
+#include "../include/Cerium/ShaderProgram.hpp"
 #include "../include/Cerium/Person.hpp"
 
 #include <rapidxml.hpp>
@@ -82,6 +84,8 @@ int main()
     cerium::Window::init();
 
     cerium::ActManager::add("main", new MyAct);
+
+    cerium::ResourceManager::add("shader", new cerium::ShaderProgram("vertexShader.glsl", "fragmentShader.glsl"));
 
     std::cout << cerium::Window::getSize() << std::endl;
     while(!cerium::EventManager::isWindowClosed())

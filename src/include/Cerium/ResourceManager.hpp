@@ -1,12 +1,13 @@
 #ifndef CERIUM_RESOURCEMANAGER_HPP
 #define CERIUM_RESOURCEMANAGER_HPP
 
+#include "Resource.hpp"
+
 #include <string>
 #include <unordered_map>
 
 namespace cerium
 {
-    class Resource {};
     class ResourceManager
     {
     public:
@@ -17,7 +18,8 @@ namespace cerium
             ^[argument]<name>[Name of resource to storage]
             ^[returns][Resource by name and template]
         */
-        template <class T> static Resource * get(const std::string & name); //^header
+        template <class T>
+        static Resource * get(const std::string & name); //^header
         /*
             ^[name][add]
             ^[class][ResourceManager]
