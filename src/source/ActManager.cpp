@@ -10,7 +10,7 @@ namespace cerium
     }
 
 
-    Act * ActManager::getAct(const std::string & name)
+    Act * ActManager::get(const std::string & name)
     {
         for(auto & act : instance().acts)
         {
@@ -19,9 +19,9 @@ namespace cerium
     }
 
 
-    void ActManager::add(const std::string & name, Act & act)
+    void ActManager::add(const std::string & name, Act * act)
     {
-        instance().acts[name] = &act;
+        instance().acts[name] = act;
     }
 
 

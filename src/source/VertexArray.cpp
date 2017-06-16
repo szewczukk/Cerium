@@ -2,8 +2,15 @@
 
 namespace cerium
 {
-    VertexArray::VertexArray(std::vector<vec2> vertices)
+    VertexArray::VertexArray(const vec2 & position, const vec2 & size)
     {
+        vec2 vertices[] = {
+                {position.x, position.y},
+                {position.x, position.y - size.y},
+                {position.x + size.x, position.y - size.y},
+                {position.x + size.x, position.y}
+        };
+
         glGenVertexArrays(1, &vertexArray);
         glGenBuffers(1, &vertexBuffer);
 
@@ -11,7 +18,7 @@ namespace cerium
 
         glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
 
-        glBufferData(GL_ARRAY_BUFFER, sizeof(vec2) * vertices.size(), &vertices[0], GL_STATIC_DRAW);
+        glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), &vertices, GL_STATIC_DRAW);
 
         glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(vec2), nullptr);
         glEnableVertexAttribArray(0);

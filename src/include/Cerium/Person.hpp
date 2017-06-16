@@ -68,6 +68,24 @@ namespace cerium
         */
         void rotate(const float & relative); //^header
         /*
+            ^[name][getPosition]
+            ^[class][Person]
+            ^[returns][Position of Person]
+        */
+        vec2 getPosition(); //^header
+        /*
+            ^[name][getSize]
+            ^[class][Person]
+            ^[returns][Size of Person]
+        */
+        vec2 getSize(); //^header
+        /*
+            ^[name][getRotation]
+            ^[class][Person]
+            ^[returns][Rotation of Person]
+        */
+        float getRotation(); //^header
+        /*
             ^[name][addProp]
             ^[class][Person]
             ^[description][Adding new Prop to Person]

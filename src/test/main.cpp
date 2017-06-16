@@ -2,11 +2,64 @@
 #include "../include/Cerium/Window.hpp"
 #include "../include/Cerium/EventManager.hpp"
 #include "../include/Cerium/Act.hpp"
+#include "../include/Cerium/VertexArray.hpp"
+#include "../include/Cerium/Prop.hpp"
+#include "../include/Cerium/Act.hpp"
+#include "../include/Cerium/ActManager.hpp"
+#include "../include/Cerium/Person.hpp"
 
 #include <rapidxml.hpp>
 #include <rapidxml_utils.hpp>
 
 #include <iostream>
+
+class Player : public cerium::Person
+{
+public:
+    Player(cerium::Act & baseAct) : cerium::Person(baseAct)
+    {
+        setPosition({25});
+        setSize({64});
+        addProp(new cerium::VertexArray(getPosition(), getSize()));
+    }
+
+    virtual void draw(void) override
+    {
+
+    }
+
+    virtual void update(const float & deltaTime) override
+    {
+        cerium::Person::update(deltaTime);
+    }
+
+    virtual void setPosition(const cerium::vec2 & position) override
+    {
+        cerium::Person::setPosition(position);
+    }
+
+    virtual void setRotation(const float & position) override
+    {
+        cerium::Person::setRotation(position);
+    }
+    virtual void setSize(const cerium::vec2 & size) override
+    {
+        cerium::Person::setSize(size);
+    }
+};
+
+class MyAct : public cerium::Act
+{
+public:
+    MyAct()
+    {
+        add("player", new Player(*this));
+    }
+    virtual void update(const float & deltaTime) override
+    {
+        cerium::Act::update(deltaTime);
+    }
+};
 
 cerium::vec2 size_of_window()
 {
@@ -28,11 +81,16 @@ int main()
 
     cerium::Window::init();
 
+    cerium::ActManager::add("main", new MyAct);
+
     std::cout << cerium::Window::getSize() << std::endl;
     while(!cerium::EventManager::isWindowClosed())
     {
         cerium::EventManager::pollEvents();
         cerium::Window::clear();
+
+        cerium::ActManager::get("main")->update(1.6);
+        cerium::ActManager::get("main")->draw();
 
         cerium::Window::render();
     }

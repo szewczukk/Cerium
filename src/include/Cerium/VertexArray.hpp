@@ -16,10 +16,11 @@ namespace cerium
         /*
             ^[name][VertexArray]
             ^[class][VertexArray]
-            ^[argument]<vertices>[Dynamic table of vertices positions]
+            ^[argument]<position>[Position of VertexArray]
+            ^[argument]<size>[Size of VertexArray]
             ^[description][Creating all buffers, vertexArray]
         */
-        VertexArray(std::vector<vec2> vertices); //^header
+        VertexArray(const vec2 & position, const vec2 & size); //^header
         /*
             ^[name][bindArray]
             ^[class][VertexArray]

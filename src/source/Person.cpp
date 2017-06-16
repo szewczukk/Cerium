@@ -49,6 +49,24 @@ namespace cerium
     }
 
 
+    vec2 Person::getPosition()
+    {
+        return position;
+    }
+
+
+    float Person::getRotation()
+    {
+        return rotation;
+    }
+
+
+    vec2 Person::getSize()
+    {
+        return size;
+    }
+
+
     void Person::addProp(Prop * component)
     {
         this->props.push_back(component);

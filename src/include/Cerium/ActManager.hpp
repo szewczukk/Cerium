@@ -10,21 +10,21 @@ namespace cerium
     {
     public:
         /*
-            ^[name][getAct]
+            ^[name][get]
             ^[class][ActManager]
             ^[argument]<name>[Name of Act to return]
             ^[description][Returns Act by given name]
             ^[returns][Pointer to Act with given name]
         */
-        static Act * getAct(const std::string & name); //^header
+        static Act * get(const std::string & name); //^header
         /*
             ^[name][add]
             ^[class][ActManager]
             ^[argument]<name>[Name of Act]
-            ^[argument]<act>[Reference to Act to store]
+            ^[argument]<act>[Pointer to Act to store]
             ^[description][Adding new Act to storage with given name]
         */
-        static void add(const std::string & name, Act & act); //^header
+        static void add(const std::string & name, Act * act); //^header
         /*
             ^[name][remove]
             ^[class][ActManager]
