@@ -11,7 +11,7 @@ namespace cerium
         GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
 
         std::string vertexShaderFileSource;
-        std::ifstream vertexShaderFile;
+        std::ifstream vertexShaderFile(vertexShaderPath);
 
         std::string line;
         while(std::getline(vertexShaderFile, line))
@@ -21,7 +21,7 @@ namespace cerium
         vertexShaderFile.close();
 
         std::string fragmentShaderFileSource;
-        std::ifstream fragmentShaderFile;
+        std::ifstream fragmentShaderFile(fragmentShaderPath);
 
         while(std::getline(fragmentShaderFile, line))
         {
@@ -45,7 +45,7 @@ namespace cerium
         GLint fragmentShaderCompilationSuccess;
         GLchar fragmentShaderCompilationLog[512];
 
-        const char * fragmentShaderSource = vertexShaderFileSource.c_str();
+        const char * fragmentShaderSource = fragmentShaderFileSource.c_str();
         glShaderSource(fragmentShader, 1, &fragmentShaderSource, nullptr);
         glCompileShader(fragmentShader);
         glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &fragmentShaderCompilationSuccess);

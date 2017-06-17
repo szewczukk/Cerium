@@ -64,6 +64,9 @@ namespace cerium
     {
         SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS);
 
+        SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
+        SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
+
         instance().window = SDL_CreateWindow(instance().title.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
                                                (int) instance().size.x, (int) instance().size.y,
                                                SDL_WINDOW_OPENGL);

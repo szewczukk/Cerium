@@ -20,8 +20,8 @@ class Player : public cerium::Person
 public:
     Player(cerium::Act & baseAct) : cerium::Person(baseAct)
     {
-        setPosition({25});
-        setSize({64});
+        setPosition({0});
+        setSize({0.5});
         addProp(new cerium::VertexArray(getPosition(), getSize()));
     }
 
@@ -83,9 +83,13 @@ int main()
 
     cerium::Window::init();
 
-    cerium::ActManager::add("main", new MyAct);
+    /*cerium::ActManager::add("main", new MyAct);
 
     cerium::ResourceManager::add("shader", new cerium::ShaderProgram("vertexShader.glsl", "fragmentShader.glsl"));
+*/
+
+    cerium::VertexArray vertexArray({},{});
+    cerium::ShaderProgram shaderProgram("vertexShader.glsl", "fragmentShader.glsl");
 
     std::cout << cerium::Window::getSize() << std::endl;
     while(!cerium::EventManager::isWindowClosed())
@@ -93,8 +97,12 @@ int main()
         cerium::EventManager::pollEvents();
         cerium::Window::clear();
 
+        /*cerium::ResourceManager::get("shader")->use();
         cerium::ActManager::get("main")->update(1.6);
-        cerium::ActManager::get("main")->draw();
+        cerium::ActManager::get("main")->draw();*/
+
+        shaderProgram.use();
+        vertexArray.draw();
 
         cerium::Window::render();
     }

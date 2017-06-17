@@ -2,13 +2,13 @@
 
 namespace cerium
 {
-    template <class T> Resource * ResourceManager::get(const std::string & name)
+    Resource * ResourceManager::get(const std::string & name)
     {
         for(auto & resource : instance().resources)
         {
             if(resource.first == name)
             {
-                return dynamic_cast<T>(resource.second);
+                return resource.second;
             }
         }
         return nullptr;
@@ -46,6 +46,12 @@ namespace cerium
         {
             delete resource.second;
         }
+    }
+
+
+    ResourceManager::~ResourceManager()
+    {
+        clear();
     }
 
 
