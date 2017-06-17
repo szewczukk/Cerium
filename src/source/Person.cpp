@@ -10,6 +10,15 @@ namespace cerium
     }
 
 
+    void Person::draw(void)
+    {
+        for (auto & prop : this->props)
+        {
+            prop->draw();
+        }
+    }
+
+
     void Person::update(const float & deltaTime)
     {
         for (auto & prop : this->props)

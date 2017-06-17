@@ -24,7 +24,7 @@ namespace cerium
             ^[class][Person]
             ^[description][Abstract class to draw the object into screen]
         */
-        virtual void draw(void) = 0; //^header
+        virtual void draw(void); //^header
         /*
             ^[name][update]
             ^[class][Person]
