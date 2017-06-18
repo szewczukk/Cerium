@@ -21,8 +21,8 @@ class Player : public cerium::Person
 public:
     Player(cerium::Act & baseAct) : cerium::Person(baseAct)
     {
-        setPosition({0});
-        setSize({0.5});
+        setPosition({10});
+        setSize({64});
         addProp(new cerium::VertexArray(this));
     }
 
@@ -97,7 +97,9 @@ int main()
         cerium::Window::clear();
 
         cerium::ResourceManager::get("shader")->use();
+
         cerium::Camera::update(dynamic_cast<cerium::ShaderProgram*>(cerium::ResourceManager::get("shader")));
+
         cerium::ActManager::get("main")->update(1.6);
         cerium::ActManager::get("main")->draw();
 

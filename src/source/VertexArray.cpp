@@ -1,6 +1,11 @@
 #include "../include/Cerium/VertexArray.hpp"
 
 #include "../include/Cerium/Person.hpp"
+#include "../include/Cerium/ResourceManager.hpp"
+#include "../include/Cerium/ShaderProgram.hpp"
+
+#include <glm/mat4x4.hpp>
+#include <glm/gtx/transform.hpp>
 
 namespace cerium
 {
@@ -55,7 +60,11 @@ namespace cerium
 
     void VertexArray::update(const float &deltaTime)
     {
+        glm::mat4 transform = glm::mat4(1.0);
+        transform = glm::translate(transform, {basePerson->getPosition().x, basePerson->getPosition().y, 0.0f});
+        transform = glm::scale(transform, {basePerson->getSize().x, basePerson->getSize().y, 1.0f});
 
+        dynamic_cast<ShaderProgram*>(ResourceManager::get("shader"))->setMatUniform("transform", transform);
     }
 
 
