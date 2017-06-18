@@ -38,6 +38,7 @@ namespace cerium
     private:
         GLuint vertexArray;
         GLuint vertexBuffer;
+        GLuint indexBuffer;
     };
 }
 
