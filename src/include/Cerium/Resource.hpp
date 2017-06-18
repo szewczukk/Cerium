@@ -7,7 +7,7 @@ public:
     /*
         ^[name][use]
         ^[class][Resource]
-        ^[description][Using Processing Resource]
+        ^[description][Processing Resource]
      */
     virtual void use(void) = 0;
 };
