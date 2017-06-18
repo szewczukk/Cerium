@@ -10,17 +10,17 @@
 
 namespace cerium
 {
+    class Person;
     class VertexArray : public Prop
     {
     public:
         /*
             ^[name][VertexArray]
             ^[class][VertexArray]
-            ^[argument]<position>[Position of VertexArray]
-            ^[argument]<size>[Size of VertexArray]
+            ^[argument]<basePerson>[Person where the VertexArray is]
             ^[description][Creating all buffers, vertexArray]
         */
-        VertexArray(const vec2 & position, const vec2 & size); //^header
+        VertexArray(Person * basePerson); //^header
         /*
             ^[name][bindArray]
             ^[class][VertexArray]

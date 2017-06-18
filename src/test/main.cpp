@@ -22,7 +22,7 @@ public:
     {
         setPosition({0});
         setSize({0.5});
-        addProp(new cerium::VertexArray(getPosition(), getSize()));
+        addProp(new cerium::VertexArray(this));
     }
 
     virtual void draw(void) override
@@ -73,7 +73,7 @@ cerium::vec2 size_of_window()
 
     int width = atoi(size->first_attribute("width")->value());
     int height = atoi(size->first_attribute("height")->value());
-    return {width, height};
+    return { (float)width, (float)height};
 }
 
 int main()

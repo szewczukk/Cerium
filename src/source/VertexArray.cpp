@@ -1,14 +1,16 @@
 #include "../include/Cerium/VertexArray.hpp"
 
+#include "../include/Cerium/Person.hpp"
+
 namespace cerium
 {
-    VertexArray::VertexArray(const vec2 & position, const vec2 & size)
+    VertexArray::VertexArray(Person * basePerson) : Prop(basePerson)
     {
         /*vec2 vertices[] = {
-                {position.x, position.y},
-                {position.x, position.y - size.y},
-                {position.x + size.x, position.y - size.y},
-                {position.x + size.x, position.y}
+                basePerson->getPosition(),
+                {basePerson->getPosition().x, basePerson->getPosition().y - basePerson->getSize().y},
+                {basePerson->getPosition().x + basePerson->getSize().x, basePerson->getPosition().y - basePerson->getSize().y},
+                {basePerson->getPosition().x + basePerson->getSize().x, basePerson->getPosition().y}
         };*/
         GLfloat vertices[] = {
                 -1.0f, -1.0f,

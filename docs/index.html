@@ -31,6 +31,79 @@
     <p>
         <div class='code'>
             <i>
+                static Act * get(const std::string & name); 
+            </i>
+        </div>
+        Name: get <br>
+        Class: <a href='ActManager.html'>ActManager</a><br>
+        
+
+    Argument name = Name of Act to return <br>
+
+       <!-- argument_template -->
+        Description: Returns Act by given name <br>
+        <i>
+            Returning: Pointer to Act with given name
+        </i>
+        <br>
+    </p>
+    <hr>
+
+    
+
+    <p>
+        <div class='code'>
+            <i>
+                static void add(const std::string & name, Act * act); 
+            </i>
+        </div>
+        Name: add <br>
+        Class: <a href='ActManager.html'>ActManager</a><br>
+        
+
+    Argument name = Name of Act <br>
+
+    
+
+    Argument act = Pointer to Act to store <br>
+
+       <!-- argument_template -->
+        Description: Adding new Act to storage with given name <br>
+        <i>
+            Returning: 
+        </i>
+        <br>
+    </p>
+    <hr>
+
+    
+
+    <p>
+        <div class='code'>
+            <i>
+                static void remove(const std::string & name); 
+            </i>
+        </div>
+        Name: remove <br>
+        Class: <a href='ActManager.html'>ActManager</a><br>
+        
+
+    Argument name = Name of Act to remove <br>
+
+       <!-- argument_template -->
+        Description: Removing Act with given name <br>
+        <i>
+            Returning: 
+        </i>
+        <br>
+    </p>
+    <hr>
+
+    
+
+    <p>
+        <div class='code'>
+            <i>
                 static void setSize(const vec2 & size); 
             </i>
         </div>
@@ -77,21 +150,17 @@
     <p>
         <div class='code'>
             <i>
-                VertexArray(const vec2 & position, const vec2 & size); 
+                
             </i>
         </div>
-        Name: VertexArray <br>
-        Class: <a href='VertexArray.html'>VertexArray</a><br>
+        Name: Prop <br>
+        Class: <a href='Prop.html'>Prop</a><br>
         
 
-    Argument position = Position of VertexArray <br>
-
-    
-
-    Argument size = Size of VertexArray <br>
+    Argument basePerson = Person where the Prop is <br>
 
        <!-- argument_template -->
-        Description: Creating all buffers, vertexArray <br>
+        Description: Setting pointer to Person where the Prop is <br>
         <i>
             Returning: 
         </i>
@@ -104,90 +173,17 @@
     <p>
         <div class='code'>
             <i>
-                static Resource * get(const std::string & name); 
+                virtual void update(const float & deltaTime) = 0; 
             </i>
         </div>
-        Name: get <br>
-        Class: <a href='ResourceManager.html'>ResourceManager</a><br>
+        Name: update <br>
+        Class: <a href='Prop.html'>Prop</a><br>
         
 
-    Argument name = Name of resource to storage <br>
+    Argument deltaTime = DeltaTime of main game clock <br>
 
        <!-- argument_template -->
-        Description: Returns Resource with given name and template <br>
-        <i>
-            Returning: Resource by name and template
-        </i>
-        <br>
-    </p>
-    <hr>
-
-    
-
-    <p>
-        <div class='code'>
-            <i>
-                static void add(const std::string & name, Resource * resource); 
-            </i>
-        </div>
-        Name: add <br>
-        Class: <a href='ResourceManager.html'>ResourceManager</a><br>
-        
-
-    Argument name = Name of resource to storage <br>
-
-    
-
-    Argument resource = Pointer to resource <br>
-
-       <!-- argument_template -->
-        Description: Adding resource into storage and name <br>
-        <i>
-            Returning: 
-        </i>
-        <br>
-    </p>
-    <hr>
-
-    
-
-    <p>
-        <div class='code'>
-            <i>
-                static void remove(const std::string & name); 
-            </i>
-        </div>
-        Name: remove <br>
-        Class: <a href='ResourceManager.html'>ResourceManager</a><br>
-        
-
-    Argument name = Name of resource to storage <br>
-
-       <!-- argument_template -->
-        Description: Adding resource into storage and name <br>
-        <i>
-            Returning: 
-        </i>
-        <br>
-    </p>
-    <hr>
-
-    
-
-    <p>
-        <div class='code'>
-            <i>
-                static bool exist(const std::string & name); 
-            </i>
-        </div>
-        Name: exist <br>
-        Class: <a href='ResourceManager.html'>ResourceManager</a><br>
-        
-
-    Argument name = Name of resource to storage <br>
-
-       <!-- argument_template -->
-        Description: Checking existing of Resource with given name <br>
+        Description: Updating Prop with deltaTime <br>
         <i>
             Returning: 
         </i>
@@ -384,17 +380,44 @@
     <p>
         <div class='code'>
             <i>
-                vec2(const float & value); 
+                static Resource * get(const std::string & name); 
             </i>
         </div>
-        Name: constructor_one_value <br>
-        Class: <a href='vec2.html'>vec2</a><br>
+        Name: get <br>
+        Class: <a href='ResourceManager.html'>ResourceManager</a><br>
         
 
-    Argument value = Value of vector <br>
+    Argument name = Name of resource to storage <br>
 
        <!-- argument_template -->
-        Description: Setting given argument as value of attributes of vector <br>
+        Description: Returns Resource with given name and template <br>
+        <i>
+            Returning: Resource by name and template
+        </i>
+        <br>
+    </p>
+    <hr>
+
+    
+
+    <p>
+        <div class='code'>
+            <i>
+                static void add(const std::string & name, Resource * resource); 
+            </i>
+        </div>
+        Name: add <br>
+        Class: <a href='ResourceManager.html'>ResourceManager</a><br>
+        
+
+    Argument name = Name of resource to storage <br>
+
+    
+
+    Argument resource = Pointer to resource <br>
+
+       <!-- argument_template -->
+        Description: Adding resource into storage and name <br>
         <i>
             Returning: 
         </i>
@@ -407,21 +430,90 @@
     <p>
         <div class='code'>
             <i>
-                vec2(const float & valueX, const float & valueY); 
+                static void remove(const std::string & name); 
             </i>
         </div>
-        Name: constructor_different_values <br>
-        Class: <a href='vec2.html'>vec2</a><br>
+        Name: remove <br>
+        Class: <a href='ResourceManager.html'>ResourceManager</a><br>
         
 
-    Argument valueX = Value of x attribute of vector <br>
+    Argument name = Name of resource to storage <br>
+
+       <!-- argument_template -->
+        Description: Adding resource into storage and name <br>
+        <i>
+            Returning: 
+        </i>
+        <br>
+    </p>
+    <hr>
 
     
 
-    Argument valueY = Value of x attribute of vector <br>
+    <p>
+        <div class='code'>
+            <i>
+                static bool exist(const std::string & name); 
+            </i>
+        </div>
+        Name: exist <br>
+        Class: <a href='ResourceManager.html'>ResourceManager</a><br>
+        
+
+    Argument name = Name of resource to storage <br>
 
        <!-- argument_template -->
-        Description: Setting 0 as value of attributes of vector <br>
+        Description: Checking existing of Resource with given name <br>
+        <i>
+            Returning: 
+        </i>
+        <br>
+    </p>
+    <hr>
+
+    
+
+    <p>
+        <div class='code'>
+            <i>
+                VertexArray(Person * basePerson); 
+            </i>
+        </div>
+        Name: VertexArray <br>
+        Class: <a href='VertexArray.html'>VertexArray</a><br>
+        
+
+    Argument basePerson = Person where the VertexArray is <br>
+
+       <!-- argument_template -->
+        Description: Creating all buffers, vertexArray <br>
+        <i>
+            Returning: 
+        </i>
+        <br>
+    </p>
+    <hr>
+
+    
+
+    <p>
+        <div class='code'>
+            <i>
+                ShaderProgram(const std::string & vertexShaderPath, const std::string & fragmentShaderPath); 
+            </i>
+        </div>
+        Name: ShaderProgram <br>
+        Class: <a href='ShaderProgram.html'>ShaderProgram</a><br>
+        
+
+    Argument vertexShaderPath = Relative path to vertex shader file <br>
+
+    
+
+    Argument fragmentShaderPath = Relative path to fragment shader file <br>
+
+       <!-- argument_template -->
+        Description: Reading all shaders, creating shader program <br>
         <i>
             Returning: 
         </i>
@@ -553,17 +645,17 @@
     <p>
         <div class='code'>
             <i>
-                virtual void update(const float & deltaTime) = 0; 
+                vec2(const float & value); 
             </i>
         </div>
-        Name: update <br>
-        Class: <a href='Prop.html'>Prop</a><br>
+        Name: constructor_one_value <br>
+        Class: <a href='vec2.html'>vec2</a><br>
         
 
-    Argument deltaTime = DeltaTime of main game clock <br>
+    Argument value = Value of vector <br>
 
        <!-- argument_template -->
-        Description: Updating Prop with deltaTime <br>
+        Description: Setting given argument as value of attributes of vector <br>
         <i>
             Returning: 
         </i>
@@ -576,94 +668,21 @@
     <p>
         <div class='code'>
             <i>
-                ShaderProgram(const std::string & vertexShaderPath, const std::string & fragmentShaderPath); 
+                vec2(const float & valueX, const float & valueY); 
             </i>
         </div>
-        Name: ShaderProgram <br>
-        Class: <a href='ShaderProgram.html'>ShaderProgram</a><br>
+        Name: constructor_different_values <br>
+        Class: <a href='vec2.html'>vec2</a><br>
         
 
-    Argument vertexShaderPath = Relative path to vertex shader file <br>
+    Argument valueX = Value of x attribute of vector <br>
 
     
 
-    Argument fragmentShaderPath = Relative path to fragment shader file <br>
+    Argument valueY = Value of x attribute of vector <br>
 
        <!-- argument_template -->
-        Description: Reading all shaders, creating shader program <br>
-        <i>
-            Returning: 
-        </i>
-        <br>
-    </p>
-    <hr>
-
-    
-
-    <p>
-        <div class='code'>
-            <i>
-                static Act * get(const std::string & name); 
-            </i>
-        </div>
-        Name: get <br>
-        Class: <a href='ActManager.html'>ActManager</a><br>
-        
-
-    Argument name = Name of Act to return <br>
-
-       <!-- argument_template -->
-        Description: Returns Act by given name <br>
-        <i>
-            Returning: Pointer to Act with given name
-        </i>
-        <br>
-    </p>
-    <hr>
-
-    
-
-    <p>
-        <div class='code'>
-            <i>
-                static void add(const std::string & name, Act * act); 
-            </i>
-        </div>
-        Name: add <br>
-        Class: <a href='ActManager.html'>ActManager</a><br>
-        
-
-    Argument name = Name of Act <br>
-
-    
-
-    Argument act = Pointer to Act to store <br>
-
-       <!-- argument_template -->
-        Description: Adding new Act to storage with given name <br>
-        <i>
-            Returning: 
-        </i>
-        <br>
-    </p>
-    <hr>
-
-    
-
-    <p>
-        <div class='code'>
-            <i>
-                static void remove(const std::string & name); 
-            </i>
-        </div>
-        Name: remove <br>
-        Class: <a href='ActManager.html'>ActManager</a><br>
-        
-
-    Argument name = Name of Act to remove <br>
-
-       <!-- argument_template -->
-        Description: Removing Act with given name <br>
+        Description: Setting 0 as value of attributes of vector <br>
         <i>
             Returning: 
         </i>
