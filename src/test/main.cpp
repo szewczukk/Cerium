@@ -5,6 +5,7 @@
 #include "../include/Cerium/VertexArray.hpp"
 #include "../include/Cerium/Prop.hpp"
 #include "../include/Cerium/Act.hpp"
+#include "../include/Cerium/Camera.hpp"
 #include "../include/Cerium/ActManager.hpp"
 #include "../include/Cerium/ResourceManager.hpp"
 #include "../include/Cerium/ShaderProgram.hpp"
@@ -87,6 +88,8 @@ int main()
 
     cerium::ResourceManager::add("shader", new cerium::ShaderProgram("vertexShader.glsl", "fragmentShader.glsl"));
 
+    cerium::Camera::init();
+
     std::cout << cerium::Window::getSize() << std::endl;
     while(!cerium::EventManager::isWindowClosed())
     {
@@ -94,6 +97,7 @@ int main()
         cerium::Window::clear();
 
         cerium::ResourceManager::get("shader")->use();
+        cerium::Camera::update(dynamic_cast<cerium::ShaderProgram*>(cerium::ResourceManager::get("shader")));
         cerium::ActManager::get("main")->update(1.6);
         cerium::ActManager::get("main")->draw();
 

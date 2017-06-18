@@ -3,6 +3,8 @@
 #include <fstream>
 #include <iostream>
 
+#include <glm/gtc/type_ptr.hpp>
+
 namespace cerium
 {
     ShaderProgram::ShaderProgram(const std::string & vertexShaderPath, const std::string & fragmentShaderPath)
@@ -66,6 +68,12 @@ namespace cerium
 
         glDeleteShader(vertexShader);
         glDeleteShader(fragmentShader);
+    }
+
+
+    void ShaderProgram::setMatUniform(const std::string & name, const glm::mat4 & value)
+    {
+        glUniformMatrix4fv(glGetUniformLocation(program, name.c_str()), 1, GL_FALSE, glm::value_ptr(value));
     }
 
 

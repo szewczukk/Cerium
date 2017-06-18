@@ -6,6 +6,7 @@
 
 #include <string>
 
+#include <glm/mat4x4.hpp>
 #include <GL/glew.h>
 
 namespace cerium
@@ -33,6 +34,14 @@ namespace cerium
             ^[description][Activating GL program]
         */
         virtual void use(void) override; //^header
+        /*
+            ^[name][setMatUniform]
+            ^[class][ShaderProgram]
+            ^[description][Setting given value in the place of uniform]
+            ^[argument]<name>[Uniform to replace with value]
+            ^[argument]<value>[Value of replaced uniform]
+        */
+        void setMatUniform(const std::string & name, const glm::mat4 & value); //^header
     private:
         GLuint program;
     };
