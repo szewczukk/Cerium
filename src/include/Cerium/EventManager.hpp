@@ -11,10 +11,17 @@ namespace cerium
         /*
             ^[name][isWindowClosed]
             ^[class][EventManager]
-            ^[description][Returns true if the event of closing window are set]
+            ^[description][Returns true when the event of closing window are set]
             ^[returns][true or false]
         */
         static bool isWindowClosed(void); //^header
+        /*
+            ^[name][isKeyPressed]
+            ^[class][EventManager]
+            ^[description][Returns true when the key was pressed]
+            ^[returns][true or false]
+        */
+        static bool isKeyPressed(const int & code); //^header
         /*
             ^[name][pollEvents]
             ^[class][EventManager]

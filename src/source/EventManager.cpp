@@ -8,6 +8,13 @@ namespace cerium
     }
 
 
+    bool EventManager::isKeyPressed(const int & code)
+    {
+        if(SDL_GetKeyboardState(NULL)[code]) return true;
+        return false;
+    }
+
+
     void EventManager::pollEvents(void)
     {
         SDL_PollEvent(instance().event);

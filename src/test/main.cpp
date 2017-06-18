@@ -34,6 +34,9 @@ public:
     virtual void update(const float & deltaTime) override
     {
         cerium::Person::update(deltaTime);
+
+        if(cerium::EventManager::isKeyPressed(SDL_SCANCODE_LEFT)) move({-1, 0});
+        if(cerium::EventManager::isKeyPressed(SDL_SCANCODE_RIGHT)) move({ 1, 0});
     }
 
     virtual void setPosition(const cerium::vec2 & position) override
