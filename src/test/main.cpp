@@ -25,11 +25,6 @@ public:
         addProp(new cerium::VertexArray(this));
         addProp(new cerium::Scriptable(this));
     }
-
-    virtual void update(const float & deltaTime) override
-    {
-        cerium::Person::update(deltaTime);
-    }
 };
 
 class MyAct : public cerium::Act
@@ -71,7 +66,6 @@ int main()
 
     cerium::Camera::init();
 
-    std::cout << cerium::Window::getSize() << std::endl;
     while(!cerium::EventManager::isWindowClosed())
     {
         cerium::EventManager::pollEvents();

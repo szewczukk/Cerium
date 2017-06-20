@@ -33,7 +33,7 @@ namespace cerium
             ^[description][Abstract class to update the object with deltaTime]
             ^[argument]<deltaTime>[DeltaTime of main game clock]
         */
-        virtual void update(const float & deltaTime); //^header
+        void update(const float & deltaTime); //^header
         /*
             ^[name][setPosition]
             ^[class][Person]
