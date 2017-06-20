@@ -2,7 +2,7 @@
 #define CERIUM_PERSON_HPP
 
 #include <vector>
-#include <lua5.1/lua.hpp>
+#include <iostream>
 
 #include "vec2.hpp"
 
@@ -17,9 +17,10 @@ namespace cerium
             ^[name][Person]
             ^[class][Person]
             ^[description][Constructor in which we assign Act in which the object is]
+            ^[argument]<name>[Name of Person]
             ^[argument]<baseAct>[Act where the Person is]
          */
-        Person(Act & baseAct); //^header
+        Person(const std::string & name, Act & baseAct); //^header
         /*
             ^[name][draw]
             ^[class][Person]
@@ -87,6 +88,12 @@ namespace cerium
         */
         float getRotation(); //^header
         /*
+            ^[name][getName]
+            ^[class][Person]
+            ^[returns][Name of Person]
+        */
+        std::string getName(); //^header
+        /*
             ^[name][addProp]
             ^[class][Person]
             ^[description][Adding new Prop to Person]
@@ -99,6 +106,7 @@ namespace cerium
         Act* baseAct;
         float rotation;
         std::vector<Prop*> props;
+        std::string name;
     };
 }
 

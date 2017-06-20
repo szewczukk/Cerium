@@ -27,10 +27,9 @@ namespace cerium
             ^[name][add]
             ^[class][Act]
             ^[description][Adding new person with given name]
-            ^[argument]<name>[Name of new Person]
             ^[argument]<person>[Pointer to Person]
         */
-        void add(const std::string & name, Person * person); //^header
+        void add(Person * person); //^header
         /*
             ^[name][remove]
             ^[class][Act]

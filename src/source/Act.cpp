@@ -22,11 +22,11 @@ namespace cerium
     }
 
 
-    void Act::add(const std::string & name, Person * person)
+    void Act::add(Person * person)
     {
-        if(!exist(name))
+        if(!exist(person->getName()))
         {
-            this->persons[name] = person;
+            this->persons[person->getName()] = person;
         }
     }
 
