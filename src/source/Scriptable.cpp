@@ -2,8 +2,6 @@
 
 #include "../include/Cerium/Person.hpp"
 
-#include <luabind/luabind.hpp>
-
 namespace cerium
 {
     Person * bPerson;
