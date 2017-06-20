@@ -1,12 +1,15 @@
 #include "../include/Cerium/Person.hpp"
 
 #include "../include/Cerium/Prop.hpp"
+#include "../include/Cerium/LuaInterface.hpp"
 
 namespace cerium
 {
     Person::Person(Act & baseAct)
     {
         this->baseAct = &baseAct;
+        lua_getglobal(LuaInterface::getState(), "init");
+        lua_pcall(LuaInterface::getState(), 0, 0, 0);
     }
 
 
@@ -21,6 +24,10 @@ namespace cerium
 
     void Person::update(const float & deltaTime)
     {
+        lua_getglobal(LuaInterface::getState(), "update");
+        lua_pushnumber(LuaInterface::getState(), deltaTime);
+        lua_pcall(LuaInterface::getState(), 1, 0, 0);
+
         for (auto & prop : this->props)
         {
             prop->update(deltaTime);

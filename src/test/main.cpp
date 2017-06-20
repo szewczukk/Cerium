@@ -5,6 +5,7 @@
 #include "../include/Cerium/VertexArray.hpp"
 #include "../include/Cerium/Prop.hpp"
 #include "../include/Cerium/Act.hpp"
+#include "../include/Cerium/LuaInterface.hpp"
 #include "../include/Cerium/Camera.hpp"
 #include "../include/Cerium/ActManager.hpp"
 #include "../include/Cerium/ResourceManager.hpp"
@@ -16,6 +17,8 @@
 
 #include <iostream>
 
+#include <lua5.1/lua.hpp>
+
 class Player : public cerium::Person
 {
 public:
@@ -26,31 +29,12 @@ public:
         addProp(new cerium::VertexArray(this));
     }
 
-    virtual void draw(void) override
-    {
-        cerium::Person::draw();
-    }
-
     virtual void update(const float & deltaTime) override
     {
         cerium::Person::update(deltaTime);
 
         if(cerium::EventManager::isKeyPressed(SDL_SCANCODE_LEFT)) move({-1, 0});
         if(cerium::EventManager::isKeyPressed(SDL_SCANCODE_RIGHT)) move({ 1, 0});
-    }
-
-    virtual void setPosition(const cerium::vec2 & position) override
-    {
-        cerium::Person::setPosition(position);
-    }
-
-    virtual void setRotation(const float & position) override
-    {
-        cerium::Person::setRotation(position);
-    }
-    virtual void setSize(const cerium::vec2 & size) override
-    {
-        cerium::Person::setSize(size);
     }
 };
 
@@ -82,6 +66,8 @@ cerium::vec2 size_of_window()
 
 int main()
 {
+    cerium::LuaInterface::init();
+
     cerium::Window::setSize(size_of_window());
     cerium::Window::setTitle("Cerium");
 

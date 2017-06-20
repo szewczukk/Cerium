@@ -2,6 +2,7 @@
 #define CERIUM_PERSON_HPP
 
 #include <vector>
+#include <lua5.1/lua.hpp>
 
 #include "vec2.hpp"
 
@@ -24,7 +25,7 @@ namespace cerium
             ^[class][Person]
             ^[description][Abstract class to draw the object into screen]
         */
-        virtual void draw(void); //^header
+        void draw(void); //^header
         /*
             ^[name][update]
             ^[class][Person]
@@ -38,21 +39,21 @@ namespace cerium
             ^[description][Setting position of Person]
             ^[argument]<position>[Position in which the Person have to be]
         */
-        virtual void setPosition(const vec2 & position); //^header
+        void setPosition(const vec2 & position); //^header
         /*
             ^[name][setRotation]
             ^[class][Person]
             ^[description][Setting rotation of Person]
             ^[argument]<rotation>[Rotation of Person in degrees]
         */
-        virtual void setRotation(const float & rotation); //^header
+        void setRotation(const float & rotation); //^header
         /*
             ^[name][size]
             ^[class][Person]
             ^[description][Setting size of Person where x is width and y is height]
             ^[argument]<size>[Size of Person as vector]
         */
-        virtual void setSize(const vec2 & size); //^header
+        void setSize(const vec2 & size); //^header
         /*
             ^[name][move]
             ^[class][Person]
