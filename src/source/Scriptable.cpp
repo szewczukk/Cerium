@@ -2,17 +2,26 @@
 
 #include "../include/Cerium/Person.hpp"
 
+#include "../include/Cerium/EventManager.hpp"
+
 namespace cerium
 {
     Person * bPerson;
 
-    static int l_move(lua_State * state)
+    int l_move(lua_State * state)
     {
         float first = (float)lua_tonumber(state, 1);
         float second = (float)lua_tonumber(state, 2);
         bPerson->move({first, second});
 
         return 0;
+    }
+
+    int l_getkey(lua_State * state)
+    {
+        int key = (int)lua_tonumber(state, 1);
+
+        return EventManager::isKeyPressed(key);
     }
 
 
@@ -25,6 +34,7 @@ namespace cerium
         luaL_openlibs(state);
 
         lua_register(state, "move", l_move);
+        lua_register(state, "isKeyPressed", l_getkey);
 
         std::string name = basePerson->getName() + ".lua";
         luaL_dofile(state, name.c_str());

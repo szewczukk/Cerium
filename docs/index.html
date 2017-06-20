@@ -196,12 +196,16 @@
     <p>
         <div class='code'>
             <i>
-                Person(Act & baseAct); 
+                Person(const std::string & name, Act & baseAct); 
             </i>
         </div>
         Name: Person <br>
         Class: <a href='Person.html'>Person</a><br>
         
+
+    Argument name = Name of Person <br>
+
+    
 
     Argument baseAct = Act where the Person is <br>
 
@@ -242,7 +246,7 @@
     <p>
         <div class='code'>
             <i>
-                virtual void setPosition(const vec2 & position); 
+                void setPosition(const vec2 & position); 
             </i>
         </div>
         Name: setPosition <br>
@@ -265,7 +269,7 @@
     <p>
         <div class='code'>
             <i>
-                virtual void setRotation(const float & rotation); 
+                void setRotation(const float & rotation); 
             </i>
         </div>
         Name: setRotation <br>
@@ -288,7 +292,7 @@
     <p>
         <div class='code'>
             <i>
-                virtual void setSize(const vec2 & size); 
+                void setSize(const vec2 & size); 
             </i>
         </div>
         Name: size <br>
@@ -668,16 +672,12 @@
     <p>
         <div class='code'>
             <i>
-                void add(const std::string & name, Person * person); 
+                void add(Person * person); 
             </i>
         </div>
         Name: add <br>
         Class: <a href='Act.html'>Act</a><br>
         
-
-    Argument name = Name of new Person <br>
-
-    
 
     Argument person = Pointer to Person <br>
 
