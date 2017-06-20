@@ -17,7 +17,39 @@ namespace cerium
         return 0;
     }
 
-    int l_getkey(lua_State * state)
+
+    int l_setPosition(lua_State * state)
+    {
+        float x = (float)lua_tonumber(state, 1);
+        float y = (float)lua_tonumber(state, 2);
+
+        bPerson->setPosition({x, y});
+
+        return 0;
+    }
+
+
+    int l_rotate(lua_State * state)
+    {
+        float angle = (float)lua_tonumber(state, 1);
+
+        bPerson->rotate(angle);
+
+        return 0;
+    }
+
+
+    int l_setRotation(lua_State * state)
+    {
+        float angle = (float)lua_tonumber(state, 1);
+
+        bPerson->setRotation(angle);
+
+        return 0;
+    }
+
+
+    int l_isKeyPressed(lua_State * state)
     {
         int key = (int)lua_tonumber(state, 1);
 
@@ -34,7 +66,12 @@ namespace cerium
         luaL_openlibs(state);
 
         lua_register(state, "move", l_move);
-        lua_register(state, "isKeyPressed", l_getkey);
+        lua_register(state, "setPosition", l_setPosition);
+
+        lua_register(state, "rotate", l_rotate);
+        lua_register(state, "setRotation", l_setRotation);
+
+        lua_register(state, "isKeyPressed", l_isKeyPressed);
 
         std::string name = basePerson->getName() + ".lua";
         luaL_dofile(state, name.c_str());
