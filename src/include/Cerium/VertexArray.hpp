@@ -2,6 +2,7 @@
 #define CERIUM_VERTEXARRAY_HPP
 
 #include <GL/glew.h>
+#include <glm/mat4x4.hpp>
 
 #include <vector>
 
@@ -27,6 +28,8 @@ namespace cerium
         GLuint vertexArray;
         GLuint vertexBuffer;
         GLuint indexBuffer;
+
+        glm::mat4 transform;
     };
 }
 

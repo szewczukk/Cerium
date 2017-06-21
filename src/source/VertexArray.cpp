@@ -3,8 +3,8 @@
 #include "../include/Cerium/Person.hpp"
 #include "../include/Cerium/ResourceManager.hpp"
 #include "../include/Cerium/ShaderProgram.hpp"
+#include "../include/Cerium/Camera.hpp"
 
-#include <glm/mat4x4.hpp>
 #include <glm/gtx/transform.hpp>
 
 namespace cerium
@@ -48,7 +48,7 @@ namespace cerium
 
     void VertexArray::update(const float &deltaTime)
     {
-        glm::mat4 transform;
+        transform = glm::mat4(1);
         transform = glm::translate(transform, {basePerson->getPosition().x, basePerson->getPosition().y, 0.0f});
 
         transform = glm::translate(transform, {basePerson->getSize().x / 2, basePerson->getSize().y / 2, 0.0f});
@@ -56,17 +56,18 @@ namespace cerium
         transform = glm::translate(transform, {-basePerson->getSize().x / 2, -basePerson->getSize().y / 2, 0.0f});
 
         transform = glm::scale(transform, {basePerson->getSize().x, basePerson->getSize().y, 1.0f});
-
-        dynamic_cast<ShaderProgram*>(ResourceManager::get("shader"))->setMatUniform("transform", transform);
     }
 
 
     void VertexArray::draw(void)
     {
+        cerium::ResourceManager::get("shader")->use();
+        dynamic_cast<ShaderProgram*>(ResourceManager::get("shader"))->setMatUniform("transform", transform);
+
+        cerium::Camera::update(dynamic_cast<cerium::ShaderProgram*>(cerium::ResourceManager::get("shader")));
+
         glBindVertexArray(vertexArray);
 
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-
-        glBindVertexArray(0);
     }
 }

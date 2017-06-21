@@ -9,6 +9,7 @@
 #include "../include/Cerium/ResourceManager.hpp"
 #include "../include/Cerium/ShaderProgram.hpp"
 #include "../include/Cerium/Person.hpp"
+#include "../include/Cerium/Clock.hpp"
 
 #include <rapidxml.hpp>
 #include <rapidxml_utils.hpp>
@@ -25,11 +26,23 @@ public:
     }
 };
 
+class Other : public cerium::Person
+{
+public:
+    Other(const std::string & name, cerium::Act * baseAct) : cerium::Person(name, baseAct)
+    {
+        setPosition({100});
+        setSize({64});
+        addProp(new cerium::VertexArray(this));
+    }
+};
+
 class MyAct : public cerium::Act
 {
 public:
     MyAct()
     {
+        add(new Other("other", this));
         add(new Player("player", this));
     }
 };
@@ -53,23 +66,20 @@ int main()
     cerium::Window::setTitle("Cerium");
 
     cerium::Window::init();
+    cerium::Camera::init();
+
+    cerium::ResourceManager::add("shader", new cerium::ShaderProgram("vertexShader.glsl", "fragmentShader.glsl"));
+    cerium::ResourceManager::add("timer", new cerium::Clock);
 
     cerium::ActManager::add("main", new MyAct);
 
-    cerium::ResourceManager::add("shader", new cerium::ShaderProgram("vertexShader.glsl", "fragmentShader.glsl"));
-
-    cerium::Camera::init();
-
     while(!cerium::EventManager::isWindowClosed())
     {
+        cerium::ResourceManager::get("timer")->use();
         cerium::EventManager::pollEvents();
         cerium::Window::clear();
 
-        cerium::ResourceManager::get("shader")->use();
-
-        cerium::Camera::update(dynamic_cast<cerium::ShaderProgram*>(cerium::ResourceManager::get("shader")));
-
-        cerium::ActManager::get("main")->update(1.6);
+        cerium::ActManager::get("main")->update(dynamic_cast<cerium::Clock*>(cerium::ResourceManager::get("timer"))->getDeltaTime());
         cerium::ActManager::get("main")->draw();
 
         cerium::Window::render();
