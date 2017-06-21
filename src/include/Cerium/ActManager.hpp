@@ -26,6 +26,19 @@ namespace cerium
         */
         static void add(const std::string & name, Act * act); //^header
         /*
+            ^[name][updateCurrent]
+            ^[class][ActManager]
+            ^[argument]<deltaTime>[DeltaTime of main game clock]
+            ^[description][Updating current scene setted by setCurrent method]
+        */
+        static void updateCurrent(const float & deltaTime); //^header
+        /*
+            ^[name][drawCurrent]
+            ^[class][ActManager]
+            ^[description][Drawing current scene setted by setCurrent method]
+        */
+        static void drawCurrent(void); //^header
+        /*
             ^[name][remove]
             ^[class][ActManager]
             ^[argument]<name>[Name of Act to remove]
@@ -40,6 +53,12 @@ namespace cerium
         */
         static bool exist(const std::string & name); //^header
         /*
+            ^[name][setCurrent]
+            ^[class][ActManager]
+            ^[description][Setting current act]
+        */
+        static void setCurrent(const std::string & name); //^header
+        /*
             ^[name][clear]
             ^[class][ActManager]
             ^[description][Removing all Acts in ActManager]
@@ -53,6 +72,7 @@ namespace cerium
         void operator=(const ActManager & other) = delete;
     private:
         std::unordered_map<std::string, Act*> acts;
+        Act * currentAct;
     };
 }
 

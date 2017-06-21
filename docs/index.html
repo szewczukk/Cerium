@@ -81,6 +81,29 @@
     <p>
         <div class='code'>
             <i>
+                static void updateCurrent(const float & deltaTime); 
+            </i>
+        </div>
+        Name: updateCurrent <br>
+        Class: <a href='ActManager.html'>ActManager</a><br>
+        
+
+    Argument deltaTime = DeltaTime of main game clock <br>
+
+       <!-- argument_template -->
+        Description: Updating current scene setted by setCurrent method <br>
+        <i>
+            Returning: 
+        </i>
+        <br>
+    </p>
+    <hr>
+
+    
+
+    <p>
+        <div class='code'>
+            <i>
                 static void remove(const std::string & name); 
             </i>
         </div>
@@ -196,7 +219,7 @@
     <p>
         <div class='code'>
             <i>
-                Person(const std::string & name, Act & baseAct); 
+                Person(const std::string & name, Act * baseAct); 
             </i>
         </div>
         Name: Person <br>
@@ -223,7 +246,7 @@
     <p>
         <div class='code'>
             <i>
-                virtual void update(const float & deltaTime); 
+                void update(const float & deltaTime); 
             </i>
         </div>
         Name: update <br>
@@ -649,7 +672,7 @@
     <p>
         <div class='code'>
             <i>
-                virtual void update(const float & deltaTime); 
+                void update(const float & deltaTime); 
             </i>
         </div>
         Name: update <br>

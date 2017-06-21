@@ -72,6 +72,7 @@ int main()
     cerium::ResourceManager::add("timer", new cerium::Clock);
 
     cerium::ActManager::add("main", new MyAct);
+    cerium::ActManager::setCurrent("main");
 
     while(!cerium::EventManager::isWindowClosed())
     {
@@ -79,8 +80,8 @@ int main()
         cerium::EventManager::pollEvents();
         cerium::Window::clear();
 
-        cerium::ActManager::get("main")->update(dynamic_cast<cerium::Clock*>(cerium::ResourceManager::get("timer"))->getDeltaTime());
-        cerium::ActManager::get("main")->draw();
+        cerium::ActManager::updateCurrent(dynamic_cast<cerium::Clock*>(cerium::ResourceManager::get("timer"))->getDeltaTime());
+        cerium::ActManager::drawCurrent();
 
         cerium::Window::render();
     }

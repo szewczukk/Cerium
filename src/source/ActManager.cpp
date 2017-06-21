@@ -10,6 +10,19 @@ namespace cerium
         {
             if (act.first == name) return act.second;
         }
+        return nullptr;
+    }
+
+
+    void ActManager::updateCurrent(const float & deltaTime)
+    {
+        instance().currentAct->update(deltaTime);
+    }
+
+
+    void ActManager::drawCurrent(void)
+    {
+        instance().currentAct->draw();
     }
 
 
@@ -41,6 +54,15 @@ namespace cerium
             if (act.first == name) return true;
         }
         return false;
+    }
+
+
+    void ActManager::setCurrent(const std::string & name)
+    {
+        for(auto & act : instance().acts)
+        {
+            if(act.first == name) instance().currentAct = act.second;
+        }
     }
 
 
