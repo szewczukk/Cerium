@@ -14,7 +14,7 @@ namespace cerium
         float second = (float)lua_tonumber(state, 2);
         bPerson->move({first, second});
 
-        return 0;
+        return 1;
     }
 
 
@@ -25,7 +25,7 @@ namespace cerium
 
         bPerson->setPosition({x, y});
 
-        return 0;
+        return 1;
     }
 
 
@@ -35,7 +35,7 @@ namespace cerium
 
         bPerson->rotate(angle);
 
-        return 0;
+        return 1;
     }
 
 
@@ -45,7 +45,7 @@ namespace cerium
 
         bPerson->setRotation(angle);
 
-        return 0;
+        return 1;
     }
 
 
@@ -53,7 +53,31 @@ namespace cerium
     {
         int key = (int)lua_tonumber(state, 1);
 
-        return EventManager::isKeyPressed(key);
+        lua_pushboolean(state, EventManager::isKeyPressed(key));
+
+        return 1;
+    }
+
+
+    int l_getRotation(lua_State * state)
+    {
+        lua_pushnumber(state, bPerson->getRotation());
+
+        return 1;
+    }
+
+
+    int l_getPosition(lua_State * state)
+    {
+        lua_newtable(state);
+
+        lua_pushnumber(state, bPerson->getPosition().x);
+        lua_setfield(state, -2, "x");
+
+        lua_pushnumber(state, bPerson->getPosition().y);
+        lua_setfield(state, -2, "y");
+
+        return 1;
     }
 
 
@@ -65,11 +89,17 @@ namespace cerium
         state = luaL_newstate();
         luaL_openlibs(state);
 
+        lua_newtable(state);
+
         lua_register(state, "move", l_move);
         lua_register(state, "setPosition", l_setPosition);
 
+        lua_register(state, "getPosition", l_getPosition);
+
         lua_register(state, "rotate", l_rotate);
         lua_register(state, "setRotation", l_setRotation);
+
+        lua_register(state, "getRotation", l_getRotation);
 
         lua_register(state, "isKeyPressed", l_isKeyPressed);
 
@@ -92,11 +122,5 @@ namespace cerium
         lua_getglobal(state, "update");
         lua_pushnumber(state, deltaTime);
         lua_pcall(state, 1, 0, 0);
-    }
-
-
-    void Scriptable::draw(void)
-    {
-
     }
 }
