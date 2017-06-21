@@ -40,7 +40,6 @@ namespace cerium
 
         glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
-        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
         glBindBuffer(GL_ARRAY_BUFFER, 0);
 
         glBindVertexArray(0);
@@ -49,8 +48,13 @@ namespace cerium
 
     void VertexArray::update(const float &deltaTime)
     {
-        glm::mat4 transform = glm::mat4(1.0);
+        glm::mat4 transform;
         transform = glm::translate(transform, {basePerson->getPosition().x, basePerson->getPosition().y, 0.0f});
+
+        transform = glm::translate(transform, {basePerson->getSize().x / 2, basePerson->getSize().y / 2, 0.0f});
+        transform = glm::rotate(transform, basePerson->getRotation(), {0, 0, 1});
+        transform = glm::translate(transform, {-basePerson->getSize().x / 2, -basePerson->getSize().y / 2, 0.0f});
+
         transform = glm::scale(transform, {basePerson->getSize().x, basePerson->getSize().y, 1.0f});
 
         dynamic_cast<ShaderProgram*>(ResourceManager::get("shader"))->setMatUniform("transform", transform);

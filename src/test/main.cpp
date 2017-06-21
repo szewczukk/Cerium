@@ -9,8 +9,6 @@
 #include "../include/Cerium/ResourceManager.hpp"
 #include "../include/Cerium/ShaderProgram.hpp"
 #include "../include/Cerium/Person.hpp"
-#include "../include/Cerium/TextureSource.hpp"
-#include "../include/Cerium/Texture.hpp"
 
 #include <rapidxml.hpp>
 #include <rapidxml_utils.hpp>
@@ -18,13 +16,12 @@
 class Player : public cerium::Person
 {
 public:
-    Player(const std::string & name, cerium::Act & baseAct) : cerium::Person(name, baseAct)
+    Player(const std::string & name, cerium::Act * baseAct) : cerium::Person(name, baseAct)
     {
         setPosition({10});
         setSize({64});
         addProp(new cerium::VertexArray(this));
         addProp(new cerium::Scriptable(this));
-        addProp(new cerium::Texture(this, dynamic_cast<cerium::TextureSource*>(cerium::ResourceManager::get("texture"))));
     }
 };
 
@@ -33,7 +30,7 @@ class MyAct : public cerium::Act
 public:
     MyAct()
     {
-        add(new Player("player", *this));
+        add(new Player("player", this));
     }
 };
 
@@ -47,7 +44,7 @@ cerium::vec2 size_of_window()
 
     int width = atoi(size->first_attribute("width")->value());
     int height = atoi(size->first_attribute("height")->value());
-    return { (float)width, (float)height };
+    return { (float)width, (float)height};
 }
 
 int main()
@@ -57,10 +54,9 @@ int main()
 
     cerium::Window::init();
 
-    cerium::ResourceManager::add("texture", new cerium::TextureSource("texture.png"));
-    cerium::ResourceManager::add("shader", new cerium::ShaderProgram("vertexShader.glsl", "fragmentShader.glsl"));
-
     cerium::ActManager::add("main", new MyAct);
+
+    cerium::ResourceManager::add("shader", new cerium::ShaderProgram("vertexShader.glsl", "fragmentShader.glsl"));
 
     cerium::Camera::init();
 

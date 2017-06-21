@@ -1,7 +1,5 @@
 #include "../include/Cerium/TextureSource.hpp"
 
-#include <iostream>
-
 namespace cerium
 {
     TextureSource::TextureSource(const std::string & path)

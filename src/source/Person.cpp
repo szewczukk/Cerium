@@ -4,10 +4,10 @@
 
 namespace cerium
 {
-    Person::Person(const std::string & name, Act & baseAct)
+    Person::Person(const std::string & name, Act * baseAct)
     {
         this->name = name;
-        this->baseAct = &baseAct;
+        this->baseAct = baseAct;
     }
 
 

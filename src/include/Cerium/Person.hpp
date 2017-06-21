@@ -20,7 +20,7 @@ namespace cerium
             ^[argument]<name>[Name of Person]
             ^[argument]<baseAct>[Act where the Person is]
          */
-        Person(const std::string & name, Act & baseAct); //^header
+        Person(const std::string & name, Act * baseAct); //^header
         /*
             ^[name][draw]
             ^[class][Person]
