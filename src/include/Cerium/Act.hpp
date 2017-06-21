@@ -2,7 +2,6 @@
 #define CERIUM_ACT_HPP
 
 #include <unordered_map>
-#include <iostream>
 
 namespace cerium
 {

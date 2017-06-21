@@ -1,12 +1,14 @@
 #include "../include/Cerium/TextureSource.hpp"
 
+#include <iostream>
+
 namespace cerium
 {
     TextureSource::TextureSource(const std::string & path)
     {
         IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG | IMG_INIT_TIF | IMG_INIT_WEBP);
 
-        SDL_Surface * surface = IMG_Load(path.c_str());
+        surface = IMG_Load(path.c_str());
 
         IMG_Quit();
     }
