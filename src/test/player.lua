@@ -1,4 +1,4 @@
-local speed = 2
+local speed = 0.1
 
 -- Function running once, at start of game
 function init()
@@ -8,7 +8,7 @@ end
 
 -- Function running non-stop
 function update(deltaTime)
-    rotate(0.04)
+    rotate(0.0004 * deltaTime)
     if isKeyPressed(79) then
         move(speed * deltaTime, 0)
 
