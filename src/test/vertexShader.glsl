@@ -1,11 +1,8 @@
 #version 330 core
 
 layout(location = 0) in vec2 position;
-layout(location = 1) in vec2 textureCoordinates;
 
 uniform mat4 projection;
-
-out vec2 tCoordinates;
 
 void main()
 {
@@ -14,6 +11,4 @@ void main()
     gl_Position.w = 1;
 
     gl_Position = projection * gl_Position;
-
-    tCoordinates = textureCoordinates;
 }

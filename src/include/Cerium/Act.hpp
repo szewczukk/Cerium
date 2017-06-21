@@ -22,7 +22,7 @@ namespace cerium
             ^[description][Updates all the persons in Act]
             ^[argument]<deltaTime>[DeltaTime of main game clock]
         */
-        virtual void update(const float & deltaTime); //^header
+        void update(const float & deltaTime); //^header
         /*
             ^[name][add]
             ^[class][Act]

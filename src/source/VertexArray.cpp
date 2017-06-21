@@ -18,13 +18,6 @@ namespace cerium
                 { 1, 1 }
         };
 
-        vec2 textureCoordinates [] = {
-                { 0, 1 },
-                { 1, 0 },
-                { 0, 0 },
-                { 1, 1 },
-        };
-
         unsigned int indices[] = {
                 0, 2, 1,
                 0, 3, 1
@@ -53,28 +46,10 @@ namespace cerium
     }
 
 
-    void VertexArray::bindArray(void)
-    {
-        glBindVertexArray(vertexArray);
-    }
-
-
-    void VertexArray::bindBuffer(void)
-    {
-        glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
-    }
-
-
     void VertexArray::update(const float &deltaTime)
     {
         glm::mat4 transform = glm::mat4(1.0);
-
         transform = glm::translate(transform, {basePerson->getPosition().x, basePerson->getPosition().y, 0.0f});
-
-        transform = glm::translate(transform, {basePerson->getSize().x / 2, basePerson->getSize().y / 2, 0.0f});
-        transform = glm::rotate(transform, basePerson->getRotation(), {0.f, 0.f, 1.f});
-        transform = glm::translate(transform, {-basePerson->getSize().x / 2, -basePerson->getSize().y / 2, 0.0f});
-
         transform = glm::scale(transform, {basePerson->getSize().x, basePerson->getSize().y, 1.0f});
 
         dynamic_cast<ShaderProgram*>(ResourceManager::get("shader"))->setMatUniform("transform", transform);
@@ -86,5 +61,7 @@ namespace cerium
         glBindVertexArray(vertexArray);
 
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+
+        glBindVertexArray(0);
     }
 }

@@ -21,18 +21,6 @@ namespace cerium
             ^[description][Creating all buffers, vertexArray]
         */
         VertexArray(Person * basePerson); //^header
-        /*
-            ^[name][bindArray]
-            ^[class][VertexArray]
-            ^[description][Binding vertexArray to GL state machine]
-        */
-        void bindArray(void); //^header
-        /*
-            ^[name][bindBuffer]
-            ^[class][VertexArray]
-            ^[description][Binding vertexBuffer to GL state machine]
-        */
-        void bindBuffer(void); //^header
         virtual void update(const float & deltaTime) override;
         virtual void draw(void) override;
     private:
