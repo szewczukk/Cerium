@@ -100,6 +100,13 @@ namespace cerium
             ^[argument]<component>[Pointer to Prop to add]
         */
         void addProp(Prop * component); //^header
+        /*
+            ^[name][isCollide]
+            ^[class][Person]
+            ^[description][Checking is the Persons collides (Boding-box)]
+            ^[argument]<other>[Second person]
+         */
+        bool isCollide(Person * other); //^header
     protected:
         vec2 position;
         vec2 size;
