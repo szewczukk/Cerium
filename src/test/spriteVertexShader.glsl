@@ -2,6 +2,8 @@
 
 layout(location = 0) in vec2 position;
 
+out vec2 textureCoordinates;
+
 uniform mat4 projection;
 uniform mat4 transform;
 
@@ -12,4 +14,5 @@ void main()
     gl_Position.w = 1;
 
     gl_Position = projection * transform * gl_Position;
+    textureCoordinates = position;
 }
