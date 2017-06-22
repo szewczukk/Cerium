@@ -10,6 +10,8 @@
 #include "../include/Cerium/ShaderProgram.hpp"
 #include "../include/Cerium/Person.hpp"
 #include "../include/Cerium/Clock.hpp"
+#include "../include/Cerium/Texture.hpp"
+#include "../include/Cerium/TextureSource.hpp"
 
 #include <rapidxml.hpp>
 #include <rapidxml_utils.hpp>
@@ -21,6 +23,9 @@ public:
     {
         setPosition({10});
         setSize({64});
+        setRotation(0);
+
+        addProp(new cerium::Texture(this, dynamic_cast<cerium::TextureSource*>(cerium::ResourceManager::get("texture"))));
         addProp(new cerium::VertexArray(this));
         addProp(new cerium::Scriptable(this));
     }
@@ -33,6 +38,8 @@ public:
     {
         setPosition({100});
         setSize({64});
+        setRotation(0);
+
         addProp(new cerium::VertexArray(this));
     }
 };
@@ -68,6 +75,7 @@ int main()
     cerium::Window::init();
     cerium::Camera::init();
 
+    cerium::ResourceManager::add("texture", new cerium::TextureSource("texture.png"));
     cerium::ResourceManager::add("shader", new cerium::ShaderProgram("vertexShader.glsl", "fragmentShader.glsl"));
     cerium::ResourceManager::add("timer", new cerium::Clock);
 
