@@ -1,5 +1,8 @@
 #include "../include/Cerium/Window.hpp"
 
+#include "../include/Cerium/ResourceManager.hpp"
+#include "../include/Cerium/ShaderProgram.hpp"
+
 namespace cerium
 {
     Window & Window::instance(void)
@@ -74,5 +77,7 @@ namespace cerium
 
         glewExperimental = GL_TRUE;
         glewInit();
+
+        cerium::ResourceManager::add("spriteShader", new cerium::ShaderProgram("spriteVertexShader.glsl", "spriteFragmentShader.glsl"));
     }
 }

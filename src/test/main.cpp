@@ -76,7 +76,6 @@ int main()
     cerium::Camera::init();
 
     cerium::ResourceManager::add("texture", new cerium::TextureSource("texture.png"));
-    cerium::ResourceManager::add("shader", new cerium::ShaderProgram("vertexShader.glsl", "fragmentShader.glsl"));
     cerium::ResourceManager::add("timer", new cerium::Clock);
 
     cerium::ActManager::add("main", new MyAct);
