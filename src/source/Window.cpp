@@ -70,6 +70,14 @@ namespace cerium
         SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
         SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
 
+        SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 8);
+        SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE, 8);
+        SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE, 8);
+        SDL_GL_SetAttribute(SDL_GL_ALPHA_SIZE, 8);
+
+        SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+        SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 4);
+
         instance().window = SDL_CreateWindow(instance().title.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
                                                (int) instance().size.x, (int) instance().size.y,
                                                SDL_WINDOW_OPENGL);
@@ -77,6 +85,9 @@ namespace cerium
 
         glewExperimental = GL_TRUE;
         glewInit();
+
+        glEnable(GL_BLEND);
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
         cerium::ResourceManager::add("spriteShader", new cerium::ShaderProgram("spriteVertexShader.glsl", "spriteFragmentShader.glsl"));
     }

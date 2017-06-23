@@ -9,10 +9,6 @@ uniform mat4 transform;
 
 void main()
 {
-    gl_Position.xy = position;
-    gl_Position.z = 0;
-    gl_Position.w = 1;
-
-    gl_Position = projection * transform * gl_Position;
+    gl_Position = projection * transform * vec4(position, 0, 1);
     textureCoordinates = position;
 }

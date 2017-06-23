@@ -14,7 +14,7 @@ namespace cerium
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 
-        int colorMode = GL_RGB ;
+        int colorMode = GL_RGB;
         if (source->surface->format->BytesPerPixel == 4)
             colorMode = GL_RGBA;
 
