@@ -8,7 +8,7 @@ end
 
 -- Function running non-stop
 function update(deltaTime)
-    rotate(0.0004 * deltaTime)
+    rotate((speed * deltaTime)/25)
     if isKeyPressed(79) then
         move(speed * deltaTime, 0)
 
