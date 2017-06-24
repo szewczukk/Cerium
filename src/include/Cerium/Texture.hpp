@@ -2,6 +2,7 @@
 #define CERIUM_TEXTURE_HPP
 
 #include <GL/glew.h>
+#include <SDL2/SDL_surface.h>
 
 #include "Prop.hpp"
 
@@ -15,7 +16,7 @@ namespace cerium
         Texture(Person * basePerson, TextureSource * source);
         ~Texture();
 
-        virtual void update(const float & deltaTime) override;
+        virtual void update(const float & deltaTime) override {};
         virtual void draw(void) override;
     private:
         GLuint texture;

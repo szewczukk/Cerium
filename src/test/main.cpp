@@ -12,6 +12,8 @@
 #include "../include/Cerium/Clock.hpp"
 #include "../include/Cerium/Texture.hpp"
 #include "../include/Cerium/TextureSource.hpp"
+#include "../include/Cerium/Font.hpp"
+#include "../include/Cerium/Label.hpp"
 
 #include <rapidxml.hpp>
 #include <rapidxml_utils.hpp>
@@ -25,9 +27,9 @@ public:
         setSize({64});
         setRotation(0);
 
+        addProp(new cerium::Texture(this, dynamic_cast<cerium::TextureSource*>(cerium::ResourceManager::get("texture"))));
         addProp(new cerium::VertexArray(this));
         addProp(new cerium::Scriptable(this));
-        addProp(new cerium::Texture(this, dynamic_cast<cerium::TextureSource*>(cerium::ResourceManager::get("texture"))));
     }
 };
 
@@ -40,6 +42,7 @@ public:
         setSize({64});
         setRotation(0);
 
+        addProp(new cerium::Texture(this, dynamic_cast<cerium::TextureSource*>(cerium::ResourceManager::get("texture2"))));
         addProp(new cerium::VertexArray(this));
     }
 };
@@ -49,8 +52,8 @@ class MyAct : public cerium::Act
 public:
     MyAct()
     {
-        add(new Other("other", this));
         add(new Player("player", this));
+        add(new Other("other", this));
     }
 };
 
@@ -76,7 +79,9 @@ int main()
     cerium::Camera::init();
 
     cerium::ResourceManager::add("texture", new cerium::TextureSource("texture.png"));
+    cerium::ResourceManager::add("texture2", new cerium::TextureSource("texture2.png"));
     cerium::ResourceManager::add("timer", new cerium::Clock);
+    cerium::ResourceManager::add("font", new cerium::Font("font.ttf", 16));
 
     cerium::ActManager::add("main", new MyAct);
     cerium::ActManager::setCurrent("main");
