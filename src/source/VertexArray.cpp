@@ -61,7 +61,8 @@ namespace cerium
 
     void VertexArray::draw(void)
     {
-        cerium::ResourceManager::get("spriteShader")->use();
+        ResourceManager::get("spriteShader")->use();
+
         dynamic_cast<ShaderProgram*>(ResourceManager::get("spriteShader"))->setMatUniform("transform", transform);
 
         cerium::Camera::update(dynamic_cast<cerium::ShaderProgram*>(cerium::ResourceManager::get("spriteShader")));

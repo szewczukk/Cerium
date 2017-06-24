@@ -27,7 +27,7 @@ public:
         setSize({64});
         setRotation(0);
 
-        addProp(new cerium::Texture(this, dynamic_cast<cerium::TextureSource*>(cerium::ResourceManager::get("texture"))));
+        addProp(new cerium::Texture(this, dynamic_cast<cerium::TextureSource*>(cerium::ResourceManager::get("texture2"))));
         addProp(new cerium::VertexArray(this));
         addProp(new cerium::Scriptable(this));
     }
@@ -42,7 +42,7 @@ public:
         setSize({64});
         setRotation(0);
 
-        addProp(new cerium::Texture(this, dynamic_cast<cerium::TextureSource*>(cerium::ResourceManager::get("texture2"))));
+        addProp(new cerium::Texture(this, dynamic_cast<cerium::TextureSource*>(cerium::ResourceManager::get("texture"))));
         addProp(new cerium::VertexArray(this));
     }
 };
