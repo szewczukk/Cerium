@@ -15,10 +15,4 @@ namespace cerium
     {
         SDL_FreeSurface(surface);
     }
-
-
-    void TextureSource::use(void)
-    {
-
-    }
 }

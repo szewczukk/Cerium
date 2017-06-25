@@ -10,14 +10,26 @@ namespace cerium
     class Clock : public Resource
     {
     public:
-        Clock(void);
-
-        virtual void use(void) override;
-
-        float getDeltaTime(void);
+        /*
+            ^[name][Clock]
+            ^[class][Clock]
+            ^[description][Zeros all attributes]
+         */
+        Clock(void); //^header
+        /*
+            ^[name][getDeltaTime]
+            ^[class][Clock]
+            ^[returns][Time between starting Clock and calling this method]
+         */
+        float getDeltaTime(void); //^header
+        /*
+            ^[name][use]
+            ^[class][Clock]
+            ^[description][Starting calculating time]
+         */
+        virtual void use(void) override; //^header
     private:
-        Uint32 lastTime;
-        Uint32 previousTime;
+        Uint32 startTime;
         Uint32 deltaTime;
     };
 }

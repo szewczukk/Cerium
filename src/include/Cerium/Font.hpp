@@ -13,8 +13,20 @@ namespace cerium
     class Font : public Resource
     {
     public:
-        Font(const std::string & path, const unsigned int & size);
-        ~Font();
+        /*
+            ^[name][Font]
+            ^[class][Font]
+            ^[description][Creating TTF font]
+            ^[argument]<path>[Relative path to TTF]
+            ^[argument]<size>[Size of Font]
+         */
+        Font(const std::string & path, const unsigned int & size); //^header
+        /*
+           ^[name][Font]
+           ^[class][~Font]
+           ^[description][Deleting TTF font]
+        */
+        ~Font(); //^header
 
         virtual void use(void) override {};
     private:

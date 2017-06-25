@@ -23,7 +23,7 @@ class Player : public cerium::Person
 public:
     Player(const std::string & name, cerium::Act * baseAct) : cerium::Person(name, baseAct)
     {
-        setPosition({10});
+        setPosition({136, 86});
         setSize({64});
         setRotation(0);
 
@@ -86,11 +86,18 @@ int main()
     cerium::ActManager::add("main", new MyAct);
     cerium::ActManager::setCurrent("main");
 
-    while(!cerium::EventManager::isWindowClosed())
+    bool closed = false;
+
+    while(!closed)
     {
         cerium::ResourceManager::get("timer")->use();
         cerium::EventManager::pollEvents();
         cerium::Window::clear();
+
+        if(cerium::EventManager::isWindowClosed())
+        {
+            closed = true;
+        }
 
         cerium::ActManager::updateCurrent(dynamic_cast<cerium::Clock*>(cerium::ResourceManager::get("timer"))->getDeltaTime());
         cerium::ActManager::drawCurrent();

@@ -4,20 +4,19 @@ namespace cerium
 {
     bool EventManager::isWindowClosed(void)
     {
-        return instance().event->type == SDL_QUIT;
+        return instance().event.type == SDL_QUIT;
     }
 
 
     bool EventManager::isKeyPressed(const int & code)
     {
-        if(SDL_GetKeyboardState(NULL)[code]) return true;
-        return false;
+        return SDL_GetKeyboardState(NULL)[code] != 0;
     }
 
 
     void EventManager::pollEvents(void)
     {
-        SDL_PollEvent(instance().event);
+        SDL_PollEvent(&instance().event);
     }
 
 
@@ -30,12 +29,22 @@ namespace cerium
 
     EventManager::EventManager(void)
     {
-        event = new SDL_Event;
+        event = SDL_Event();
     }
 
 
-    EventManager::~EventManager(void)
+    vec2 EventManager::getMousePosition(void)
     {
-        delete event;
+        int x, y;
+        SDL_GetMouseState(&x, &y);
+        return {(float)x, (float)y};
+    }
+
+
+    vec2 EventManager::getRelativeMousePosition(void)
+    {
+        int x, y;
+        SDL_GetRelativeMouseState(&x, &y);
+        return {(float)x, (float)y};
     }
 }

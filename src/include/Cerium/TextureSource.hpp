@@ -13,10 +13,21 @@ namespace cerium
     class TextureSource : public Resource
     {
     public:
-        TextureSource(const std::string & path);
-        ~TextureSource();
+        /*
+            ^[name][TextureSource]
+            ^[class][TextureSource]
+            ^[description][Loading source of Texture]
+            ^[argument]<path>[Relative path to Texture]
+         */
+        TextureSource(const std::string & path); //^header
+        /*
+            ^[name][~TextureSource]
+            ^[class][TextureSource]
+            ^[description][Deleting source of Texture]
+         */
+        ~TextureSource(); //^header
 
-        virtual void use(void) override;
+        virtual void use(void) override {};
     private:
         SDL_Surface * surface;
 

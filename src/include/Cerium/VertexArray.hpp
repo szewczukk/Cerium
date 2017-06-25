@@ -22,6 +22,7 @@ namespace cerium
             ^[description][Creating all buffers, vertexArray]
         */
         VertexArray(Person * basePerson); //^header
+
         virtual void update(const float & deltaTime) override;
         virtual void draw(void) override;
     private:

@@ -3,6 +3,8 @@
 
 #include <SDL2/SDL_events.h>
 
+#include "vec2.hpp"
+
 namespace cerium
 {
     class EventManager
@@ -23,6 +25,20 @@ namespace cerium
         */
         static bool isKeyPressed(const int & code); //^header
         /*
+            ^[name][getMousePosition]
+            ^[class][EventManager]
+            ^[description][Returns relative to window position of mouse]
+            ^[returns][position as vec2]
+        */
+        static vec2 getMousePosition(void); //^header
+        /*
+            ^[name][getRelativeMousePosition]
+            ^[class][EventManager]
+            ^[description][Returns relative to window relative to previous position of mouse]
+            ^[returns][relative position as vec2]
+        */
+        static vec2 getRelativeMousePosition(void); //^header
+        /*
             ^[name][pollEvents]
             ^[class][EventManager]
             ^[description][Catching events into event container]
@@ -32,12 +48,11 @@ namespace cerium
         static EventManager & instance(void);
 
         EventManager(void);
-        ~EventManager(void);
 
         EventManager(const EventManager & other) = delete;
         void operator=(const EventManager & other) = delete;
     private:
-        SDL_Event * event;
+        SDL_Event event;
     };
 }
 

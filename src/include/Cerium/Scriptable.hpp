@@ -11,8 +11,19 @@ namespace cerium
     class Scriptable : public Prop
     {
     public:
-        Scriptable(Person * basePerson);
-        ~Scriptable();
+        /*
+            ^[name][Scriptable]
+            ^[class][Scriptable]
+            ^[description][Adding ability to script parent Person in lua]
+            ^[argument]<basePerson>[Person where the Scriptable is]
+         */
+        Scriptable(Person * basePerson); //^header
+        /*
+            ^[name][~Scriptable]
+            ^[class][Scriptable]
+            ^[description][Closing lua state]
+         */
+        ~Scriptable(); //^header
 
         virtual void update(const float & deltaTime) override;
         virtual void draw(void) override {};

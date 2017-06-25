@@ -4,22 +4,20 @@ namespace cerium
 {
     Clock::Clock(void)
     {
-        lastTime = 0;
+        startTime = 0;
         deltaTime = 0;
-        previousTime = 0;
     }
 
 
     void Clock::use(void)
     {
-        Uint32 currentTime = SDL_GetTicks();
-        deltaTime = currentTime - previousTime;
-        previousTime = currentTime;
+        startTime = SDL_GetTicks();
     }
 
 
     float Clock::getDeltaTime(void)
     {
+        deltaTime = startTime - SDL_GetTicks();
         return (float)deltaTime;
     }
 }

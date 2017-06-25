@@ -13,8 +13,20 @@ namespace cerium
     class Texture : public Prop
     {
     public:
-        Texture(Person * basePerson, TextureSource * source);
-        ~Texture();
+        /*
+            ^[name][Texture]
+            ^[class][Texture]
+            ^[description][Creating Texture by source]
+            ^[argument]<basePerson>[Person where the Texture is]
+            ^[argument]<source>[Source of Texture]
+         */
+        Texture(Person * basePerson, TextureSource * source); //^header
+        /*
+            ^[name][~Texture]
+            ^[class][Texture]
+            ^[description][Deleting Texture]
+         */
+        ~Texture(); //^header
 
         virtual void update(const float & deltaTime) override {};
         virtual void draw(void) override;
