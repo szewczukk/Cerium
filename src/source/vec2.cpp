@@ -44,10 +44,7 @@ namespace cerium
         {
             return {x / getLength(), y / getLength()};
         }
-        else
-        {
-            return {0, 0};
-        }
+        return {0, 0};
     }
 
 
