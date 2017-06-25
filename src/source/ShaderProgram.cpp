@@ -77,6 +77,12 @@ namespace cerium
     }
 
 
+    void ShaderProgram::setIntegerUniform(const std::string & name, const int & value)
+    {
+        glUniform1i(glGetUniformLocation(program, name.c_str()), value);
+    }
+
+
     ShaderProgram::~ShaderProgram()
     {
         glDeleteProgram(program);

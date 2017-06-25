@@ -7,7 +7,7 @@ namespace cerium
 {
     Texture::Texture(Person * basePerson, TextureSource * source) : Prop(basePerson)
     {
-        glGenBuffers(1, &texture);
+        glGenTextures(1, &texture);
 
         glBindTexture(GL_TEXTURE_2D, texture);
 
@@ -19,7 +19,6 @@ namespace cerium
             colorMode = GL_RGBA;
 
         glTexImage2D(GL_TEXTURE_2D, 0, colorMode, source->surface->w, source->surface->h, 0, colorMode, GL_UNSIGNED_BYTE, source->surface->pixels);
-        glGenerateMipmap(GL_TEXTURE_2D);
 
         glBindTexture(GL_TEXTURE_2D, 0);
     }
@@ -32,7 +31,6 @@ namespace cerium
 
     void Texture::draw(void)
     {
-        glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, texture);
     }
 }

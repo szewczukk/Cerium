@@ -42,6 +42,14 @@ namespace cerium
             ^[argument]<value>[Value of replaced uniform]
         */
         void setMatUniform(const std::string & name, const glm::mat4 & value); //^header
+        /*
+            ^[name][setMatUniform]
+            ^[class][ShaderProgram]
+            ^[description][Setting given value in the place of uniform]
+            ^[argument]<name>[Uniform to replace with value]
+            ^[argument]<value>[Value of replaced uniform]
+        */
+        void setIntegerUniform(const std::string & name, const int & value); //^header
     private:
         GLuint program;
     };

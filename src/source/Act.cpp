@@ -1,3 +1,4 @@
+#include <GL/glew.h>
 #include "../include/Cerium/Act.hpp"
 
 #include "../include/Cerium/Person.hpp"
@@ -8,6 +9,7 @@ namespace cerium
     {
         for (auto & person : this->persons)
         {
+            glBindTexture(GL_TEXTURE_2D, 0);
             person.second->draw();
         }
     }
