@@ -113,7 +113,7 @@ namespace cerium
     }
 
 
-    friend std::ostream & operator<<(std::ostream & o, const vec4 & v)
+    std::ostream & operator<<(std::ostream & o, const vec4 & v)
     {
         return o << "( " << v.x << " : " << v.y << " : " << v.z << " : " << v.w << " )";
     }

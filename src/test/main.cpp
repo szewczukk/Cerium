@@ -42,7 +42,7 @@ public:
         setSize({64});
         setRotation(0);
 
-        addProp(new cerium::Texture(this, dynamic_cast<cerium::TextureSource*>(cerium::ResourceManager::get("texture"))));
+        addProp(new cerium::Label(this, dynamic_cast<cerium::Font*>(cerium::ResourceManager::get("font")), "Hello World", {255}));
         addProp(new cerium::VertexArray(this));
     }
 };

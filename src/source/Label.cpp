@@ -4,9 +4,9 @@
 
 namespace cerium
 {
-    Label::Label(Person * basePerson, Font * font, const std::string & text, float r, float g, float b, float a) : Prop(basePerson)
+    Label::Label(Person * basePerson, Font * font, const std::string & text, const vec4 & color) : Prop(basePerson)
     {
-        SDL_Surface * surface = TTF_RenderText_Blended(font->font, text.c_str(), {r, g, b, a});
+        SDL_Surface * surface = TTF_RenderText_Blended(font->font, text.c_str(), {color.x, color.y, color.z, color.w});
 
         glGenBuffers(1, &texture);
 
@@ -15,7 +15,7 @@ namespace cerium
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 
-        int colorMode = GL_RGB;
+        GLenum colorMode = GL_RGB;
         if (surface->format->BytesPerPixel == 4)
             colorMode = GL_RGBA;
 

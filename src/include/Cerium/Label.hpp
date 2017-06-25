@@ -7,6 +7,7 @@
 #include <GL/glew.h>
 
 #include "Prop.hpp"
+#include "vec4.hpp"
 
 namespace cerium
 {
@@ -15,7 +16,7 @@ namespace cerium
     class Label : public Prop
     {
     public:
-        Label(Person * basePerson, Font * font, const std::string & text, float r, float g, float b, float a);
+        Label(Person * basePerson, Font * font, const std::string & text, const vec4 & color);
         ~Label();
 
         virtual void update(const float & deltaTime) override;
