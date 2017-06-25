@@ -19,10 +19,18 @@ namespace cerium
         Label(Person * basePerson, Font * font, const std::string & text, const vec4 & color);
         ~Label();
 
+        void setText(const std::string & text);
+        void setColor(const vec4 & color);
+        void setFont(Font * font);
+
         virtual void update(const float & deltaTime) override;
         virtual void draw(void) override;
     private:
         GLuint texture;
+        vec4 color;
+        std::string text;
+        bool changed;
+        Font * font;
     };
 }
 

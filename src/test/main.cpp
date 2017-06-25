@@ -27,7 +27,7 @@ public:
         setSize({64});
         setRotation(0);
 
-        addProp(new cerium::Texture(this, dynamic_cast<cerium::TextureSource*>(cerium::ResourceManager::get("texture2"))));
+        addProp(new cerium::Texture(this, dynamic_cast<cerium::TextureSource*>(cerium::ResourceManager::get("texture"))));
         addProp(new cerium::VertexArray(this));
         addProp(new cerium::Scriptable(this));
     }
@@ -38,7 +38,7 @@ class Other : public cerium::Person
 public:
     Other(const std::string & name, cerium::Act * baseAct) : cerium::Person(name, baseAct)
     {
-        setPosition({100});
+        setPosition({0});
         setSize({64});
         setRotation(0);
 
@@ -81,7 +81,7 @@ int main()
     cerium::ResourceManager::add("texture", new cerium::TextureSource("texture.png"));
     cerium::ResourceManager::add("texture2", new cerium::TextureSource("texture2.png"));
     cerium::ResourceManager::add("timer", new cerium::Clock);
-    cerium::ResourceManager::add("font", new cerium::Font("font.ttf", 18));
+    cerium::ResourceManager::add("font", new cerium::Font("font.ttf", 32));
 
     cerium::ActManager::add("main", new MyAct);
     cerium::ActManager::setCurrent("main");
