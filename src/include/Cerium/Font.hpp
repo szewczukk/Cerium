@@ -22,8 +22,8 @@ namespace cerium
          */
         Font(const std::string & path, const unsigned int & size); //^header
         /*
-           ^[name][Font]
-           ^[class][~Font]
+           ^[name][~Font]
+           ^[class][Font]
            ^[description][Deleting TTF font]
         */
         ~Font(); //^header
