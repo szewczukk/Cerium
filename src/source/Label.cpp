@@ -1,12 +1,15 @@
 #include "../include/Cerium/Label.hpp"
 
 #include "../include/Cerium/Font.hpp"
+#include "../include/Cerium/Person.hpp"
 
 namespace cerium
 {
     Label::Label(Person * basePerson, Font * font, const std::string & text, const vec4 & color) : Prop(basePerson)
     {
         SDL_Surface * surface = TTF_RenderText_Blended(font->font, text.c_str(), {color.x, color.y, color.z, color.w});
+
+        this->basePerson->setSize({surface->w, surface->h});
 
         glGenBuffers(1, &texture);
 

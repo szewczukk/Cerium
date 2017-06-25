@@ -81,7 +81,7 @@ int main()
     cerium::ResourceManager::add("texture", new cerium::TextureSource("texture.png"));
     cerium::ResourceManager::add("texture2", new cerium::TextureSource("texture2.png"));
     cerium::ResourceManager::add("timer", new cerium::Clock);
-    cerium::ResourceManager::add("font", new cerium::Font("font.ttf", 16));
+    cerium::ResourceManager::add("font", new cerium::Font("font.ttf", 18));
 
     cerium::ActManager::add("main", new MyAct);
     cerium::ActManager::setCurrent("main");
