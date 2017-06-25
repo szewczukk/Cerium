@@ -29,6 +29,7 @@ namespace cerium
         GLuint vertexArray;
         GLuint vertexBuffer;
         GLuint indexBuffer;
+        GLuint textureBuffer;
 
         glm::mat4 transform;
     };
