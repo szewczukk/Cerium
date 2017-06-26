@@ -573,6 +573,29 @@
     <p>
         <div class='code'>
             <i>
+                bool isCollide(Person * other); 
+            </i>
+        </div>
+        Name: isCollide <br>
+        Class: <a href='Person.html'>Person</a><br>
+        
+
+    Argument other = Second person <br>
+
+       <!-- argument_template -->
+        Description: Checking is the Persons collides (Boding-box) <br>
+        <i>
+            Returning: 
+        </i>
+        <br>
+    </p>
+    <hr>
+
+    
+
+    <p>
+        <div class='code'>
+            <i>
                 void addProp(Prop * component); 
             </i>
         </div>
@@ -596,19 +619,42 @@
     <p>
         <div class='code'>
             <i>
-                bool isCollide(Person * other); 
+                bool exist(const std::string & name); 
             </i>
         </div>
-        Name: isCollide <br>
+        Name: exist <br>
         Class: <a href='Person.html'>Person</a><br>
         
 
-    Argument other = Second person <br>
+    Argument name = Name of Prop to check existing <br>
 
        <!-- argument_template -->
-        Description: Checking is the Persons collides (Boding-box) <br>
+        Description: Checking is Prop with given name exist <br>
         <i>
-            Returning: 
+            Returning: true if Prop exist or false if it isn't
+        </i>
+        <br>
+    </p>
+    <hr>
+
+    
+
+    <p>
+        <div class='code'>
+            <i>
+                Prop * getProp(const std::string & name); 
+            </i>
+        </div>
+        Name: getProp <br>
+        Class: <a href='Person.html'>Person</a><br>
+        
+
+    Argument name = Name of Prop to check existing <br>
+
+       <!-- argument_template -->
+        Description:  <br>
+        <i>
+            Returning: Pointer to Prop with given name
         </i>
         <br>
     </p>

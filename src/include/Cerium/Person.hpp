@@ -1,7 +1,7 @@
 #ifndef CERIUM_PERSON_HPP
 #define CERIUM_PERSON_HPP
 
-#include <vector>
+#include <map>
 #include <iostream>
 
 #include "vec2.hpp"
@@ -94,6 +94,13 @@ namespace cerium
         */
         std::string getName(); //^header
         /*
+            ^[name][isCollide]
+            ^[class][Person]
+            ^[description][Checking is the Persons collides (Boding-box)]
+            ^[argument]<other>[Second person]
+         */
+        bool isCollide(Person * other); //^header
+        /*
             ^[name][addProp]
             ^[class][Person]
             ^[description][Adding new Prop to Person]
@@ -101,18 +108,26 @@ namespace cerium
         */
         void addProp(Prop * component); //^header
         /*
-            ^[name][isCollide]
+            ^[name][exist]
             ^[class][Person]
-            ^[description][Checking is the Persons collides (Boding-box)]
-            ^[argument]<other>[Second person]
-         */
-        bool isCollide(Person * other); //^header
+            ^[description][Checking is Prop with given name exist]
+            ^[argument]<name>[Name of Prop to check existing]
+            ^[returns][true if Prop exist or false if it isn't]
+        */
+        bool exist(const std::string & name); //^header
+        /*
+            ^[name][getProp]
+            ^[class][Person]
+            ^[argument]<name>[Name of Prop to check existing]
+            ^[returns][Pointer to Prop with given name]
+        */
+        Prop * getProp(const std::string & name); //^header
     protected:
         vec2 position;
         vec2 size;
         Act* baseAct;
         float rotation;
-        std::vector<Prop*> props;
+        std::map<std::string, Prop*> props;
         std::string name;
     };
 }

@@ -15,7 +15,7 @@ namespace cerium
     {
         for (auto & prop : this->props)
         {
-            prop->draw();
+            prop.second->draw();
         }
     }
 
@@ -24,7 +24,7 @@ namespace cerium
     {
         for (auto & prop : this->props)
         {
-            prop->update(deltaTime);
+            prop.second->update(deltaTime);
         }
     }
 
@@ -85,7 +85,27 @@ namespace cerium
 
     void Person::addProp(Prop * component)
     {
-        this->props.push_back(component);
+        this->props[component->getName()] = component;
+    }
+
+
+    bool Person::exist(const std::string & name)
+    {
+        for(auto & prop : props)
+        {
+            if(prop.first == name) return true;
+        }
+        return false;
+    }
+
+
+    Prop * Person::getProp(const std::string & name)
+    {
+        for(auto & prop : props)
+        {
+            if(prop.first == name) return prop.second;
+        }
+        return nullptr;
     }
 
 
