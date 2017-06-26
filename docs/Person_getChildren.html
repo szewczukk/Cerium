@@ -31,27 +31,19 @@
     <p>
         <div class='code'>
             <i>
-                Person(const std::string & name, Person * parent, Act * baseAct); 
+                Person * getChildren(const std::string & name); 
             </i>
         </div>
-        Name: Person <br>
+        Name: getChildren <br>
         Class: <a href='Person.html'>Person</a><br>
         
 
-    Argument name = Name of Person <br>
-
-    
-
-    Argument parent = Parent of this Person <br>
-
-    
-
-    Argument baseAct = Act where the Person is <br>
+    Argument name = Name of children to returning <br>
 
        <!-- argument_template -->
-        Description: Constructor in which we assign Act in which the object is <br>
+        Description:  <br>
         <i>
-            Returning: 
+            Returning: Pointer to child with given name
         </i>
         <br>
     <hr>

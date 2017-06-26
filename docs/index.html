@@ -475,7 +475,7 @@
     <p>
         <div class='code'>
             <i>
-                Person(const std::string & name, Act * baseAct); 
+                Person(const std::string & name, Person * parent, Act * baseAct); 
             </i>
         </div>
         Name: Person <br>
@@ -483,6 +483,10 @@
         
 
     Argument name = Name of Person <br>
+
+    
+
+    Argument parent = Parent of this Person <br>
 
     
 
@@ -677,10 +681,10 @@
     <p>
         <div class='code'>
             <i>
-                bool exist(const std::string & name); 
+                bool propExist(const std::string & name); 
             </i>
         </div>
-        Name: exist <br>
+        Name: propExist <br>
         Class: <a href='Person.html'>Person</a><br>
         
 
@@ -712,6 +716,72 @@
         Description:  <br>
         <i>
             Returning: Pointer to Prop with given name
+        </i>
+        <br>
+    <hr>
+
+    
+
+    <p>
+        <div class='code'>
+            <i>
+                void addChildren(Person * person); 
+            </i>
+        </div>
+        Name: addChildren <br>
+        Class: <a href='Person.html'>Person</a><br>
+        
+
+    Argument person = Person to add as child <br>
+
+       <!-- argument_template -->
+        Description: Adding new Person child <br>
+        <i>
+            Returning: 
+        </i>
+        <br>
+    <hr>
+
+    
+
+    <p>
+        <div class='code'>
+            <i>
+                bool childrenExist(const std::string & name); 
+            </i>
+        </div>
+        Name: childrenExist <br>
+        Class: <a href='Person.html'>Person</a><br>
+        
+
+    Argument name = Name of children to check existing <br>
+
+       <!-- argument_template -->
+        Description: Checking is child with given name exist <br>
+        <i>
+            Returning: 
+        </i>
+        <br>
+    <hr>
+
+    
+
+    <p>
+        <div class='code'>
+            <i>
+                Person * getChildren(const std::string & name); 
+            </i>
+        </div>
+        Name: getChildren <br>
+        Class: <a href='Person.html'>Person</a><br>
+        
+
+    Argument name = Name of children to returning <br>
+
+       <!-- argument_template -->
+        Description:  <br>
+        <i>
+            Returning: Pointer to child with given name
         </i>
         <br>
     <hr>

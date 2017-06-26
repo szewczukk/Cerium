@@ -18,9 +18,10 @@ namespace cerium
             ^[class][Person]
             ^[description][Constructor in which we assign Act in which the object is]
             ^[argument]<name>[Name of Person]
+            ^[argument]<parent>[Parent of this Person]
             ^[argument]<baseAct>[Act where the Person is]
          */
-        Person(const std::string & name, Act * baseAct); //^header
+        Person(const std::string & name, Person * parent, Act * baseAct); //^header
         /*
             ^[name][draw]
             ^[class][Person]
@@ -108,13 +109,13 @@ namespace cerium
         */
         void addProp(Prop * component); //^header
         /*
-            ^[name][exist]
+            ^[name][propExist]
             ^[class][Person]
             ^[description][Checking is Prop with given name exist]
             ^[argument]<name>[Name of Prop to check existing]
             ^[returns][true if Prop exist or false if it isn't]
         */
-        bool exist(const std::string & name); //^header
+        bool propExist(const std::string & name); //^header
         /*
             ^[name][getProp]
             ^[class][Person]
@@ -122,13 +123,42 @@ namespace cerium
             ^[returns][Pointer to Prop with given name]
         */
         Prop * getProp(const std::string & name); //^header
+        /*
+            ^[name][getParent]
+            ^[class][Person]
+            ^[returns][Pointer to parent Person]
+        */
+        Person * getParent(void); //^header
+        /*
+            ^[name][addChildren]
+            ^[class][Person]
+            ^[description][Adding new Person child]
+            ^[argument]<person>[Person to add as child]
+        */
+        void addChildren(Person * person); //^header
+        /*
+            ^[name][childrenExist]
+            ^[class][Person]
+            ^[description][Checking is child with given name exist]
+            ^[argument]<name>[Name of children to check existing]
+        */
+        bool childrenExist(const std::string & name); //^header
+        /*
+            ^[name][getChildren]
+            ^[class][Person]
+            ^[argument]<name>[Name of children to returning]
+            ^[returns][Pointer to child with given name]
+        */
+        Person * getChildren(const std::string & name); //^header
     protected:
         vec2 position;
         vec2 size;
         Act* baseAct;
+        Person * parent;
         float rotation;
         std::string name;
         std::map<std::string, Prop*> props;
+        std::map<std::string, Person*> children;
     };
 }
 

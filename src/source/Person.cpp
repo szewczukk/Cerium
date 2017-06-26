@@ -4,10 +4,11 @@
 
 namespace cerium
 {
-    Person::Person(const std::string & name, Act * baseAct)
+    Person::Person(const std::string & name, Person * parent, Act * baseAct)
     {
         this->name = name;
         this->baseAct = baseAct;
+        this->parent = parent;
     }
 
 
@@ -89,7 +90,7 @@ namespace cerium
     }
 
 
-    bool Person::exist(const std::string & name)
+    bool Person::propExist(const std::string & name)
     {
         for(auto & prop : props)
         {
@@ -113,5 +114,40 @@ namespace cerium
     {
         return abs(int(position.x - other->getPosition().x)) * 2 < (size.x + other->getSize().x) &&
        abs(int(position.y - other->getPosition().y)) * 2 < (size.y + other->getSize().y);
+    }
+
+
+    Person * Person::getParent(void)
+    {
+        return parent;
+    }
+
+
+    void Person::addChildren(Person * person)
+    {
+        if(!childrenExist(person->getName()))
+        {
+            children[person->getName()] = person;
+        }
+    }
+
+
+    bool Person::childrenExist(const std::string & name)
+    {
+        for(auto & child : children)
+        {
+            if(child.first == name) return true;
+        }
+        return false;
+    }
+
+
+    Person * Person::getChildren(const std::string & name)
+    {
+        for(auto & child : children)
+        {
+            if(child.first == name) return child.second;
+        }
+        return nullptr;
     }
 }

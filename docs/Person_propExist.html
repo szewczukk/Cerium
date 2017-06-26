@@ -31,27 +31,19 @@
     <p>
         <div class='code'>
             <i>
-                Person(const std::string & name, Person * parent, Act * baseAct); 
+                bool propExist(const std::string & name); 
             </i>
         </div>
-        Name: Person <br>
+        Name: propExist <br>
         Class: <a href='Person.html'>Person</a><br>
         
 
-    Argument name = Name of Person <br>
-
-    
-
-    Argument parent = Parent of this Person <br>
-
-    
-
-    Argument baseAct = Act where the Person is <br>
+    Argument name = Name of Prop to check existing <br>
 
        <!-- argument_template -->
-        Description: Constructor in which we assign Act in which the object is <br>
+        Description: Checking is Prop with given name exist <br>
         <i>
-            Returning: 
+            Returning: true if Prop exist or false if it isn't
         </i>
         <br>
     <hr>

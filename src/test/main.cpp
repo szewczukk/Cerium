@@ -21,7 +21,7 @@
 class Player : public cerium::Person
 {
 public:
-    Player(const std::string & name, cerium::Act * baseAct) : cerium::Person(name, baseAct)
+    Player(const std::string & name, cerium::Person * parent, cerium::Act * baseAct) : cerium::Person(name, parent, baseAct)
     {
         setPosition({136, 86});
         setSize({64});
@@ -36,7 +36,7 @@ public:
 class Other : public cerium::Person
 {
 public:
-    Other(const std::string & name, cerium::Act * baseAct) : cerium::Person(name, baseAct)
+    Other(const std::string & name, cerium::Person * parent, cerium::Act * baseAct) : cerium::Person(name, parent, baseAct)
     {
         setPosition({0});
         setSize({64});
@@ -52,8 +52,8 @@ class MyAct : public cerium::Act
 public:
     MyAct()
     {
-        add(new Player("player", this));
-        add(new Other("other", this));
+        add(new Player("player", nullptr, this));
+        add(new Other("other", nullptr, this));
     }
 };
 
