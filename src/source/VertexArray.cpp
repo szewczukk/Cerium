@@ -9,7 +9,7 @@
 
 namespace cerium
 {
-    VertexArray::VertexArray(Person * basePerson, const std::string & name) : Prop(basePerson, name)
+    VertexArray::VertexArray(Person * basePerson, Prop * parent, const std::string & name) : Prop(basePerson, parent, name)
     {
         vec2 vertices[] = {
                 { 0, 1 },

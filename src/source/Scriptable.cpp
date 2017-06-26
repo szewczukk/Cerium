@@ -57,8 +57,8 @@ namespace cerium
     }
 
 
-    Scriptable::Scriptable(Person * basePerson, const std::string & name, const std::string & path)
-            : Prop(basePerson, name)
+    Scriptable::Scriptable(Person * basePerson, Prop * parent, const std::string & name, const std::string & path)
+            : Prop(basePerson, parent, name)
     {
         bPerson = basePerson;
 

@@ -31,7 +31,7 @@
     <p>
         <div class='code'>
             <i>
-                Label(Person * basePerson, const std::string & name, Font * font, const std::string & text, const vec4 & color); 
+                Label(Person * basePerson, Prop * parent, const std::string & name, Font * font, const std::string & text, const vec4 & color); 
             </i>
         </div>
         Name: Label <br>
@@ -39,6 +39,10 @@
         
 
     Argument basePerson = Person where the Label is <br>
+
+    
+
+    Argument parent = Parent Prop of this Prop <br>
 
     
 
@@ -227,14 +231,18 @@
     <p>
         <div class='code'>
             <i>
-                Scriptable(Person * basePerson, const std::string & name, const std::string & path); 
+                Scriptable(Person * basePerson, Prop * parent, const std::string & name, const std::string & path); 
             </i>
         </div>
         Name: Scriptable <br>
         Class: <a href='Scriptable.html'>Scriptable</a><br>
         
 
-    Argument basePerson = Person where the Scriptable is <br>
+    Argument basePerson = Person where the Label is <br>
+
+    
+
+    Argument parent = Parent Prop of this Prop <br>
 
     
 
@@ -357,6 +365,14 @@
         
 
     Argument basePerson = Person where the Prop is <br>
+
+    
+
+    Argument parent = Parent Prop of this Prop <br>
+
+    
+
+    Argument name = Name of Prop <br>
 
        <!-- argument_template -->
         Description: Setting pointer to Person where the Prop is <br>
@@ -933,14 +949,18 @@
     <p>
         <div class='code'>
             <i>
-                VertexArray(Person * basePerson, const std::string & name); 
+                VertexArray(Person * basePerson, Prop * parent, const std::string & name); 
             </i>
         </div>
         Name: VertexArray <br>
         Class: <a href='VertexArray.html'>VertexArray</a><br>
         
 
-    Argument basePerson = Person where the VertexArray is <br>
+    Argument basePerson = Person where the Label is <br>
+
+    
+
+    Argument parent = Parent Prop of this Prop <br>
 
     
 
@@ -1195,14 +1215,18 @@
     <p>
         <div class='code'>
             <i>
-                Texture(Person * basePerson, const std::string & name, TextureSource * source); 
+                Texture(Person * basePerson, Prop * parent, const std::string & name, TextureSource * source); 
             </i>
         </div>
         Name: Texture <br>
         Class: <a href='Texture.html'>Texture</a><br>
         
 
-    Argument basePerson = Person where the Texture is <br>
+    Argument basePerson = Person where the Label is <br>
+
+    
+
+    Argument parent = Parent Prop of this Prop <br>
 
     
 

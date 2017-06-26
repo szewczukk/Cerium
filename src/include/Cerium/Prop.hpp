@@ -14,11 +14,14 @@ namespace cerium
             ^[class][Prop]
             ^[description][Setting pointer to Person where the Prop is]
             ^[argument]<basePerson>[Person where the Prop is]
+            ^[argument]<parent>[Parent Prop of this Prop]
+            ^[argument]<name>[Name of Prop]
          */
-        Prop(Person * basePerson, const std::string & name)
+        Prop(Person * basePerson, Prop * parent, const std::string & name)
         {
             this->basePerson = basePerson;
             this->name = name;
+            this->parent = parent;
         }
         /*
             ^[name][update]
@@ -55,13 +58,22 @@ namespace cerium
             return name;
         }
         /*
-            ^[name][getParent]
+            ^[name][getPerson]
             ^[class][Prop]
             ^[returns][Person where the Prop is]
          */
-        Person & getParent(void) //^header
+        Person & getPerson(void) //^header
         {
             return *basePerson;
+        }
+        /*
+            ^[name][getParent]
+            ^[class][Prop]
+            ^[returns][Parent of thi prop]
+         */
+        Prop & getParent(void) //^header
+        {
+            return *parent;
         }
         /*
             ^[name][exist]
@@ -107,6 +119,7 @@ namespace cerium
         }
     protected:
         Person * basePerson;
+        Prop * parent;
         std::string name;
         std::map<std::string, Prop*> children;
     };

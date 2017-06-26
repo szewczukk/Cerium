@@ -27,9 +27,9 @@ public:
         setSize({64});
         setRotation(0);
 
-        addProp(new cerium::Texture(this, "texture", dynamic_cast<cerium::TextureSource*>(cerium::ResourceManager::get("texture"))));
-        addProp(new cerium::VertexArray(this, "vertexArray"));
-        addProp(new cerium::Scriptable(this, "scriptable", "player.lua"));
+        addProp(new cerium::Texture(this, nullptr, "texture", dynamic_cast<cerium::TextureSource*>(cerium::ResourceManager::get("texture"))));
+        addProp(new cerium::VertexArray(this, nullptr, "vertexArray"));
+        addProp(new cerium::Scriptable(this, nullptr, "scriptable", "player.lua"));
     }
 };
 
@@ -42,8 +42,8 @@ public:
         setSize({64});
         setRotation(0);
 
-        addProp(new cerium::Label(this, "label", dynamic_cast<cerium::Font*>(cerium::ResourceManager::get("font")), "Hello World", {255}));
-        addProp(new cerium::VertexArray(this, "vertexArray"));
+        addProp(new cerium::Label(this, nullptr, "label", dynamic_cast<cerium::Font*>(cerium::ResourceManager::get("font")), "Hello World", {255}));
+        addProp(new cerium::VertexArray(this, nullptr, "vertexArray"));
     }
 };
 

@@ -19,11 +19,12 @@ namespace cerium
             ^[name][Texture]
             ^[class][Texture]
             ^[description][Creating Texture by source]
-            ^[argument]<basePerson>[Person where the Texture is]
+            ^[argument]<basePerson>[Person where the Label is]
+            ^[argument]<parent>[Parent Prop of this Prop]
             ^[argument]<name>[Name of Prop]
             ^[argument]<source>[Source of Texture]
          */
-        Texture(Person * basePerson, const std::string & name, TextureSource * source); //^header
+        Texture(Person * basePerson, Prop * parent, const std::string & name, TextureSource * source); //^header
         /*
             ^[name][~Texture]
             ^[class][Texture]

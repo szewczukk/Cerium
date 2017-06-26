@@ -127,8 +127,8 @@ namespace cerium
         vec2 size;
         Act* baseAct;
         float rotation;
-        std::map<std::string, Prop*> props;
         std::string name;
+        std::map<std::string, Prop*> props;
     };
 }
 
