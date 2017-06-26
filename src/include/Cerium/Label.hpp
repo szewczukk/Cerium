@@ -21,11 +21,12 @@ namespace cerium
            ^[class][Label]
            ^[description][Creating Label]
            ^[argument]<basePerson>[Person where the Label is]
+           ^[argument]<name>[Name of Prop]
            ^[argument]<font>[Pointer to Font]
            ^[argument]<text>[Text of Label]
            ^[argument]<color>[Color of Label]
         */
-        Label(Person * basePerson, Font * font, const std::string & text, const vec4 & color); //^header
+        Label(Person * basePerson, const std::string & name, Font * font, const std::string & text, const vec4 & color); //^header
         /*
            ^[name][~Label]
            ^[class][Label]

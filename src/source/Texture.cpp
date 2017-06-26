@@ -5,7 +5,7 @@
 
 namespace cerium
 {
-    Texture::Texture(Person * basePerson, TextureSource * source) : Prop(basePerson)
+    Texture::Texture(Person * basePerson, const std::string & name, TextureSource * source) : Prop(basePerson, name)
     {
         glGenTextures(1, &texture);
 

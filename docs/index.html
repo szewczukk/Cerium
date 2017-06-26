@@ -31,7 +31,7 @@
     <p>
         <div class='code'>
             <i>
-                Label(Person * basePerson, Font * font, const std::string & text, const vec4 & color); 
+                Label(Person * basePerson, const std::string & name, Font * font, const std::string & text, const vec4 & color); 
             </i>
         </div>
         Name: Label <br>
@@ -39,6 +39,10 @@
         
 
     Argument basePerson = Person where the Label is <br>
+
+    
+
+    Argument name = Name of Prop <br>
 
     
 
@@ -231,7 +235,7 @@
     <p>
         <div class='code'>
             <i>
-                Scriptable(Person * basePerson); 
+                Scriptable(Person * basePerson, const std::string & name, const std::string & path); 
             </i>
         </div>
         Name: Scriptable <br>
@@ -239,6 +243,14 @@
         
 
     Argument basePerson = Person where the Scriptable is <br>
+
+    
+
+    Argument name = Name of Prop <br>
+
+    
+
+    Argument path = Path to script <br>
 
        <!-- argument_template -->
         Description: Adding ability to script parent Person in lua <br>
@@ -845,7 +857,7 @@
     <p>
         <div class='code'>
             <i>
-                VertexArray(Person * basePerson); 
+                VertexArray(Person * basePerson, const std::string & name); 
             </i>
         </div>
         Name: VertexArray <br>
@@ -853,6 +865,10 @@
         
 
     Argument basePerson = Person where the VertexArray is <br>
+
+    
+
+    Argument name = Name of Prop <br>
 
        <!-- argument_template -->
         Description: Creating all buffers, vertexArray <br>
@@ -1114,7 +1130,7 @@
     <p>
         <div class='code'>
             <i>
-                Texture(Person * basePerson, TextureSource * source); 
+                Texture(Person * basePerson, const std::string & name, TextureSource * source); 
             </i>
         </div>
         Name: Texture <br>
@@ -1122,6 +1138,10 @@
         
 
     Argument basePerson = Person where the Texture is <br>
+
+    
+
+    Argument name = Name of Prop <br>
 
     
 

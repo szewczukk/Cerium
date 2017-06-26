@@ -4,6 +4,8 @@
 #include <GL/glew.h>
 #include <SDL2/SDL_surface.h>
 
+#include <string>
+
 #include "Prop.hpp"
 
 namespace cerium
@@ -18,9 +20,10 @@ namespace cerium
             ^[class][Texture]
             ^[description][Creating Texture by source]
             ^[argument]<basePerson>[Person where the Texture is]
+            ^[argument]<name>[Name of Prop]
             ^[argument]<source>[Source of Texture]
          */
-        Texture(Person * basePerson, TextureSource * source); //^header
+        Texture(Person * basePerson, const std::string & name, TextureSource * source); //^header
         /*
             ^[name][~Texture]
             ^[class][Texture]

@@ -3,6 +3,8 @@
 
 #include <lua5.1/lua.hpp>
 
+#include <iostream>
+
 #include "Prop.hpp"
 
 namespace cerium
@@ -16,8 +18,10 @@ namespace cerium
             ^[class][Scriptable]
             ^[description][Adding ability to script parent Person in lua]
             ^[argument]<basePerson>[Person where the Scriptable is]
+            ^[argument]<name>[Name of Prop]
+            ^[argument]<path>[Path to script]
          */
-        Scriptable(Person * basePerson); //^header
+        Scriptable(Person * basePerson, const std::string & name, const std::string & path); //^header
         /*
             ^[name][~Scriptable]
             ^[class][Scriptable]

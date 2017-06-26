@@ -57,8 +57,8 @@ namespace cerium
     }
 
 
-    Scriptable::Scriptable(Person * basePerson)
-            : Prop(basePerson)
+    Scriptable::Scriptable(Person * basePerson, const std::string & name, const std::string & path)
+            : Prop(basePerson, name)
     {
         bPerson = basePerson;
 
@@ -73,8 +73,7 @@ namespace cerium
 
         lua_register(state, "isKeyPressed", l_isKeyPressed);
 
-        std::string name = basePerson->getName() + ".lua";
-        luaL_dofile(state, name.c_str());
+        luaL_dofile(state, path.c_str());
 
         lua_getglobal(state, "init");
         lua_pcall(state, 0, 0, 0);

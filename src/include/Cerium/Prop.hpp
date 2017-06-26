@@ -13,9 +13,10 @@ namespace cerium
             ^[description][Setting pointer to Person where the Prop is]
             ^[argument]<basePerson>[Person where the Prop is]
          */
-        Prop(Person * basePerson)
+        Prop(Person * basePerson, const std::string & name)
         {
             this->basePerson = basePerson;
+            this->name = name;
         };
         /*
             ^[name][update]
@@ -30,8 +31,18 @@ namespace cerium
             ^[description][Abstract class to draw the object into screen]
          */
         virtual void draw(void) = 0; //^header
+        /*
+            ^[name][getName]
+            ^[class][Prop]
+            ^[returns][Name of Prop]
+         */
+        std::string getName() //^header
+        {
+            return name;
+        }
     protected:
         Person * basePerson;
+        std::string name;
     };
 }
 

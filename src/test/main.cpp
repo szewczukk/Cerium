@@ -27,9 +27,9 @@ public:
         setSize({64});
         setRotation(0);
 
-        addProp(new cerium::Texture(this, dynamic_cast<cerium::TextureSource*>(cerium::ResourceManager::get("texture"))));
-        addProp(new cerium::VertexArray(this));
-        addProp(new cerium::Scriptable(this));
+        addProp(new cerium::Texture(this, "texture", dynamic_cast<cerium::TextureSource*>(cerium::ResourceManager::get("texture"))));
+        addProp(new cerium::VertexArray(this, "vertexArray"));
+        addProp(new cerium::Scriptable(this, "scriptable", "player.lua"));
     }
 };
 
@@ -42,8 +42,8 @@ public:
         setSize({64});
         setRotation(0);
 
-        addProp(new cerium::Label(this, dynamic_cast<cerium::Font*>(cerium::ResourceManager::get("font")), "Hello World", {255}));
-        addProp(new cerium::VertexArray(this));
+        addProp(new cerium::Label(this, "label", dynamic_cast<cerium::Font*>(cerium::ResourceManager::get("font")), "Hello World", {255}));
+        addProp(new cerium::VertexArray(this, "vertexArray"));
     }
 };
 
@@ -79,7 +79,6 @@ int main()
     cerium::Camera::init();
 
     cerium::ResourceManager::add("texture", new cerium::TextureSource("texture.png"));
-    cerium::ResourceManager::add("texture2", new cerium::TextureSource("texture2.png"));
     cerium::ResourceManager::add("timer", new cerium::Clock);
     cerium::ResourceManager::add("font", new cerium::Font("font.ttf", 32));
 

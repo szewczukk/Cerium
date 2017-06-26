@@ -5,7 +5,7 @@
 
 namespace cerium
 {
-    Label::Label(Person * basePerson, Font * font, const std::string & text, const vec4 & color) : Prop(basePerson)
+    Label::Label(Person * basePerson, const std::string & name, Font * font, const std::string & text, const vec4 & color) : Prop(basePerson, name)
     {
         this->changed = true;
         this->text = text;

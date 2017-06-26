@@ -19,9 +19,10 @@ namespace cerium
             ^[name][VertexArray]
             ^[class][VertexArray]
             ^[argument]<basePerson>[Person where the VertexArray is]
+            ^[argument]<name>[Name of Prop]
             ^[description][Creating all buffers, vertexArray]
         */
-        VertexArray(Person * basePerson); //^header
+        VertexArray(Person * basePerson, const std::string & name); //^header
 
         virtual void update(const float & deltaTime) override;
         virtual void draw(void) override;
