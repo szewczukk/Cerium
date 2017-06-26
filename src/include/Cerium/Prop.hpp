@@ -36,9 +36,18 @@ namespace cerium
             ^[class][Prop]
             ^[returns][Name of Prop]
          */
-        std::string getName() //^header
+        std::string getName(void) //^header
         {
             return name;
+        }
+        /*
+            ^[name][getParent]
+            ^[class][Prop]
+            ^[returns][Person where the Prop is]
+         */
+        Person & getParent(void) //^header
+        {
+            return *basePerson;
         }
     protected:
         Person * basePerson;
