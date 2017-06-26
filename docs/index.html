@@ -385,7 +385,7 @@
     <p>
         <div class='code'>
             <i>
-                virtual void update(const float & deltaTime) = 0; 
+                virtual void update(const float & deltaTime) 
             </i>
         </div>
         Name: update <br>
@@ -398,6 +398,75 @@
         Description: Updating Prop with deltaTime <br>
         <i>
             Returning: 
+        </i>
+        <br>
+    </p>
+    <hr>
+
+    
+
+    <p>
+        <div class='code'>
+            <i>
+                bool exist(const std::string & name) 
+            </i>
+        </div>
+        Name: exist <br>
+        Class: <a href='Prop.html'>Prop</a><br>
+        
+
+    Argument name = Name of Prop to check existing <br>
+
+       <!-- argument_template -->
+        Description: Check existing of Prop with given name <br>
+        <i>
+            Returning: True when the Prop with given name exist or False when it isn't
+        </i>
+        <br>
+    </p>
+    <hr>
+
+    
+
+    <p>
+        <div class='code'>
+            <i>
+                void addChild(Prop * prop) 
+            </i>
+        </div>
+        Name: addChild <br>
+        Class: <a href='Prop.html'>Prop</a><br>
+        
+
+    Argument prop = Pointer to Prop to add <br>
+
+       <!-- argument_template -->
+        Description: Adding new prop as child <br>
+        <i>
+            Returning: 
+        </i>
+        <br>
+    </p>
+    <hr>
+
+    
+
+    <p>
+        <div class='code'>
+            <i>
+                Prop * getChildren(const std::string & name) 
+            </i>
+        </div>
+        Name: getChildren <br>
+        Class: <a href='Prop.html'>Prop</a><br>
+        
+
+    Argument name = Name of Prop to return <br>
+
+       <!-- argument_template -->
+        Description:  <br>
+        <i>
+            Returning: Pointer to children with given name
         </i>
         <br>
     </p>
