@@ -123,16 +123,16 @@ namespace cerium
     }
 
 
-    void Person::addChildren(Person * person)
+    void Person::addChild(Person * person)
     {
-        if(!childrenExist(person->getName()))
+        if(!childExist(person->getName()))
         {
             children[person->getName()] = person;
         }
     }
 
 
-    bool Person::childrenExist(const std::string & name)
+    bool Person::childExist(const std::string & name)
     {
         for(auto & child : children)
         {
@@ -142,7 +142,7 @@ namespace cerium
     }
 
 
-    Person * Person::getChildren(const std::string & name)
+    Person * Person::getChild(const std::string & name)
     {
         for(auto & child : children)
         {

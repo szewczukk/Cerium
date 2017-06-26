@@ -104,12 +104,12 @@ namespace cerium
             }
         }
         /*
-            ^[name][getChildren]
+            ^[name][getChild]
             ^[class][Prop]
             ^[argument]<name>[Name of Prop to return]
             ^[returns][Pointer to children with given name]
          */
-        Prop * getChildren(const std::string & name) //^header
+        Prop * getChild(const std::string & name) //^header
         {
             for(auto & child : children)
             {

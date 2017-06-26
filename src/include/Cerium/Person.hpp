@@ -130,26 +130,26 @@ namespace cerium
         */
         Person * getParent(void); //^header
         /*
-            ^[name][addChildren]
+            ^[name][addChild]
             ^[class][Person]
             ^[description][Adding new Person child]
             ^[argument]<person>[Person to add as child]
         */
-        void addChildren(Person * person); //^header
+        void addChild(Person * person); //^header
         /*
-            ^[name][childrenExist]
+            ^[name][childExist]
             ^[class][Person]
             ^[description][Checking is child with given name exist]
             ^[argument]<name>[Name of children to check existing]
         */
-        bool childrenExist(const std::string & name); //^header
+        bool childExist(const std::string & name); //^header
         /*
-            ^[name][getChildren]
+            ^[name][getChild]
             ^[class][Person]
             ^[argument]<name>[Name of children to returning]
             ^[returns][Pointer to child with given name]
         */
-        Person * getChildren(const std::string & name); //^header
+        Person * getChild(const std::string & name); //^header
     protected:
         vec2 position;
         vec2 size;
