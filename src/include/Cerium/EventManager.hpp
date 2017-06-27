@@ -44,6 +44,7 @@ namespace cerium
             ^[description][Catching events into event container]
         */
         static void pollEvents(void); //^header
+        static bool isMouseButtonClicked(int key);
     private:
         static EventManager & instance(void);
 

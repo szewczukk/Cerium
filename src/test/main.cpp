@@ -44,7 +44,7 @@ public:
         setSize({64});
         setRotation(0);
 
-        addProp(new cerium::Button(this, nullptr, "name"));
+        addProp(new cerium::Button(this, nullptr, "name", {0, 0, 0, 255}, {255}, {255}, {0, 0, 0, 255}, "Exit", dynamic_cast<cerium::Font*>(cerium::ResourceManager::get("font"))));
     }
 };
 
@@ -94,13 +94,13 @@ int main()
         cerium::EventManager::pollEvents();
         cerium::Window::clear();
 
-        if(cerium::EventManager::isWindowClosed())
+        cerium::ActManager::updateCurrent(dynamic_cast<cerium::Clock*>(cerium::ResourceManager::get("timer"))->getDeltaTime());
+        cerium::ActManager::drawCurrent();
+
+        if(dynamic_cast<cerium::Button*>(cerium::ActManager::get("main")->get("other")->getProp("name"))->isClicked())
         {
             closed = true;
         }
-
-        cerium::ActManager::updateCurrent(dynamic_cast<cerium::Clock*>(cerium::ResourceManager::get("timer"))->getDeltaTime());
-        cerium::ActManager::drawCurrent();
 
         cerium::Window::render();
     }

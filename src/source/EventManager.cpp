@@ -47,4 +47,9 @@ namespace cerium
         SDL_GetRelativeMouseState(&x, &y);
         return {(float)x, (float)y};
     }
+
+    bool EventManager::isMouseButtonClicked(int key)
+    {
+        return instance().event.type == SDL_MOUSEBUTTONDOWN && instance().event.button.button == key;
+    }
 }
