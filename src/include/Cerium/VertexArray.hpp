@@ -25,6 +25,31 @@ namespace cerium
             ^[description][Creating all buffers, vertexArray]
         */
         VertexArray(Person * basePerson, Prop * parent, const std::string & name, const vec4 & color, const bool & textured); //^header
+        /*
+            ^[name][setColor]
+            ^[class][VertexArray]
+            ^[argument]<color>[Color of Fill of VertexArray]
+            ^[description][Setting fill color of VertexArray]
+        */
+        void setColor(const vec4 & color); //^header
+        /*
+            ^[name][setIsTextured]
+            ^[class][VertexArray]
+            ^[argument]<textured>[Is VertexArray have to be Textured? (By texture or Label)]
+        */
+        void setIsTextured(const bool & textured); //^header
+        /*
+            ^[name][getColor]
+            ^[class][VertexArray]
+            ^[returns][Color of fill of VertexArray]
+        */
+        vec4 getColor(void); //^header
+        /*
+            ^[name][isTextured]
+            ^[class][VertexArray]
+            ^[returns][Is VertexArray textured]
+        */
+        bool isTextured(void); //^header
 
         virtual void update(const float & deltaTime) override;
         virtual void draw(void) override;

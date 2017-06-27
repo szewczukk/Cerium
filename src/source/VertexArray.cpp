@@ -77,6 +77,30 @@ namespace cerium
     }
 
 
+    void VertexArray::setColor(const vec4 & color)
+    {
+        this->color = color;
+    }
+
+
+    void VertexArray::setIsTextured(const bool & textured)
+    {
+        this->textured = textured;
+    }
+
+
+    vec4 VertexArray::getColor(void)
+    {
+        return color;
+    }
+
+
+    bool VertexArray::isTextured(void)
+    {
+        return textured;
+    }
+
+
     void VertexArray::draw(void)
     {
         ResourceManager::get("spriteShader")->use();
