@@ -8,6 +8,7 @@
 
 #include "vec2.hpp"
 #include "Prop.hpp"
+#include "vec4.hpp"
 
 namespace cerium
 {
@@ -23,7 +24,7 @@ namespace cerium
             ^[argument]<name>[Name of Prop]
             ^[description][Creating all buffers, vertexArray]
         */
-        VertexArray(Person * basePerson, Prop * parent, const std::string & name); //^header
+        VertexArray(Person * basePerson, Prop * parent, const std::string & name, const vec4 & color, const bool & textured); //^header
 
         virtual void update(const float & deltaTime) override;
         virtual void draw(void) override;
@@ -34,6 +35,9 @@ namespace cerium
         GLuint textureBuffer;
 
         glm::mat4 transform;
+
+        bool textured;
+        vec4 color;
     };
 }
 

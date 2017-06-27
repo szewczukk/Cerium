@@ -9,7 +9,7 @@
 
 namespace cerium
 {
-    VertexArray::VertexArray(Person * basePerson, Prop * parent, const std::string & name) : Prop(basePerson, parent, name)
+    VertexArray::VertexArray(Person * basePerson, Prop * parent, const std::string & name, const vec4 & color, const bool & textured) : Prop(basePerson, parent, name)
     {
         vec2 vertices[] = {
                 { 0, 1 },
@@ -58,6 +58,9 @@ namespace cerium
         glBindBuffer(GL_ARRAY_BUFFER, 0);
 
         glBindVertexArray(0);
+
+        this->textured = textured;
+        this->color = color;
     }
 
 
@@ -79,6 +82,8 @@ namespace cerium
         ResourceManager::get("spriteShader")->use();
 
         dynamic_cast<ShaderProgram*>(ResourceManager::get("spriteShader"))->setMatUniform("transform", transform);
+        dynamic_cast<ShaderProgram*>(ResourceManager::get("spriteShader"))->setVec4Uniform("uColor", color);
+        dynamic_cast<ShaderProgram*>(ResourceManager::get("spriteShader"))->setIntegerUniform("textured", textured);
 
         cerium::Camera::update(dynamic_cast<cerium::ShaderProgram*>(cerium::ResourceManager::get("spriteShader")));
 

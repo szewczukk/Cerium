@@ -2,6 +2,8 @@
 
 #include "../include/Cerium/Person.hpp"
 #include "../include/Cerium/TextureSource.hpp"
+#include "../include/Cerium/ResourceManager.hpp"
+#include "../include/Cerium/ShaderProgram.hpp"
 
 namespace cerium
 {

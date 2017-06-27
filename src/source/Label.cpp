@@ -2,6 +2,8 @@
 
 #include "../include/Cerium/Font.hpp"
 #include "../include/Cerium/Person.hpp"
+#include "../include/Cerium/ResourceManager.hpp"
+#include "../include/Cerium/ShaderProgram.hpp"
 
 namespace cerium
 {
@@ -72,8 +74,6 @@ namespace cerium
 
     void Label::draw(void)
     {
-        glActiveTexture(GL_TEXTURE_2D);
-
         glBindTexture(GL_TEXTURE_2D, texture);
     }
 }

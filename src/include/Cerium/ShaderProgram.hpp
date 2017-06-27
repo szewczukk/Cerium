@@ -2,6 +2,7 @@
 #define CERIUM_SHADERPRORAM_HPP
 
 #include "vec2.hpp"
+#include "vec4.hpp"
 #include "Resource.hpp"
 
 #include <string>
@@ -43,13 +44,21 @@ namespace cerium
         */
         void setMatUniform(const std::string & name, const glm::mat4 & value); //^header
         /*
-            ^[name][setMatUniform]
+            ^[name][setIntegerUniform]
             ^[class][ShaderProgram]
             ^[description][Setting given value in the place of uniform]
             ^[argument]<name>[Uniform to replace with value]
             ^[argument]<value>[Value of replaced uniform]
         */
         void setIntegerUniform(const std::string & name, const int & value); //^header
+        /*
+            ^[name][setVec4Uniform]
+            ^[class][ShaderProgram]
+            ^[description][Setting given value in the place of uniform]
+            ^[argument]<name>[Uniform to replace with value]
+            ^[argument]<value>[Value of replaced uniform]
+        */
+        void setVec4Uniform(const std::string & name, const vec4 & value); //^header
     private:
         GLuint program;
     };

@@ -83,6 +83,12 @@ namespace cerium
     }
 
 
+    void ShaderProgram::setVec4Uniform(const std::string & name, const vec4 & value)
+    {
+        glUniform4f(glGetUniformLocation(program, name.c_str()), value.x, value.y, value.z, value.w);
+    }
+
+
     ShaderProgram::~ShaderProgram()
     {
         glDeleteProgram(program);

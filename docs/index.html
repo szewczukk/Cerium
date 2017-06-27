@@ -1019,7 +1019,7 @@
     <p>
         <div class='code'>
             <i>
-                VertexArray(Person * basePerson, Prop * parent, const std::string & name); 
+                VertexArray(Person * basePerson, Prop * parent, const std::string & name, const vec4 & color, const bool & textured); 
             </i>
         </div>
         Name: VertexArray <br>
@@ -1104,7 +1104,33 @@
                 void setIntegerUniform(const std::string & name, const int & value); 
             </i>
         </div>
-        Name: setMatUniform <br>
+        Name: setIntegerUniform <br>
+        Class: <a href='ShaderProgram.html'>ShaderProgram</a><br>
+        
+
+    Argument name = Uniform to replace with value <br>
+
+    
+
+    Argument value = Value of replaced uniform <br>
+
+       <!-- argument_template -->
+        Description: Setting given value in the place of uniform <br>
+        <i>
+            Returning: 
+        </i>
+        <br>
+    <hr>
+
+    
+
+    <p>
+        <div class='code'>
+            <i>
+                void setVec4Uniform(const std::string & name, const vec4 & value); 
+            </i>
+        </div>
+        Name: setVec4Uniform <br>
         Class: <a href='ShaderProgram.html'>ShaderProgram</a><br>
         
 
