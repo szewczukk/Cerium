@@ -15,6 +15,8 @@
 #include "../include/Cerium/Font.hpp"
 #include "../include/Cerium/Label.hpp"
 
+#include "../include/Cerium/Button.hpp"
+
 #include <rapidxml.hpp>
 #include <rapidxml_utils.hpp>
 
@@ -38,12 +40,11 @@ class Other : public cerium::Person
 public:
     Other(const std::string & name, cerium::Person * parent, cerium::Act * baseAct) : cerium::Person(name, parent, baseAct)
     {
-        setPosition({0});
+        setPosition({10});
         setSize({64});
         setRotation(0);
 
-        addProp(new cerium::Label(this, nullptr, "label", dynamic_cast<cerium::Font*>(cerium::ResourceManager::get("font")), "Hello World", {255}));
-        addProp(new cerium::VertexArray(this, nullptr, "vertexArray", {1.0, 0.0, 1.0, 1.0}, true));
+        addProp(new cerium::Button(this, nullptr, "name"));
     }
 };
 

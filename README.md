@@ -56,6 +56,7 @@ Before running, copy all assets (shaders, textures etc.) to catalogue where the 
 * <a href="https://github.com/bjornus/Bromine">Bromine</a>
 * <a href="https://www.libsdl.org">SDL</a>
 * <a href="https://www.libsdl.org/projects/SDL_image/">SDL_image</a>
+* <a href="https://www.libsdl.org/projects/SDL_ttf/">SDL_ttf</a>
 * <a href="http://glew.sourceforge.net">GLEW</a>
 * <a href="http://glm.g-truc.net/0.9.8/index.html">GLM</a>
 * <a href="https://www.lua.org">lua</a>
