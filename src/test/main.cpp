@@ -97,7 +97,8 @@ int main()
         cerium::ActManager::updateCurrent(dynamic_cast<cerium::Clock*>(cerium::ResourceManager::get("timer"))->getDeltaTime());
         cerium::ActManager::drawCurrent();
 
-        if(dynamic_cast<cerium::Button*>(cerium::ActManager::get("main")->get("other")->getProp("name"))->isClicked())
+        if(dynamic_cast<cerium::Button*>(cerium::ActManager::get("main")->get("other")->getProp("name"))->isClicked() ||
+                cerium::EventManager::isKeyPressed(SDL_SCANCODE_ESCAPE))
         {
             closed = true;
         }

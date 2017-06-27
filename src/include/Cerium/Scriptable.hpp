@@ -31,7 +31,6 @@ namespace cerium
         ~Scriptable(); //^header
 
         virtual void update(const float & deltaTime) override;
-        virtual void draw(void) override {};
     private:
         lua_State * state;
     };

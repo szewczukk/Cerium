@@ -32,7 +32,6 @@ namespace cerium
          */
         ~Texture(); //^header
 
-        virtual void update(const float & deltaTime) override {};
         virtual void draw(void) override;
     private:
         GLuint texture;
