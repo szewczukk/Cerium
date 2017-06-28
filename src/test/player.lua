@@ -11,12 +11,12 @@ end
 -- Function running non-stop
 function update(deltaTime)
     rotate((speed * deltaTime)/100)
-    if isKeyPressed(79) then
+    if inputManager.isKeyPressed(79) then
         if velocity.x == 0 then
             velocity.x = velocity.x + speed * deltaTime
         end
 
-    elseif isKeyPressed(80) then
+    elseif inputManager.isKeyPressed(80) then
         if velocity.x == 0 then
             velocity.x = velocity.x - speed * deltaTime
         end
@@ -24,11 +24,11 @@ function update(deltaTime)
         velocity.x = 0
     end
 
-    if isKeyPressed(81) then
+    if inputManager.isKeyPressed(81) then
         if velocity.y == 0 then
             velocity.y = velocity.y + speed * deltaTime
         end
-    elseif isKeyPressed(82) then
+    elseif inputManager.isKeyPressed(82) then
         if velocity.y == 0 then
             velocity.y = velocity.y - speed * deltaTime
         end

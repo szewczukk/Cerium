@@ -55,9 +55,9 @@ namespace cerium
 
         sol::constructors<sol::types<>, sol::types<float>, sol::types<float, float>> vector_constructors;
         state.new_usertype<vec2>("vec2", vector_constructors,
-                                 "x", &vec2::x, "y", &vec2::y,
-                                 "getLength", &vec2::getLength,
-                                 "normalize", &vec2::normalize, "normalizeSelf", &vec2::normalizeSelf);
+                                 "x", &vec2::x,
+                                 "y", &vec2::y,
+                                 "getLength", &vec2::getLength, "", &vec2::normalize);
 
         state.set_function("move", l_move);
         state.set_function("rotate", l_rotate);
@@ -65,13 +65,15 @@ namespace cerium
         state.set_function("setPosition", l_setPosition);
         state.set_function("setRotation", l_setRotation);
 
-        state.set_function("isKeyPressed", &EventManager::isKeyPressed);
-        state.set_function("isWindowClosed", &EventManager::isWindowClosed);
-        state.set_function("isMouseButtonClicked", &EventManager::isMouseButtonClicked);
-        state.set_function("closeWindow", &EventManager::closeWindow);
+        sol::table inputManager = state.create_named_table("inputManager");
+        inputManager.set_function("isKeyPressed", &EventManager::isKeyPressed);
+        inputManager.set_function("isWindowClosed", &EventManager::isWindowClosed);
+        inputManager.set_function("isMouseButtonClicked", &EventManager::isMouseButtonClicked);
+        inputManager.set_function("closeWindow", &EventManager::closeWindow);
 
         sol::table camera = state.create_named_table("camera");
-        camera.set_function("setPosition", &Camera::setPosition);
+        camera.set_function("move", &Camera::move);
+        camera.set_function("setCameraPosition", &Camera::setPosition);
 
         state["init"]();
     }

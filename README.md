@@ -56,16 +56,16 @@ end
     camera.setPosition(vec2.new(100, 100))
     
     -- Checking state of key(ALPHA VERSION!)
-    local is_pressed = isKeyPressed(79)
+    local is_pressed = inputManager.isKeyPressed(79)
     
     -- Checking state of window
-    local is_closed = isWindowClosed()
+    local is_closed = inputManager.isWindowClosed()
     
     -- Checking state of mouse button
-    local is_mouse_button_pressed = isMouseButtonClicked(1)
+    local is_mouse_button_pressed = inputManager.isMouseButtonClicked(1)
     
     -- Closing window
-    closeWindow()
+    inputManager.closeWindow()
 ```
 
 ## Installation
