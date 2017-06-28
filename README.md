@@ -1,4 +1,7 @@
-[![Cerium logo](/logo.png)]
+
+<p align="center">
+    <img src="/logo.png">
+</p>
 
 Simple 2D Game Engine written in C++ 14 & modern OpenGL with SDL2 and scripting in lua
 
