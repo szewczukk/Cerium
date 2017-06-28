@@ -11,15 +11,15 @@ namespace cerium
 {
     Person * bPerson;
 
-    void l_move(const float & x, const float & y)
+    void l_move(const vec2 & relativePosition)
     {
-        bPerson->move({x ,y});
+        bPerson->move(relativePosition);
     }
 
 
-    void l_setPosition(const float & x, const float & y)
+    void l_setPosition(const vec2 & position)
     {
-        bPerson->setPosition({x, y});
+        bPerson->setPosition(position);
     }
 
 
@@ -32,12 +32,6 @@ namespace cerium
     void l_setRotation(const float & angle)
     {
         bPerson->setRotation(angle);
-    }
-
-
-    bool l_isKeyPressed(int key)
-    {
-        return EventManager::isKeyPressed(key);
     }
 
 
@@ -59,9 +53,11 @@ namespace cerium
         state.open_libraries(sol::lib::base);
         state.script(content);
 
-        state.new_usertype<vec2>("vec2",
-                                 "getX", &vec2::getX, "setX", &vec2::setX,
-                                 "getY", &vec2::getY, "setY", &vec2::setY);
+        sol::constructors<sol::types<>, sol::types<float>, sol::types<float, float>> vector_constructors;
+        state.new_usertype<vec2>("vec2", vector_constructors,
+                                 "x", &vec2::x, "y", &vec2::y,
+                                 "getLength", &vec2::getLength,
+                                 "normalize", &vec2::normalize, "normalizeSelf", &vec2::normalizeSelf);
 
         state.set_function("move", l_move);
         state.set_function("rotate", l_rotate);

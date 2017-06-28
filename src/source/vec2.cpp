@@ -48,29 +48,6 @@ namespace cerium
     }
 
 
-    void vec2::setX(float value)
-    {
-        x = value;
-    }
-
-
-    void vec2::setY(float value)
-    {
-        y = value;
-    }
-
-    float vec2::getX(void)
-    {
-        return x;
-    }
-
-
-    float vec2::getY(void)
-    {
-        return y;
-    }
-
-
     vec2 vec2::operator+(const vec2 & other)
     {
         return {x + other.x, y + other.y};
