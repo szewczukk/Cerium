@@ -16,6 +16,7 @@ namespace cerium
 
     void Camera::init(void)
     {
+        instance().moved = false;
         instance().position = {0};
         instance().size = Window::getSize();
     }
@@ -32,17 +33,25 @@ namespace cerium
     void Camera::move(const vec2 & relative)
     {
         instance().position += relative;
+        instance().moved = true;
     }
 
 
     void Camera::setPosition(const vec2 & position)
     {
         instance().position = position;
+        instance().moved = true;
     }
 
 
     void Camera::setSize(const vec2 & size)
     {
         instance().size = size;
+    }
+
+
+    vec2 Camera::getPosition()
+    {
+        return instance().position;
     }
 }

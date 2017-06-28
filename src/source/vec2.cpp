@@ -99,6 +99,23 @@ namespace cerium
     }
 
 
+    bool vec2::operator==(const vec2 & other)
+    {
+        return x == other.x && y == other.y;
+    }
+
+    bool vec2::operator!=(const vec2 & other)
+    {
+        return !operator==(other);
+    }
+
+
+    vec2 vec2::operator-()
+    {
+        return {-x, -y};
+    }
+
+
     std::ostream & operator<<(std::ostream & o, const vec2 & v)
     {
         return o << "( " << v.x << " : " << v.y << " )";
