@@ -64,7 +64,9 @@ namespace cerium
         state.set_function("setPosition", l_setPosition);
         state.set_function("setRotation", l_setRotation);
 
-        state.set_function("isKeyPressed", l_isKeyPressed);
+        state.set_function("isKeyPressed", &EventManager::isKeyPressed);
+        state.set_function("isWindowClosed", &EventManager::isWindowClosed);
+        state.set_function("isMouseButtonClicked", &EventManager::isMouseButtonClicked);
 
         state["init"]();
     }
