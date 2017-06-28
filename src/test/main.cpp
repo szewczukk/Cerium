@@ -45,6 +45,7 @@ public:
         setRotation(0);
 
         addProp(new cerium::Button(this, nullptr, "name", {0, 0, 0, 255}, {255}, {255}, {0, 0, 0, 255}, "Exit", dynamic_cast<cerium::Font*>(cerium::ResourceManager::get("font"))));
+        addProp(new cerium::Scriptable(this, nullptr, "script", "script.lua"));
     }
 };
 

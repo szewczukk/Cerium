@@ -1,7 +1,7 @@
 #ifndef CERIUM_SCRIPTABLE_HPP
 #define CERIUM_SCRIPTABLE_HPP
 
-#include <lua5.1/lua.hpp>
+#include <sol.hpp>
 
 #include <iostream>
 
@@ -23,16 +23,10 @@ namespace cerium
             ^[argument]<path>[Path to script]
          */
         Scriptable(Person * basePerson, Prop * parent, const std::string & name, const std::string & path); //^header
-        /*
-            ^[name][~Scriptable]
-            ^[class][Scriptable]
-            ^[description][Closing lua state]
-         */
-        ~Scriptable(); //^header
 
         virtual void update(const float & deltaTime) override;
     private:
-        lua_State * state;
+        sol::state state;
     };
 }
 
