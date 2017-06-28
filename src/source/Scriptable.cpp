@@ -70,7 +70,8 @@ namespace cerium
         state.set_function("isMouseButtonClicked", &EventManager::isMouseButtonClicked);
         state.set_function("closeWindow", &EventManager::closeWindow);
 
-        state.set_function("setCameraPosition", &Camera::setPosition);
+        sol::table camera = state.create_named_table("camera");
+        camera.set_function("setPosition", &Camera::setPosition);
 
         state["init"]();
     }
