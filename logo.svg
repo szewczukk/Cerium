@@ -9,13 +9,16 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="215"
+   width="183"
    height="150"
-   viewBox="0 0 215 150"
+   viewBox="0 0 183 150"
    id="svg2"
    version="1.1"
    inkscape:version="0.91 r13725"
-   sodipodi:docname="logo.svg">
+   sodipodi:docname="logo.svg"
+   inkscape:export-filename="/home/bjornus/Dokumenty/Cerium/logo.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
   <defs
      id="defs4" />
   <sodipodi:namedview
@@ -25,9 +28,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.8"
-     inkscape:cx="65.2438"
-     inkscape:cy="99.670102"
+     inkscape:zoom="3.959798"
+     inkscape:cx="35.445296"
+     inkscape:cy="85.604029"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -75,15 +78,15 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="90.414581"
-       y="990.90906"
+       x="88.822784"
+       y="990.48761"
        id="text4155"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan4157"
-         x="90.414581"
-         y="990.90906"
-         style="font-size:50px">rium</tspan></text>
+         x="88.822784"
+         y="990.48761"
+         style="font-size:40px">rium</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
