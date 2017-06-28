@@ -2,7 +2,7 @@ local speed = 0.000000001
 
 -- Function running once, at start of game
 function init()
-    print("Init function")
+
 end
 
 
@@ -10,15 +10,15 @@ end
 function update(deltaTime)
     rotate((speed * deltaTime)/100)
     if isKeyPressed(79) then
-        move(speed * deltaTime, 0)
+        move(vec2.new(speed * deltaTime, 0))
 
     elseif isKeyPressed(80) then
-        move(-speed * deltaTime, 0)
+        move(vec2.new(-speed * deltaTime, 0))
 
     elseif isKeyPressed(81) then
-        move(0, speed * deltaTime)
+        move(vec2.new(0, speed * deltaTime))
 
     elseif isKeyPressed(82) then
-        move(0, -speed * deltaTime)
+        move(vec2.new(0, -speed * deltaTime))
     end
 end
