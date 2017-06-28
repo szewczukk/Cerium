@@ -35,6 +35,39 @@ function update(deltaTime)
 end
 ```
 
+## Lua Scripting VERY SIMPLE documentation
+```lua
+    -- Moving person
+    move(vec2.new(5, 6))
+    
+    -- Setting person position
+    setPosition(vec2.new(100, 100))
+    
+    -- Rotating person
+    rotate(90)
+    
+    -- Setting person rotation
+    setRotation(180)
+    
+    -- Moving camera
+    camera.move(vec2.new(50, 0))
+    
+    -- Setting Camera position
+    camera.setPosition(vec2.new(100, 100))
+    
+    -- Checking state of key(ALPHA VERSION!)
+    local is_pressed = isKeyPressed(79)
+    
+    -- Checking state of window
+    local is_closed = isWindowClosed()
+    
+    -- Checking state of mouse button
+    local is_mouse_button_pressed = isMouseButtonClicked(1)
+    
+    -- Closing window
+    closeWindow()
+```
+
 ## Installation
 Just clone this repository at your project catalog
 
