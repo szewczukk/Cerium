@@ -63,7 +63,7 @@ Before running, copy all assets (shaders, textures etc.) to catalogue where the 
 * <a href="https://www.libsdl.org/projects/SDL_ttf/">SDL_ttf</a>
 * <a href="http://glew.sourceforge.net">GLEW</a>
 * <a href="http://glm.g-truc.net/0.9.8/index.html">GLM</a>
-* <a href="https://www.lua.org">lua</a>
+* <a href="https://github.com/ThePhD/sol2">sol2</a>
 * <a href="http://rapidxml.sourceforge.net">RapidXML</a>
 
 ## Licensing
