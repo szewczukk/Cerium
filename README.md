@@ -1,4 +1,5 @@
-# Cerium
+[![Cerium logo](/logo.svg)]
+
 Simple 2D Game Engine written in C++ 14 & modern OpenGL with SDL2 and scripting in lua
 
 ## Lua scripting example
