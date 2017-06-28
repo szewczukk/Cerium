@@ -45,6 +45,7 @@ namespace cerium
         */
         static void pollEvents(void); //^header
         static bool isMouseButtonClicked(int key);
+        static void closeWindow(void);
     private:
         static EventManager & instance(void);
 

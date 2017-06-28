@@ -2,6 +2,7 @@
 
 #include "../include/Cerium/Person.hpp"
 
+#include "../include/Cerium/Camera.hpp"
 #include "../include/Cerium/EventManager.hpp"
 
 #include <fstream>
@@ -58,6 +59,10 @@ namespace cerium
         state.open_libraries(sol::lib::base);
         state.script(content);
 
+        state.new_usertype<vec2>("vec2",
+                                 "getX", &vec2::getX, "setX", &vec2::setX,
+                                 "getY", &vec2::getY, "setY", &vec2::setY);
+
         state.set_function("move", l_move);
         state.set_function("rotate", l_rotate);
 
@@ -67,6 +72,9 @@ namespace cerium
         state.set_function("isKeyPressed", &EventManager::isKeyPressed);
         state.set_function("isWindowClosed", &EventManager::isWindowClosed);
         state.set_function("isMouseButtonClicked", &EventManager::isMouseButtonClicked);
+        state.set_function("closeWindow", &EventManager::closeWindow);
+
+        state.set_function("setCameraPosition", &Camera::setPosition);
 
         state["init"]();
     }

@@ -50,6 +50,12 @@ namespace cerium
         */
         vec2 normalize(void); //^header
 
+        void setX(float value);
+        void setY(float value);
+
+        float getX(void);
+        float getY(void);
+
         vec2 operator+(const vec2 & other);
         vec2 operator-(const vec2 & other);
         vec2 operator/(const vec2 & other);

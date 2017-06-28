@@ -99,7 +99,7 @@ int main()
         cerium::ActManager::drawCurrent();
 
         if(dynamic_cast<cerium::Button*>(cerium::ActManager::get("main")->get("other")->getProp("name"))->isClicked() ||
-                cerium::EventManager::isKeyPressed(SDL_SCANCODE_ESCAPE))
+                cerium::EventManager::isKeyPressed(SDL_SCANCODE_ESCAPE) || cerium::EventManager::isWindowClosed())
         {
             closed = true;
         }

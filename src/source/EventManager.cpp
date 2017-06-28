@@ -48,8 +48,15 @@ namespace cerium
         return {(float)x, (float)y};
     }
 
+
     bool EventManager::isMouseButtonClicked(int key)
     {
         return instance().event.type == SDL_MOUSEBUTTONDOWN && instance().event.button.button == key;
+    }
+
+
+    void EventManager::closeWindow(void)
+    {
+        instance().event.type = SDL_QUIT;
     }
 }
