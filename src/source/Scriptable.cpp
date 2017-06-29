@@ -4,6 +4,7 @@
 
 #include "../include/Cerium/Camera.hpp"
 #include "../include/Cerium/EventManager.hpp"
+#include "../include/Cerium/Act.hpp"
 
 #include <fstream>
 
@@ -74,6 +75,21 @@ namespace cerium
         sol::table camera = state.create_named_table("camera");
         camera.set_function("move", &Camera::move);
         camera.set_function("setCameraPosition", &Camera::setPosition);
+
+        state.new_usertype<Act>("Act",
+                                "draw", &Act::draw, "update", &Act::update,
+                                "add", &Act::add, "remove", &Act::remove,
+                                "clear", &Act::clear, "exist", &Act::exist,
+                                "get", &Act::get);
+
+        sol::constructors<sol::types<std::string, Person*, Act*>> person_constructor;
+        state.new_usertype<Person>("Person", person_constructor,
+                                   "setPosition", &Person::setPosition, "setRotation", &Person::setRotation,
+                                   "setSize", &Person::setSize, "move", &Person::move, "rotate", &Person::rotate,
+                                   "getPosition", &Person::getPosition, "getSize", &Person::getSize, "getRotation", &Person::getRotation,
+                                   "getName", &Person::getName, "isCollide", &Person::isCollide, "addProp", &Person::addProp,
+                                   "propExist", &Person::propExist, "getProp", &Person::getProp, "getParent", &Person::getParent,
+                                   "addChild", &Person::getChild, "childExist", &Person::childExist, "getChild", &Person::getChild);
 
         state["init"]();
     }
