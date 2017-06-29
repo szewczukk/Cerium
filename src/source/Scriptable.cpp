@@ -5,6 +5,8 @@
 #include "../include/Cerium/Camera.hpp"
 #include "../include/Cerium/EventManager.hpp"
 #include "../include/Cerium/Act.hpp"
+#include "../include/Cerium/ActManager.hpp"
+#include "../include/Cerium/Window.hpp"
 
 #include <fstream>
 
@@ -54,12 +56,6 @@ namespace cerium
         state.open_libraries(sol::lib::base);
         state.script(content);
 
-        sol::constructors<sol::types<>, sol::types<float>, sol::types<float, float>> vector_constructors;
-        state.new_usertype<vec2>("vec2", vector_constructors,
-                                 "x", &vec2::x,
-                                 "y", &vec2::y,
-                                 "getLength", &vec2::getLength, "", &vec2::normalize);
-
         state.set_function("move", l_move);
         state.set_function("rotate", l_rotate);
 
@@ -76,22 +72,34 @@ namespace cerium
         camera.set_function("move", &Camera::move);
         camera.set_function("setCameraPosition", &Camera::setPosition);
 
-        state.new_usertype<Act>("Act",
-                                "draw", &Act::draw, "update", &Act::update,
-                                "add", &Act::add, "remove", &Act::remove,
-                                "clear", &Act::clear, "exist", &Act::exist,
-                                "get", &Act::get);
+        sol::table actManager = state.create_named_table("ActManager");
+        actManager.set_function("get", &ActManager::get, "exist", &ActManager::exist,
+                                "add", &ActManager::add, "remove", &ActManager::remove,
+                                "exist", &ActManager::exist, "setCurrent", &ActManager::setCurrent, "clear", &ActManager::clear);
+
+        sol::table window = state.create_named_table("Window");
+        window.set_function("setTitle", &Window::setTitle, "SetSize", &Window::setSize,
+                            "getSize", &Window::getSize, "getTitle", &Window::getTitle, "init", &Window::init);
+
+        sol::constructors<sol::types<>, sol::types<float>, sol::types<float, float>> vector_constructors;
+        state.new_usertype<vec2>("vec2", vector_constructors,
+                                 "x", &vec2::x,
+                                 "y", &vec2::y,
+                                 "getLength", &vec2::getLength, "", &vec2::normalize);
 
         sol::constructors<sol::types<std::string, Person*, Act*>> person_constructor;
-        auto a = state.new_usertype<Person>("Person", person_constructor,
+        auto person = state.new_usertype<Person>("Person", person_constructor,
                                    "setPosition", &Person::setPosition, "setRotation", &Person::setRotation,
                                    "setSize", &Person::setSize, "move", &Person::move, "rotate", &Person::rotate,
                                    "getPosition", &Person::getPosition, "getSize", &Person::getSize, "getRotation", &Person::getRotation,
                                    "getName", &Person::getName, "isCollide", &Person::isCollide, "addProp", &Person::addProp,
                                    "propExist", &Person::propExist, "getProp", &Person::getProp);
+        person.set_function("getParent", &Person::getParent, "addChild", &Person::getChild, "childExist", &Person::childExist, "getChild", &Person::getChild);
 
-        a.set_function("getParent", &Person::getParent, "addChild", &Person::getChild,
-                       "childExist", &Person::childExist, "getChild", &Person::getChild);
+        state.new_usertype<Act>("Act",
+                                "draw", &Act::draw, "update", &Act::update,
+                                "add", &Act::add, "remove", &Act::remove,
+                                "clear", &Act::clear, "exist", &Act::exist, "get", &Act::get);
         state["init"]();
     }
 
