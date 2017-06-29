@@ -83,14 +83,15 @@ namespace cerium
                                 "get", &Act::get);
 
         sol::constructors<sol::types<std::string, Person*, Act*>> person_constructor;
-        state.new_usertype<Person>("Person", person_constructor,
+        auto a = state.new_usertype<Person>("Person", person_constructor,
                                    "setPosition", &Person::setPosition, "setRotation", &Person::setRotation,
                                    "setSize", &Person::setSize, "move", &Person::move, "rotate", &Person::rotate,
                                    "getPosition", &Person::getPosition, "getSize", &Person::getSize, "getRotation", &Person::getRotation,
                                    "getName", &Person::getName, "isCollide", &Person::isCollide, "addProp", &Person::addProp,
-                                   "propExist", &Person::propExist, "getProp", &Person::getProp, "getParent", &Person::getParent,
-                                   "addChild", &Person::getChild, "childExist", &Person::childExist, "getChild", &Person::getChild);
+                                   "propExist", &Person::propExist, "getProp", &Person::getProp);
 
+        a.set_function("getParent", &Person::getParent, "addChild", &Person::getChild,
+                       "childExist", &Person::childExist, "getChild", &Person::getChild);
         state["init"]();
     }
 
