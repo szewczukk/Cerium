@@ -73,13 +73,19 @@ namespace cerium
         camera.set_function("setCameraPosition", &Camera::setPosition);
 
         sol::table actManager = state.create_named_table("ActManager");
-        actManager.set_function("get", &ActManager::get, "exist", &ActManager::exist,
-                                "add", &ActManager::add, "remove", &ActManager::remove,
-                                "exist", &ActManager::exist, "setCurrent", &ActManager::setCurrent, "clear", &ActManager::clear);
+        actManager.set_function("get", &ActManager::get);
+        actManager.set_function("add", &ActManager::add);
+        actManager.set_function("remove", &ActManager::remove);
+        actManager.set_function("exist", &ActManager::exist);
+        actManager.set_function("setCurrent", &ActManager::setCurrent);
+        actManager.set_function("clear", &ActManager::clear);
 
         sol::table window = state.create_named_table("Window");
-        window.set_function("setTitle", &Window::setTitle, "SetSize", &Window::setSize,
-                            "getSize", &Window::getSize, "getTitle", &Window::getTitle, "init", &Window::init);
+        window.set_function("setTitle", &Window::setTitle);
+        window.set_function("setSize", &Window::setSize);
+        window.set_function("getSize", &Window::getSize);
+        window.set_function("getTitle", &Window::getTitle);
+        window.set_function("init", &Window::init);
 
         sol::constructors<sol::types<>, sol::types<float>, sol::types<float, float>> vector_constructors;
         state.new_usertype<vec2>("vec2", vector_constructors,
@@ -94,7 +100,10 @@ namespace cerium
                                    "getPosition", &Person::getPosition, "getSize", &Person::getSize, "getRotation", &Person::getRotation,
                                    "getName", &Person::getName, "isCollide", &Person::isCollide, "addProp", &Person::addProp,
                                    "propExist", &Person::propExist, "getProp", &Person::getProp);
-        person.set_function("getParent", &Person::getParent, "addChild", &Person::getChild, "childExist", &Person::childExist, "getChild", &Person::getChild);
+        person.set_function("getParent", &Person::getParent);
+        person.set_function("addChild", &Person::addChild);
+        person.set_function("childExist", &Person::childExist);
+        person.set_function("getChild", &Person::getChild);
 
         state.new_usertype<Act>("Act",
                                 "draw", &Act::draw, "update", &Act::update,
