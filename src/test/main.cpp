@@ -31,7 +31,7 @@ public:
         setRotation(0);
 
         addProp(new cerium::Texture(this, nullptr, "texture", dynamic_cast<cerium::TextureSource*>(cerium::ResourceManager::get("texture"))));
-        addProp(new cerium::RigidBody(this, nullptr, "rigidbody"));
+        addProp(new cerium::RigidBody(this, nullptr, "rigidbody", {}, 1));
         addProp(new cerium::VertexArray(this, nullptr, "vertexArray", {1.0, 0.0, 1.0, 1.0}, true));
         addProp(new cerium::Scriptable(this, nullptr, "script", "player.lua"));
     }
@@ -46,7 +46,7 @@ public:
         setSize({64});
         setRotation(0);
 
-        addProp(new cerium::RigidBody(this, nullptr, "rigidbody"));
+        addProp(new cerium::RigidBody(this, nullptr, "rigidbody", {}, 1));
         addProp(new cerium::Button(this, nullptr, "name", {0, 0, 0, 255}, {255}, {255}, {0, 0, 0, 255}, "Exit", dynamic_cast<cerium::Font*>(cerium::ResourceManager::get("font"))));
         addProp(new cerium::Scriptable(this, nullptr, "script", "script.lua"));
     }
@@ -107,7 +107,7 @@ int main()
             closed = true;
         }
 
-        if(cerium::ActManager::get("main")->get("player")->getProp("rigidbody")->cast_to<cerium::RigidBody>()->isCollide(dynamic_cast<cerium::RigidBody*>(cerium::ActManager::get("main")->get("other")->getProp("rigidbody"))))
+        if(cerium::ActManager::get("main")->get("player")->getProp("rigidbody")->cast_to<cerium::RigidBody>()->isCollide(cerium::ActManager::get("main")->get("other")->getProp("rigidbody")->cast_to<cerium::RigidBody>()))
         {
             std::cout << "a" << std::endl;
         }

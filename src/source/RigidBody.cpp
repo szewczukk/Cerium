@@ -4,9 +4,10 @@
 
 namespace cerium
 {
-    RigidBody::RigidBody(Person* basePerson, Prop *parent,  const std::string &name) : Prop(basePerson, parent, name)
+    RigidBody::RigidBody(Person * basePerson, Prop * parent, const std::string & name, const float & gravityScale, const float  & mass) : Prop(basePerson, parent, name)
     {
-
+        this->gravityScale = gravityScale;
+        this->mass = mass;
     }
 
 
@@ -49,6 +50,8 @@ namespace cerium
         size = getPerson().getSize();
         position = getPerson().getPosition();
 
-        getPerson().move(velocity);
+        velocity += vec2(0, gravityScale) * deltaTime * mass;
+
+        getPerson().move(velocity * deltaTime);
     }
 }
