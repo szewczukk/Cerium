@@ -31,7 +31,7 @@ public:
         setRotation(0);
 
         addProp(new cerium::Texture(this, nullptr, "texture", dynamic_cast<cerium::TextureSource*>(cerium::ResourceManager::get("texture"))));
-        addProp(new cerium::RigidBody(this, nullptr, "rigidbody", 0.0, 1));
+        addProp(new cerium::RigidBody(this, nullptr, "rigidBody", 0.0, 1));
         addProp(new cerium::VertexArray(this, nullptr, "vertexArray", {1.0, 0.0, 1.0, 1.0}, true));
         addProp(new cerium::Scriptable(this, nullptr, "script", "player.lua"));
     }
@@ -46,7 +46,7 @@ public:
         setSize({64});
         setRotation(0);
 
-        addProp(new cerium::RigidBody(this, nullptr, "rigidbody", 0, 1));
+        addProp(new cerium::RigidBody(this, nullptr, "rigidBody", 0, 1));
         addProp(new cerium::Button(this, nullptr, "name", {0, 0, 0, 255}, {255}, {255}, {0, 0, 0, 255}, "Exit", dynamic_cast<cerium::Font*>(cerium::ResourceManager::get("font"))));
         addProp(new cerium::Scriptable(this, nullptr, "script", "script.lua"));
     }
@@ -98,13 +98,13 @@ int main()
         cerium::EventManager::pollEvents();
         cerium::Window::clear();
 
-        if(dynamic_cast<cerium::Button*>(cerium::ActManager::get("main")->get("other")->getProp("name"))->isClicked() ||
+        if(cerium::ActManager::get("main")->get("other")->getProp("name")->cast_to<cerium::Button>()->isClicked() ||
                 cerium::EventManager::isKeyPressed(SDL_SCANCODE_ESCAPE) || cerium::EventManager::isWindowClosed())
         {
             closed = true;
         }
 
-        cerium::ActManager::updateCurrent(dynamic_cast<cerium::Clock*>(cerium::ResourceManager::get("timer"))->getDeltaTime());
+        cerium::ActManager::updateCurrent(dynamic_cast<cerium::Clock*>(cerium::ResourceManager::get("timer"))->getElapsedTime());
         cerium::ActManager::drawCurrent();
 
         cerium::Window::render();

@@ -2,22 +2,15 @@
 
 namespace cerium
 {
-    Clock::Clock(void)
-    {
-        startTime = 0;
-        deltaTime = 0;
-    }
-
-
     void Clock::use(void)
     {
-        startTime = SDL_GetTicks();
+        start_time = std::chrono::system_clock::now();
     }
 
 
-    float Clock::getDeltaTime(void)
+    float Clock::getElapsedTime(void)
     {
-        deltaTime = startTime - SDL_GetTicks();
-        return (float)deltaTime;
+        elapsed_time = std::chrono::system_clock::now() - start_time;
+        return elapsed_time.count();
     }
 }

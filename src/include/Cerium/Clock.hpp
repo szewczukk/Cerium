@@ -3,7 +3,7 @@
 
 #include "Resource.hpp"
 
-#include <SDL2/SDL_timer.h>
+#include <chrono>
 
 namespace cerium
 {
@@ -11,17 +11,11 @@ namespace cerium
     {
     public:
         /*
-            ^[name][Clock]
-            ^[class][Clock]
-            ^[description][Zeros all attributes]
-         */
-        Clock(void); //^header
-        /*
             ^[name][getDeltaTime]
             ^[class][Clock]
             ^[returns][Time between starting Clock and calling this method]
          */
-        float getDeltaTime(void); //^header
+        float getElapsedTime(void); //^header
         /*
             ^[name][use]
             ^[class][Clock]
@@ -29,8 +23,8 @@ namespace cerium
          */
         virtual void use(void) override; //^header
     private:
-        Uint32 startTime;
-        Uint32 deltaTime;
+        std::chrono::time_point<std::chrono::system_clock> start_time;
+        std::chrono::duration<float> elapsed_time;
     };
 }
 
