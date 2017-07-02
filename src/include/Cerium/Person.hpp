@@ -95,13 +95,6 @@ namespace cerium
         */
         std::string getName(); //^header
         /*
-            ^[name][isCollide]
-            ^[class][Person]
-            ^[description][Checking is the Persons collides (Boding-box)]
-            ^[argument]<other>[Second person]
-         */
-        bool isCollide(Person * other); //^header
-        /*
             ^[name][addProp]
             ^[class][Person]
             ^[description][Adding new Prop to Person]

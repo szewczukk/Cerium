@@ -16,6 +16,7 @@
 #include "../include/Cerium/Label.hpp"
 
 #include "../include/Cerium/Button.hpp"
+#include "../include/Cerium/RigidBody.hpp"
 
 #include <rapidxml.hpp>
 #include <rapidxml_utils.hpp>
@@ -30,6 +31,7 @@ public:
         setRotation(0);
 
         addProp(new cerium::Texture(this, nullptr, "texture", dynamic_cast<cerium::TextureSource*>(cerium::ResourceManager::get("texture"))));
+        addProp(new cerium::RigidBody(this, nullptr, "rigidbody"));
         addProp(new cerium::VertexArray(this, nullptr, "vertexArray", {1.0, 0.0, 1.0, 1.0}, true));
         addProp(new cerium::Scriptable(this, nullptr, "script", "player.lua"));
     }
@@ -44,6 +46,7 @@ public:
         setSize({64});
         setRotation(0);
 
+        addProp(new cerium::RigidBody(this, nullptr, "rigidbody"));
         addProp(new cerium::Button(this, nullptr, "name", {0, 0, 0, 255}, {255}, {255}, {0, 0, 0, 255}, "Exit", dynamic_cast<cerium::Font*>(cerium::ResourceManager::get("font"))));
         addProp(new cerium::Scriptable(this, nullptr, "script", "script.lua"));
     }
@@ -102,6 +105,11 @@ int main()
                 cerium::EventManager::isKeyPressed(SDL_SCANCODE_ESCAPE) || cerium::EventManager::isWindowClosed())
         {
             closed = true;
+        }
+
+        if(dynamic_cast<cerium::RigidBody*>(cerium::ActManager::get("main")->get("player")->getProp("rigidbody"))->isCollide(dynamic_cast<cerium::RigidBody*>(cerium::ActManager::get("main")->get("other")->getProp("rigidbody"))))
+        {
+            std::cout << "a" << std::endl;
         }
 
         cerium::Window::render();

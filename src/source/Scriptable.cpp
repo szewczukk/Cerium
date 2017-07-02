@@ -89,16 +89,15 @@ namespace cerium
 
         sol::constructors<sol::types<>, sol::types<float>, sol::types<float, float>> vector_constructors;
         state.new_usertype<vec2>("vec2", vector_constructors,
-                                 "x", &vec2::x,
-                                 "y", &vec2::y,
-                                 "getLength", &vec2::getLength, "", &vec2::normalize);
+                                 "x", &vec2::x, "y", &vec2::y,
+                                 "getLength", &vec2::getLength, "normalize", &vec2::normalize, "normalizeSelf", &vec2::normalizeSelf);
 
         sol::constructors<sol::types<std::string, Person*, Act*>> person_constructor;
         auto person = state.new_usertype<Person>("Person", person_constructor,
                                    "setPosition", &Person::setPosition, "setRotation", &Person::setRotation,
                                    "setSize", &Person::setSize, "move", &Person::move, "rotate", &Person::rotate,
                                    "getPosition", &Person::getPosition, "getSize", &Person::getSize, "getRotation", &Person::getRotation,
-                                   "getName", &Person::getName, "isCollide", &Person::isCollide, "addProp", &Person::addProp,
+                                   "getName", &Person::getName, "addProp", &Person::addProp,
                                    "propExist", &Person::propExist, "getProp", &Person::getProp);
         person.set_function("getParent", &Person::getParent);
         person.set_function("addChild", &Person::addChild);

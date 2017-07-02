@@ -110,13 +110,6 @@ namespace cerium
     }
 
 
-    bool Person::isCollide(Person * other)
-    {
-        return abs(int(position.x - other->getPosition().x)) * 2 < (size.x + other->getSize().x) &&
-       abs(int(position.y - other->getPosition().y)) * 2 < (size.y + other->getSize().y);
-    }
-
-
     Person * Person::getParent(void)
     {
         return parent;
