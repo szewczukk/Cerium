@@ -1,6 +1,7 @@
 #include "../include/Cerium/RigidBody.hpp"
 
 #include "../include/Cerium/Person.hpp"
+#include "../include/Cerium/Window.hpp"
 
 namespace cerium
 {
@@ -50,7 +51,9 @@ namespace cerium
         size = getPerson().getSize();
         position = getPerson().getPosition();
 
-        velocity += vec2(0, gravityScale) * deltaTime * mass;
+        //TODO:
+        if(position.y < 200) velocity += vec2(0, gravityScale * mass);
+        else velocity.y = 0;
 
         getPerson().move(velocity * deltaTime);
     }
