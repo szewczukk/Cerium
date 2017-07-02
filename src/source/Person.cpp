@@ -143,4 +143,10 @@ namespace cerium
         }
         return nullptr;
     }
+
+    template<typename T>
+    T* Person::cast_to(void)
+    {
+        return dynamic_cast<T>(this);
+    }
 }

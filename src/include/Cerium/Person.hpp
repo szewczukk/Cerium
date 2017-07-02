@@ -143,6 +143,13 @@ namespace cerium
             ^[returns][Pointer to child with given name]
         */
         Person * getChild(const std::string & name); //^header
+        /*
+            ^[name][cast_to]
+            ^[class][Person]
+            ^[returns][Pointer to this object casted to given type]
+        */
+        template<typename T>
+                T* cast_to(void); //^header
     protected:
         vec2 position;
         vec2 size;
