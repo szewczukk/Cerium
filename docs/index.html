@@ -357,6 +357,80 @@
     <p>
         <div class='code'>
             <i>
+                RigidBody(Person * basePerson, Prop * parent, const std::string & name); 
+            </i>
+        </div>
+        Name: RigidBody <br>
+        Class: <a href='RigidBody.html'>RigidBody</a><br>
+        
+
+    Argument basePerson = Person where the RigidBody is <br>
+
+    
+
+    Argument parent = Parent Prop of RigidBody <br>
+
+    
+
+    Argument name = Name of Prop <br>
+
+       <!-- argument_template -->
+        Description: Setting 0 as value of attributes of vector <br>
+        <i>
+            Returning: 
+        </i>
+        <br>
+    <hr>
+
+    
+
+    <p>
+        <div class='code'>
+            <i>
+                bool isCollide(RigidBody * other); 
+            </i>
+        </div>
+        Name: isCollide <br>
+        Class: <a href='RigidBody.html'>RigidBody</a><br>
+        
+
+    Argument other = Pointer to other RigidBody <br>
+
+       <!-- argument_template -->
+        Description: Checking is the RigidBody collides with other <br>
+        <i>
+            Returning: True if the RigidBodies collides with BoundingBox or false when they aren't
+        </i>
+        <br>
+    <hr>
+
+    
+
+    <p>
+        <div class='code'>
+            <i>
+                void setVelocity(const vec2 & velocity); 
+            </i>
+        </div>
+        Name: setVelocity <br>
+        Class: <a href='RigidBody.html'>RigidBody</a><br>
+        
+
+    Argument velocity = Velocity of RigidBody <br>
+
+       <!-- argument_template -->
+        Description: Setting velocity of RigidBody <br>
+        <i>
+            Returning: 
+        </i>
+        <br>
+    <hr>
+
+    
+
+    <p>
+        <div class='code'>
+            <i>
                 
             </i>
         </div>
@@ -626,28 +700,6 @@
 
        <!-- argument_template -->
         Description: Rotating the Person by the given value in vector <br>
-        <i>
-            Returning: 
-        </i>
-        <br>
-    <hr>
-
-    
-
-    <p>
-        <div class='code'>
-            <i>
-                bool isCollide(Person * other); 
-            </i>
-        </div>
-        Name: isCollide <br>
-        Class: <a href='Person.html'>Person</a><br>
-        
-
-    Argument other = Second person <br>
-
-       <!-- argument_template -->
-        Description: Checking is the Persons collides (Boding-box) <br>
         <i>
             Returning: 
         </i>

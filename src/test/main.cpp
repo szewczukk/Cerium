@@ -107,7 +107,7 @@ int main()
             closed = true;
         }
 
-        if(dynamic_cast<cerium::RigidBody*>(cerium::ActManager::get("main")->get("player")->getProp("rigidbody"))->isCollide(dynamic_cast<cerium::RigidBody*>(cerium::ActManager::get("main")->get("other")->getProp("rigidbody"))))
+        if(cerium::ActManager::get("main")->get("player")->getProp("rigidbody")->cast_to<cerium::RigidBody>()->isCollide(dynamic_cast<cerium::RigidBody*>(cerium::ActManager::get("main")->get("other")->getProp("rigidbody"))))
         {
             std::cout << "a" << std::endl;
         }

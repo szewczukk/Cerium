@@ -117,6 +117,11 @@ namespace cerium
             }
             return nullptr;
         }
+        template<typename T>
+                T* cast_to(void)
+        {
+            return dynamic_cast<T*>(this);
+        }
     protected:
         Person * basePerson;
         Prop * parent;

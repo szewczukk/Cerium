@@ -19,15 +19,28 @@ namespace cerium
     }
 
 
-    vec2 RigidBody::getPosition()
+    vec2 RigidBody::getPosition(void)
     {
         return position;
     }
 
 
-    vec2 RigidBody::getSize()
+    vec2 RigidBody::getSize(void)
     {
         return size;
+    }
+
+
+
+    void RigidBody::setVelocity(const vec2 & velocity)
+    {
+        this->velocity = velocity;
+    }
+
+
+    vec2 RigidBody::getVelocity(void)
+    {
+        return velocity;
     }
 
 
@@ -35,5 +48,7 @@ namespace cerium
     {
         size = getPerson().getSize();
         position = getPerson().getPosition();
+
+        getPerson().move(velocity);
     }
 }
