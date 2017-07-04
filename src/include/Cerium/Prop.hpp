@@ -117,8 +117,14 @@ namespace cerium
             }
             return nullptr;
         }
+        /*
+            ^[name][cast_to]
+            ^[class][Resource]
+            ^[description][Casting this object to other, given type]
+            ^[returns][Casted object]
+         */
         template<typename T>
-                T* cast_to(void)
+                T* cast_to(void) //^header
         {
             return dynamic_cast<T*>(this);
         }

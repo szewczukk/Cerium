@@ -44,8 +44,20 @@ namespace cerium
             ^[description][Catching events into event container]
         */
         static void pollEvents(void); //^header
-        static bool isMouseButtonClicked(int key);
-        static void closeWindow(void);
+        /*
+            ^[name][isMouseButtonClicked]
+            ^[class][EventManager]
+            ^[description][Checking is the key with given id was pressed]
+            ^[argument]<key>[Id of key to check]
+            ^[returns][True when key was pressed or false when it isn't]
+        */
+        static bool isMouseButtonClicked(int key); //^header
+        /*
+            ^[name][closeWindow]
+            ^[class][EventManager]
+            ^[description][Pushing SDL_CLOSED event to container]
+        */
+        static void closeWindow(void); //^header
     private:
         static EventManager & instance(void);
 
