@@ -18,6 +18,8 @@
 #include "../include/Cerium/Button.hpp"
 #include "../include/Cerium/RigidBody.hpp"
 
+#include <SDL2/SDL.h>
+
 #include <rapidxml.hpp>
 #include <rapidxml_utils.hpp>
 
@@ -104,7 +106,7 @@ int main()
             closed = true;
         }
 
-        cerium::ActManager::updateCurrent(dynamic_cast<cerium::Clock*>(cerium::ResourceManager::get("timer"))->getElapsedTime());
+        cerium::ActManager::updateCurrent(cerium::ResourceManager::get("timer")->cast_to<cerium::Clock>()->getElapsedTime());
         cerium::ActManager::drawCurrent();
 
         cerium::Window::render();

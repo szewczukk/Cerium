@@ -20,6 +20,7 @@ namespace cerium
         this->m_hoveredText = hoveredTextColor;
         this->m_isClicked = false;
         this->m_isHovered = false;
+
     }
     void Button::update(const float & deltaTime)
     {
@@ -45,6 +46,7 @@ namespace cerium
             dynamic_cast<VertexArray*>(getChild("background"))->setColor(m_normalBackground);
             dynamic_cast<Label*>(getChild("label"))->setColor(m_normalText);
             m_isHovered = false;
+            m_isClicked = false;
         }
     }
     bool Button::isHovered()
