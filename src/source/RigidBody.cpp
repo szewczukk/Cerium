@@ -53,6 +53,12 @@ namespace cerium
     }
 
 
+    void RigidBody::setStanding(const bool & standing)
+    {
+        this->standing = standing;
+    }
+
+
     void RigidBody::update(const float &deltaTime)
     {
         size = getPerson().getSize();

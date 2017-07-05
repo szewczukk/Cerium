@@ -75,10 +75,21 @@ cerium::vec2 size_of_window()
     return { (float)width, (float)height};
 }
 
+std::string title_of_window()
+{
+    rapidxml::file <> file("settings.xml");
+    rapidxml::xml_document<> settings;
+    settings.parse<0>(file.data());
+
+    rapidxml::xml_node <> * caption = settings.first_node("settings")->first_node("caption");
+
+    return caption->first_attribute("title")->value();
+}
+
 int main()
 {
     cerium::Window::setSize(size_of_window());
-    cerium::Window::setTitle("Cerium");
+    cerium::Window::setTitle(title_of_window());
 
     cerium::Window::init();
     cerium::Camera::init();

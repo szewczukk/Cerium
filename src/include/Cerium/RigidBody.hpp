@@ -62,6 +62,13 @@ namespace cerium
         */
         bool isStanding(void); //^header
         /*
+            ^[name][setStanding]
+            ^[class][RigidBody]
+            ^[description][Setting is the RigidBody standing]
+            ^[argument]<standing>[Is the RigidBody standing?]
+        */
+        void setStanding(const bool & standing); //^header
+        /*
             ^[name][update]
             ^[class][RigidBody]
             ^[description][Setting position and size as position and size of basePerson, moving basePerson by velocity]
