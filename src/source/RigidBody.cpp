@@ -9,6 +9,7 @@ namespace cerium
     {
         this->gravityScale = gravityScale;
         this->mass = mass;
+        this->standing = false;
     }
 
 
@@ -46,13 +47,19 @@ namespace cerium
     }
 
 
+    bool RigidBody::isStanding(void)
+    {
+        return standing;
+    }
+
+
     void RigidBody::update(const float &deltaTime)
     {
         size = getPerson().getSize();
         position = getPerson().getPosition();
 
         //TODO:
-        if(position.y < 200) velocity += vec2(0, gravityScale * mass);
+        if(!standing) velocity += vec2(0, gravityScale * mass);
         else velocity.y = 0;
 
         getPerson().move(velocity * deltaTime);

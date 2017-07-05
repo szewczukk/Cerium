@@ -54,7 +54,13 @@ namespace cerium
             ^[class][RigidBody]
             ^[returns][Velocity of RigidBody]
         */
-        vec2 getVelocity(void);
+        vec2 getVelocity(void); //^header
+        /*
+            ^[name][isStanding]
+            ^[class][RigidBody]
+            ^[returns][True when RigidBody colliding with other RigidBody on bottom]
+        */
+        bool isStanding(void); //^header
         /*
             ^[name][update]
             ^[class][RigidBody]
@@ -67,6 +73,7 @@ namespace cerium
         vec2 velocity;
         float gravityScale;
         float mass;
+        bool standing;
     };
 }
 

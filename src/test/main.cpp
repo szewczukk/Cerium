@@ -31,7 +31,7 @@ public:
         setRotation(0);
 
         addProp(new cerium::Texture(this, nullptr, "texture", cerium::ResourceManager::get("texture")->cast_to<cerium::TextureSource>()));
-        addProp(new cerium::RigidBody(this, nullptr, "rigidBody", 0.0, 1));
+        addProp(new cerium::RigidBody(this, nullptr, "rigidBody", 1, 1));
         addProp(new cerium::VertexArray(this, nullptr, "vertexArray", {1.0, 0.0, 1.0, 1.0}, true));
         addProp(new cerium::Scriptable(this, nullptr, "script", "player.lua"));
     }
@@ -99,13 +99,14 @@ int main()
 
     while(!closed)
     {
-        frameNumber++;
         if(cerium::ResourceManager::get("fpsTimer")->cast_to<cerium::Clock>()->getElapsedTime() >= 1)
         {
             std::cout << "FPS counter: " << frameNumber << std::endl;
             frameNumber = 0;
             cerium::ResourceManager::get("fpsTimer")->use();
         }
+
+        frameNumber++;
 
         cerium::ResourceManager::get("timer")->use();
         cerium::EventManager::pollEvents();
