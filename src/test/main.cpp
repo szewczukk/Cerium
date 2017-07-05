@@ -18,8 +18,6 @@
 #include "../include/Cerium/Button.hpp"
 #include "../include/Cerium/RigidBody.hpp"
 
-#include <SDL2/SDL.h>
-
 #include <rapidxml.hpp>
 #include <rapidxml_utils.hpp>
 
@@ -32,7 +30,7 @@ public:
         setSize({64});
         setRotation(0);
 
-        addProp(new cerium::Texture(this, nullptr, "texture", dynamic_cast<cerium::TextureSource*>(cerium::ResourceManager::get("texture"))));
+        addProp(new cerium::Texture(this, nullptr, "texture", cerium::ResourceManager::get("texture")->cast_to<cerium::TextureSource>()));
         addProp(new cerium::RigidBody(this, nullptr, "rigidBody", 0.0, 1));
         addProp(new cerium::VertexArray(this, nullptr, "vertexArray", {1.0, 0.0, 1.0, 1.0}, true));
         addProp(new cerium::Scriptable(this, nullptr, "script", "player.lua"));
@@ -49,7 +47,7 @@ public:
         setRotation(0);
 
         addProp(new cerium::RigidBody(this, nullptr, "rigidBody", 0, 1));
-        addProp(new cerium::Button(this, nullptr, "name", {0, 0, 0, 255}, {255}, {255}, {0, 0, 0, 255}, "Exit", dynamic_cast<cerium::Font*>(cerium::ResourceManager::get("font"))));
+        addProp(new cerium::Button(this, nullptr, "name", {0, 0, 0, 255}, {255}, {255}, {0, 0, 0, 255}, "Exit", cerium::ResourceManager::get("font")->cast_to<cerium::Font>()));
         addProp(new cerium::Scriptable(this, nullptr, "script", "script.lua"));
     }
 };
@@ -92,10 +90,23 @@ int main()
     cerium::ActManager::add("main", new MyAct);
     cerium::ActManager::setCurrent("main");
 
+    cerium::ResourceManager::add("fpsTimer", new cerium::Clock);
+    cerium::ResourceManager::get("fpsTimer")->use();
+
     bool closed = false;
+
+    int frameNumber = 0;
 
     while(!closed)
     {
+        frameNumber++;
+        if(cerium::ResourceManager::get("fpsTimer")->cast_to<cerium::Clock>()->getElapsedTime() >= 1)
+        {
+            std::cout << "FPS counter: " << frameNumber << std::endl;
+            frameNumber = 0;
+            cerium::ResourceManager::get("fpsTimer")->use();
+        }
+
         cerium::ResourceManager::get("timer")->use();
         cerium::EventManager::pollEvents();
         cerium::Window::clear();

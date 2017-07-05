@@ -1,4 +1,4 @@
-local speed = 0.000000001
+local speed = 100
 
 local velocity
 
@@ -10,7 +10,6 @@ end
 
 -- Function running non-stop
 function update(deltaTime)
-    rotate((speed * deltaTime)/100)
     if inputManager.isKeyPressed(79) then
         if velocity.x == 0 then
             velocity.x = velocity.x + speed * deltaTime
