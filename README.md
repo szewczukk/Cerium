@@ -12,9 +12,6 @@ Simple moving script supported by Cerium
 local speed = 100
 
 -- Function running once, at start of game
-local speed = 100
-
--- Function running once, at start of game
 function init()
 
 end
