@@ -9,16 +9,13 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="183"
-   height="150"
-   viewBox="0 0 183 150"
+   width="500"
+   height="300"
+   viewBox="0 0 500.00001 300"
    id="svg2"
    version="1.1"
    inkscape:version="0.91 r13725"
-   sodipodi:docname="logo.svg"
-   inkscape:export-filename="/home/bjornus/Dokumenty/Cerium/logo.png"
-   inkscape:export-xdpi="90"
-   inkscape:export-ydpi="90">
+   sodipodi:docname="logo.svg">
   <defs
      id="defs4" />
   <sodipodi:namedview
@@ -28,9 +25,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="3.959798"
-     inkscape:cx="35.445296"
-     inkscape:cy="85.604029"
+     inkscape:zoom="1.4"
+     inkscape:cx="149.12638"
+     inkscape:cy="195.82434"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -56,119 +53,31 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(0,-902.36214)">
+     transform="translate(0,-752.36214)">
     <rect
-       y="906.88873"
-       x="5.8633971"
-       height="140.94682"
-       width="85.232536"
+       style="opacity:1;fill:#0044aa;fill-opacity:1;stroke:#000000;stroke-width:0.73160595;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect4140"
+       width="499.26837"
+       height="299.2684"
+       x="0.36580297"
+       y="752.72791" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:112.5px;line-height:125%;font-family:Atiba;-inkscape-font-specification:Atiba;letter-spacing:0px;word-spacing:0px;fill:#e6e6e6;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;"
+       x="59.790627"
+       y="951.58087"
+       id="text4136"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4138"
+         x="59.790627"
+         y="951.58087">Cerium</tspan></text>
+    <rect
+       style="opacity:1;fill:#e6e6e6;fill-opacity:1;stroke:#000000;stroke-width:0.16689366;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect4142"
-       style="fill:#35bd99;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.40000001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-    <text
-       sodipodi:linespacing="125%"
-       id="text4144"
-       y="990.48761"
-       x="37.720665"
-       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       xml:space="preserve"><tspan
-         y="990.48761"
-         x="37.720665"
-         id="tspan4146"
-         sodipodi:role="line">Ce</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="88.822784"
-       y="990.48761"
-       id="text4155"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan4157"
-         x="88.822784"
-         y="990.48761"
-         style="font-size:40px">rium</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="6.0283751"
-       y="925.70087"
-       id="text4159"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan4161"
-         x="6.0283751"
-         y="925.70087"
-         style="font-size:22.5px">58</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="17.119802"
-       y="1041.97"
-       id="text4163"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan4165"
-         x="17.119802"
-         y="1041.97"
-         style="font-size:17.5px">Cerium</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="37.077911"
-       y="919.88281"
-       id="text4186"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan4188"
-         x="37.077911"
-         y="919.88281">140,115</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="38.74229"
-       y="943.92053"
-       id="text4190"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan4192"
-         x="38.74229"
-         y="943.92053">III, IV</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="22.321428"
-       y="1019.6836"
-       id="text4194"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan4196"
-         x="22.321428"
-         y="1019.6836" /></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="6.1643691"
-       y="974.75226"
-       id="text4198"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan4200"
-         x="6.1643691"
-         y="974.75226">1072</tspan><tspan
-         sodipodi:role="line"
-         x="6.1643691"
-         y="987.25226"
-         id="tspan4202">3730</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="6.951345"
-       y="1025.2194"
-       id="text4204"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan4206"
-         x="6.951345"
-         y="1025.2194">[Xe] 4f1 5d1 6s2</tspan></text>
+       width="400.23309"
+       height="4.8331065"
+       x="49.883453"
+       y="963.51697" />
   </g>
 </svg>

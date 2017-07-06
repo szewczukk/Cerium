@@ -7,6 +7,7 @@
 #include "../include/Cerium/Act.hpp"
 #include "../include/Cerium/ActManager.hpp"
 #include "../include/Cerium/Window.hpp"
+#include "../include/Cerium/Resource.hpp"
 
 #include <fstream>
 
@@ -117,11 +118,22 @@ namespace cerium
         person.set_function("addChild", &Person::addChild);
         person.set_function("childExist", &Person::childExist);
         person.set_function("getChild", &Person::getChild);
+        person.set_function("cast_to", &Person::cast_to);
 
         state.new_usertype<Act>("Act",
                                 "draw", &Act::draw, "update", &Act::update,
                                 "add", &Act::add, "remove", &Act::remove,
                                 "clear", &Act::clear, "exist", &Act::exist, "get", &Act::get);
+
+        sol::constructor_list <sol::types<Person*, Prop*, const std::string &>> propConstructors;
+        state.new_usertype<Prop>("Prop", propConstructors,
+                                 "getName", &Prop::getName, "getPerson", &Prop::getPerson,
+                                 "getParent", &Prop::getParent, "exist", &Prop::exist,
+                                 "addChild", &Prop::addChild, "getChild", &Prop::getChild,
+                                 "cast_to", &Prop::cast_to);
+
+        state.new_usertype<Resource>("Resource", "use", &Resource::use, "cast_to", &Resource::cast_to);
+
         state["init"]();
     }
 

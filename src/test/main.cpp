@@ -104,11 +104,9 @@ int main()
     cerium::ResourceManager::add("fpsTimer", new cerium::Clock);
     cerium::ResourceManager::get("fpsTimer")->use();
 
-    bool closed = false;
-
     int frameNumber = 0;
 
-    while(!closed)
+    while(!cerium::EventManager::isWindowClosed())
     {
         if(cerium::ResourceManager::get("fpsTimer")->cast_to<cerium::Clock>()->getElapsedTime() >= 1)
         {
@@ -125,8 +123,9 @@ int main()
 
         if(cerium::ActManager::get("main")->get("other")->getProp("name")->cast_to<cerium::Button>()->isClicked())
         {
-            closed = true;
+            cerium::EventManager::closeWindow();
         }
+
         cerium::ActManager::get("main")->get("player")->getProp("rigidBody")->cast_to<cerium::RigidBody>()->setStanding(
                 cerium::ActManager::get("main")->get("player")->getPosition().y > 200);
 
