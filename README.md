@@ -12,24 +12,22 @@ Simple moving script supported by Cerium
 local speed = 100
 
 -- Function running once, at start of game
+local speed = 100
+
+-- Function running once, at start of game
 function init()
-    print("Init function")
+
 end
 
 
 -- Function running non-stop
 function update(deltaTime)
-    if isKeyPressed(79) then
-        move(speed * deltaTime, 0)
-
-    elseif isKeyPressed(80) then
-        move(-speed * deltaTime, 0)
-
-    elseif isKeyPressed(81) then
-        move(0, speed * deltaTime)
-
-    elseif isKeyPressed(82) then
-        move(0, -speed * deltaTime)
+    if inputManager.isKeyPressed(KEY_RIGHT) then
+        move(vec2.new(speed * deltaTime, 0))
+    elseif inputManager.isKeyPressed(KEY_LEFT) then
+        move(vec2.new(-speed * deltaTime, 0))
+    elseif inputManager.isKeyPressed(KEY_UP) then
+        move(vec2.new(0, -speed * deltaTime * 10))
     end
 end
 ```

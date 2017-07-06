@@ -18,11 +18,11 @@ namespace cerium
             ^[description][Casting this object to other, given type]
             ^[returns][Casted object]
          */
-        template <typename T>
-                T* cast_to(void) //^header
+        template<typename T>
+            T* cast_to(void) //^header
         {
             return dynamic_cast<T*>(this);
-        };
+        }
     };
 }
 

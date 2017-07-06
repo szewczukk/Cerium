@@ -8,6 +8,9 @@
 #include "../include/Cerium/ActManager.hpp"
 #include "../include/Cerium/Window.hpp"
 #include "../include/Cerium/Resource.hpp"
+#include "../include/Cerium/Font.hpp"
+#include "../include/Cerium/Texture.hpp"
+#include "../include/Cerium/Clock.hpp"
 
 #include <fstream>
 
@@ -118,7 +121,6 @@ namespace cerium
         person.set_function("addChild", &Person::addChild);
         person.set_function("childExist", &Person::childExist);
         person.set_function("getChild", &Person::getChild);
-        person.set_function("cast_to", &Person::cast_to);
 
         state.new_usertype<Act>("Act",
                                 "draw", &Act::draw, "update", &Act::update,
@@ -126,13 +128,14 @@ namespace cerium
                                 "clear", &Act::clear, "exist", &Act::exist, "get", &Act::get);
 
         sol::constructor_list <sol::types<Person*, Prop*, const std::string &>> propConstructors;
-        state.new_usertype<Prop>("Prop", propConstructors,
+        auto prop = state.new_usertype<Prop>("Prop", propConstructors,
                                  "getName", &Prop::getName, "getPerson", &Prop::getPerson,
                                  "getParent", &Prop::getParent, "exist", &Prop::exist,
-                                 "addChild", &Prop::addChild, "getChild", &Prop::getChild,
-                                 "cast_to", &Prop::cast_to);
+                                 "addChild", &Prop::addChild, "getChild", &Prop::getChild);
+        prop.set_function("cast_to", sol::overload(Prop::cast_to<Texture>, Prop::cast_to<Label>));
 
-        state.new_usertype<Resource>("Resource", "use", &Resource::use, "cast_to", &Resource::cast_to);
+        auto resource = state.new_usertype<Resource>("Resource", "use", &Resource::use);
+        resource.set_function("cast_to", sol::overload(Resource::cast_to<Font>, Resource::cast_to<TextureSource>));
 
         state["init"]();
     }
