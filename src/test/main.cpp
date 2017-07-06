@@ -26,7 +26,7 @@ class Player : public cerium::Person
 public:
     Player(const std::string & name, cerium::Person * parent, cerium::Act * baseAct) : cerium::Person(name, parent, baseAct)
     {
-        setPosition({136, 86});
+        setPosition({150, 0});
         setSize({64});
         setRotation(0);
 
@@ -123,11 +123,12 @@ int main()
         cerium::EventManager::pollEvents();
         cerium::Window::clear();
 
-        if(cerium::ActManager::get("main")->get("other")->getProp("name")->cast_to<cerium::Button>()->isClicked() ||
-                cerium::EventManager::isKeyPressed(SDL_SCANCODE_ESCAPE) || cerium::EventManager::isWindowClosed())
+        if(cerium::ActManager::get("main")->get("other")->getProp("name")->cast_to<cerium::Button>()->isClicked())
         {
             closed = true;
         }
+        cerium::ActManager::get("main")->get("player")->getProp("rigidBody")->cast_to<cerium::RigidBody>()->setStanding(
+                cerium::ActManager::get("main")->get("player")->getPosition().y > 200);
 
         cerium::ActManager::updateCurrent(cerium::ResourceManager::get("timer")->cast_to<cerium::Clock>()->getElapsedTime());
         cerium::ActManager::drawCurrent();

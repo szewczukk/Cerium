@@ -38,6 +38,12 @@ namespace cerium
     }
 
 
+    vec2 l_getPosition(void)
+    {
+        return bPerson->getPosition();
+    }
+
+
     Scriptable::Scriptable(Person * basePerson, Prop * parent, const std::string & name, const std::string & path)
             : Prop(basePerson, parent, name)
     {
@@ -61,6 +67,14 @@ namespace cerium
 
         state.set_function("setPosition", l_setPosition);
         state.set_function("setRotation", l_setRotation);
+
+        state.set_function("getPosition", l_getPosition);
+
+        state.set("KEY_LEFT", SDL_SCANCODE_LEFT);
+        state.set("KEY_RIGHT", SDL_SCANCODE_RIGHT);
+        state.set("KEY_UP", SDL_SCANCODE_UP);
+        state.set("KEY_ESCAPE", SDL_SCANCODE_ESCAPE);
+        state.set("KEY_DOWN", SDL_SCANCODE_DOWN);
 
         sol::table inputManager = state.create_named_table("inputManager");
         inputManager.set_function("isKeyPressed", &EventManager::isKeyPressed);

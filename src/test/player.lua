@@ -1,39 +1,18 @@
 local speed = 100
 
-local velocity
-
 -- Function running once, at start of game
 function init()
-    velocity = vec2.new(0)
+
 end
 
 
 -- Function running non-stop
 function update(deltaTime)
-    if inputManager.isKeyPressed(79) then
-        if velocity.x == 0 then
-            velocity.x = velocity.x + speed * deltaTime
-        end
-
-    elseif inputManager.isKeyPressed(80) then
-        if velocity.x == 0 then
-            velocity.x = velocity.x - speed * deltaTime
-        end
-    else
-        velocity.x = 0
+    if inputManager.isKeyPressed(KEY_RIGHT) then
+        move(vec2.new(speed * deltaTime, 0))
+    elseif inputManager.isKeyPressed(KEY_LEFT) then
+        move(vec2.new(-speed * deltaTime, 0))
+    elseif inputManager.isKeyPressed(KEY_UP) then
+        move(vec2.new(0, -speed * deltaTime * 10))
     end
-
-    if inputManager.isKeyPressed(81) then
-        if velocity.y == 0 then
-            velocity.y = velocity.y + speed * deltaTime
-        end
-    elseif inputManager.isKeyPressed(82) then
-        if velocity.y == 0 then
-            velocity.y = velocity.y - speed * deltaTime
-        end
-    else
-        velocity.y = 0
-    end
-
-    move(velocity)
 end
