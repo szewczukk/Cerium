@@ -24,9 +24,9 @@ namespace cerium
 
     void Camera::update(ShaderProgram * shaderProgram)
     {
-        instance().ortho = glm::ortho(0.0f, instance().size.x, instance().size.y, 0.0f);
-        instance().ortho = glm::translate(instance().ortho, {instance().position.x, instance().position.y, 0});
-        shaderProgram->setMatUniform("projection", instance().ortho);
+        instance().projection = glm::ortho(0.0f, instance().size.x, instance().size.y, 0.0f);
+        instance().projection = glm::translate(instance().projection, {instance().position.x, instance().position.y, 0});
+        shaderProgram->setMatUniform("projection", instance().projection);
     }
 
 

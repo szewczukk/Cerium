@@ -45,7 +45,11 @@ namespace cerium
             ^[argument]<size>[New size of Camera]
         */
         static void setSize(const vec2 & size); //^header
-
+        /*
+            ^[name][getPosition]
+            ^[class][Camera]
+            ^[returns][Position of Camera]
+        */
         static vec2 getPosition();
     private:
         static Camera & instance();
@@ -56,7 +60,7 @@ namespace cerium
         Camera(const Camera & other) = delete;
         void operator=(const Camera & other) = delete;
     private:
-        glm::mat4 ortho;
+        glm::mat4 projection;
         vec2 position;
         vec2 size;
 
