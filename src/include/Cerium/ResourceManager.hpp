@@ -4,7 +4,7 @@
 #include "Resource.hpp"
 
 #include <string>
-#include <unordered_map>
+#include <vector>
 
 namespace cerium
 {
@@ -56,7 +56,7 @@ namespace cerium
         ResourceManager(const ResourceManager & other) = delete;
         void operator=(const ResourceManager & other) = delete;
     private:
-        std::unordered_map<std::string, Resource *> resources;
+        std::vector<std::pair<std::string, Resource *>> resources;
     };
 }
 

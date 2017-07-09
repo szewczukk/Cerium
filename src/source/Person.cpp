@@ -86,7 +86,7 @@ namespace cerium
 
     void Person::addProp(Prop * component)
     {
-        this->props[component->getName()] = component;
+        props.push_back(std::pair<std::string, Prop*>(component->getName(), component));
     }
 
 
@@ -120,7 +120,7 @@ namespace cerium
     {
         if(!childExist(person->getName()))
         {
-            children[person->getName()] = person;
+            children.push_back(std::pair<std::string, Person*>(person->getName(), person));
         }
     }
 

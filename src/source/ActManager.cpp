@@ -28,7 +28,10 @@ namespace cerium
 
     void ActManager::add(const std::string & name, Act * act)
     {
-        if(!exist(name)) instance().acts[name] = act;
+        if(!exist(name))
+        {
+            instance().acts.push_back(std::pair<std::string, Act*>(name, act));
+        }
     }
 
 
@@ -43,7 +46,10 @@ namespace cerium
 
     void ActManager::remove(const std::string & name)
     {
-        delete instance().acts[name];
+        for (auto & act : instance().acts)
+        {
+            if (act.first == name) delete act.second;
+        }
     }
 
 

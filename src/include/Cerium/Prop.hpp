@@ -1,7 +1,8 @@
 #ifndef CERIUM_PROP_HPP
 #define CERIUM_PROP_HPP
 
-#include <map>
+#include <vector>
+#include <string>
 
 namespace cerium
 {
@@ -100,7 +101,7 @@ namespace cerium
         {
             if(!exist(prop->getName()))
             {
-                children[prop->getName()] = prop;
+                children.push_back(std::pair<std::string, Prop*>(prop->getName(), prop));
             }
         }
         /*
@@ -132,7 +133,7 @@ namespace cerium
         Person * basePerson;
         Prop * parent;
         std::string name;
-        std::map<std::string, Prop*> children;
+        std::vector<std::pair<std::string, Prop*>> children;
     };
 }
 

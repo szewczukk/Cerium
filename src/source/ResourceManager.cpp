@@ -17,7 +17,10 @@ namespace cerium
 
     void ResourceManager::add(const std::string & name, Resource * resource)
     {
-        if(!exist(name)) instance().resources[name] = resource;
+        if(!exist(name))
+        {
+            instance().resources.push_back(std::pair<std::string, Resource*>(name, resource));
+        }
     }
 
 

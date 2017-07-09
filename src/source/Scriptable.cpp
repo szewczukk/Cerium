@@ -132,10 +132,8 @@ namespace cerium
                                  "getName", &Prop::getName, "getPerson", &Prop::getPerson,
                                  "getParent", &Prop::getParent, "exist", &Prop::exist,
                                  "addChild", &Prop::addChild, "getChild", &Prop::getChild);
-        prop.set_function("cast_to", sol::overload(Prop::cast_to<Texture>, Prop::cast_to<Label>));
 
         auto resource = state.new_usertype<Resource>("Resource", "use", &Resource::use);
-        resource.set_function("cast_to", sol::overload(Resource::cast_to<Font>, Resource::cast_to<TextureSource>));
 
         state["init"]();
     }

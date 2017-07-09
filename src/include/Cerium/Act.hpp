@@ -1,7 +1,7 @@
 #ifndef CERIUM_ACT_HPP
 #define CERIUM_ACT_HPP
 
-#include <unordered_map>
+#include <vector>
 #include <iostream>
 
 namespace cerium
@@ -59,7 +59,7 @@ namespace cerium
         */
         Person * get(const std::string & name); //^header
     protected:
-        std::unordered_map<std::string, Person*> persons;
+        std::vector<std::pair<std::string, Person*>> persons;
     };
 }
 

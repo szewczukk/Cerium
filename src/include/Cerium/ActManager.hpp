@@ -1,7 +1,8 @@
 #ifndef CERIUM_ACTMANAGER_HPP
 #define CERIUM_ACTMANAGER_HPP
 
-#include <unordered_map>
+#include <vector>
+#include <string>
 
 namespace cerium
 {
@@ -71,7 +72,7 @@ namespace cerium
         ActManager(const ActManager & other) = delete;
         void operator=(const ActManager & other) = delete;
     private:
-        std::unordered_map<std::string, Act*> acts;
+        std::vector<std::pair<std::string, Act*>> acts;
         Act * currentAct;
     };
 }

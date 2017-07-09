@@ -28,14 +28,17 @@ namespace cerium
     {
         if(!exist(person->getName()))
         {
-            this->persons[person->getName()] = person;
+            persons.push_back(std::pair<std::string, Person*>(person->getName(), person));
         }
     }
 
 
     void Act::remove(const std::string name)
     {
-        delete persons[name];
+        for (auto & person : persons)
+        {
+            if (person.first == name) delete person.second;
+        }
     }
 
 

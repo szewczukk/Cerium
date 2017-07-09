@@ -1,7 +1,7 @@
 #ifndef CERIUM_PERSON_HPP
 #define CERIUM_PERSON_HPP
 
-#include <map>
+#include <vector>
 #include <iostream>
 
 #include "vec2.hpp"
@@ -157,8 +157,8 @@ namespace cerium
         Person * parent;
         float rotation;
         std::string name;
-        std::map<std::string, Prop*> props;
-        std::map<std::string, Person*> children;
+        std::vector<std::pair<std::string, Prop*>> props;
+        std::vector<std::pair<std::string, Person*>> children;
     };
 }
 
