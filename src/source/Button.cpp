@@ -22,6 +22,8 @@ namespace cerium
         this->m_isHovered = false;
 
     }
+
+
     void Button::update(const float & deltaTime)
     {
         Prop::update(deltaTime);
@@ -49,10 +51,14 @@ namespace cerium
             m_isClicked = false;
         }
     }
+
+
     bool Button::isHovered()
     {
         return m_isHovered;
     }
+
+
     bool Button::isClicked()
     {
         return m_isClicked;

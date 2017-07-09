@@ -2,7 +2,6 @@
 
 #include "../include/Cerium/Font.hpp"
 #include "../include/Cerium/Person.hpp"
-#include "../include/Cerium/ResourceManager.hpp"
 #include "../include/Cerium/ShaderProgram.hpp"
 
 namespace cerium
@@ -68,6 +67,8 @@ namespace cerium
             SDL_FreeSurface(surface);
 
             glBindTexture(GL_TEXTURE_2D, 0);
+
+            changed = false;
         }
     }
 
