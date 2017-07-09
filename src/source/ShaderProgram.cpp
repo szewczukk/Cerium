@@ -9,11 +9,14 @@ namespace cerium
 {
     ShaderProgram::ShaderProgram(const std::string & vertexShaderPath, const std::string & fragmentShaderPath)
     {
+        std::string vertexShaderFilePath = "res/shaders/" + vertexShaderPath;
+        std::string fragmentShaderFilePath = "res/shaders/" + fragmentShaderPath;
+
         GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
         GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
 
         std::string vertexShaderFileSource;
-        std::ifstream vertexShaderFile(vertexShaderPath);
+        std::ifstream vertexShaderFile(vertexShaderFilePath);
 
         std::string line;
         while(std::getline(vertexShaderFile, line))
@@ -23,7 +26,7 @@ namespace cerium
         vertexShaderFile.close();
 
         std::string fragmentShaderFileSource;
-        std::ifstream fragmentShaderFile(fragmentShaderPath);
+        std::ifstream fragmentShaderFile(fragmentShaderFilePath);
 
         while(std::getline(fragmentShaderFile, line))
         {

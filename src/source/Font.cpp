@@ -6,7 +6,9 @@ namespace cerium
     {
         TTF_Init();
 
-        font = TTF_OpenFont(path.c_str(), size);
+        std::string filePath = "res/fonts/" + path;
+
+        font = TTF_OpenFont(filePath.c_str(), size);
     }
 
 

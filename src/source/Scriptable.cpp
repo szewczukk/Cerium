@@ -53,7 +53,9 @@ namespace cerium
     {
         bPerson = basePerson;
 
-        std::ifstream file(path.c_str());
+        std::string filePath = "res/scripts/" + path;
+
+        std::ifstream file(filePath.c_str());
         std::string content;
         std::string line;
         while(std::getline(file, line))
