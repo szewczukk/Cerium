@@ -86,6 +86,35 @@ std::string title_of_window()
     return caption->first_attribute("title")->value();
 }
 
+void load_resources()
+{
+    rapidxml::file<> file("data.xml");
+    rapidxml::xml_document<> document;
+    document.parse<0>(file.data());
+
+    rapidxml::xml_node<> * root = document.first_node("data");
+
+    for(rapidxml::xml_node<> * d = root->first_node("resource"); d; d = d->next_sibling("resource"))
+    {
+        std::string name = d->first_attribute("name")->value();
+        std::string type = d->first_attribute("type")->value();
+
+        if(type == "textureSource")
+        {
+            cerium::ResourceManager::add(name, new cerium::TextureSource(d->first_attribute("path")->value()));
+        }
+        else if (type == "clock")
+        {
+            cerium::ResourceManager::add(name, new cerium::Clock);
+        }
+        else if (type == "font")
+        {
+            cerium::ResourceManager::add(name, new cerium::Font(d->first_attribute("path")->value(),
+                                                                static_cast<unsigned int>(atoi(d->first_attribute("size")->value()))));
+        }
+    }
+}
+
 int main()
 {
     cerium::Window::setSize(size_of_window());
@@ -94,15 +123,18 @@ int main()
     cerium::Window::init();
     cerium::Camera::init();
 
-    cerium::ResourceManager::add("texture", new cerium::TextureSource("texture.png"));
+
+    load_resources();
+
+    /*cerium::ResourceManager::add("texture", new cerium::TextureSource("texture.png"));
     cerium::ResourceManager::add("timer", new cerium::Clock);
     cerium::ResourceManager::add("font", new cerium::Font("font.ttf", 32));
 
-    cerium::ActManager::add("main", new MyAct);
-    cerium::ActManager::setCurrent("main");
-
     cerium::ResourceManager::add("fpsTimer", new cerium::Clock);
-    cerium::ResourceManager::get("fpsTimer")->use();
+    cerium::ResourceManager::get("fpsTimer")->use();*/
+
+    cerium::ActManager::add("main", new MyAct);
+    cerium::ActManager::setCurrent("main");;
 
     int frameNumber = 0;
 
