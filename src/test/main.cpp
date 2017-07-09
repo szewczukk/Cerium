@@ -52,16 +52,6 @@ public:
     }
 };
 
-class MyAct : public cerium::Act
-{
-public:
-    MyAct()
-    {
-        add(new Player("player", nullptr, this));
-        add(new Other("other", nullptr, this));
-    }
-};
-
 cerium::vec2 size_of_window()
 {
     rapidxml::file <> file("settings.xml");
@@ -123,17 +113,12 @@ int main()
     cerium::Window::init();
     cerium::Camera::init();
 
-
     load_resources();
 
-    /*cerium::ResourceManager::add("texture", new cerium::TextureSource("texture.png"));
-    cerium::ResourceManager::add("timer", new cerium::Clock);
-    cerium::ResourceManager::add("font", new cerium::Font("font.ttf", 32));
+    cerium::ActManager::add("main");
+    cerium::ActManager::get("main")->add(new Player("player", nullptr, cerium::ActManager::get("main")));
+    cerium::ActManager::get("main")->add(new Other("other", nullptr, cerium::ActManager::get("main")));
 
-    cerium::ResourceManager::add("fpsTimer", new cerium::Clock);
-    cerium::ResourceManager::get("fpsTimer")->use();*/
-
-    cerium::ActManager::add("main", new MyAct);
     cerium::ActManager::setCurrent("main");;
 
     int frameNumber = 0;

@@ -22,10 +22,9 @@ namespace cerium
             ^[name][add]
             ^[class][ActManager]
             ^[argument]<name>[Name of Act]
-            ^[argument]<act>[Pointer to Act to store]
             ^[description][Adding new Act to storage with given name]
         */
-        static void add(const std::string & name, Act * act); //^header
+        static void add(const std::string & name); //^header
         /*
             ^[name][updateCurrent]
             ^[class][ActManager]

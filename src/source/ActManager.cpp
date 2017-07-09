@@ -26,11 +26,11 @@ namespace cerium
     }
 
 
-    void ActManager::add(const std::string & name, Act * act)
+    void ActManager::add(const std::string & name)
     {
         if(!exist(name))
         {
-            instance().acts.push_back(std::pair<std::string, Act*>(name, act));
+            instance().acts.push_back(std::pair<std::string, Act*>(name, new Act));
         }
     }
 
