@@ -11,8 +11,8 @@ namespace cerium
                    : Prop(basePerson, parent, name)
     {
         addChild(new VertexArray(basePerson, this, "background", normalBackgroundColor, false));
-        addChild(new VertexArray(basePerson, this, "text", {255}, true));
         addChild(new Label(basePerson, this, "label", font, text, normalTextColor));
+        addChild(new VertexArray(basePerson, this, "text", {255}, true));
 
         this->m_normalBackground = normalBackgroundColor;
         this->m_normalText = normalTextColor;
@@ -20,7 +20,6 @@ namespace cerium
         this->m_hoveredText = hoveredTextColor;
         this->m_isClicked = false;
         this->m_isHovered = false;
-
     }
 
 

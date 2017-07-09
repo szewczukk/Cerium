@@ -46,8 +46,8 @@ public:
         setSize({64});
         setRotation(0);
 
-        addProp(new cerium::RigidBody(this, nullptr, "rigidBody", 0, 1));
-        addProp(new cerium::Button(this, nullptr, "name", {0, 0, 0, 255}, {255}, {255}, {0, 0, 0, 255}, "Exit", cerium::ResourceManager::get("font")->cast_to<cerium::Font>()));
+        addProp(new cerium::Button(this, nullptr, "button", {0, 0, 0, 255}, {255}, {255}, {0, 0, 0, 255}, "Exit",
+                                   cerium::ResourceManager::get("font")->cast_to<cerium::Font>()));
         addProp(new cerium::Scriptable(this, nullptr, "script", "script.lua"));
     }
 };
@@ -121,27 +121,11 @@ int main()
 
     cerium::ActManager::setCurrent("main");;
 
-    int frameNumber = 0;
-
     while(!cerium::EventManager::isWindowClosed())
     {
-        if(cerium::ResourceManager::get("fpsTimer")->cast_to<cerium::Clock>()->getElapsedTime() >= 1)
-        {
-            std::cout << "FPS counter: " << frameNumber << std::endl;
-            frameNumber = 0;
-            cerium::ResourceManager::get("fpsTimer")->use();
-        }
-
-        frameNumber++;
-
         cerium::ResourceManager::get("timer")->use();
         cerium::EventManager::pollEvents();
         cerium::Window::clear();
-
-        if(cerium::ActManager::get("main")->get("other")->getProp("name")->cast_to<cerium::Button>()->isClicked())
-        {
-            cerium::EventManager::closeWindow();
-        }
 
         cerium::ActManager::get("main")->get("player")->getProp("rigidBody")->cast_to<cerium::RigidBody>()->setStanding(
                 cerium::ActManager::get("main")->get("player")->getPosition().y > 200);

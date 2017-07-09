@@ -3,5 +3,4 @@
     <resource name="texture" type="textureSource" path="texture.png"/>
     <resource name="font" type="font" path="font.ttf" size="32"/>
     <resource name="timer" type="clock"/>
-    <resource name="fpsTimer" type="clock"/>
 </data>
