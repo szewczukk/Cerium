@@ -9,7 +9,7 @@
 #include "../include/Cerium/Window.hpp"
 #include "../include/Cerium/Resource.hpp"
 #include "../include/Cerium/Font.hpp"
-#include "../include/Cerium/Texture.hpp"
+#include "../include/Cerium/Costumed.hpp"
 #include "../include/Cerium/Clock.hpp"
 
 #include <fstream>

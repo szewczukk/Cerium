@@ -1,8 +1,8 @@
-#include "../include/Cerium/TextureSource.hpp"
+#include "../include/Cerium/Costume.hpp"
 
 namespace cerium
 {
-    TextureSource::TextureSource(const std::string & path)
+    Costume::Costume(const std::string & path)
     {
         IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG | IMG_INIT_TIF | IMG_INIT_WEBP);
 
@@ -14,7 +14,7 @@ namespace cerium
     }
 
 
-    TextureSource::~TextureSource()
+    Costume::~Costume()
     {
         SDL_FreeSurface(surface);
     }

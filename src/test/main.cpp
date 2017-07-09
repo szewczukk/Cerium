@@ -10,8 +10,8 @@
 #include "../include/Cerium/ShaderProgram.hpp"
 #include "../include/Cerium/Person.hpp"
 #include "../include/Cerium/Clock.hpp"
-#include "../include/Cerium/Texture.hpp"
-#include "../include/Cerium/TextureSource.hpp"
+#include "../include/Cerium/Costumed.hpp"
+#include "../include/Cerium/Costume.hpp"
 #include "../include/Cerium/Font.hpp"
 #include "../include/Cerium/Label.hpp"
 
@@ -30,7 +30,7 @@ public:
         setSize({64});
         setRotation(0);
 
-        addProp(new cerium::Texture(this, nullptr, "texture", cerium::ResourceManager::get("texture")->cast_to<cerium::TextureSource>()));
+        addProp(new cerium::Costumed(this, nullptr, "texture", cerium::ResourceManager::get("texture")->cast_to<cerium::Costume>()));
         addProp(new cerium::RigidBody(this, nullptr, "rigidBody", 1, 1));
         addProp(new cerium::VertexArray(this, nullptr, "vertexArray", {1.0, 0.0, 1.0, 1.0}, true));
         addProp(new cerium::Scriptable(this, nullptr, "script", "player.lua"));
@@ -46,9 +46,9 @@ public:
         setSize({64});
         setRotation(0);
 
+        addProp(new cerium::Scriptable(this, nullptr, "script", "script.lua"));
         addProp(new cerium::Button(this, nullptr, "button", {0, 0, 0, 255}, {255}, {255}, {0, 0, 0, 255}, "Exit",
                                    cerium::ResourceManager::get("font")->cast_to<cerium::Font>()));
-        addProp(new cerium::Scriptable(this, nullptr, "script", "script.lua"));
     }
 };
 
@@ -89,9 +89,9 @@ void load_resources()
         std::string name = d->first_attribute("name")->value();
         std::string type = d->first_attribute("type")->value();
 
-        if(type == "textureSource")
+        if(type == "costume")
         {
-            cerium::ResourceManager::add(name, new cerium::TextureSource(d->first_attribute("path")->value()));
+            cerium::ResourceManager::add(name, new cerium::Costume(d->first_attribute("path")->value()));
         }
         else if (type == "clock")
         {

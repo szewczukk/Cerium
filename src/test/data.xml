@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <data>
-    <resource name="texture" type="textureSource" path="texture.png"/>
+    <resource name="texture" type="costume" path="texture.png"/>
     <resource name="font" type="font" path="font.ttf" size="32"/>
     <resource name="timer" type="clock"/>
 </data>

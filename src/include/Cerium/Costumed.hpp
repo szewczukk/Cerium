@@ -11,26 +11,26 @@
 namespace cerium
 {
     class Person;
-    class TextureSource;
-    class Texture : public Prop
+    class Costume;
+    class Costumed : public Prop
     {
     public:
         /*
-            ^[name][Texture]
-            ^[class][Texture]
-            ^[description][Creating Texture by source]
+            ^[name][Costumed]
+            ^[class][Costumed]
+            ^[description][Creating Costumed by source]
             ^[argument]<basePerson>[Person where the Label is]
             ^[argument]<parent>[Parent Prop of this Prop]
             ^[argument]<name>[Name of Prop]
-            ^[argument]<source>[Source of Texture]
+            ^[argument]<source>[Source of Costumed]
          */
-        Texture(Person * basePerson, Prop * parent, const std::string & name, TextureSource * source); //^header
+        Costumed(Person * basePerson, Prop * parent, const std::string & name, Costume * source); //^header
         /*
-            ^[name][~Texture]
-            ^[class][Texture]
-            ^[description][Deleting Texture]
+            ^[name][~Costumed]
+            ^[class][Costumed]
+            ^[description][Deleting Costumed]
          */
-        ~Texture(); //^header
+        ~Costumed(); //^header
 
         virtual void draw(void) override;
     private:

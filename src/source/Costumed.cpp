@@ -1,11 +1,11 @@
-#include "../include/Cerium/Texture.hpp"
+#include "../include/Cerium/Costumed.hpp"
 
 #include "../include/Cerium/Person.hpp"
-#include "../include/Cerium/TextureSource.hpp"
+#include "../include/Cerium/Costume.hpp"
 
 namespace cerium
 {
-    Texture::Texture(Person * basePerson, Prop * parent, const std::string & name, TextureSource * source) : Prop(basePerson, parent, name)
+    Costumed::Costumed(Person * basePerson, Prop * parent, const std::string & name, Costume * source) : Prop(basePerson, parent, name)
     {
         glGenTextures(1, &texture);
 
@@ -24,12 +24,12 @@ namespace cerium
     }
 
 
-    Texture::~Texture()
+    Costumed::~Costumed()
     {
         glDeleteTextures(1, &texture);
     }
 
-    void Texture::draw(void)
+    void Costumed::draw(void)
     {
         glBindTexture(GL_TEXTURE_2D, texture);
     }
