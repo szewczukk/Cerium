@@ -13,7 +13,7 @@ namespace cerium
         for (auto & person : this->persons)
         {
             ResourceManager::get("spriteShader")->use();
-            cerium::Camera::update(dynamic_cast<cerium::ShaderProgram*>(cerium::ResourceManager::get("spriteShader")));
+            cerium::Camera::update(cerium::ResourceManager::get("spriteShader")->cast_to<cerium::ShaderProgram>());
 
             person.second->draw();
         }

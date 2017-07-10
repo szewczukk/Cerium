@@ -24,37 +24,6 @@
 #include <rapidxml.hpp>
 #include <rapidxml_utils.hpp>
 
-class Player : public cerium::Person
-{
-public:
-    Player(const std::string & name, cerium::Person * parent, cerium::Act * baseAct) : cerium::Person(name, parent, baseAct)
-    {
-        setPosition({150, 0});
-        setSize({64});
-        setRotation(0);
-
-        addProp(new cerium::Costumed(this, nullptr, "texture", cerium::ResourceManager::get("texture")->cast_to<cerium::Costume>()));
-        addProp(new cerium::RigidBody(this, nullptr, "rigidBody", 1, 1));
-        addProp(new cerium::VertexArray(this, nullptr, "vertexArray", {1.0, 0.0, 1.0, 1.0}, true));
-        addProp(new cerium::Scriptable(this, nullptr, "script", cerium::ResourceManager::get("playerScript")->cast_to<cerium::Script>()));
-    }
-};
-
-class Other : public cerium::Person
-{
-public:
-    Other(const std::string & name, cerium::Person * parent, cerium::Act * baseAct) : cerium::Person(name, parent, baseAct)
-    {
-        setPosition({10});
-        setSize({64});
-        setRotation(0);
-
-        addProp(new cerium::Scriptable(this, nullptr, "script", cerium::ResourceManager::get("script")->cast_to<cerium::Script>()));
-        addProp(new cerium::Button(this, nullptr, "button", {0, 0, 0, 255}, {255}, {255}, {0, 0, 0, 255}, "Exit",
-                                   cerium::ResourceManager::get("font")->cast_to<cerium::Font>()));
-    }
-};
-
 rapidxml::file <> file("settings.xml");
 rapidxml::xml_document<> settings;
 
@@ -121,6 +90,68 @@ void load_resources()
 void load_scenes()
 {
     rapidxml::file<> file("scenes.xml");
+    rapidxml::xml_document<> document;
+    document.parse<0>(file.data());
+
+    rapidxml::xml_node <> * root = document.first_node("scenes");
+    for(rapidxml::xml_node <> * scene = root->first_node("scene"); scene; scene=scene->next_sibling("scene"))
+    {
+        std::string sceneName = scene->first_attribute("name")->value();
+        cerium::ActManager::add(sceneName);
+        cerium::Act * act = cerium::ActManager::get(sceneName);
+
+        std::string isCurrent = scene->first_attribute("current")->value();
+        if(isCurrent == "True") cerium::ActManager::setCurrent(sceneName);
+
+        for(rapidxml::xml_node <> * person = scene->first_node("person"); person; person=person->next_sibling("person"))
+        {
+            std::string personName = person->first_attribute("name")->value();
+            cerium::vec2 position = {atoi(person->first_attribute("x")->value()), atoi(person->first_attribute("y")->value())};
+            cerium::vec2 size = {atoi(person->first_attribute("w")->value()), atoi(person->first_attribute("h")->value())};
+            float angle = atoi(person->first_attribute("angle")->value());
+
+            act->add(new cerium::Person(personName, nullptr, act));
+            cerium::Person * per = act->get(personName);
+
+            per->setPosition(position);
+            per->setSize(size);
+            per->setRotation(angle);
+
+            for(rapidxml::xml_node <> * prop = person->first_node("prop"); prop; prop=prop->next_sibling("prop"))
+            {
+                std::string type = prop->first_attribute("type")->value();
+                std::string name = prop->first_attribute("name")->value();
+
+                if(type == "costumed")
+                {
+                    std::string costumeName = prop->first_attribute("costume_name")->value();
+                    per->addProp(new cerium::Costumed(per, nullptr, name, cerium::ResourceManager::get(costumeName)->cast_to<cerium::Costume>()));
+                }
+                else if (type == "rigidBody")
+                {
+                    float gravityScale = atoi(prop->first_attribute("gravity_scale")->value());
+                    float mass = atoi(prop->first_attribute("mass")->value());
+                    per->addProp(new cerium::RigidBody(per, nullptr, name, gravityScale, mass));
+                }
+                else if (type == "vertexArray")
+                {
+                    cerium::vec4 color = {atoi(prop->first_attribute("r")->value()),
+                                          atoi(prop->first_attribute("g")->value()),
+                                          atoi(prop->first_attribute("b")->value()),
+                                          atoi(prop->first_attribute("a")->value())};
+                    std::string texturedValue = prop->first_attribute("textured")->value();
+                    bool textured = texturedValue == "True";
+
+                    per->addProp(new cerium::VertexArray(per, nullptr, name, color, textured));
+                }
+                else if (type == "scriptable")
+                {
+                    std::string scriptName = prop->first_attribute("script")->value();
+                    per->addProp(new cerium::Scriptable(per, nullptr, name, cerium::ResourceManager::get(scriptName)->cast_to<cerium::Script>()));
+                }
+            }
+        }
+    }
 }
 
 
@@ -129,8 +160,6 @@ int main()
     settings.parse<0>(file.data());
 
     bool debug_mode = is_debug_mode();
-
-    std::cout << debug_mode << std::endl;
 
     cerium::Window::setSize(size_of_window());
     cerium::Window::setTitle(title_of_window());
@@ -150,11 +179,7 @@ int main()
         cerium::ResourceManager::get("fpsTimer")->use();
     }
 
-    cerium::ActManager::add("main");
-    cerium::ActManager::get("main")->add(new Player("player", nullptr, cerium::ActManager::get("main")));
-    cerium::ActManager::get("main")->add(new Other("other", nullptr, cerium::ActManager::get("main")));
-
-    cerium::ActManager::setCurrent("main");
+    load_scenes();
 
     while(!cerium::EventManager::isWindowClosed())
     {
@@ -165,6 +190,7 @@ int main()
             {
                 std::cout << "FPS " << frames << std::endl;
                 frames = 0;
+
                 cerium::ResourceManager::get("fpsTimer")->use();
             }
         }
@@ -172,9 +198,6 @@ int main()
         cerium::ResourceManager::get("timer")->use();
         cerium::EventManager::pollEvents();
         cerium::Window::clear();
-
-        cerium::ActManager::get("main")->get("player")->getProp("rigidBody")->cast_to<cerium::RigidBody>()->setStanding(
-                cerium::ActManager::get("main")->get("player")->getPosition().y > 200);
 
         cerium::ActManager::updateCurrent(cerium::ResourceManager::get("timer")->cast_to<cerium::Clock>()->getElapsedTime());
         cerium::ActManager::drawCurrent();
