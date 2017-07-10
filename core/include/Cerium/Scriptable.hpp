@@ -10,6 +10,7 @@
 namespace cerium
 {
     class Person;
+    class Script;
     class Scriptable : public Prop
     {
     public:
@@ -22,11 +23,12 @@ namespace cerium
             ^[argument]<name>[Name of Prop]
             ^[argument]<path>[Path to script]
          */
-        Scriptable(Person * basePerson, Prop * parent, const std::string & name, const std::string & path); //^header
+        Scriptable(Person * basePerson, Prop * parent, const std::string & name, Script * script); //^header
 
         virtual void update(const float & deltaTime) override;
     private:
-        sol::state state;
+        sol::state * state;
+        sol::function updatefun;
     };
 }
 

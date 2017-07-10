@@ -19,6 +19,8 @@
 #include "../include/Cerium/RigidBody.hpp"
 #include "../include/Cerium/DebugLog.hpp"
 
+#include "../include/Cerium/Script.hpp"
+
 #include <rapidxml.hpp>
 #include <rapidxml_utils.hpp>
 
@@ -34,7 +36,7 @@ public:
         addProp(new cerium::Costumed(this, nullptr, "texture", cerium::ResourceManager::get("texture")->cast_to<cerium::Costume>()));
         addProp(new cerium::RigidBody(this, nullptr, "rigidBody", 1, 1));
         addProp(new cerium::VertexArray(this, nullptr, "vertexArray", {1.0, 0.0, 1.0, 1.0}, true));
-        addProp(new cerium::Scriptable(this, nullptr, "script", "player.lua"));
+        addProp(new cerium::Scriptable(this, nullptr, "script", cerium::ResourceManager::get("playerScript")->cast_to<cerium::Script>()));
     }
 };
 
@@ -47,7 +49,7 @@ public:
         setSize({64});
         setRotation(0);
 
-        addProp(new cerium::Scriptable(this, nullptr, "script", "script.lua"));
+        addProp(new cerium::Scriptable(this, nullptr, "script", cerium::ResourceManager::get("script")->cast_to<cerium::Script>()));
         addProp(new cerium::Button(this, nullptr, "button", {0, 0, 0, 255}, {255}, {255}, {0, 0, 0, 255}, "Exit",
                                    cerium::ResourceManager::get("font")->cast_to<cerium::Font>()));
     }
@@ -108,7 +110,17 @@ void load_resources()
             cerium::ResourceManager::add(name, new cerium::Font(d->first_attribute("path")->value(),
                                                                 static_cast<unsigned int>(atoi(d->first_attribute("size")->value()))));
         }
+        else if (type == "script")
+        {
+            cerium::ResourceManager::add(name, new cerium::Script(d->first_attribute("path")->value()));
+        }
     }
+}
+
+
+void load_scenes()
+{
+    rapidxml::file<> file("scenes.xml");
 }
 
 
