@@ -2,6 +2,9 @@
 #include "../include/Cerium/Act.hpp"
 
 #include "../include/Cerium/Person.hpp"
+#include "../include/Cerium/ResourceManager.hpp"
+#include "../include/Cerium/ShaderProgram.hpp"
+#include "../include/Cerium/Camera.hpp"
 
 namespace cerium
 {
@@ -9,7 +12,9 @@ namespace cerium
     {
         for (auto & person : this->persons)
         {
-            glBindTexture(GL_TEXTURE_2D, 0);
+            ResourceManager::get("spriteShader")->use();
+            cerium::Camera::update(dynamic_cast<cerium::ShaderProgram*>(cerium::ResourceManager::get("spriteShader")));
+
             person.second->draw();
         }
     }
