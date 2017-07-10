@@ -53,12 +53,12 @@ public:
     }
 };
 
+rapidxml::file <> file("settings.xml");
+rapidxml::xml_document<> settings;
+
+
 cerium::vec2 size_of_window()
 {
-    rapidxml::file <> file("settings.xml");
-    rapidxml::xml_document<> settings;
-    settings.parse<0>(file.data());
-
     rapidxml::xml_node <> * size = settings.first_node("settings")->first_node("size");
 
     int width = atoi(size->first_attribute("width")->value());
@@ -66,16 +66,21 @@ cerium::vec2 size_of_window()
     return { (float)width, (float)height};
 }
 
+
 std::string title_of_window()
 {
-    rapidxml::file <> file("settings.xml");
-    rapidxml::xml_document<> settings;
-    settings.parse<0>(file.data());
-
     rapidxml::xml_node <> * caption = settings.first_node("settings")->first_node("caption");
 
     return caption->first_attribute("title")->value();
 }
+
+
+bool is_debug_mode()
+{
+    std::string value = settings.first_node("settings")->first_attribute("debug_mode")->value();
+    return value == "True";
+}
+
 
 void load_resources()
 {
@@ -106,8 +111,15 @@ void load_resources()
     }
 }
 
+
 int main()
 {
+    settings.parse<0>(file.data());
+
+    bool debug_mode = is_debug_mode();
+
+    std::cout << debug_mode << std::endl;
+
     cerium::Window::setSize(size_of_window());
     cerium::Window::setTitle(title_of_window());
 
@@ -116,18 +128,35 @@ int main()
 
     cerium::DebugLog::init();
 
-    cerium::DebugLog::add("Hello World!");
-
     load_resources();
+
+    int frames = 0;
+
+    if (debug_mode)
+    {
+        cerium::ResourceManager::add("fpsTimer", new cerium::Clock);
+        cerium::ResourceManager::get("fpsTimer")->use();
+    }
 
     cerium::ActManager::add("main");
     cerium::ActManager::get("main")->add(new Player("player", nullptr, cerium::ActManager::get("main")));
     cerium::ActManager::get("main")->add(new Other("other", nullptr, cerium::ActManager::get("main")));
 
-    cerium::ActManager::setCurrent("main");;
+    cerium::ActManager::setCurrent("main");
 
     while(!cerium::EventManager::isWindowClosed())
     {
+        if(debug_mode)
+        {
+            frames++;
+            if(cerium::ResourceManager::get("fpsTimer")->cast_to<cerium::Clock>()->getElapsedTime() > 1)
+            {
+                std::cout << "FPS " << frames << std::endl;
+                frames = 0;
+                cerium::ResourceManager::get("fpsTimer")->use();
+            }
+        }
+
         cerium::ResourceManager::get("timer")->use();
         cerium::EventManager::pollEvents();
         cerium::Window::clear();

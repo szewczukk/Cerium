@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<settings>
+<settings debug_mode="True">
     <size width="400" height="300"/>
     <caption title="Cerium SDL OpenGL"/>
 </settings>
