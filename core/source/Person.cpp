@@ -1,6 +1,7 @@
 #include "../include/Cerium/Person.hpp"
 
 #include "../include/Cerium/Prop.hpp"
+#include "../include/Cerium/DebugLog.hpp"
 
 namespace cerium
 {
@@ -106,6 +107,7 @@ namespace cerium
         {
             if(prop.first == name) return prop.second;
         }
+        cerium::DebugLog::add(name + " prop from " + this->name + " cont't be returned");
         return nullptr;
     }
 
@@ -121,7 +123,9 @@ namespace cerium
         if(!childExist(person->getName()))
         {
             children.push_back(std::pair<std::string, Person*>(person->getName(), person));
+            return;
         }
+        cerium::DebugLog::add(name + " child from " + this->name + " already exists");
     }
 
 
@@ -141,6 +145,7 @@ namespace cerium
         {
             if(child.first == name) return child.second;
         }
+        cerium::DebugLog::add(name + " child from " + this->name + " can't be returned");
         return nullptr;
     }
 

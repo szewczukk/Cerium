@@ -1,4 +1,5 @@
 #include "../include/Cerium/Font.hpp"
+#include "../include/Cerium/DebugLog.hpp"
 
 namespace cerium
 {
@@ -9,6 +10,11 @@ namespace cerium
         std::string filePath = "res/fonts/" + path;
 
         font = TTF_OpenFont(filePath.c_str(), size);
+
+        if(font == NULL)
+        {
+            cerium::DebugLog::add(filePath + " font loading error!");
+        }
     }
 
 

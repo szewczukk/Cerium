@@ -5,6 +5,7 @@
 #include "../include/Cerium/ResourceManager.hpp"
 #include "../include/Cerium/ShaderProgram.hpp"
 #include "../include/Cerium/Camera.hpp"
+#include "../include/Cerium/DebugLog.hpp"
 
 namespace cerium
 {
@@ -12,8 +13,8 @@ namespace cerium
     {
         for (auto & person : this->persons)
         {
-            ResourceManager::get("spriteShader")->use();
-            cerium::Camera::update(cerium::ResourceManager::get("spriteShader")->cast_to<cerium::ShaderProgram>());
+            ResourceManager::get("shader")->use();
+            cerium::Camera::update(cerium::ResourceManager::get("shader")->cast_to<cerium::ShaderProgram>());
 
             person.second->draw();
         }
@@ -34,7 +35,9 @@ namespace cerium
         if(!exist(person->getName()))
         {
             persons.push_back(std::pair<std::string, Person*>(person->getName(), person));
+            return;
         }
+        cerium::DebugLog::add(person->getName() + " already exists");
     }
 
 
@@ -72,6 +75,7 @@ namespace cerium
         {
             if(person.first == name) return person.second;
         }
+        cerium::DebugLog::add(name + " person can't be returned");
         return nullptr;
     }
 }

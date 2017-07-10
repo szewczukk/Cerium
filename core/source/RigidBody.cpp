@@ -65,7 +65,7 @@ namespace cerium
         position = getPerson().getPosition();
 
         //TODO:
-        if(!standing) velocity += vec2(0, gravityScale * mass);
+        if (!standing) velocity.y += gravityScale * mass;
         else velocity.y = 0;
 
         getPerson().move(velocity * deltaTime);

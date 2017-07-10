@@ -1,6 +1,7 @@
 #include "../include/Cerium/ActManager.hpp"
 
 #include "../include/Cerium/Act.hpp"
+#include "../include/Cerium/DebugLog.hpp"
 
 namespace cerium
 {
@@ -10,6 +11,7 @@ namespace cerium
         {
             if (act.first == name) return act.second;
         }
+        cerium::DebugLog::add(name + " act can't be returned");
         return nullptr;
     }
 
@@ -31,7 +33,9 @@ namespace cerium
         if(!exist(name))
         {
             instance().acts.push_back(std::pair<std::string, Act*>(name, new Act));
+            return;
         }
+        cerium::DebugLog::add(name + " act already exists");
     }
 
 

@@ -1,4 +1,5 @@
 #include "../include/Cerium/ResourceManager.hpp"
+#include "../include/Cerium/DebugLog.hpp"
 
 namespace cerium
 {
@@ -11,6 +12,7 @@ namespace cerium
                 return resource.second;
             }
         }
+        cerium::DebugLog::add(name + " resource can't be returned");
         return nullptr;
     }
 
@@ -20,7 +22,9 @@ namespace cerium
         if(!exist(name))
         {
             instance().resources.push_back(std::pair<std::string, Resource*>(name, resource));
+            return;
         }
+        cerium::DebugLog::add(name + " resource already exists");
     }
 
 
@@ -38,8 +42,13 @@ namespace cerium
     {
         for(auto & resource : instance().resources)
         {
-            if(resource.first == name) delete resource.second;
+            if(resource.first == name)
+            {
+                delete resource.second;
+                return;
+            }
         }
+        cerium::DebugLog::add(name + " resource can't be removed");
     }
 
 

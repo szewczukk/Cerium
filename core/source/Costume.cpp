@@ -1,4 +1,5 @@
 #include "../include/Cerium/Costume.hpp"
+#include "../include/Cerium/DebugLog.hpp"
 
 namespace cerium
 {
@@ -9,6 +10,11 @@ namespace cerium
         std::string filePath = "res/images/" + path;
 
         surface = IMG_Load(filePath.c_str());
+
+        if(surface == NULL)
+        {
+            cerium::DebugLog::add(filePath + " texture loading error!");
+        }
 
         IMG_Quit();
     }

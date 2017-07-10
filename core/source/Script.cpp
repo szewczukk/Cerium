@@ -1,4 +1,5 @@
 #include "../include/Cerium/Script.hpp"
+#include "../include/Cerium/DebugLog.hpp"
 
 namespace cerium
 {
@@ -9,9 +10,16 @@ namespace cerium
         std::ifstream file(filePath.c_str());
         std::string content;
         std::string line;
-        while(std::getline(file, line))
+        if(file.is_open())
         {
-            content += line + "\n";
+            while(std::getline(file, line))
+            {
+                content += line + "\n";
+            }
+        }
+        else
+        {
+            cerium::DebugLog::add(filePath + " script can't be founded");
         }
 
         file.close();

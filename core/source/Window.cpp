@@ -2,6 +2,7 @@
 
 #include "../include/Cerium/ResourceManager.hpp"
 #include "../include/Cerium/ShaderProgram.hpp"
+#include "../include/Cerium/DebugLog.hpp"
 
 namespace cerium
 {
@@ -83,12 +84,22 @@ namespace cerium
                                                SDL_WINDOW_OPENGL);
         instance().context = SDL_GL_CreateContext(instance().window);
 
+        if(instance().window == NULL)
+        {
+            cerium::DebugLog::add("Window creation error!");
+        }
+        if(instance().context == NULL)
+        {
+            cerium::DebugLog::add("Context creation error!");
+        }
+
         glewExperimental = GL_TRUE;
-        glewInit();
+        if(glewInit() != GLEW_OK)
+        {
+            cerium::DebugLog::add("GLEW initialization error!");
+        }
 
         glEnable(GL_BLEND);
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
-        cerium::ResourceManager::add("spriteShader", new cerium::ShaderProgram("spriteVertexShader.glsl", "spriteFragmentShader.glsl"));
     }
 }

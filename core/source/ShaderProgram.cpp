@@ -1,4 +1,5 @@
 #include "../include/Cerium/ShaderProgram.hpp"
+#include "../include/Cerium/DebugLog.hpp"
 
 #include <fstream>
 #include <iostream>
@@ -19,18 +20,33 @@ namespace cerium
         std::ifstream vertexShaderFile(vertexShaderFilePath);
 
         std::string line;
-        while(std::getline(vertexShaderFile, line))
+        if(vertexShaderFile.is_open())
         {
-            vertexShaderFileSource += line + "\n";
+            while (std::getline(vertexShaderFile, line))
+            {
+                vertexShaderFileSource += line + "\n";
+            }
         }
+        else
+        {
+            cerium::DebugLog::add(vertexShaderFilePath + " vertexShader can't be loaded");
+        }
+
         vertexShaderFile.close();
 
         std::string fragmentShaderFileSource;
         std::ifstream fragmentShaderFile(fragmentShaderFilePath);
 
-        while(std::getline(fragmentShaderFile, line))
+        if(fragmentShaderFile.is_open())
         {
-            fragmentShaderFileSource += line + "\n";
+            while (std::getline(fragmentShaderFile, line))
+            {
+                fragmentShaderFileSource += line + "\n";
+            }
+        }
+        else
+        {
+            cerium::DebugLog::add(fragmentShaderFilePath + " fragmentShader can't be loaded");
         }
         fragmentShaderFile.close();
 
@@ -76,19 +92,43 @@ namespace cerium
 
     void ShaderProgram::setMatUniform(const std::string & name, const glm::mat4 & value)
     {
-        glUniformMatrix4fv(glGetUniformLocation(program, name.c_str()), 1, GL_FALSE, glm::value_ptr(value));
+        GLint uniform = glGetUniformLocation(program, name.c_str());
+        if(uniform > -1)
+        {
+            glUniformMatrix4fv(uniform, 1, GL_FALSE, glm::value_ptr(value));
+        }
+        else
+        {
+            cerium::DebugLog::add(name + " uniform can't be founded!");
+        }
     }
 
 
     void ShaderProgram::setIntegerUniform(const std::string & name, const int & value)
     {
-        glUniform1i(glGetUniformLocation(program, name.c_str()), value);
+        GLint uniform = glGetUniformLocation(program, name.c_str());
+        if(uniform > -1)
+        {
+            glUniform1i(glGetUniformLocation(program, name.c_str()), value);
+        }
+        else
+        {
+            cerium::DebugLog::add(name + " uniform can't be founded!");
+        }
     }
 
 
     void ShaderProgram::setVec4Uniform(const std::string & name, const vec4 & value)
     {
-        glUniform4f(glGetUniformLocation(program, name.c_str()), value.x, value.y, value.z, value.w);
+        GLint uniform = glGetUniformLocation(program, name.c_str());
+        if(uniform > -1)
+        {
+            glUniform4f(glGetUniformLocation(program, name.c_str()), value.x, value.y, value.z, value.w);
+        }
+        else
+        {
+            cerium::DebugLog::add(name + " uniform can't be founded!");
+        }
     }
 
 

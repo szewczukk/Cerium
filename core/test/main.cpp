@@ -170,6 +170,7 @@ int main()
     cerium::DebugLog::init();
 
     load_resources();
+    cerium::ResourceManager::add("shader", new cerium::ShaderProgram("vertexShader.glsl", "fragmentShader.glsl"));
 
     int frames = 0;
 
