@@ -24,12 +24,12 @@
 #include <rapidxml.hpp>
 #include <rapidxml_utils.hpp>
 
-rapidxml::file <> file("settings.xml");
-rapidxml::xml_document<> settings;
-
-
 cerium::vec2 size_of_window()
 {
+    rapidxml::file <> file("settings.xml");
+    rapidxml::xml_document<> settings;
+    settings.parse<0>(file.data());
+
     rapidxml::xml_node <> * size = settings.first_node("settings")->first_node("size");
 
     int width = atoi(size->first_attribute("width")->value());
@@ -40,6 +40,10 @@ cerium::vec2 size_of_window()
 
 std::string title_of_window()
 {
+    rapidxml::file <> file("settings.xml");
+    rapidxml::xml_document<> settings;
+    settings.parse<0>(file.data());
+
     rapidxml::xml_node <> * caption = settings.first_node("settings")->first_node("caption");
 
     return caption->first_attribute("title")->value();
@@ -48,6 +52,10 @@ std::string title_of_window()
 
 bool is_debug_mode()
 {
+    rapidxml::file <> file("settings.xml");
+    rapidxml::xml_document<> settings;
+    settings.parse<0>(file.data());
+
     std::string value = settings.first_node("settings")->first_attribute("debug_mode")->value();
     return value == "True";
 }
@@ -106,9 +114,9 @@ void load_scenes()
         for(rapidxml::xml_node <> * person = scene->first_node("person"); person; person=person->next_sibling("person"))
         {
             std::string personName = person->first_attribute("name")->value();
-            cerium::vec2 position = {atoi(person->first_attribute("x")->value()), atoi(person->first_attribute("y")->value())};
-            cerium::vec2 size = {atoi(person->first_attribute("w")->value()), atoi(person->first_attribute("h")->value())};
-            float angle = atoi(person->first_attribute("angle")->value());
+            cerium::vec2 position = {(float)atof(person->first_attribute("x")->value()), (float)atof(person->first_attribute("y")->value())};
+            cerium::vec2 size = {(float)atof(person->first_attribute("w")->value()), (float)atof(person->first_attribute("h")->value())};
+            float angle = (float)atof(person->first_attribute("angle")->value());
 
             act->add(new cerium::Person(personName, nullptr, act));
             cerium::Person * per = act->get(personName);
@@ -135,10 +143,10 @@ void load_scenes()
                 }
                 else if (type == "vertexArray")
                 {
-                    cerium::vec4 color = {atoi(prop->first_attribute("r")->value()),
-                                          atoi(prop->first_attribute("g")->value()),
-                                          atoi(prop->first_attribute("b")->value()),
-                                          atoi(prop->first_attribute("a")->value())};
+                    cerium::vec4 color = {(float)atof(prop->first_attribute("r")->value()),
+                                          (float)atof(prop->first_attribute("g")->value()),
+                                          (float)atof(prop->first_attribute("b")->value()),
+                                          (float)atof(prop->first_attribute("a")->value())};
                     std::string texturedValue = prop->first_attribute("textured")->value();
                     bool textured = texturedValue == "True";
 
@@ -157,8 +165,6 @@ void load_scenes()
 
 int main()
 {
-    settings.parse<0>(file.data());
-
     bool debug_mode = is_debug_mode();
 
     cerium::Window::setSize(size_of_window());
