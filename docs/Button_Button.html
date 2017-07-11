@@ -31,29 +31,49 @@
     <p>
         <div class='code'>
             <i>
-                Scriptable(Person * basePerson, Prop * parent, const std::string & name, Script * script); 
+                Button(Person * basePerson, Prop * parent, const std::string & name, const vec4 & normalTextColor, const vec4 & hoveredTextColor, const vec4 & normalBackgroundColor, const vec4 & hoveredBackgroundColor, const std::string & text, Font * font); 
             </i>
         </div>
-        Name: Scriptable <br>
-        Class: <a href='Scriptable.html'>Scriptable</a><br>
+        Name: Button <br>
+        Class: <a href='Button.html'>Button</a><br>
         
 
-    Argument basePerson = Person where the Label is <br>
+    Argument basePerson = Person where the Button is <br>
 
     
 
-    Argument parent = Parent Prop of this Prop <br>
+    Argument parent = Parent of this Button <br>
 
     
 
-    Argument name = Name of Prop <br>
+    Argument name = Name of Button <br>
 
     
 
-    Argument script = Pointer to lua Script class <br>
+    Argument normalTextColor = Color of non-hovered text <br>
+
+    
+
+    Argument hoveredTextColor = Color of hovered text <br>
+
+    
+
+    Argument normalBackgroundColor = Color of Background of non-hovered button <br>
+
+    
+
+    Argument hoveredBackgroundColor = Color of Background of hovered button <br>
+
+    
+
+    Argument text = Text on Button <br>
+
+    
+
+    Argument Font = Pointer to font <br>
 
        <!-- argument_template -->
-        Description: Adding ability to script parent Person in lua <br>
+        Description: Creating new Label and two vertexArrays as child of Button <br>
         <i>
             Returning: 
         </i>

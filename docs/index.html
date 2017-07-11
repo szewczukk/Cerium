@@ -31,6 +31,28 @@
     <p>
         <div class='code'>
             <i>
+                Costume(const std::string & path); 
+            </i>
+        </div>
+        Name: Costume <br>
+        Class: <a href='Costume.html'>Costume</a><br>
+        
+
+    Argument path = Relative path to Costumed <br>
+
+       <!-- argument_template -->
+        Description: Loading source of Costumed <br>
+        <i>
+            Returning: 
+        </i>
+        <br>
+    <hr>
+
+    
+
+    <p>
+        <div class='code'>
+            <i>
                 static bool isMouseButtonClicked(int key); 
             </i>
         </div>
@@ -249,7 +271,29 @@
     <p>
         <div class='code'>
             <i>
-                Scriptable(Person * basePerson, Prop * parent, const std::string & name, const std::string & path); 
+                Script(const std::string & path); 
+            </i>
+        </div>
+        Name: Script <br>
+        Class: <a href='Script.html'>Script</a><br>
+        
+
+    Argument path = Relative path to lua script from res/script directory <br>
+
+       <!-- argument_template -->
+        Description: Loading lua script external file from res/script directory <br>
+        <i>
+            Returning: 
+        </i>
+        <br>
+    <hr>
+
+    
+
+    <p>
+        <div class='code'>
+            <i>
+                Scriptable(Person * basePerson, Prop * parent, const std::string & name, Script * script); 
             </i>
         </div>
         Name: Scriptable <br>
@@ -268,7 +312,7 @@
 
     
 
-    Argument path = Path to script <br>
+    Argument script = Pointer to lua Script class <br>
 
        <!-- argument_template -->
         Description: Adding ability to script parent Person in lua <br>
@@ -917,6 +961,60 @@
     <p>
         <div class='code'>
             <i>
+                Button(Person * basePerson, Prop * parent, const std::string & name, const vec4 & normalTextColor, const vec4 & hoveredTextColor, const vec4 & normalBackgroundColor, const vec4 & hoveredBackgroundColor, const std::string & text, Font * font); 
+            </i>
+        </div>
+        Name: Button <br>
+        Class: <a href='Button.html'>Button</a><br>
+        
+
+    Argument basePerson = Person where the Button is <br>
+
+    
+
+    Argument parent = Parent of this Button <br>
+
+    
+
+    Argument name = Name of Button <br>
+
+    
+
+    Argument normalTextColor = Color of non-hovered text <br>
+
+    
+
+    Argument hoveredTextColor = Color of hovered text <br>
+
+    
+
+    Argument normalBackgroundColor = Color of Background of non-hovered button <br>
+
+    
+
+    Argument hoveredBackgroundColor = Color of Background of hovered button <br>
+
+    
+
+    Argument text = Text on Button <br>
+
+    
+
+    Argument Font = Pointer to font <br>
+
+       <!-- argument_template -->
+        Description: Creating new Label and two vertexArrays as child of Button <br>
+        <i>
+            Returning: 
+        </i>
+        <br>
+    <hr>
+
+    
+
+    <p>
+        <div class='code'>
+            <i>
                 static void update(ShaderProgram * shaderProgram); 
             </i>
         </div>
@@ -1086,28 +1184,6 @@
 
        <!-- argument_template -->
         Description: Checking existing of Resource with given name <br>
-        <i>
-            Returning: 
-        </i>
-        <br>
-    <hr>
-
-    
-
-    <p>
-        <div class='code'>
-            <i>
-                TextureSource(const std::string & path); 
-            </i>
-        </div>
-        Name: TextureSource <br>
-        Class: <a href='TextureSource.html'>TextureSource</a><br>
-        
-
-    Argument path = Relative path to Texture <br>
-
-       <!-- argument_template -->
-        Description: Loading source of Texture <br>
         <i>
             Returning: 
         </i>
@@ -1455,11 +1531,11 @@
     <p>
         <div class='code'>
             <i>
-                Texture(Person * basePerson, Prop * parent, const std::string & name, TextureSource * source); 
+                Costumed(Person * basePerson, Prop * parent, const std::string & name, Costume * source); 
             </i>
         </div>
-        Name: Texture <br>
-        Class: <a href='Texture.html'>Texture</a><br>
+        Name: Costumed <br>
+        Class: <a href='Costumed.html'>Costumed</a><br>
         
 
     Argument basePerson = Person where the Label is <br>
@@ -1474,10 +1550,10 @@
 
     
 
-    Argument source = Source of Texture <br>
+    Argument source = Source of Costumed <br>
 
        <!-- argument_template -->
-        Description: Creating Texture by source <br>
+        Description: Creating Costumed by source <br>
         <i>
             Returning: 
         </i>

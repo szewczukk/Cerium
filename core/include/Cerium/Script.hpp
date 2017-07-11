@@ -11,9 +11,19 @@ namespace cerium
     class Script : public Resource
     {
     public:
-        Script(const std::string & path);
-
-        virtual void use(void) override {};
+        /*
+            ^[name][Script]
+            ^[class][Script]
+            ^[description][Loading lua script external file from res/script directory]
+            ^[argument]<path>[Relative path to lua script from res/script directory]
+         */
+        Script(const std::string & path); //^header
+        /*
+            ^[name][use]
+            ^[class][Script]
+            ^[description][Does nothing.]
+         */
+        virtual void use(void) override {}; //^header
     private:
         sol::state state;
 

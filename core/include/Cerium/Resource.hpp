@@ -11,7 +11,7 @@ namespace cerium
             ^[class][Resource]
             ^[description][Processing Resource]
          */
-        virtual void use(void) = 0;
+        virtual void use(void) = 0; //^header
         /*
             ^[name][cast_to]
             ^[class][Resource]

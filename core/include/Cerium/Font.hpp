@@ -27,8 +27,12 @@ namespace cerium
            ^[description][Deleting TTF font]
         */
         ~Font(); //^header
-
-        virtual void use(void) override {};
+        /*
+            ^[name][use]
+            ^[class][Font]
+            ^[description][Does nothing.]
+         */
+        virtual void use(void) override {}; //^header
     private:
         TTF_Font * font;
 

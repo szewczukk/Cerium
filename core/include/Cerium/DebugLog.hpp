@@ -11,10 +11,30 @@ namespace cerium
     class DebugLog
     {
     public:
-        ~DebugLog();
-        static void init(void);
-        static void add(const std::string & value);
-        static void update(void);
+        /*
+            ^[name][~DebugLog]
+            ^[class][DebugLog]
+            ^[description][Closing output file]
+        */
+        ~DebugLog(); //^header
+        /*
+            ^[name][init]
+            ^[class][DebugLog]
+            ^[description][Opening file]
+        */
+        static void init(void); //^header
+        /*
+            ^[name][add]
+            ^[class][DebugLog]
+            ^[description][Adding new issue to queue]
+         */
+        static void add(const std::string & value); //^header
+        /*
+            ^[name][update]
+            ^[class][DebugLog]
+            ^[description][Prints and logging all unprinted issues]
+         */
+        static void update(void); //^header
     private:
         static DebugLog & instance();
 

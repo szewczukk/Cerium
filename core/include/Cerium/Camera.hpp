@@ -50,7 +50,7 @@ namespace cerium
             ^[class][Camera]
             ^[returns][Position of Camera]
         */
-        static vec2 getPosition();
+        static vec2 getPosition(); //^header
     private:
         static Camera & instance();
 

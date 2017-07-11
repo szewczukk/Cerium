@@ -21,7 +21,7 @@ namespace cerium
             ^[argument]<basePerson>[Person where the Label is]
             ^[argument]<parent>[Parent Prop of this Prop]
             ^[argument]<name>[Name of Prop]
-            ^[argument]<path>[Path to script]
+            ^[argument]<script>[Pointer to lua Script class]
          */
         Scriptable(Person * basePerson, Prop * parent, const std::string & name, Script * script); //^header
 

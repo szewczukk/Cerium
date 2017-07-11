@@ -13,7 +13,7 @@ namespace cerium
         /*
             ^[name][getDeltaTime]
             ^[class][Clock]
-            ^[returns][Time between starting Clock and calling this method]
+            ^[returns][Time between starting Clock and calling this method in seconds]
          */
         float getElapsedTime(void); //^header
         /*
