@@ -95,7 +95,8 @@ void load_resources()
 }
 
 
-void load_scenes()
+void load_scenes(const cerium::vec4 & normalTextColor, const cerium::vec4 & hoveredTextColor,
+                 const cerium::vec4 & normalBackgroundColor, const cerium::vec4 & hoveredBackgroundColor)
 {
     rapidxml::file<> file("scenes.xml");
     rapidxml::xml_document<> document;
@@ -157,9 +158,61 @@ void load_scenes()
                     std::string scriptName = prop->first_attribute("script")->value();
                     per->addProp(new cerium::Scriptable(per, nullptr, name, cerium::ResourceManager::get(scriptName)->cast_to<cerium::Script>()));
                 }
+                else if (type == "label")
+                {
+                    std::string fontName = prop->first_attribute("font")->value();
+                    std::string text = prop->first_attribute("text")->value();
+                    cerium::vec4 color = {(float)atof(prop->first_attribute("r")->value()),
+                                          (float)atof(prop->first_attribute("g")->value()),
+                                          (float)atof(prop->first_attribute("b")->value()),
+                                          (float)atof(prop->first_attribute("a")->value())};
+                    per->addProp(new cerium::Label(per, nullptr, name, cerium::ResourceManager::get(fontName)->cast_to<cerium::Font>(), text, color));
+                }
+                else if (type == "button")
+                {
+                    std::string fontName = prop->first_attribute("font")->value();
+                    std::string text = prop->first_attribute("text")->value();
+                    per->addProp(new cerium::Button(per, nullptr, name, normalTextColor, hoveredTextColor, normalBackgroundColor, hoveredBackgroundColor, text,
+                                                    cerium::ResourceManager::get(fontName)->cast_to<cerium::Font>()));
+                }
             }
         }
     }
+}
+
+
+void getColorsOfUI(cerium::vec4 & normalTextColor, cerium::vec4 & hoveredTextColor,
+                   cerium::vec4 & normalBackgroundColor, cerium::vec4 & hoveredBackgroundColor)
+{
+    rapidxml::file <> file("settings.xml");
+    rapidxml::xml_document<> settings;
+    settings.parse<0>(file.data());
+
+    rapidxml::xml_node<> * uiNode = settings.first_node("settings")->first_node("ui");
+
+    rapidxml::xml_node<> * normalText = uiNode->first_node("normalText");
+    normalTextColor = {(float)atof(normalText->first_attribute("r")->value()),
+                                    (float)atof(normalText->first_attribute("g")->value()),
+                                    (float)atof(normalText->first_attribute("b")->value()),
+                                    (float)atof(normalText->first_attribute("a")->value())};
+
+    rapidxml::xml_node<> * hoveredText = uiNode->first_node("hoveredText");
+    hoveredTextColor = {(float)atof(hoveredText->first_attribute("r")->value()),
+                        (float)atof(hoveredText->first_attribute("g")->value()),
+                        (float)atof(hoveredText->first_attribute("b")->value()),
+                        (float)atof(hoveredText->first_attribute("a")->value())};
+
+    rapidxml::xml_node<> * normalBackground = uiNode->first_node("normalBackground");
+    normalBackgroundColor = {(float)atof(normalBackground->first_attribute("r")->value()),
+                             (float)atof(normalBackground->first_attribute("g")->value()),
+                             (float)atof(normalBackground->first_attribute("b")->value()),
+                             (float)atof(normalBackground->first_attribute("a")->value())};
+
+    rapidxml::xml_node<> * hoveredBackground = uiNode->first_node("hoveredBackground");
+    hoveredBackgroundColor = {(float)atof(hoveredBackground->first_attribute("r")->value()),
+                              (float)atof(hoveredBackground->first_attribute("g")->value()),
+                              (float)atof(hoveredBackground->first_attribute("b")->value()),
+                              (float)atof(hoveredBackground->first_attribute("a")->value())};
 }
 
 
@@ -186,7 +239,14 @@ int main()
         cerium::ResourceManager::get("fpsTimer")->use();
     }
 
-    load_scenes();
+    cerium::vec4 normalTextColor;
+    cerium::vec4 hoveredTextColor;
+    cerium::vec4 normalBackgroundColor;
+    cerium::vec4 hoveredBackgroundColor;
+
+    getColorsOfUI(normalTextColor, hoveredTextColor, normalBackgroundColor, hoveredBackgroundColor);
+
+    load_scenes(normalTextColor, hoveredTextColor, normalBackgroundColor, hoveredBackgroundColor);
 
     while(!cerium::EventManager::isWindowClosed())
     {
