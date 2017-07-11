@@ -95,3 +95,7 @@ Before running, copy all assets (shaders, textures etc.) to catalogue where the 
 
 ## Licensing
 To see the license of Bromine, open <a href="https://github.com/bjornus/Cerium/blob/master/LICENSE" target="_blank">LICENSE</a> file.
+
+
+## Logo
+Logo created by Vunny (Rafał Michałuszek)
