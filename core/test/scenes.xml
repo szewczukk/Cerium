@@ -7,10 +7,8 @@
             <prop name="vertexArray" type="vertexArray" r="1" g="0" b="1" a="1" textured="True"/>
             <prop name="script" type="scriptable" script="playerScript"/>
         </person>
-        <person name="other" x="150" y="0" w="64" h="64" angle="0">
-            <prop name="texture" type="costumed" costume_name="other"/>
-            <prop name="rigidBody" type="rigidBody" gravity_scale="0" mass="1"/>
-            <prop name="vertexArray" type="vertexArray" r="1" g="0" b="1" a="1" textured="True"/>
+        <person name="other" x="10" y="10" w="64" h="64" angle="0">
+            <prop name="button" type="button" font="font" text="Exit"/>
             <prop name="script" type="scriptable" script="script"/>
         </person>
     </scene>
