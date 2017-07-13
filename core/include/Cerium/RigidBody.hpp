@@ -17,9 +17,8 @@ namespace cerium
             ^[argument]<parent>[Parent Prop of RigidBody]
             ^[argument]<name>[Name of Prop]
             ^[argument]<gravityScale>[Scale of gravity that works on RigidBody]
-            ^[argument]<mass>[Mass of RigidBody]
         */
-        RigidBody(Person * basePerson, Prop * parent, const std::string & name, const float & gravityScale, const float & mass); //^header
+        RigidBody(Person * basePerson, Prop * parent, const std::string & name, const float & gravityScale); //^header
         /*
             ^[name][isCollide]
             ^[class][RigidBody]
@@ -79,7 +78,6 @@ namespace cerium
         vec2 size;
         vec2 velocity;
         float gravityScale;
-        float mass;
         bool standing;
     };
 }

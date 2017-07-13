@@ -139,8 +139,7 @@ void load_scenes(const cerium::vec4 & normalTextColor, const cerium::vec4 & hove
                 else if (type == "rigidBody")
                 {
                     float gravityScale = atoi(prop->first_attribute("gravity_scale")->value());
-                    float mass = atoi(prop->first_attribute("mass")->value());
-                    per->addProp(new cerium::RigidBody(per, nullptr, name, gravityScale, mass));
+                    per->addProp(new cerium::RigidBody(per, nullptr, name, gravityScale));
                 }
                 else if (type == "vertexArray")
                 {
