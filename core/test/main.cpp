@@ -16,7 +16,6 @@
 #include "../include/Cerium/Label.hpp"
 
 #include "../include/Cerium/Button.hpp"
-#include "../include/Cerium/RigidBody.hpp"
 #include "../include/Cerium/DebugLog.hpp"
 
 #include "../include/Cerium/Script.hpp"
@@ -135,11 +134,6 @@ void load_scenes(const cerium::vec4 & normalTextColor, const cerium::vec4 & hove
                 {
                     std::string costumeName = prop->first_attribute("costume_name")->value();
                     per->addProp(new cerium::Costumed(per, nullptr, name, cerium::ResourceManager::get(costumeName)->cast_to<cerium::Costume>()));
-                }
-                else if (type == "rigidBody")
-                {
-                    float gravityScale = atoi(prop->first_attribute("gravity_scale")->value());
-                    per->addProp(new cerium::RigidBody(per, nullptr, name, gravityScale));
                 }
                 else if (type == "vertexArray")
                 {
