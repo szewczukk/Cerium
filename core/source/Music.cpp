@@ -24,15 +24,15 @@ namespace cerium
     }
 
 
-    void Music::resume(void)
-    {
-        Mix_ResumeMusic();
-    }
-
-
     Music::~Music()
     {
         Mix_FreeMusic(music);
+    }
+
+
+    void Music::resume(void)
+    {
+        Mix_ResumeMusic();
     }
 
 
@@ -44,6 +44,9 @@ namespace cerium
 
     void Music::use()
     {
-        Mix_PlayMusic(music, (int)looped);
+        if(!Mix_PlayingMusic())
+        {
+            Mix_PlayMusic(music, (int)looped);
+        }
     }
 }
