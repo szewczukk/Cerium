@@ -44,13 +44,6 @@ namespace cerium
 
     void Music::use()
     {
-        if(looped)
-        {
-            Mix_PlayMusic(music, 1);
-        }
-        else
-        {
-            Mix_PlayMusic(music, 0);
-        }
+        Mix_PlayMusic(music, (int)looped);
     }
 }
