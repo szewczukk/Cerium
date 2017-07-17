@@ -19,13 +19,14 @@
 #include "../include/Cerium/DebugLog.hpp"
 
 #include "../include/Cerium/Script.hpp"
+#include "../include/Cerium/Music.hpp"
 
 #include <rapidxml.hpp>
 #include <rapidxml_utils.hpp>
 
 cerium::vec2 size_of_window()
 {
-    rapidxml::file <> file("settings.xml");
+    rapidxml::file <> file("res/settings.xml");
     rapidxml::xml_document<> settings;
     settings.parse<0>(file.data());
 
@@ -39,7 +40,7 @@ cerium::vec2 size_of_window()
 
 std::string title_of_window()
 {
-    rapidxml::file <> file("settings.xml");
+    rapidxml::file <> file("res/settings.xml");
     rapidxml::xml_document<> settings;
     settings.parse<0>(file.data());
 
@@ -51,7 +52,7 @@ std::string title_of_window()
 
 bool is_debug_mode()
 {
-    rapidxml::file <> file("settings.xml");
+    rapidxml::file <> file("res/settings.xml");
     rapidxml::xml_document<> settings;
     settings.parse<0>(file.data());
 
@@ -62,7 +63,7 @@ bool is_debug_mode()
 
 void load_resources()
 {
-    rapidxml::file<> file("data.xml");
+    rapidxml::file<> file("res/data.xml");
     rapidxml::xml_document<> document;
     document.parse<0>(file.data());
 
@@ -90,6 +91,11 @@ void load_resources()
         {
             cerium::ResourceManager::add(name, new cerium::Script(d->first_attribute("path")->value()));
         }
+        else if (type == "music")
+        {
+            bool looped = d->first_attribute("looped")->value() == "True";
+            cerium::ResourceManager::add(name, new cerium::Music(d->first_attribute("path")->value(), looped));
+        }
     }
 }
 
@@ -97,7 +103,7 @@ void load_resources()
 void load_scenes(const cerium::vec4 & normalTextColor, const cerium::vec4 & hoveredTextColor,
                  const cerium::vec4 & normalBackgroundColor, const cerium::vec4 & hoveredBackgroundColor)
 {
-    rapidxml::file<> file("scenes.xml");
+    rapidxml::file<> file("res/scenes.xml");
     rapidxml::xml_document<> document;
     document.parse<0>(file.data());
 
