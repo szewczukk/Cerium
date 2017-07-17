@@ -19,25 +19,31 @@ namespace cerium
             ^[argument]<path>[Name and extension of file placed in res/music/]
             ^[argument]<looped>[Is the Music must to play in loop?]
          */
-        Music(const std::string & path, const bool & looped);
+        Music(const std::string & path, const bool & looped); //header
+        /*
+            ^[name][~Music]
+            ^[class][Music]
+            ^[description][Destroying music]
+         */
+        ~Music(); //header
         /*
             ^[name][stop]
             ^[class][Music]
             ^[description][Stopping playing all musics]
          */
-        void stop(void);
+        void stop(void); //header
         /*
             ^[name][resume]
             ^[class][Music]
             ^[description][Resumes music]
          */
-        void resume(void);
+        void resume(void); //header
         /*
             ^[name][use]
             ^[class][Music]
             ^[description][Plays music]
          */
-        void use(void) override;
+        void use(void) override; //header
     private:
         Mix_Music * music;
         bool looped;

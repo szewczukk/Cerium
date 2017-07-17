@@ -30,6 +30,12 @@ namespace cerium
     }
 
 
+    Music::~Music()
+    {
+        Mix_FreeMusic(music);
+    }
+
+
     void Music::stop(void)
     {
         Mix_PauseMusic();
