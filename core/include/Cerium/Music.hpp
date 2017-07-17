@@ -27,9 +27,15 @@ namespace cerium
          */
         ~Music(); //header
         /*
+            ^[name][halt]
+            ^[class][Music]
+            ^[description][Halting music]
+         */
+        void halt(void);
+        /*
             ^[name][stop]
             ^[class][Music]
-            ^[description][Stopping playing all musics]
+            ^[description][Stopping music]
          */
         void stop(void); //header
         /*

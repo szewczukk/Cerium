@@ -30,6 +30,12 @@ namespace cerium
     }
 
 
+    void Music::halt(void)
+    {
+        Mix_HaltMusic();
+    }
+
+
     void Music::resume(void)
     {
         Mix_ResumeMusic();
