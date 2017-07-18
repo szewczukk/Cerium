@@ -20,6 +20,7 @@
 
 #include "../include/Cerium/Script.hpp"
 #include "../include/Cerium/Music.hpp"
+#include "../include/Cerium/Sound.hpp"
 
 #include <rapidxml.hpp>
 #include <rapidxml_utils.hpp>
@@ -95,6 +96,11 @@ void load_resources()
         {
             bool looped = d->first_attribute("looped")->value() == "True";
             cerium::ResourceManager::add(name, new cerium::Music(d->first_attribute("path")->value(), looped));
+        }
+        else if (type == "sound")
+        {
+            std::string path = d->first_attribute("path")->value();
+            cerium::ResourceManager::add(name, new cerium::Sound(path));
         }
     }
 }

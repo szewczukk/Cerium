@@ -131,8 +131,10 @@ namespace cerium
                                  "addChild", &Prop::addChild, "getChild", &Prop::getChild);
 
         auto resource = state->new_usertype<Resource>("Resource", "use", &Resource::use);
-        //TODO: CAST TO ALL TYPES
-        resource.set("cast_to", sol::overload(&Resource::cast_to<cerium::Music>, &Resource::cast_to<cerium::Sound>));
+
+        resource.set("cast_to", sol::overload(&Resource::cast_to<cerium::Music>, &Resource::cast_to<cerium::Sound>,
+                                              &Resource::cast_to<cerium::Font>, &Resource::cast_to<cerium::Clock>,
+                                              &Resource::cast_to<cerium::Costume>, &Resource::cast_to<cerium::Script>));
 
         script->state["init"]();
         updatefun = script->state["update"];
