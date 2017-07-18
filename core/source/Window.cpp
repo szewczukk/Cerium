@@ -1,3 +1,6 @@
+#include <SDL2/SDL_mixer.h>
+#include <SDL2/SDL_image.h>
+#include <SDL2/SDL_ttf.h>
 #include "../include/Cerium/Window.hpp"
 
 #include "../include/Cerium/ResourceManager.hpp"
@@ -67,6 +70,10 @@ namespace cerium
     void Window::init(void)
     {
         SDL_Init(SDL_INIT_EVERYTHING);
+        Mix_Init(MIX_INIT_MP3 | MIX_INIT_OGG);
+        Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 1024);
+        IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG | IMG_INIT_TIF | IMG_INIT_WEBP);
+        TTF_Init();
 
         SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
         SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);

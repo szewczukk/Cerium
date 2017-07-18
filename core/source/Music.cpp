@@ -12,7 +12,7 @@ namespace cerium
 
         std::string filePath = "res/music/" + path;
 
-        Mix_VolumeMusic(50);
+        Mix_VolumeMusic(100);
         music = Mix_LoadMUS(filePath.c_str());
 
         if(music == NULL || music == nullptr)
