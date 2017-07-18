@@ -1,7 +1,6 @@
 -- Function running once, at start of game
 function init()
-    local m = resourceManager.get("music")
-    m:use()
+    resourceManager.get("music"):use()
 end
 
 
