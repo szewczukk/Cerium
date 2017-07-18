@@ -150,6 +150,18 @@ namespace cerium
         */
         template<typename T>
                 T* cast_to(void); //^header
+        /*
+            ^[name][getAllChildren]
+            ^[class][Act]
+            ^[description][Getting all Children]
+        */
+        std::vector<std::pair<std::string, Person*>> getAllChildren(void); //^header
+        /*
+            ^[name][getAllProps]
+            ^[class][Act]
+            ^[description][Getting all Props]
+        */
+        std::vector<std::pair<std::string, Prop*>> getAllProps(void); //^header
     protected:
         vec2 position;
         vec2 size;

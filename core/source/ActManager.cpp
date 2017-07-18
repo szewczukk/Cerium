@@ -54,6 +54,7 @@ namespace cerium
         {
             if (act.first == name) delete act.second;
         }
+        DebugLog::add(name + " act cannot be founded to remove");
     }
 
 
@@ -71,8 +72,13 @@ namespace cerium
     {
         for(auto & act : instance().acts)
         {
-            if(act.first == name) instance().currentAct = act.second;
+            if(act.first == name)
+            {
+                instance().currentAct = act.second;
+                return;
+            }
         }
+        DebugLog::add(name + " act cannot be founded to set current");
     }
 
 
@@ -80,5 +86,11 @@ namespace cerium
     {
         static ActManager actManager;
         return actManager;
+    }
+
+
+    std::vector<std::pair<std::string, Act*>> ActManager::getAllActs()
+    {
+        return instance().acts;
     }
 }

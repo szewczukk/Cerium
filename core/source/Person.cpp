@@ -154,4 +154,16 @@ namespace cerium
     {
         return dynamic_cast<T>(this);
     }
+
+
+    std::vector<std::pair<std::string, Person*>> Person::getAllChildren(void)
+    {
+        return children;
+    }
+
+
+    std::vector<std::pair<std::string, Prop*>> Person::getAllProps(void)
+    {
+        return props;
+    }
 }

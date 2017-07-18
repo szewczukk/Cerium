@@ -78,4 +78,9 @@ namespace cerium
         cerium::DebugLog::add(name + " person can't be returned");
         return nullptr;
     }
+
+    std::vector<std::pair<std::string, Person *>> Act::getAllPersons()
+    {
+        return persons;
+    }
 }

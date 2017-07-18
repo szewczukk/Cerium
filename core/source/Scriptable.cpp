@@ -16,8 +16,6 @@
 #include "../include/Cerium/Sound.hpp"
 #include "../include/Cerium/ResourceManager.hpp"
 
-#include <fstream>
-
 namespace cerium
 {
     Person * bPerson;
@@ -90,6 +88,7 @@ namespace cerium
         actManager.set_function("exist", &ActManager::exist);
         actManager.set_function("setCurrent", &ActManager::setCurrent);
         actManager.set_function("clear", &ActManager::clear);
+        actManager.set_function("getAllActs", &ActManager::getAllActs);
 
         sol::table window = state->create_named_table("window");
         window.set_function("setTitle", &Window::setTitle);
@@ -118,23 +117,27 @@ namespace cerium
         person.set_function("addChild", &Person::addChild);
         person.set_function("childExist", &Person::childExist);
         person.set_function("getChild", &Person::getChild);
+        person.set_function("getAllChildren", &Person::getAllChildren);
+        person.set_function("getAllProps", &Person::getAllProps);
 
         state->new_usertype<Act>("Act",
                                 "draw", &Act::draw, "update", &Act::update,
                                 "add", &Act::add, "remove", &Act::remove,
-                                "clear", &Act::clear, "exist", &Act::exist, "get", &Act::get);
+                                "clear", &Act::clear, "exist", &Act::exist, "get", &Act::get,
+                                 "getAllPersons", &Act::getAllPersons);
 
         sol::constructor_list <sol::types<Person*, Prop*, const std::string &>> propConstructors;
         auto prop = state->new_usertype<Prop>("Prop", propConstructors,
                                  "getName", &Prop::getName, "getPerson", &Prop::getPerson,
                                  "getParent", &Prop::getParent, "exist", &Prop::exist,
-                                 "addChild", &Prop::addChild, "getChild", &Prop::getChild);
+                                 "addChild", &Prop::addChild, "getChild", &Prop::getChild,
+                                              "getAllChildren", &Prop::getAllChildren);
 
         auto resource = state->new_usertype<Resource>("Resource", "use", &Resource::use);
 
         resource.set("cast_to", sol::overload(&Resource::cast_to<cerium::Music>, &Resource::cast_to<cerium::Sound>,
                                               &Resource::cast_to<cerium::Font>, &Resource::cast_to<cerium::Clock>,
-                                              &Resource::cast_to<cerium::Costume>, &Resource::cast_to<cerium::Script>));
+                                              &Resource::cast_to<cerium::Script>));
 
         script->state["init"]();
         updatefun = script->state["update"];

@@ -58,6 +58,12 @@ namespace cerium
             ^[returns][Pointer to Person with given name]
         */
         Person * get(const std::string & name); //^header
+        /*
+            ^[name][getAllPersons]
+            ^[class][Act]
+            ^[description][Getting all Persons from Act]
+        */
+        std::vector<std::pair<std::string, Person*>> getAllPersons(void); //^header
     protected:
         std::vector<std::pair<std::string, Person*>> persons;
     };

@@ -64,6 +64,12 @@ namespace cerium
             ^[description][Removing all Acts in ActManager]
         */
         static void clear(void); //^header
+        /*
+            ^[name][getAllActs]
+            ^[class][Act]
+            ^[description][Getting all Acts from ActManager]
+        */
+        static std::vector<std::pair<std::string, Act*>> getAllActs(void); //^header
     private:
         static ActManager & instance();
 

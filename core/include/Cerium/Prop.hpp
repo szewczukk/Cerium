@@ -129,6 +129,11 @@ namespace cerium
         {
             return dynamic_cast<T*>(this);
         }
+
+        std::vector<std::pair<std::string, Prop*>> getAllChildren(void)
+        {
+            return children;
+        }
     protected:
         Person * basePerson;
         Prop * parent;
