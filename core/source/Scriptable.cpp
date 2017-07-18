@@ -12,6 +12,9 @@
 #include "../include/Cerium/Costumed.hpp"
 #include "../include/Cerium/Clock.hpp"
 #include "../include/Cerium/Script.hpp"
+#include "../include/Cerium/Music.hpp"
+#include "../include/Cerium/Sound.hpp"
+#include "../include/Cerium/ResourceManager.hpp"
 
 #include <fstream>
 
@@ -80,7 +83,7 @@ namespace cerium
         camera.set_function("move", &Camera::move);
         camera.set_function("setCameraPosition", &Camera::setPosition);
 
-        sol::table actManager = state->create_named_table("ActManager");
+        sol::table actManager = state->create_named_table("actManager");
         actManager.set_function("get", &ActManager::get);
         actManager.set_function("add", &ActManager::add);
         actManager.set_function("remove", &ActManager::remove);
@@ -88,12 +91,16 @@ namespace cerium
         actManager.set_function("setCurrent", &ActManager::setCurrent);
         actManager.set_function("clear", &ActManager::clear);
 
-        sol::table window = state->create_named_table("Window");
+        sol::table window = state->create_named_table("window");
         window.set_function("setTitle", &Window::setTitle);
         window.set_function("setSize", &Window::setSize);
         window.set_function("getSize", &Window::getSize);
         window.set_function("getTitle", &Window::getTitle);
         window.set_function("init", &Window::init);
+
+        //TODO: ALL METHODS
+        sol::table resourceManager = state->create_named_table("resourceManager");
+        resourceManager.set_function("get", &ResourceManager::get);
 
         sol::constructors<sol::types<>, sol::types<float>, sol::types<float, float>> vector_constructors;
         state->new_usertype<vec2>("vec2", vector_constructors,
@@ -124,6 +131,8 @@ namespace cerium
                                  "addChild", &Prop::addChild, "getChild", &Prop::getChild);
 
         auto resource = state->new_usertype<Resource>("Resource", "use", &Resource::use);
+        //TODO: CAST TO ALL TYPES
+        resource.set("cast_to", sol::overload(&Resource::cast_to<cerium::Music>, &Resource::cast_to<cerium::Sound>));
 
         script->state["init"]();
         updatefun = script->state["update"];
