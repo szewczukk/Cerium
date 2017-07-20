@@ -3,7 +3,7 @@
 
 namespace cerium
 {
-    Music::Music(const std::string &path, const bool & looped)
+    Music::Music(const std::string & path, const bool & looped, const int & volume)
     {
         this->looped = looped;
 
@@ -12,7 +12,7 @@ namespace cerium
 
         std::string filePath = "res/music/" + path;
 
-        Mix_VolumeMusic(100);
+        Mix_VolumeMusic(volume);
         music = Mix_LoadMUS(filePath.c_str());
 
         if(music == NULL || music == nullptr)

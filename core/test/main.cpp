@@ -95,7 +95,8 @@ void load_resources()
         else if (type == "music")
         {
             bool looped = d->first_attribute("looped")->value() == "True";
-            cerium::ResourceManager::add(name, new cerium::Music(d->first_attribute("path")->value(), looped));
+            cerium::ResourceManager::add(name, new cerium::Music(d->first_attribute("path")->value(), looped,
+                                                                 atoi(d->first_attribute("volume")->value())));
         }
         else if (type == "sound")
         {

@@ -18,8 +18,9 @@ namespace cerium
             ^[description][Loading music from res/music/ catalogue]
             ^[argument]<path>[Name and extension of file placed in res/music/]
             ^[argument]<looped>[Is the Music must to play in loop?]
-         */
-        Music(const std::string & path, const bool & looped); //header
+            ^[argument]<volume>[Volume of music]
+          */
+        Music(const std::string & path, const bool & looped, const int & volume); //header
         /*
             ^[name][~Music]
             ^[class][Music]
