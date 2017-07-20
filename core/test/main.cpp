@@ -189,7 +189,7 @@ void load_scenes(const cerium::vec4 & normalTextColor, const cerium::vec4 & hove
 void getColorsOfUI(cerium::vec4 & normalTextColor, cerium::vec4 & hoveredTextColor,
                    cerium::vec4 & normalBackgroundColor, cerium::vec4 & hoveredBackgroundColor)
 {
-    rapidxml::file <> file("settings.xml");
+    rapidxml::file <> file("res/settings.xml");
     rapidxml::xml_document<> settings;
     settings.parse<0>(file.data());
 
