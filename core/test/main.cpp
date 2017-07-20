@@ -33,8 +33,8 @@ cerium::vec2 size_of_window()
 
     rapidxml::xml_node <> * size = settings.first_node("settings")->first_node("size");
 
-    int width = atoi(size->first_attribute("width")->value());
-    int height = atoi(size->first_attribute("height")->value());
+    int width = (int)strtod(size->first_attribute("width")->value(), nullptr);
+    int height = (int)strtod(size->first_attribute("height")->value(), nullptr);
     return { (float)width, (float)height};
 }
 
@@ -86,7 +86,8 @@ void load_resources()
         else if (type == "font")
         {
             cerium::ResourceManager::add(name, new cerium::Font(d->first_attribute("path")->value(),
-                                                                static_cast<unsigned int>(atoi(d->first_attribute("size")->value()))));
+                                                                static_cast<unsigned int>(strtod(d->first_attribute("size")->value(), 
+                                                                                                 nullptr))));
         }
         else if (type == "script")
         {
@@ -96,7 +97,7 @@ void load_resources()
         {
             bool looped = d->first_attribute("looped")->value() == "True";
             cerium::ResourceManager::add(name, new cerium::Music(d->first_attribute("path")->value(), looped,
-                                                                 atoi(d->first_attribute("volume")->value())));
+                                                                 (int)strtod(d->first_attribute("volume")->value(), nullptr)));
         }
         else if (type == "sound")
         {
@@ -124,12 +125,12 @@ void load_scenes(const cerium::vec4 & normalTextColor, const cerium::vec4 & hove
         std::string isCurrent = scene->first_attribute("current")->value();
         if(isCurrent == "True") cerium::ActManager::setCurrent(sceneName);
 
-        for(rapidxml::xml_node <> * person = scene->first_node("person"); person; person=person->next_sibling("person"))
+        for(rapidxml::xml_node <> * person = scene->first_node("person"); person;person=person->next_sibling("person"))
         {
             std::string personName = person->first_attribute("name")->value();
-            cerium::vec2 position = {(float)atof(person->first_attribute("x")->value()), (float)atof(person->first_attribute("y")->value())};
-            cerium::vec2 size = {(float)atof(person->first_attribute("w")->value()), (float)atof(person->first_attribute("h")->value())};
-            float angle = (float)atof(person->first_attribute("angle")->value());
+            cerium::vec2 position = {strtof(person->first_attribute("x")->value(), nullptr), strtof(person->first_attribute("y")->value(), nullptr)};
+            cerium::vec2 size = {strtof(person->first_attribute("w")->value(), nullptr), strtof(person->first_attribute("h")->value(), nullptr)};
+            float angle = strtof(person->first_attribute("angle")->value(), nullptr);
 
             act->add(new cerium::Person(personName, nullptr, act));
             cerium::Person * per = act->get(personName);
@@ -138,7 +139,7 @@ void load_scenes(const cerium::vec4 & normalTextColor, const cerium::vec4 & hove
             per->setSize(size);
             per->setRotation(angle);
 
-            for(rapidxml::xml_node <> * prop = person->first_node("prop"); prop; prop=prop->next_sibling("prop"))
+            for(rapidxml::xml_node <> * prop = person->first_node("prop"); prop;prop=prop->next_sibling("prop"))
             {
                 std::string type = prop->first_attribute("type")->value();
                 std::string name = prop->first_attribute("name")->value();
@@ -150,10 +151,10 @@ void load_scenes(const cerium::vec4 & normalTextColor, const cerium::vec4 & hove
                 }
                 else if (type == "vertexArray")
                 {
-                    cerium::vec4 color = {(float)atof(prop->first_attribute("r")->value()),
-                                          (float)atof(prop->first_attribute("g")->value()),
-                                          (float)atof(prop->first_attribute("b")->value()),
-                                          (float)atof(prop->first_attribute("a")->value())};
+                    cerium::vec4 color = {strtof(prop->first_attribute("r")->value(), nullptr),
+                                          strtof(prop->first_attribute("g")->value(), nullptr),
+                                          strtof(prop->first_attribute("b")->value(), nullptr),
+                                          strtof(prop->first_attribute("a")->value(), nullptr)};
                     std::string texturedValue = prop->first_attribute("textured")->value();
                     bool textured = texturedValue == "True";
 
@@ -168,10 +169,10 @@ void load_scenes(const cerium::vec4 & normalTextColor, const cerium::vec4 & hove
                 {
                     std::string fontName = prop->first_attribute("font")->value();
                     std::string text = prop->first_attribute("text")->value();
-                    cerium::vec4 color = {(float)atof(prop->first_attribute("r")->value()),
-                                          (float)atof(prop->first_attribute("g")->value()),
-                                          (float)atof(prop->first_attribute("b")->value()),
-                                          (float)atof(prop->first_attribute("a")->value())};
+                    cerium::vec4 color = {strtof(prop->first_attribute("r")->value(), nullptr),
+                                          strtof(prop->first_attribute("g")->value(), nullptr),
+                                          strtof(prop->first_attribute("b")->value(), nullptr),
+                                          strtof(prop->first_attribute("a")->value(), nullptr)};
                     per->addProp(new cerium::Label(per, nullptr, name, cerium::ResourceManager::get(fontName)->cast_to<cerium::Font>(), text, color));
                 }
                 else if (type == "button")
@@ -197,28 +198,28 @@ void getColorsOfUI(cerium::vec4 & normalTextColor, cerium::vec4 & hoveredTextCol
     rapidxml::xml_node<> * uiNode = settings.first_node("settings")->first_node("ui");
 
     rapidxml::xml_node<> * normalText = uiNode->first_node("normalText");
-    normalTextColor = {(float)atof(normalText->first_attribute("r")->value()),
-                                    (float)atof(normalText->first_attribute("g")->value()),
-                                    (float)atof(normalText->first_attribute("b")->value()),
-                                    (float)atof(normalText->first_attribute("a")->value())};
+    normalTextColor = {strtof(normalText->first_attribute("r")->value(), nullptr),
+                                    strtof(normalText->first_attribute("g")->value(), nullptr),
+                                    strtof(normalText->first_attribute("b")->value(), nullptr),
+                                    strtof(normalText->first_attribute("a")->value(), nullptr)};
 
     rapidxml::xml_node<> * hoveredText = uiNode->first_node("hoveredText");
-    hoveredTextColor = {(float)atof(hoveredText->first_attribute("r")->value()),
-                        (float)atof(hoveredText->first_attribute("g")->value()),
-                        (float)atof(hoveredText->first_attribute("b")->value()),
-                        (float)atof(hoveredText->first_attribute("a")->value())};
+    hoveredTextColor = {strtof(hoveredText->first_attribute("r")->value(), nullptr),
+                        strtof(hoveredText->first_attribute("g")->value(), nullptr),
+                        strtof(hoveredText->first_attribute("b")->value(), nullptr),
+                        strtof(hoveredText->first_attribute("a")->value(), nullptr)};
 
     rapidxml::xml_node<> * normalBackground = uiNode->first_node("normalBackground");
-    normalBackgroundColor = {(float)atof(normalBackground->first_attribute("r")->value()),
-                             (float)atof(normalBackground->first_attribute("g")->value()),
-                             (float)atof(normalBackground->first_attribute("b")->value()),
-                             (float)atof(normalBackground->first_attribute("a")->value())};
+    normalBackgroundColor = {strtof(normalBackground->first_attribute("r")->value(), nullptr),
+                             strtof(normalBackground->first_attribute("g")->value(), nullptr),
+                             strtof(normalBackground->first_attribute("b")->value(), nullptr),
+                             strtof(normalBackground->first_attribute("a")->value(), nullptr)};
 
     rapidxml::xml_node<> * hoveredBackground = uiNode->first_node("hoveredBackground");
-    hoveredBackgroundColor = {(float)atof(hoveredBackground->first_attribute("r")->value()),
-                              (float)atof(hoveredBackground->first_attribute("g")->value()),
-                              (float)atof(hoveredBackground->first_attribute("b")->value()),
-                              (float)atof(hoveredBackground->first_attribute("a")->value())};
+    hoveredBackgroundColor = {strtof(hoveredBackground->first_attribute("r")->value(), nullptr),
+                              strtof(hoveredBackground->first_attribute("g")->value(), nullptr),
+                              strtof(hoveredBackground->first_attribute("b")->value(), nullptr),
+                              strtof(hoveredBackground->first_attribute("a")->value(), nullptr)};
 }
 
 
