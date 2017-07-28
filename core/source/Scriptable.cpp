@@ -15,6 +15,7 @@
 #include "../include/Cerium/Music.hpp"
 #include "../include/Cerium/Sound.hpp"
 #include "../include/Cerium/ResourceManager.hpp"
+#include "../include/Cerium/Button.hpp"
 
 namespace cerium
 {
@@ -49,6 +50,16 @@ namespace cerium
         return bPerson->getPosition();
     }
 
+    Prop * l_getProp(const std::string & name)
+    {
+        return bPerson->getProp(name);
+    }
+
+    Button * l_cast_to_button(Prop * p)
+    {
+        return dynamic_cast<Button*>(p);
+    }
+
 
     Scriptable::Scriptable(Person * basePerson, Prop * parent, const std::string & name, Script * script)
             : Prop(basePerson, parent, name)
@@ -64,6 +75,10 @@ namespace cerium
         state->set_function("setRotation", l_setRotation);
 
         state->set_function("getPosition", l_getPosition);
+
+        state->set_function("getProp", l_getProp);
+
+        state->set_function("cast_to_button", l_cast_to_button);
 
         state->set("KEY_LEFT", SDL_SCANCODE_LEFT);
         state->set("KEY_RIGHT", SDL_SCANCODE_RIGHT);
@@ -131,7 +146,10 @@ namespace cerium
                                  "getName", &Prop::getName, "getPerson", &Prop::getPerson,
                                  "getParent", &Prop::getParent, "exist", &Prop::exist,
                                  "addChild", &Prop::addChild, "getChild", &Prop::getChild,
-                                              "getAllChildren", &Prop::getAllChildren);
+                                 "getAllChildren", &Prop::getAllChildren);
+        prop.set("cast_to", sol::overload(&Prop::cast_to<cerium::Button>));
+
+        state->new_usertype<Button>("Button", "isClicked", &Button::isClicked, "getName", &Button::getName);
 
         auto resource = state->new_usertype<Resource>("Resource", "use", &Resource::use);
 
@@ -140,13 +158,13 @@ namespace cerium
                                               &Resource::cast_to<cerium::Script>));
 
         script->state["init"]();
-        updatefun = script->state["update"];
+        updatefunction = script->state["update"];
     }
 
 
     void Scriptable::update(const float & deltaTime)
     {
         bPerson = basePerson;
-        updatefun(deltaTime);
+        updatefunction(deltaTime);
     }
 }

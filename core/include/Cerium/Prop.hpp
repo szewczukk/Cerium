@@ -6,6 +6,7 @@
 
 namespace cerium
 {
+    class Button;
     class Person;
     class Prop
     {
@@ -125,9 +126,12 @@ namespace cerium
             ^[returns][Casted object]
          */
         template<typename T>
-                T* cast_to(void) //^header
+                T* cast_to(const std::string type = "") //^header
         {
-            return dynamic_cast<T*>(this);
+            if(type == "")
+                return dynamic_cast<T*>(this);
+            if(type == "Button")
+                return dynamic_cast<Button*>(this);
         }
 
         std::vector<std::pair<std::string, Prop*>> getAllChildren(void)

@@ -103,9 +103,9 @@ namespace cerium
 
     void VertexArray::draw(void)
     {
-        dynamic_cast<ShaderProgram*>(ResourceManager::get("shader"))->setMatUniform("transform", transform);
-        dynamic_cast<ShaderProgram*>(ResourceManager::get("shader"))->setVec4Uniform("uColor", color);
-        dynamic_cast<ShaderProgram*>(ResourceManager::get("shader"))->setIntegerUniform("textured", textured);
+        ResourceManager::get("shader")->cast_to<cerium::ShaderProgram>()->setMatUniform("transform", transform);
+        ResourceManager::get("shader")->cast_to<cerium::ShaderProgram>()->setVec4Uniform("uColor", color);
+        ResourceManager::get("shader")->cast_to<cerium::ShaderProgram>()->setIntegerUniform("textured", textured);
 
         glBindVertexArray(vertexArray);
 

@@ -28,7 +28,7 @@ namespace cerium
         virtual void update(const float & deltaTime) override;
     private:
         sol::state * state;
-        sol::function updatefun;
+        sol::function updatefunction;
     };
 }
 

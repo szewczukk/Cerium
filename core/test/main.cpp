@@ -133,7 +133,7 @@ void load_scenes(const cerium::vec4 & normalTextColor, const cerium::vec4 & hove
             float angle = strtof(person->first_attribute("angle")->value(), nullptr);
 
             act->add(new cerium::Person(personName, nullptr, act));
-            cerium::Person * per = act->get(personName);
+            cerium::Person *  per = act->get(personName);
 
             per->setPosition(position);
             per->setSize(size);
