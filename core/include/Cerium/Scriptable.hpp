@@ -1,7 +1,7 @@
 #ifndef CERIUM_SCRIPTABLE_HPP
 #define CERIUM_SCRIPTABLE_HPP
 
-#include <sol.hpp>
+#include <sol/sol.hpp>
 
 #include <iostream>
 

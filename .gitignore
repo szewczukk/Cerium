@@ -33,3 +33,20 @@
 
 cmake-build-debug/
 .idea/
+*.ipch
+*.ipch
+*.ipch
+*.ipch
+
+.vs/
+/Debug/Cerium.tlog
+/Debug/res
+*.ilk
+*.pdb
+Debug/
+/res
+/Cerium.sln
+/Cerium.vcxproj
+/Cerium.vcxproj.filters
+/Cerium.vcxproj.user
+/log.txt

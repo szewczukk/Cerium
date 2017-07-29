@@ -25,6 +25,8 @@
 #include <rapidxml.hpp>
 #include <rapidxml_utils.hpp>
 
+#undef main
+
 cerium::vec2 size_of_window()
 {
     rapidxml::file <> file("res/settings.xml");
@@ -223,7 +225,7 @@ void getColorsOfUI(cerium::vec4 & normalTextColor, cerium::vec4 & hoveredTextCol
 }
 
 
-int main()
+int main(int argc, char **argv)
 {
     bool debug_mode = is_debug_mode();
 
@@ -259,16 +261,15 @@ int main()
     {
         if(debug_mode)
         {
-            frames++;
             if(cerium::ResourceManager::get("fpsTimer")->cast_to<cerium::Clock>()->getElapsedTime() > 1)
             {
                 std::cout << "FPS " << frames << std::endl;
                 frames = 0;
-
                 cerium::ResourceManager::get("fpsTimer")->use();
             }
+			frames++;
         }
-
+		
         cerium::ResourceManager::get("timer")->use();
         cerium::EventManager::pollEvents();
         cerium::Window::clear();

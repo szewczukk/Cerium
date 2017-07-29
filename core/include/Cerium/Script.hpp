@@ -3,7 +3,7 @@
 
 #include "Resource.hpp"
 
-#include <sol.hpp>
+#include <sol/sol.hpp>
 #include <fstream>
 
 namespace cerium

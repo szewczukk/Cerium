@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<settings debug_mode="True">
+    <size width="400" height="300"/>
+    <caption title="Cerium SDL OpenGL"/>
+
+    <ui>
+        <normalText r="0" g="0" b="0" a="255"/>
+        <hoveredText r="255" g="255" b="255" a="255"/>
+
+        <normalBackground r="255" g="255" b="255" a="255"/>
+        <hoveredBackground r="0" g="0" b="0" a="255"/>
+    </ui>
+</settings>

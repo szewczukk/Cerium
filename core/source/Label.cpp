@@ -48,7 +48,7 @@ namespace cerium
         {
             SDL_Surface * surface = TTF_RenderText_Blended(font->font, text.c_str(), {(Uint8)color.x, (Uint8)color.y, (Uint8)color.z, (Uint8)color.w});
 
-            basePerson->setSize({surface->w, surface->h});
+            basePerson->setSize({(float)surface->w, (float)surface->h});
 
             glGenTextures(1, &texture);
 
