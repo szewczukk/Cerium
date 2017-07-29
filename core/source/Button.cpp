@@ -39,15 +39,26 @@ namespace cerium
 
         if(SDL_PointInRect(&p, &r))
         {
-            dynamic_cast<VertexArray*>(getChild("background"))->setColor(m_hoveredBackground);
-            dynamic_cast<Label*>(getChild("label"))->setColor(m_hoveredText);
-            m_isHovered = true;
-            m_isClicked = EventManager::isMouseButtonClicked(SDL_BUTTON_LEFT);
-        } else {
-            dynamic_cast<VertexArray*>(getChild("background"))->setColor(m_normalBackground);
-            dynamic_cast<Label*>(getChild("label"))->setColor(m_normalText);
-            m_isHovered = false;
-            m_isClicked = false;
+			if (!m_isHovered)
+			{
+				dynamic_cast<VertexArray*>(getChild("background"))->setColor(m_hoveredBackground);
+				dynamic_cast<Label*>(getChild("label"))->setColor(m_hoveredText);
+				m_isHovered = true;
+			}
+			if (m_isHovered)
+			{
+				m_isClicked = EventManager::isMouseButtonClicked(SDL_BUTTON_LEFT);
+			}
+        } 
+		else 
+		{
+			if (m_isHovered || m_isClicked)
+			{
+				dynamic_cast<VertexArray*>(getChild("background"))->setColor(m_normalBackground);
+				dynamic_cast<Label*>(getChild("label"))->setColor(m_normalText);
+				m_isHovered = false;
+				m_isClicked = false;
+			}
         }
     }
 
