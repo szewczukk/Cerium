@@ -50,3 +50,11 @@ Debug/
 /Cerium.vcxproj.filters
 /Cerium.vcxproj.user
 /log.txt
+
+res/
+
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+CMakeLists.txt
