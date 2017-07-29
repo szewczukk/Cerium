@@ -22,6 +22,61 @@ namespace cerium
 {
     Person * bPerson;
 
+
+	std::vector<std::pair<std::string, Person*>> l_getAllChildren(void)
+	{
+		return bPerson->getAllChildren();
+	}
+
+
+	std::vector<std::pair<std::string, Prop*>> l_getAllProps(void)
+	{
+		return bPerson->getAllProps();
+	}
+
+	
+	void l_addChild(Person * child)
+	{
+		bPerson->addChild(child);
+	}
+
+	
+	bool l_childExist(const std::string & name)
+	{
+		return bPerson->childExist(name);
+	}
+
+
+	Person * l_getChild(const std::string & name)
+	{
+		return bPerson->getChild(name);
+	}
+
+
+	Person * l_getParent(void)
+	{
+		return bPerson->getParent();
+	}
+
+
+	void l_addProp(Prop * component)
+	{
+		return bPerson->addProp(component);
+	}
+
+
+	bool l_propExist(const std::string & name)
+	{
+		return bPerson->propExist(name);
+	}
+	
+
+	std::string l_getName(void)
+	{
+		return bPerson->getName();
+	}
+
+
     void l_move(const vec2 & relativePosition)
     {
         bPerson->move(relativePosition);
@@ -32,6 +87,12 @@ namespace cerium
     {
         bPerson->setPosition(position);
     }
+
+
+	void l_setSize(const vec2 & size)
+	{
+		bPerson->setSize(size);
+	}
 
 
     void l_rotate(const float & angle)
@@ -50,6 +111,18 @@ namespace cerium
     {
         return bPerson->getPosition();
     }
+
+
+	vec2 l_getSize(void)
+	{
+		return bPerson->getSize();
+	}
+
+
+	float l_getRotation(void)
+	{
+		return bPerson->getRotation();
+	}
 
 
     Prop * l_getProp(const std::string & name)
@@ -133,10 +206,26 @@ namespace cerium
 
         state->set_function("setPosition", l_setPosition);
         state->set_function("setRotation", l_setRotation);
+		state->set_function("setSize", l_setSize);
 
         state->set_function("getPosition", l_getPosition);
+		state->set_function("getRotation", l_getRotation);
+		state->set_function("getSize", l_getSize);
+
+		state->set_function("adddChild", l_addChild);
+		state->set_function("childExist", l_childExist);
+		state->set_function("getChild", l_getChild);
 
         state->set_function("getProp", l_getProp);
+		state->set_function("getName", l_getName);
+
+		state->set_function("getAllChildren", l_getAllChildren);
+		state->set_function("getAllProps", l_getAllProps);
+
+		state->set_function("addProp", l_addProp);
+		state->set_function("propExist", l_propExist);
+
+		state->set_function("getParent", l_getParent);
 
         state->set_function("cast_to_button", l_cast_to_button);
 		state->set_function("cast_to_label", l_cast_to_label);
