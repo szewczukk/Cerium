@@ -29,7 +29,14 @@ namespace cerium
         glDeleteTextures(1, &texture);
     }
 
-    void Costumed::draw(void)
+
+	void Costumed::setTexture(Costume * source)
+	{
+		Costumed(basePerson, parent, name, source);
+	}
+
+
+	void Costumed::draw(void)
     {
         glBindTexture(GL_TEXTURE_2D, texture);
     }

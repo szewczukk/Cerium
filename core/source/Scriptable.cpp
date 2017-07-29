@@ -9,6 +9,7 @@
 #include "../include/Cerium/Window.hpp"
 #include "../include/Cerium/Resource.hpp"
 #include "../include/Cerium/Font.hpp"
+#include "../include/Cerium/Costume.hpp"
 #include "../include/Cerium/Costumed.hpp"
 #include "../include/Cerium/Clock.hpp"
 #include "../include/Cerium/Script.hpp"
@@ -50,15 +51,74 @@ namespace cerium
         return bPerson->getPosition();
     }
 
+
     Prop * l_getProp(const std::string & name)
     {
         return bPerson->getProp(name);
     }
 
+
     Button * l_cast_to_button(Prop * p)
     {
         return dynamic_cast<Button*>(p);
     }
+
+
+	Label * l_cast_to_label(Prop * p)
+	{
+		return dynamic_cast<Label*>(p);
+	}
+
+
+	Costumed * l_cast_to_costumed(Prop * p)
+	{
+		return dynamic_cast<Costumed*>(p);
+	}
+
+
+	Scriptable * l_cast_to_scriptable(Prop * p)
+	{
+		return dynamic_cast<Scriptable*>(p);
+	}
+
+	VertexArray * l_cast_to_vertexArray(Prop * p)
+	{
+		return dynamic_cast<VertexArray*>(p);
+	}
+
+
+	Sound * l_cast_to_sound(Resource * r)
+	{
+		return dynamic_cast<Sound*>(r);
+	}
+
+	
+	Script * l_cast_to_script(Resource * r)
+	{
+		return dynamic_cast<Script*>(r);
+	}
+
+
+	Clock * l_cast_to_clock(Resource * r)
+	{
+		return dynamic_cast<Clock*>(r);
+	}
+
+	Font * l_cast_to_font(Resource * r)
+	{
+		return dynamic_cast<Font*>(r);
+	}
+
+	Music * l_cast_to_music(Resource * r)
+	{
+		return dynamic_cast<Music*>(r);
+	}
+
+
+	Costume * l_cast_to_costume(Resource * r)
+	{
+		return dynamic_cast<Costume*>(r);
+	}
 
 
     Scriptable::Scriptable(Person * basePerson, Prop * parent, const std::string & name, Script * script)
@@ -79,6 +139,17 @@ namespace cerium
         state->set_function("getProp", l_getProp);
 
         state->set_function("cast_to_button", l_cast_to_button);
+		state->set_function("cast_to_label", l_cast_to_label);
+		state->set_function("cast_to_costumed", l_cast_to_costumed);
+		state->set_function("cast_to_scriptable", l_cast_to_scriptable);
+		state->set_function("cast_to_vertex_array", l_cast_to_vertexArray);
+
+		state->set_function("cast_to_sound", l_cast_to_sound);
+		state->set_function("cast_to_costume", l_cast_to_costume);
+		state->set_function("cast_to_script", l_cast_to_script);
+		state->set_function("cast_to_clock", l_cast_to_clock);
+		state->set_function("cast_to_font", l_cast_to_font);
+		state->set_function("cast_to_music", l_cast_to_music);
 
         state->set("KEY_LEFT", SDL_SCANCODE_LEFT);
         state->set("KEY_RIGHT", SDL_SCANCODE_RIGHT);
@@ -149,13 +220,9 @@ namespace cerium
                                  "getAllChildren", &Prop::getAllChildren);
         prop.set("cast_to", sol::overload(&Prop::cast_to<cerium::Button>));
 
-        state->new_usertype<Button>("Button", "isClicked", &Button::isClicked, "getName", &Button::getName);
+        state->new_usertype<Button>("Button", "isHovered", &Button::isHovered, "isClicked", &Button::isClicked);
 
         auto resource = state->new_usertype<Resource>("Resource", "use", &Resource::use);
-
-        resource.set("cast_to", sol::overload(&Resource::cast_to<cerium::Music>, &Resource::cast_to<cerium::Sound>,
-                                              &Resource::cast_to<cerium::Font>, &Resource::cast_to<cerium::Clock>,
-                                              &Resource::cast_to<cerium::Script>));
 
         script->state["init"]();
         updatefunction = script->state["update"];

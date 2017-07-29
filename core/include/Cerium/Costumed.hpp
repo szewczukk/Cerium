@@ -31,6 +31,13 @@ namespace cerium
             ^[description][Deleting Costumed]
          */
         ~Costumed(); //^header
+		/*
+            ^[name][setTexture]
+            ^[class][Costumed]
+            ^[description][Creating Costumed by source]
+            ^[argument]<source>[Source of Costumed]
+         */
+		void setTexture(Costume * source); //^header
 
         virtual void draw(void) override;
     private:
