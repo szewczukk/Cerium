@@ -246,7 +246,7 @@ namespace cerium
         state->set("KEY_ESCAPE", SDL_SCANCODE_ESCAPE);
         state->set("KEY_DOWN", SDL_SCANCODE_DOWN);
 
-        sol::table inputManager = state->create_named_table("inputManager");
+        sol::table inputManager = state->create_named_table("eventManager");
         inputManager.set_function("isKeyPressed", &EventManager::isKeyPressed);
         inputManager.set_function("isWindowClosed", &EventManager::isWindowClosed);
         inputManager.set_function("isMouseButtonClicked", &EventManager::isMouseButtonClicked);
@@ -254,7 +254,10 @@ namespace cerium
 
         sol::table camera = state->create_named_table("camera");
         camera.set_function("move", &Camera::move);
-        camera.set_function("setCameraPosition", &Camera::setPosition);
+        camera.set_function("setPosition", &Camera::setPosition);
+		camera.set_function("setSize", &Camera::setSize);
+		camera.set_function("getPosition", &Camera::getPosition);
+		camera.set_function("getSize", &Camera::getSize);
 
         sol::table actManager = state->create_named_table("actManager");
         actManager.set_function("get", &ActManager::get);
@@ -270,7 +273,6 @@ namespace cerium
         window.set_function("setSize", &Window::setSize);
         window.set_function("getSize", &Window::getSize);
         window.set_function("getTitle", &Window::getTitle);
-        window.set_function("init", &Window::init);
 
         //TODO: ALL METHODS
         sol::table resourceManager = state->create_named_table("resourceManager");

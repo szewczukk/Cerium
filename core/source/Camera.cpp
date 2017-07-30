@@ -7,7 +7,13 @@
 
 namespace cerium
 {
-    Camera & Camera::instance()
+	vec2 Camera::getSize()
+	{
+		return instance().size;
+	}
+
+
+	Camera & Camera::instance()
     {
         static Camera camera;
         return camera;

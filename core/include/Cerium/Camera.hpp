@@ -51,6 +51,12 @@ namespace cerium
             ^[returns][Position of Camera]
         */
         static vec2 getPosition(); //^header
+		/*
+            ^[name][getSize]
+            ^[class][Camera]
+            ^[returns][Size of Camera]
+        */
+        static vec2 getSize(); //^header
     private:
         static Camera & instance();
 
