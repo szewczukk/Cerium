@@ -5,6 +5,13 @@
 
 namespace cerium
 {
+	ActManager::~ActManager()
+	{
+		clear();
+	}
+
+
+
     Act * ActManager::get(const std::string & name)
     {
         for(auto & act : instance().acts)
@@ -41,10 +48,7 @@ namespace cerium
 
     void ActManager::clear(void)
     {
-        for (auto & act : instance().acts)
-        {
-            delete act.second;
-        }
+		instance().acts.clear();
     }
 
 

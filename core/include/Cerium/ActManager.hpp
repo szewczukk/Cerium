@@ -74,6 +74,7 @@ namespace cerium
         static ActManager & instance();
 
         ActManager() {};
+		~ActManager();
         ActManager(const ActManager & other) = delete;
         void operator=(const ActManager & other) = delete;
     private:

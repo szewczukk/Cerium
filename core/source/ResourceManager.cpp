@@ -54,10 +54,7 @@ namespace cerium
 
     void ResourceManager::clear(void)
     {
-        for(auto & resource : instance().resources)
-        {
-            delete resource.second;
-        }
+		instance().resources.clear();
     }
 
 
