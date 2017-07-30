@@ -274,7 +274,6 @@ namespace cerium
 		window.set_function("getSize", &Window::getSize);
 		window.set_function("getTitle", &Window::getTitle);
 
-		//TODO: ALL METHODS
 		sol::table resourceManager = state->create_named_table("resourceManager");
 		resourceManager.set_function("get", &ResourceManager::get);
 		resourceManager.set_function("add", &ResourceManager::add);
@@ -324,6 +323,24 @@ namespace cerium
 		state->new_usertype<Button>("Button", "isHovered", &Button::isHovered, "isClicked", &Button::isClicked);
 
 		state->new_usertype<Resource>("Resource", "use", &Resource::use);
+
+		state->new_usertype<Clock>("Clock", "getElapsedTime", &Clock::getElapsedTime, "use", &Clock::use);
+
+		sol::constructor_list<sol::types<std::string>> costume_constructors;
+		state->new_usertype<Costume>("Costume", costume_constructors);
+
+		sol::constructor_list<sol::types<std::string, unsigned int>> font_costructors;
+		state->new_usertype<Font>("Font", font_costructors);
+
+		sol::constructor_list<sol::types<std::string>> sound_constructors;
+		state->new_usertype<Sound>("Sound", sound_constructors, "use", &Sound::use);
+
+		sol::constructor_list<sol::types<std::string>> script_constructors;
+		state->new_usertype<Script>("Script", script_constructors);
+
+		sol::constructor_list<sol::types<std::string, bool, int>> music_constructors;
+		state->new_usertype<Music>("Music", music_constructors, "halt", &Music::halt, 
+									"stop", &Music::stop, "resume", &Music::resume, "use", &Music::use);
 
 		script->state["init"]();
 		updatefunction = script->state["update"];
