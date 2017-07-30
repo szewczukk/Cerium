@@ -20,7 +20,7 @@
 
 namespace cerium
 {
-    Person * bPerson;
+	Person * bPerson;
 
 
 	std::vector<std::pair<std::string, Person*>> l_getAllChildren(void)
@@ -34,13 +34,13 @@ namespace cerium
 		return bPerson->getAllProps();
 	}
 
-	
+
 	void l_addChild(Person * child)
 	{
 		bPerson->addChild(child);
 	}
 
-	
+
 	bool l_childExist(const std::string & name)
 	{
 		return bPerson->childExist(name);
@@ -69,7 +69,7 @@ namespace cerium
 	{
 		return bPerson->propExist(name);
 	}
-	
+
 
 	std::string l_getName(void)
 	{
@@ -77,16 +77,16 @@ namespace cerium
 	}
 
 
-    void l_move(const vec2 & relativePosition)
-    {
-        bPerson->move(relativePosition);
-    }
+	void l_move(const vec2 & relativePosition)
+	{
+		bPerson->move(relativePosition);
+	}
 
 
-    void l_setPosition(const vec2 & position)
-    {
-        bPerson->setPosition(position);
-    }
+	void l_setPosition(const vec2 & position)
+	{
+		bPerson->setPosition(position);
+	}
 
 
 	void l_setSize(const vec2 & size)
@@ -95,22 +95,22 @@ namespace cerium
 	}
 
 
-    void l_rotate(const float & angle)
-    {
-        bPerson->rotate(angle);
-    }
+	void l_rotate(const float & angle)
+	{
+		bPerson->rotate(angle);
+	}
 
 
-    void l_setRotation(const float & angle)
-    {
-        bPerson->setRotation(angle);
-    }
+	void l_setRotation(const float & angle)
+	{
+		bPerson->setRotation(angle);
+	}
 
 
-    vec2 l_getPosition(void)
-    {
-        return bPerson->getPosition();
-    }
+	vec2 l_getPosition(void)
+	{
+		return bPerson->getPosition();
+	}
 
 
 	vec2 l_getSize(void)
@@ -125,16 +125,16 @@ namespace cerium
 	}
 
 
-    Prop * l_getProp(const std::string & name)
-    {
-        return bPerson->getProp(name);
-    }
+	Prop * l_getProp(const std::string & name)
+	{
+		return bPerson->getProp(name);
+	}
 
 
-    Button * l_cast_to_button(Prop * p)
-    {
-        return dynamic_cast<Button*>(p);
-    }
+	Button * l_cast_to_button(Prop * p)
+	{
+		return dynamic_cast<Button*>(p);
+	}
 
 
 	Label * l_cast_to_label(Prop * p)
@@ -165,7 +165,7 @@ namespace cerium
 		return dynamic_cast<Sound*>(r);
 	}
 
-	
+
 	Script * l_cast_to_script(Resource * r)
 	{
 		return dynamic_cast<Script*>(r);
@@ -194,21 +194,21 @@ namespace cerium
 	}
 
 
-    Scriptable::Scriptable(Person * basePerson, Prop * parent, const std::string & name, Script * script)
-            : Prop(basePerson, parent, name)
-    {
-        this->state = &script->state;
+	Scriptable::Scriptable(Person * basePerson, Prop * parent, const std::string & name, Script * script)
+		: Prop(basePerson, parent, name)
+	{
+		this->state = &script->state;
 
-        bPerson = basePerson;
+		bPerson = basePerson;
 
-        state->set_function("move", l_move);
-        state->set_function("rotate", l_rotate);
+		state->set_function("move", l_move);
+		state->set_function("rotate", l_rotate);
 
-        state->set_function("setPosition", l_setPosition);
-        state->set_function("setRotation", l_setRotation);
+		state->set_function("setPosition", l_setPosition);
+		state->set_function("setRotation", l_setRotation);
 		state->set_function("setSize", l_setSize);
 
-        state->set_function("getPosition", l_getPosition);
+		state->set_function("getPosition", l_getPosition);
 		state->set_function("getRotation", l_getRotation);
 		state->set_function("getSize", l_getSize);
 
@@ -216,7 +216,7 @@ namespace cerium
 		state->set_function("childExist", l_childExist);
 		state->set_function("getChild", l_getChild);
 
-        state->set_function("getProp", l_getProp);
+		state->set_function("getProp", l_getProp);
 		state->set_function("getName", l_getName);
 
 		state->set_function("getAllChildren", l_getAllChildren);
@@ -227,7 +227,7 @@ namespace cerium
 
 		state->set_function("getParent", l_getParent);
 
-        state->set_function("cast_to_button", l_cast_to_button);
+		state->set_function("cast_to_button", l_cast_to_button);
 		state->set_function("cast_to_label", l_cast_to_label);
 		state->set_function("cast_to_costumed", l_cast_to_costumed);
 		state->set_function("cast_to_scriptable", l_cast_to_scriptable);
@@ -240,50 +240,52 @@ namespace cerium
 		state->set_function("cast_to_font", l_cast_to_font);
 		state->set_function("cast_to_music", l_cast_to_music);
 
-        state->set("KEY_LEFT", SDL_SCANCODE_LEFT);
-        state->set("KEY_RIGHT", SDL_SCANCODE_RIGHT);
-        state->set("KEY_UP", SDL_SCANCODE_UP);
-        state->set("KEY_ESCAPE", SDL_SCANCODE_ESCAPE);
-        state->set("KEY_DOWN", SDL_SCANCODE_DOWN);
+		state->set("KEY_LEFT", SDL_SCANCODE_LEFT);
+		state->set("KEY_RIGHT", SDL_SCANCODE_RIGHT);
+		state->set("KEY_UP", SDL_SCANCODE_UP);
+		state->set("KEY_ESCAPE", SDL_SCANCODE_ESCAPE);
+		state->set("KEY_DOWN", SDL_SCANCODE_DOWN);
 
-        sol::table inputManager = state->create_named_table("eventManager");
-        inputManager.set_function("isKeyPressed", &EventManager::isKeyPressed);
-        inputManager.set_function("isWindowClosed", &EventManager::isWindowClosed);
-        inputManager.set_function("isMouseButtonClicked", &EventManager::isMouseButtonClicked);
-        inputManager.set_function("closeWindow", &EventManager::closeWindow);
+		sol::table inputManager = state->create_named_table("eventManager");
+		inputManager.set_function("isKeyPressed", &EventManager::isKeyPressed);
+		inputManager.set_function("isWindowClosed", &EventManager::isWindowClosed);
+		inputManager.set_function("isMouseButtonClicked", &EventManager::isMouseButtonClicked);
+		inputManager.set_function("closeWindow", &EventManager::closeWindow);
 
-        sol::table camera = state->create_named_table("camera");
-        camera.set_function("move", &Camera::move);
-        camera.set_function("setPosition", &Camera::setPosition);
+		sol::table camera = state->create_named_table("camera");
+		camera.set_function("move", &Camera::move);
+		camera.set_function("setPosition", &Camera::setPosition);
 		camera.set_function("setSize", &Camera::setSize);
 		camera.set_function("getPosition", &Camera::getPosition);
 		camera.set_function("getSize", &Camera::getSize);
 
-        sol::table actManager = state->create_named_table("actManager");
-        actManager.set_function("get", &ActManager::get);
-        actManager.set_function("add", &ActManager::add);
-        actManager.set_function("remove", &ActManager::remove);
-        actManager.set_function("exist", &ActManager::exist);
-        actManager.set_function("setCurrent", &ActManager::setCurrent);
-        actManager.set_function("clear", &ActManager::clear);
-        actManager.set_function("getAllActs", &ActManager::getAllActs);
+		sol::table actManager = state->create_named_table("actManager");
+		actManager.set_function("get", &ActManager::get);
+		actManager.set_function("add", &ActManager::add);
+		actManager.set_function("remove", &ActManager::remove);
+		actManager.set_function("exist", &ActManager::exist);
+		actManager.set_function("setCurrent", &ActManager::setCurrent);
+		actManager.set_function("clear", &ActManager::clear);
+		actManager.set_function("getAllActs", &ActManager::getAllActs);
 
-        sol::table window = state->create_named_table("window");
-        window.set_function("setTitle", &Window::setTitle);
-        window.set_function("setSize", &Window::setSize);
-        window.set_function("getSize", &Window::getSize);
-        window.set_function("getTitle", &Window::getTitle);
+		sol::table window = state->create_named_table("window");
+		window.set_function("setTitle", &Window::setTitle);
+		window.set_function("setSize", &Window::setSize);
+		window.set_function("getSize", &Window::getSize);
+		window.set_function("getTitle", &Window::getTitle);
 
-        //TODO: ALL METHODS
-        sol::table resourceManager = state->create_named_table("resourceManager");
-		resourceManager.set_function("get", &ResourceManager::get, "add", &ResourceManager::add, 
-									"remove", &ResourceManager::remove, "clear", &ResourceManager::clear);
+		//TODO: ALL METHODS
+		sol::table resourceManager = state->create_named_table("resourceManager");
+		resourceManager.set_function("get", &ResourceManager::get);
+		resourceManager.set_function("add", &ResourceManager::add);
+		resourceManager.set_function("remove", &ResourceManager::remove);
+		resourceManager.set_function("clear", &ResourceManager::clear);
 
-        sol::constructors<sol::types<>, sol::types<float>, sol::types<float, float>> vector2_constructors;
-        state->new_usertype<vec2>("vec2", vector2_constructors,
-                                 "x", &vec2::x, "y", &vec2::y,
-                                 "getLength", &vec2::getLength, 
-								 "normalize", &vec2::normalize, "normalizeSelf", &vec2::normalizeSelf);
+		sol::constructors<sol::types<>, sol::types<float>, sol::types<float, float>> vector2_constructors;
+		state->new_usertype<vec2>("vec2", vector2_constructors,
+									"x", &vec2::x, "y", &vec2::y,
+									"getLength", &vec2::getLength, 
+									"normalize", &vec2::normalize, "normalizeSelf", &vec2::normalizeSelf);
 
 		sol::constructors<sol::types<>, sol::types<float>, sol::types<float, float, float, float>> vector4_constructors;
 		state->new_usertype<vec4>("vec4", vector4_constructors,
@@ -291,45 +293,46 @@ namespace cerium
 									"getLength", &vec4::getLength,
 									"normalize", &vec4::normalize, "normalizeSelf", &vec4::normalizeSelf);
 
-        sol::constructors<sol::types<std::string, Person*, Act*>> person_constructor;
-        auto person = state->new_usertype<Person>("Person", person_constructor,
-                                   "setPosition", &Person::setPosition, "setRotation", &Person::setRotation,
-                                   "setSize", &Person::setSize, "move", &Person::move, "rotate", &Person::rotate,
-                                   "getPosition", &Person::getPosition, "getSize", &Person::getSize, "getRotation", &Person::getRotation,
-                                   "getName", &Person::getName, "addProp", &Person::addProp,
-                                   "propExist", &Person::propExist, "getProp", &Person::getProp);
-        person.set_function("getParent", &Person::getParent);
-        person.set_function("addChild", &Person::addChild);
-        person.set_function("childExist", &Person::childExist);
-        person.set_function("getChild", &Person::getChild);
-        person.set_function("getAllChildren", &Person::getAllChildren);
-        person.set_function("getAllProps", &Person::getAllProps);
+		sol::constructors<sol::types<std::string, Person*, Act*>> person_constructor;
+		auto person = state->new_usertype<Person>("Person", person_constructor,
+												"setPosition", &Person::setPosition, "setRotation", &Person::setRotation,
+												"setSize", &Person::setSize, "move", &Person::move, "rotate", &Person::rotate,
+												"getPosition", &Person::getPosition, "getSize", &Person::getSize, 
+												"getRotation", &Person::getRotation,
+												"getName", &Person::getName, "addProp", &Person::addProp,
+												"propExist", &Person::propExist, "getProp", &Person::getProp);
+		person.set_function("getParent", &Person::getParent);
+		person.set_function("addChild", &Person::addChild);
+		person.set_function("childExist", &Person::childExist);
+		person.set_function("getChild", &Person::getChild);
+		person.set_function("getAllChildren", &Person::getAllChildren);
+		person.set_function("getAllProps", &Person::getAllProps);
 
-        state->new_usertype<Act>("Act",
-                                "draw", &Act::draw, "update", &Act::update,
-                                "add", &Act::add, "remove", &Act::remove,
-                                "clear", &Act::clear, "exist", &Act::exist, "get", &Act::get,
-                                "getAllPersons", &Act::getAllPersons);
+		state->new_usertype<Act>("Act",
+								"draw", &Act::draw, "update", &Act::update,
+								"add", &Act::add, "remove", &Act::remove,
+								"clear", &Act::clear, "exist", &Act::exist, "get", &Act::get,
+								"getAllPersons", &Act::getAllPersons);
 
-        sol::constructor_list <sol::types<Person*, Prop*, const std::string &>> propConstructors;
-        auto prop = state->new_usertype<Prop>("Prop", propConstructors,
-                                 "getName", &Prop::getName, "getPerson", &Prop::getPerson,
-                                 "getParent", &Prop::getParent, "exist", &Prop::exist,
-                                 "addChild", &Prop::addChild, "getChild", &Prop::getChild,
-                                 "getAllChildren", &Prop::getAllChildren);
+		sol::constructor_list <sol::types<Person*, Prop*, const std::string &>> propConstructors;
+		auto prop = state->new_usertype<Prop>("Prop", propConstructors,
+												"getName", &Prop::getName, "getPerson", &Prop::getPerson,
+												"getParent", &Prop::getParent, "exist", &Prop::exist,
+												"addChild", &Prop::addChild, "getChild", &Prop::getChild,
+												"getAllChildren", &Prop::getAllChildren);
 
-        state->new_usertype<Button>("Button", "isHovered", &Button::isHovered, "isClicked", &Button::isClicked);
+		state->new_usertype<Button>("Button", "isHovered", &Button::isHovered, "isClicked", &Button::isClicked);
 
-        auto resource = state->new_usertype<Resource>("Resource", "use", &Resource::use);
+		state->new_usertype<Resource>("Resource", "use", &Resource::use);
 
-        script->state["init"]();
-        updatefunction = script->state["update"];
-    }
+		script->state["init"]();
+		updatefunction = script->state["update"];
+	}
 
 
-    void Scriptable::update(const float & deltaTime)
-    {
-        bPerson = basePerson;
-        updatefunction(deltaTime);
-    }
+	void Scriptable::update(const float & deltaTime)
+	{
+		bPerson = basePerson;
+		updatefunction(deltaTime);
+	}
 }
