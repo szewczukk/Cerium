@@ -126,12 +126,9 @@ namespace cerium
             ^[returns][Casted object]
          */
         template<typename T>
-                T* cast_to(const std::string type = "") //^header
+                T* cast_to(void) //^header
         {
-            if(type == "")
-                return dynamic_cast<T*>(this);
-            if(type == "Button")
-                return dynamic_cast<Button*>(this);
+			return dynamic_cast<T*>(this);
         }
 
         std::vector<std::pair<std::string, Prop*>> getAllChildren(void)

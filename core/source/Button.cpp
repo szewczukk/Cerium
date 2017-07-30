@@ -45,14 +45,14 @@ namespace cerium
 				dynamic_cast<Label*>(getChild("label"))->setColor(m_hoveredText);
 				m_isHovered = true;
 			}
-			if (m_isHovered)
+			else
 			{
 				m_isClicked = EventManager::isMouseButtonClicked(SDL_BUTTON_LEFT);
 			}
         } 
 		else 
 		{
-			if (m_isHovered || m_isClicked)
+			if (m_isHovered)
 			{
 				dynamic_cast<VertexArray*>(getChild("background"))->setColor(m_normalBackground);
 				dynamic_cast<Label*>(getChild("label"))->setColor(m_normalText);
