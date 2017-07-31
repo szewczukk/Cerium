@@ -283,7 +283,7 @@ namespace cerium
 		sol::constructors<sol::types<>, sol::types<float>, sol::types<float, float>> vector2_constructors;
 		state->new_usertype<vec2>("vec2", vector2_constructors,
 									"x", &vec2::x, "y", &vec2::y,
-									"getLength", &vec2::getLength, 
+									"getLength", &vec2::getLength,
 									"normalize", &vec2::normalize, "normalizeSelf", &vec2::normalizeSelf);
 
 		sol::constructors<sol::types<>, sol::types<float>, sol::types<float, float, float, float>> vector4_constructors;
@@ -296,7 +296,7 @@ namespace cerium
 		auto person = state->new_usertype<Person>("Person", person_constructor,
 												"setPosition", &Person::setPosition, "setRotation", &Person::setRotation,
 												"setSize", &Person::setSize, "move", &Person::move, "rotate", &Person::rotate,
-												"getPosition", &Person::getPosition, "getSize", &Person::getSize, 
+												"getPosition", &Person::getPosition, "getSize", &Person::getSize,
 												"getRotation", &Person::getRotation,
 												"getName", &Person::getName, "addProp", &Person::addProp,
 												"propExist", &Person::propExist, "getProp", &Person::getProp);

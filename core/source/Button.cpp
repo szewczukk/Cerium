@@ -49,7 +49,7 @@ namespace cerium
 			{
 				m_isClicked = EventManager::isMouseButtonClicked(SDL_BUTTON_LEFT);
 			}
-        } 
+		} 
 		else 
 		{
 			if (m_isHovered)
@@ -59,8 +59,8 @@ namespace cerium
 				m_isHovered = false;
 				m_isClicked = false;
 			}
-        }
-    }
+		}
+	}
 
 
     bool Button::isHovered()
