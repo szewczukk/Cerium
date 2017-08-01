@@ -276,30 +276,34 @@ namespace cerium
 
 		sol::table resourceManager = state->create_named_table("resourceManager");
 		resourceManager.set_function("get", &ResourceManager::get);
-		resourceManager.set_function("add", &ResourceManager::add);
+		resourceManager.set_function("add", sol::overload(ResourceManager::add<Script>, 
+			ResourceManager::add<Font>, 
+			ResourceManager::add<Costume>, 
+			ResourceManager::add<Clock>,
+			ResourceManager::add<Music>));
 		resourceManager.set_function("remove", &ResourceManager::remove);
 		resourceManager.set_function("clear", &ResourceManager::clear);
 
 		sol::constructors<sol::types<>, sol::types<float>, sol::types<float, float>> vector2_constructors;
 		state->new_usertype<vec2>("vec2", vector2_constructors,
-									"x", &vec2::x, "y", &vec2::y,
-									"getLength", &vec2::getLength,
-									"normalize", &vec2::normalize, "normalizeSelf", &vec2::normalizeSelf);
+			"x", &vec2::x, "y", &vec2::y,
+			"getLength", &vec2::getLength,
+			"normalize", &vec2::normalize, "normalizeSelf", &vec2::normalizeSelf);
 
 		sol::constructors<sol::types<>, sol::types<float>, sol::types<float, float, float, float>> vector4_constructors;
 		state->new_usertype<vec4>("vec4", vector4_constructors,
-									"x", &vec4::x, "y", &vec4::y, "z", &vec4::z, "w", &vec4::w,
-									"getLength", &vec4::getLength,
-									"normalize", &vec4::normalize, "normalizeSelf", &vec4::normalizeSelf);
+			"x", &vec4::x, "y", &vec4::y, "z", &vec4::z, "w", &vec4::w,
+			"getLength", &vec4::getLength,
+			"normalize", &vec4::normalize, "normalizeSelf", &vec4::normalizeSelf);
 
 		sol::constructors<sol::types<std::string, Person*, Act*>> person_constructor;
 		auto person = state->new_usertype<Person>("Person", person_constructor,
-												"setPosition", &Person::setPosition, "setRotation", &Person::setRotation,
-												"setSize", &Person::setSize, "move", &Person::move, "rotate", &Person::rotate,
-												"getPosition", &Person::getPosition, "getSize", &Person::getSize,
-												"getRotation", &Person::getRotation,
-												"getName", &Person::getName, "addProp", &Person::addProp,
-												"propExist", &Person::propExist, "getProp", &Person::getProp);
+			"setPosition", &Person::setPosition, "setRotation", &Person::setRotation,
+			"setSize", &Person::setSize, "move", &Person::move, "rotate", &Person::rotate,
+			"getPosition", &Person::getPosition, "getSize", &Person::getSize,
+			"getRotation", &Person::getRotation,
+			"getName", &Person::getName, "addProp", &Person::addProp,
+			"propExist", &Person::propExist, "getProp", &Person::getProp);
 		person.set_function("getParent", &Person::getParent);
 		person.set_function("addChild", &Person::addChild);
 		person.set_function("childExist", &Person::childExist);
@@ -308,17 +312,17 @@ namespace cerium
 		person.set_function("getAllProps", &Person::getAllProps);
 
 		state->new_usertype<Act>("Act",
-								"draw", &Act::draw, "update", &Act::update,
-								"add", &Act::add, "remove", &Act::remove,
-								"clear", &Act::clear, "exist", &Act::exist, "get", &Act::get,
-								"getAllPersons", &Act::getAllPersons);
+			"draw", &Act::draw, "update", &Act::update,
+			"add", &Act::add, "remove", &Act::remove,
+			"clear", &Act::clear, "exist", &Act::exist, "get", &Act::get,
+			"getAllPersons", &Act::getAllPersons);
 
 		sol::constructor_list <sol::types<Person*, Prop*, const std::string &>> propConstructors;
 		auto prop = state->new_usertype<Prop>("Prop", propConstructors,
-												"getName", &Prop::getName, "getPerson", &Prop::getPerson,
-												"getParent", &Prop::getParent, "exist", &Prop::exist,
-												"addChild", &Prop::addChild, "getChild", &Prop::getChild,
-												"getAllChildren", &Prop::getAllChildren);
+			"getName", &Prop::getName, "getPerson", &Prop::getPerson,
+			"getParent", &Prop::getParent, "exist", &Prop::exist,
+			"addChild", &Prop::addChild, "getChild", &Prop::getChild,
+			"getAllChildren", &Prop::getAllChildren);
 
 		state->new_usertype<Button>("Button", "isHovered", &Button::isHovered, "isClicked", &Button::isClicked);
 

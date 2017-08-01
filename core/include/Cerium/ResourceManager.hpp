@@ -26,7 +26,8 @@ namespace cerium
             ^[argument]<name>[Name of resource to storage]
             ^[argument]<resource>[Pointer to resource]
         */
-        static void add(const std::string & name, Resource * resource); //^header
+		template<class T>
+        static void add(const std::string & name, T * resource); //^header
         /*
             ^[name][remove]
             ^[class][ResourceManager]
@@ -56,7 +57,7 @@ namespace cerium
         ResourceManager(const ResourceManager & other) = delete;
         void operator=(const ResourceManager & other) = delete;
     private:
-        std::vector<std::pair<std::string, Resource *>> resources;
+        std::vector<std::pair<std::string, Resource*>> resources;
     };
 }
 
