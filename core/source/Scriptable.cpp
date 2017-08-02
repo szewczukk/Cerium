@@ -249,8 +249,84 @@ namespace cerium
 		state->set("KEY_LEFT", SDL_SCANCODE_LEFT);
 		state->set("KEY_RIGHT", SDL_SCANCODE_RIGHT);
 		state->set("KEY_UP", SDL_SCANCODE_UP);
-		state->set("KEY_ESCAPE", SDL_SCANCODE_ESCAPE);
 		state->set("KEY_DOWN", SDL_SCANCODE_DOWN);
+
+		state->set("KEY_ESCAPE", SDL_SCANCODE_ESCAPE);
+		state->set("KEY_F1", SDL_SCANCODE_F1);
+		state->set("KEY_F2", SDL_SCANCODE_F2);
+		state->set("KEY_F3", SDL_SCANCODE_F3);
+		state->set("KEY_F4", SDL_SCANCODE_F4);
+		state->set("KEY_F5", SDL_SCANCODE_F5);
+		state->set("KEY_F6", SDL_SCANCODE_F6);
+		state->set("KEY_F7", SDL_SCANCODE_F7);
+		state->set("KEY_F8", SDL_SCANCODE_F8);
+		state->set("KEY_F9", SDL_SCANCODE_F9);
+		state->set("KEY_F10", SDL_SCANCODE_F10);
+		state->set("KEY_F11", SDL_SCANCODE_F11);
+		state->set("KEY_F12", SDL_SCANCODE_F12);
+
+		state->set("KEY_GRAVE", SDL_SCANCODE_GRAVE);
+		state->set("KEY_1", SDL_SCANCODE_1);
+		state->set("KEY_2", SDL_SCANCODE_2);
+		state->set("KEY_3", SDL_SCANCODE_3);
+		state->set("KEY_4", SDL_SCANCODE_4);
+		state->set("KEY_5", SDL_SCANCODE_5);
+		state->set("KEY_6", SDL_SCANCODE_6);
+		state->set("KEY_7", SDL_SCANCODE_7);
+		state->set("KEY_8", SDL_SCANCODE_8);
+		state->set("KEY_9", SDL_SCANCODE_9);
+		state->set("KEY_7", SDL_SCANCODE_7);
+		state->set("KEY_8", SDL_SCANCODE_8);
+		state->set("KEY_9", SDL_SCANCODE_9);
+		state->set("KEY_EQUALS", SDL_SCANCODE_EQUALS);
+		state->set("KEY_BACKSPACE", SDL_SCANCODE_BACKSPACE);
+
+		state->set("KEY_TAB", SDL_SCANCODE_TAB);
+		state->set("KEY_Q", SDL_SCANCODE_Q);
+		state->set("KEY_W", SDL_SCANCODE_W);
+		state->set("KEY_E", SDL_SCANCODE_E);
+		state->set("KEY_R", SDL_SCANCODE_R);
+		state->set("KEY_T", SDL_SCANCODE_T);
+		state->set("KEY_Y", SDL_SCANCODE_Y);
+		state->set("KEY_U", SDL_SCANCODE_U);
+		state->set("KEY_I", SDL_SCANCODE_I);
+		state->set("KEY_O", SDL_SCANCODE_O);
+		state->set("KEY_P", SDL_SCANCODE_P);
+		state->set("KEY_LGUI", SDL_SCANCODE_LGUI);
+		state->set("KEY_RGUI", SDL_SCANCODE_RIGHTBRACKET);
+		state->set("KEY_BACKSLASH", SDL_SCANCODE_BACKSLASH);
+
+		state->set("KEY_CAPSLOCK", SDL_SCANCODE_CAPSLOCK);
+		state->set("KEY_A", SDL_SCANCODE_A);
+		state->set("KEY_S", SDL_SCANCODE_S);
+		state->set("KEY_D", SDL_SCANCODE_D);
+		state->set("KEY_F", SDL_SCANCODE_F);
+		state->set("KEY_G", SDL_SCANCODE_G);
+		state->set("KEY_H", SDL_SCANCODE_H);
+		state->set("KEY_J", SDL_SCANCODE_J);
+		state->set("KEY_K", SDL_SCANCODE_K);
+		state->set("KEY_L", SDL_SCANCODE_L);
+		state->set("KEY_SEMICOLON", SDL_SCANCODE_SEMICOLON);
+		state->set("KEY_APOSTROPHE", SDL_SCANCODE_APOSTROPHE);
+		state->set("KEY_ENTER", SDL_SCANCODE_EXECUTE);
+
+		state->set("KEY_LSHIFT", SDL_SCANCODE_LSHIFT);
+		state->set("KEY_Z", SDL_SCANCODE_Z);
+		state->set("KEY_X", SDL_SCANCODE_X);
+		state->set("KEY_C", SDL_SCANCODE_C);
+		state->set("KEY_V", SDL_SCANCODE_V);
+		state->set("KEY_B", SDL_SCANCODE_B);
+		state->set("KEY_N", SDL_SCANCODE_N);
+		state->set("KEY_M", SDL_SCANCODE_M);
+		state->set("KEY_COMMA", SDL_SCANCODE_COMMA);
+		state->set("KEY_PERIOD", SDL_SCANCODE_PERIOD);
+		state->set("KEY_SLASH", SDL_SCANCODE_SEMICOLON);
+		state->set("KEY_RSHIFT", SDL_SCANCODE_RSHIFT);
+
+		state->set("KEY_LCTRL", SDL_SCANCODE_LCTRL);
+		state->set("KEY_ALT", SDL_SCANCODE_ALTERASE);
+		state->set("KEY_SPACE", SDL_SCANCODE_SPACE);
+		state->set("KEY_RCTRL", SDL_SCANCODE_RCTRL);
 
 		sol::table inputManager = state->create_named_table("eventManager");
 		inputManager.set_function("isKeyPressed", &EventManager::isKeyPressed);
