@@ -88,8 +88,7 @@ void load_resources()
         else if (type == "font")
         {
             cerium::ResourceManager::add(name, new cerium::Font(d->first_attribute("path")->value(),
-                                                                static_cast<unsigned int>(strtod(d->first_attribute("size")->value(), 
-                                                                                                 nullptr))));
+				static_cast<unsigned int>(strtod(d->first_attribute("size")->value(), nullptr))));
         }
         else if (type == "script")
         {
@@ -99,7 +98,7 @@ void load_resources()
         {
             bool looped = d->first_attribute("looped")->value() == "True";
             cerium::ResourceManager::add(name, new cerium::Music(d->first_attribute("path")->value(), looped,
-                                                                 (int)strtod(d->first_attribute("volume")->value(), nullptr)));
+				(int)strtod(d->first_attribute("volume")->value(), nullptr)));
         }
         else if (type == "sound")
         {
@@ -179,7 +178,7 @@ void load_scenes(const cerium::vec4 & normalTextColor, const cerium::vec4 & hove
                     std::string fontName = prop->first_attribute("font")->value();
                     std::string text = prop->first_attribute("text")->value();
 					cerium::ActManager::get(sceneName)->get(personName)->addProp(new cerium::Button(cerium::ActManager::get(sceneName)->get(personName), nullptr, name, normalTextColor, hoveredTextColor, normalBackgroundColor, hoveredBackgroundColor, text,
-                                                    cerium::ResourceManager::get(fontName)->cast_to<cerium::Font>()));
+						cerium::ResourceManager::get(fontName)->cast_to<cerium::Font>()));
                 }
             }
         }

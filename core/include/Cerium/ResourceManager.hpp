@@ -26,8 +26,7 @@ namespace cerium
             ^[argument]<name>[Name of resource to storage]
             ^[argument]<resource>[Pointer to resource]
         */
-		template<class T>
-        static void add(const std::string & name, T * resource); //^header
+		static void add(const std::string & name, Resource * resource); //^header
         /*
             ^[name][remove]
             ^[class][ResourceManager]

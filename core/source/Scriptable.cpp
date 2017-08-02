@@ -193,6 +193,12 @@ namespace cerium
 		return dynamic_cast<Costume*>(r);
 	}
 
+	template<class T>
+	void l_add_resource_to_manager(const std::string & name, T * resource)
+	{
+		ResourceManager::add(name, resource);
+	}
+
 
 	Scriptable::Scriptable(Person * basePerson, Prop * parent, const std::string & name, Script * script)
 		: Prop(basePerson, parent, name)
@@ -276,11 +282,11 @@ namespace cerium
 
 		sol::table resourceManager = state->create_named_table("resourceManager");
 		resourceManager.set_function("get", &ResourceManager::get);
-		resourceManager.set_function("add", sol::overload(ResourceManager::add<Script>, 
-			ResourceManager::add<Font>, 
-			ResourceManager::add<Costume>, 
-			ResourceManager::add<Clock>,
-			ResourceManager::add<Music>));
+		resourceManager.set_function("add", sol::overload(&l_add_resource_to_manager<Script>,
+			&l_add_resource_to_manager<Font>,
+			&l_add_resource_to_manager<Costume>,
+			&l_add_resource_to_manager<Clock>,
+			&l_add_resource_to_manager<Music>));
 		resourceManager.set_function("remove", &ResourceManager::remove);
 		resourceManager.set_function("clear", &ResourceManager::clear);
 

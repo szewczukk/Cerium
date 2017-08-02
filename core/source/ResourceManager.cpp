@@ -17,8 +17,7 @@ namespace cerium
     }
 
 
-	template<class T>
-    void ResourceManager::add(const std::string & name, T * resource)
+	void ResourceManager::add(const std::string & name, Resource * resource)
     {
         if(!exist(name))
         {
