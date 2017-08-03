@@ -199,6 +199,12 @@ namespace cerium
 		ResourceManager::add(name, resource);
 	}
 
+	template<class T>
+	void l_add_child_to_prop(Prop * prop, T * child)
+	{
+		prop->addChild(child);
+	}
+
 
 	Scriptable::Scriptable(Person * basePerson, Prop * parent, const std::string & name, Script * script)
 		: Prop(basePerson, parent, name)
@@ -387,7 +393,12 @@ namespace cerium
 			"getName", &Person::getName, "addProp", &Person::addProp,
 			"propExist", &Person::propExist, "getProp", &Person::getProp);
 		person.set_function("getParent", &Person::getParent);
-		person.set_function("addChild", &Person::addChild);
+		person.set_function("addChild", &sol::overload(
+			&l_add_child_to_prop<Costumed>,
+			&l_add_child_to_prop<Scriptable>, 
+			&l_add_child_to_prop<VertexArray>,
+			&l_add_child_to_prop<Label>,
+			&l_add_child_to_prop<Button>));
 		person.set_function("childExist", &Person::childExist);
 		person.set_function("getChild", &Person::getChild);
 		person.set_function("getAllChildren", &Person::getAllChildren);
