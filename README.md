@@ -3,7 +3,7 @@
     <img src="/logo.png">
 </p>
 
-Simple 2D Game Engine written in C++ 14 & modern OpenGL with SDL2 and scripting in lua
+Amateur 2D Game Engine written in C++ 14 & modern OpenGL with SDL2 and scripting in lua
 
 ## Lua scripting example
 Simple moving script supported by Cerium
@@ -29,58 +29,8 @@ function update(deltaTime)
 end
 ```
 
-## Lua Scripting VERY SIMPLE documentation
-```lua
-    -- Moving person
-    move(vec2.new(5, 6))
-    
-    -- Setting person position
-    setPosition(vec2.new(100, 100))
-    
-    -- Rotating person
-    rotate(90)
-    
-    -- Setting person rotation
-    setRotation(180)
-    
-    -- Moving camera
-    camera.move(vec2.new(50, 0))
-    
-    -- Setting Camera position
-    camera.setPosition(vec2.new(100, 100))
-    
-    -- Checking state of key(ALPHA VERSION!)
-    local is_pressed = inputManager.isKeyPressed(79)
-    
-    -- Checking state of window
-    local is_closed = inputManager.isWindowClosed()
-    
-    -- Checking state of mouse button
-    local is_mouse_button_pressed = inputManager.isMouseButtonClicked(1)
-    
-    -- Closing window
-    inputManager.closeWindow()
-```
-
 ## Installation
-Just clone this repository at your project catalog
-
-    $ git clone https://github.com/bjornus/Cerium
-
-## Configuration of documentation
-
-    $ chmod +x update
-    $ ./update
-
-## Building
-
-    $ cmake .
-    $ make
-
-## Running
-Before running, copy all assets (shaders, textures etc.) to catalogue where the executable of Cerium is.
-
-    $ ./Cerium
+Coming soon!
 
 
 ## Third parts
@@ -94,8 +44,7 @@ Before running, copy all assets (shaders, textures etc.) to catalogue where the 
 * <a href="http://rapidxml.sourceforge.net">RapidXML</a>
 
 ## Licensing
-To see the license of Bromine, open <a href="https://github.com/bjornus/Cerium/blob/master/LICENSE" target="_blank">LICENSE</a> file.
-
+To see the license of Cerium, open <a href="https://github.com/bjornus/Cerium/blob/master/LICENSE" target="_blank">LICENSE</a> file.
 
 ## Logo
 Logo created by Vunny (Rafał Michałuszek)
