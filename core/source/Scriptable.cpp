@@ -219,6 +219,7 @@ namespace cerium
 
 		bPerson = basePerson;
 
+		//Scripting THIS element
 		state->set_function("move", l_move);
 		state->set_function("rotate", l_rotate);
 
@@ -258,6 +259,7 @@ namespace cerium
 		state->set_function("cast_to_font", l_cast_to_font);
 		state->set_function("cast_to_music", l_cast_to_music);
 
+		//Key scripting
 		state->set("KEY_LEFT", SDL_SCANCODE_LEFT);
 		state->set("KEY_RIGHT", SDL_SCANCODE_RIGHT);
 		state->set("KEY_UP", SDL_SCANCODE_UP);
@@ -340,6 +342,7 @@ namespace cerium
 		state->set("KEY_SPACE", SDL_SCANCODE_SPACE);
 		state->set("KEY_RCTRL", SDL_SCANCODE_RCTRL);
 
+		//Managers scripting
 		sol::table inputManager = state->create_named_table("eventManager");
 		inputManager.set_function("isKeyPressed", &EventManager::isKeyPressed);
 		inputManager.set_function("isWindowClosed", &EventManager::isWindowClosed);
@@ -378,6 +381,13 @@ namespace cerium
 		resourceManager.set_function("remove", &ResourceManager::remove);
 		resourceManager.set_function("clear", &ResourceManager::clear);
 
+		//Others
+		state->new_usertype<Act>("Act",
+			"draw", &Act::draw, "update", &Act::update,
+			"add", &Act::add, "remove", &Act::remove,
+			"clear", &Act::clear, "exist", &Act::exist, "get", &Act::get,
+			"getAllPersons", &Act::getAllPersons);
+
 		sol::constructors<sol::types<>, sol::types<float>, sol::types<float, float>> vector2_constructors;
 		state->new_usertype<vec2>("vec2", vector2_constructors,
 			"x", &vec2::x, "y", &vec2::y,
@@ -390,6 +400,7 @@ namespace cerium
 			"getLength", &vec4::getLength,
 			"normalize", &vec4::normalize, "normalizeSelf", &vec4::normalizeSelf);
 
+		//Person scripting
 		sol::constructors<sol::types<std::string, Person*, Act*>> person_constructor;
 		auto person = state->new_usertype<Person>("Person", person_constructor,
 			"setPosition", &Person::setPosition, "setRotation", &Person::setRotation,
@@ -411,12 +422,7 @@ namespace cerium
 		person.set_function("getAllChildren", &Person::getAllChildren);
 		person.set_function("getAllProps", &Person::getAllProps);
 
-		state->new_usertype<Act>("Act",
-			"draw", &Act::draw, "update", &Act::update,
-			"add", &Act::add, "remove", &Act::remove,
-			"clear", &Act::clear, "exist", &Act::exist, "get", &Act::get,
-			"getAllPersons", &Act::getAllPersons);
-
+		//Props scripting
 		sol::constructor_list <sol::types<Person*, Prop*, const std::string &>> propConstructors;
 		auto prop = state->new_usertype<Prop>("Prop", propConstructors,
 			"getName", &Prop::getName, "getPerson", &Prop::getPerson,
@@ -426,6 +432,7 @@ namespace cerium
 
 		state->new_usertype<Button>("Button", "isHovered", &Button::isHovered, "isClicked", &Button::isClicked);
 
+		//Resources scripting
 		state->new_usertype<Resource>("Resource", "use", &Resource::use);
 
 		state->new_usertype<Clock>("Clock", "getElapsedTime", &Clock::getElapsedTime, "use", &Clock::use);
