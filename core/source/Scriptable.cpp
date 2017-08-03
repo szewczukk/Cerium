@@ -205,6 +205,12 @@ namespace cerium
 		prop->addChild(child);
 	}
 
+	template<class T>
+	void l_add_prop_to_prop(Prop * prop, T * child)
+	{
+		prop->addChild(child);
+	}
+
 
 	Scriptable::Scriptable(Person * basePerson, Prop * parent, const std::string & name, Script * script)
 		: Prop(basePerson, parent, name)
@@ -390,15 +396,16 @@ namespace cerium
 			"setSize", &Person::setSize, "move", &Person::move, "rotate", &Person::rotate,
 			"getPosition", &Person::getPosition, "getSize", &Person::getSize,
 			"getRotation", &Person::getRotation,
-			"getName", &Person::getName, "addProp", &Person::addProp,
+			"getName", &Person::getName, 
+			"addProp", &sol::overload(
+				&l_add_child_to_prop<Costumed>,
+				&l_add_child_to_prop<Scriptable>,
+				&l_add_child_to_prop<VertexArray>,
+				&l_add_child_to_prop<Label>,
+				&l_add_child_to_prop<Button>),
 			"propExist", &Person::propExist, "getProp", &Person::getProp);
 		person.set_function("getParent", &Person::getParent);
-		person.set_function("addChild", &sol::overload(
-			&l_add_child_to_prop<Costumed>,
-			&l_add_child_to_prop<Scriptable>, 
-			&l_add_child_to_prop<VertexArray>,
-			&l_add_child_to_prop<Label>,
-			&l_add_child_to_prop<Button>));
+		person.set_function("addChild", &Person::addChild);
 		person.set_function("childExist", &Person::childExist);
 		person.set_function("getChild", &Person::getChild);
 		person.set_function("getAllChildren", &Person::getAllChildren);
