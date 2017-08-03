@@ -246,6 +246,20 @@ namespace cerium
 
 		state->set_function("getParent", l_getParent);
 
+		state->set_function("addPropToPerson", sol::overload(
+			l_add_prop_to_person<Costumed>,
+			l_add_prop_to_person<Scriptable>,
+			l_add_prop_to_person<VertexArray>,
+			l_add_prop_to_person<Label>,
+			l_add_prop_to_person<Button>));
+
+		state->set_function("addChildToProp", sol::overload(
+			l_add_child_to_prop<Costumed>,
+			l_add_child_to_prop<Scriptable>,
+			l_add_child_to_prop<VertexArray>,
+			l_add_child_to_prop<Label>,
+			l_add_child_to_prop<Button>));
+
 		state->set_function("cast_to_button", l_cast_to_button);
 		state->set_function("cast_to_label", l_cast_to_label);
 		state->set_function("cast_to_costumed", l_cast_to_costumed);
@@ -373,7 +387,8 @@ namespace cerium
 
 		sol::table resourceManager = state->create_named_table("resourceManager");
 		resourceManager.set_function("get", &ResourceManager::get);
-		resourceManager.set_function("add", sol::overload(&l_add_resource_to_manager<Script>,
+		resourceManager.set_function("add", sol::overload(
+			&l_add_resource_to_manager<Script>,
 			&l_add_resource_to_manager<Font>,
 			&l_add_resource_to_manager<Costume>,
 			&l_add_resource_to_manager<Clock>,
@@ -388,32 +403,24 @@ namespace cerium
 			"clear", &Act::clear, "exist", &Act::exist, "get", &Act::get,
 			"getAllPersons", &Act::getAllPersons);
 
-		sol::constructors<sol::types<>, sol::types<float>, sol::types<float, float>> vector2_constructors;
-		state->new_usertype<vec2>("vec2", vector2_constructors,
+		state->new_usertype<vec2>("vec2", sol::constructors<vec2(float), vec2(float, float)>(),
 			"x", &vec2::x, "y", &vec2::y,
 			"getLength", &vec2::getLength,
 			"normalize", &vec2::normalize, "normalizeSelf", &vec2::normalizeSelf);
 
-		sol::constructors<sol::types<>, sol::types<float>, sol::types<float, float, float, float>> vector4_constructors;
-		state->new_usertype<vec4>("vec4", vector4_constructors,
+		state->new_usertype<vec4>("vec4", sol::constructors<vec4(float), vec4(float, float, float, float)>(),
 			"x", &vec4::x, "y", &vec4::y, "z", &vec4::z, "w", &vec4::w,
 			"getLength", &vec4::getLength,
 			"normalize", &vec4::normalize, "normalizeSelf", &vec4::normalizeSelf);
 
 		//Person scripting
-		sol::constructors<sol::types<std::string, Person*, Act*>> person_constructor;
-		auto person = state->new_usertype<Person>("Person", person_constructor,
+		auto person = state->new_usertype<Person>(
+			"Person", sol::constructors<Person(const std::string &, Person*, Act*)>(),
 			"setPosition", &Person::setPosition, "setRotation", &Person::setRotation,
 			"setSize", &Person::setSize, "move", &Person::move, "rotate", &Person::rotate,
 			"getPosition", &Person::getPosition, "getSize", &Person::getSize,
 			"getRotation", &Person::getRotation,
 			"getName", &Person::getName, 
-			"addProp", &sol::overload(
-				&l_add_prop_to_person<Costumed>,
-				&l_add_prop_to_person<Scriptable>,
-				&l_add_prop_to_person<VertexArray>,
-				&l_add_prop_to_person<Label>,
-				&l_add_prop_to_person<Button>),
 			"propExist", &Person::propExist, "getProp", &Person::getProp);
 		person.set_function("getParent", &Person::getParent);
 		person.set_function("addChild", &Person::addChild);
@@ -423,8 +430,8 @@ namespace cerium
 		person.set_function("getAllProps", &Person::getAllProps);
 
 		//Props scripting
-		sol::constructor_list <sol::types<Person*, Prop*, const std::string &>> propConstructors;
-		auto prop = state->new_usertype<Prop>("Prop", propConstructors,
+		auto prop = state->new_usertype<Prop>(
+			"Prop", sol::constructors<Prop(Person*, Prop*, const std::string &)>(),
 			"getName", &Prop::getName, "getPerson", &Prop::getPerson,
 			"getParent", &Prop::getParent, "exist", &Prop::exist,
 			"addChild", &Prop::addChild, "getChild", &Prop::getChild,
@@ -437,21 +444,16 @@ namespace cerium
 
 		state->new_usertype<Clock>("Clock", "getElapsedTime", &Clock::getElapsedTime, "use", &Clock::use);
 
-		sol::constructor_list<sol::types<std::string>> costume_constructors;
-		state->new_usertype<Costume>("Costume", costume_constructors);
+		state->new_usertype<Costume>("Costume", sol::constructors<Costume(const std::string &)>());
 
-		sol::constructor_list<sol::types<std::string, unsigned int>> font_costructors;
-		state->new_usertype<Font>("Font", font_costructors);
+		state->new_usertype<Font>("Font", sol::constructors<Font(const std::string &, const unsigned int &)>());
 
-		sol::constructor_list<sol::types<std::string>> sound_constructors;
-		state->new_usertype<Sound>("Sound", sound_constructors, "use", &Sound::use);
+		state->new_usertype<Sound>("Sound", sol::constructors<Sound(const std::string &)>(), "use", &Sound::use);
 
-		sol::constructor_list<sol::types<std::string>> script_constructors;
-		state->new_usertype<Script>("Script", script_constructors);
+		state->new_usertype<Script>("Script", sol::constructors<Script(const std::string &)>());
 
-		sol::constructor_list<sol::types<std::string, bool, int>> music_constructors;
-		state->new_usertype<Music>("Music", music_constructors, "halt", &Music::halt, 
-									"stop", &Music::stop, "resume", &Music::resume, "use", &Music::use);
+		state->new_usertype<Music>("Music", sol::constructors<Music(const std::string &, bool, const int &)>(), 
+			"halt", &Music::halt, "stop", &Music::stop, "resume", &Music::resume, "use", &Music::use);
 
 		script->state["init"]();
 		updatefunction = script->state["update"];
