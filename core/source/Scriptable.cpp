@@ -206,9 +206,9 @@ namespace cerium
 	}
 
 	template<class T>
-	void l_add_prop_to_prop(Prop * prop, T * child)
+	void l_add_prop_to_person(Person * person, T * prop)
 	{
-		prop->addChild(child);
+		person->addProp(prop);
 	}
 
 
@@ -398,11 +398,11 @@ namespace cerium
 			"getRotation", &Person::getRotation,
 			"getName", &Person::getName, 
 			"addProp", &sol::overload(
-				&l_add_child_to_prop<Costumed>,
-				&l_add_child_to_prop<Scriptable>,
-				&l_add_child_to_prop<VertexArray>,
-				&l_add_child_to_prop<Label>,
-				&l_add_child_to_prop<Button>),
+				&l_add_prop_to_person<Costumed>,
+				&l_add_prop_to_person<Scriptable>,
+				&l_add_prop_to_person<VertexArray>,
+				&l_add_prop_to_person<Label>,
+				&l_add_prop_to_person<Button>),
 			"propExist", &Person::propExist, "getProp", &Person::getProp);
 		person.set_function("getParent", &Person::getParent);
 		person.set_function("addChild", &Person::addChild);
