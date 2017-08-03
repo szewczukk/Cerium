@@ -40,10 +40,13 @@ cmake-build-debug/
 .vs/
 Debug/
 
-res/
+/res/
 
 *.sln
 *.vcxproj
 *.vcxproj.filters
 *.vcxproj.user
 CMakeLists.txt
+
+log.txt
+update
