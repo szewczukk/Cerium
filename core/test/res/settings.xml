@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <settings debug_mode="True">
-    <size width="400" height="300"/>
+    <size width="800" height="600"/>
     <caption title="Cerium SDL OpenGL"/>
 
     <ui>

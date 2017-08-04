@@ -6,5 +6,5 @@
     <resource name="timer" type="clock"/>
     <resource name="script" type="script" path="script.lua"/>
     <resource name="playerScript" type="script" path="player.lua"/>
-    <resource name="music" type="music" path="music.mp3" looped="False" volume="75"/>
+    <resource name="music" type="music" path="music.mp3" looped="False" volume="0"/>
 </data>
