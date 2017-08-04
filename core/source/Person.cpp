@@ -5,7 +5,7 @@
 
 namespace cerium
 {
-    Person::Person(const std::string & name, Person * parent, Act * baseAct)
+    Person::Person(const std::string & name, Person * parent, Act * baseAct, const std::string & tag)
     {
         this->name = name;
         this->baseAct = baseAct;
@@ -83,6 +83,11 @@ namespace cerium
     {
         return name;
     }
+
+	std::string Person::getTag()
+	{
+		return tag;
+	}
 
 
     void Person::addProp(Prop * component)

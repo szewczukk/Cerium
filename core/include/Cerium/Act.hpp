@@ -64,6 +64,12 @@ namespace cerium
             ^[description][Getting all Persons from Act]
         */
         std::vector<std::pair<std::string, Person*>> getAllPersons(void); //^header
+		/*
+            ^[name][getAllPersons]
+            ^[class][Act]
+            ^[description][Getting all Persons from Act]
+        */
+        std::vector<Person*> getAllPersonsWithTag(const std::string & tag); //^header
     protected:
         std::vector<std::pair<std::string, Person*>> persons;
     };

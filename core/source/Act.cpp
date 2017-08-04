@@ -79,8 +79,23 @@ namespace cerium
         return nullptr;
     }
 
+
     std::vector<std::pair<std::string, Person *>> Act::getAllPersons()
     {
         return persons;
     }
+
+
+	std::vector<Person*> Act::getAllPersonsWithTag(const std::string & tag)
+	{
+		std::vector<Person*> v;
+		for (auto & person : persons)
+		{
+			if (person.second->getTag() == tag)
+			{
+				v.push_back(person.second);
+			}
+		}
+		return v;
+	}
 }

@@ -401,7 +401,7 @@ namespace cerium
 			"draw", &Act::draw, "update", &Act::update,
 			"add", &Act::add, "remove", &Act::remove,
 			"clear", &Act::clear, "exist", &Act::exist, "get", &Act::get,
-			"getAllPersons", &Act::getAllPersons);
+			"getAllPersons", &Act::getAllPersons, "getAllPersonsWithTag", &Act::getAllPersonsWithTag);
 
 		state->new_usertype<vec2>("vec2", sol::constructors<vec2(float), vec2(float, float)>(),
 			"x", &vec2::x, "y", &vec2::y,

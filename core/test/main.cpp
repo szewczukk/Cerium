@@ -128,11 +128,12 @@ void load_scenes(const cerium::vec4 & normalTextColor, const cerium::vec4 & hove
         for(rapidxml::xml_node <> * person = scene->first_node("person"); person;person=person->next_sibling("person"))
         {
             std::string personName = person->first_attribute("name")->value();
+			std::string personTag = person->first_attribute("tag")->value();
             cerium::vec2 position = {strtof(person->first_attribute("x")->value(), nullptr), strtof(person->first_attribute("y")->value(), nullptr)};
             cerium::vec2 size = {strtof(person->first_attribute("w")->value(), nullptr), strtof(person->first_attribute("h")->value(), nullptr)};
             float angle = strtof(person->first_attribute("angle")->value(), nullptr);
 
-			cerium::ActManager::get(sceneName)->add(new cerium::Person(personName, nullptr, cerium::ActManager::get(sceneName)));
+			cerium::ActManager::get(sceneName)->add(new cerium::Person(personName, nullptr, cerium::ActManager::get(sceneName), personTag));
 			cerium::ActManager::get(sceneName)->get(personName)->setPosition(position);
 			cerium::ActManager::get(sceneName)->get(personName)->setSize(size);
 			cerium::ActManager::get(sceneName)->get(personName)->setRotation(angle);

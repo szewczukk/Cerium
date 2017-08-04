@@ -21,7 +21,7 @@ namespace cerium
             ^[argument]<parent>[Parent of this Person]
             ^[argument]<baseAct>[Act where the Person is]
          */
-        Person(const std::string & name, Person * parent, Act * baseAct); //^header
+        Person(const std::string & name, Person * parent, Act * baseAct, const std::string & tag = "Default"); //^header
         /*
             ^[name][draw]
             ^[class][Person]
@@ -94,6 +94,12 @@ namespace cerium
             ^[returns][Name of Person]
         */
         std::string getName(); //^header
+		/*
+            ^[name][getTag]
+            ^[class][Person]
+            ^[returns][Tag of Person]
+        */
+        std::string getTag(); //^header
         /*
             ^[name][addProp]
             ^[class][Person]
@@ -169,6 +175,7 @@ namespace cerium
         Person * parent;
         float rotation;
         std::string name;
+		std::string tag;
         std::vector<std::pair<std::string, Prop*>> props;
         std::vector<std::pair<std::string, Person*>> children;
     };
