@@ -450,7 +450,7 @@ namespace cerium
 
 		state->new_usertype<Sound>("Sound", sol::constructors<Sound(const std::string &)>(), "use", &Sound::use);
 
-		state->new_usertype<Script>("Script", sol::constructors<Script(const std::string &)>());
+		state->new_usertype<Script>("Script", sol::constructors<Script(const std::string &)>(), "run", &Script::run);
 
 		state->new_usertype<Music>("Music", sol::constructors<Music(const std::string &, bool, const int &)>(), 
 			"halt", &Music::halt, "stop", &Music::stop, "resume", &Music::resume, "use", &Music::use);

@@ -24,6 +24,8 @@ namespace cerium
             ^[description][Does nothing.]
          */
         virtual void use(void) override {}; //^header
+
+		void run(std::string & name);
     private:
         sol::state state;
 

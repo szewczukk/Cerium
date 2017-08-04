@@ -27,4 +27,10 @@ namespace cerium
         state.open_libraries(sol::lib::base);
         state.script(content);
     }
+
+
+	void Script::run(std::string & name)
+	{
+		state[name]();
+	}
 }
