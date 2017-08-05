@@ -415,7 +415,7 @@ namespace cerium
 
 		//Person scripting
 		auto person = state->new_usertype<Person>(
-			"Person", sol::constructors<Person(const std::string &, Person*, Act*)>(),
+			"Person", sol::constructors<Person(const std::string &, Person*, Act*, const std::string &)>(),
 			"setPosition", &Person::setPosition, "setRotation", &Person::setRotation,
 			"setSize", &Person::setSize, "move", &Person::move, "rotate", &Person::rotate,
 			"getPosition", &Person::getPosition, "getSize", &Person::getSize,
@@ -423,6 +423,7 @@ namespace cerium
 			"getName", &Person::getName, 
 			"propExist", &Person::propExist, "getProp", &Person::getProp);
 		person.set_function("getParent", &Person::getParent);
+		person.set_function("getTag", &Person::getTag);
 		person.set_function("addChild", &Person::addChild);
 		person.set_function("childExist", &Person::childExist);
 		person.set_function("getChild", &Person::getChild);
@@ -430,14 +431,51 @@ namespace cerium
 		person.set_function("getAllProps", &Person::getAllProps);
 
 		//Props scripting
-		auto prop = state->new_usertype<Prop>(
+		state->new_usertype<Prop>(
 			"Prop", sol::constructors<Prop(Person*, Prop*, const std::string &)>(),
 			"getName", &Prop::getName, "getPerson", &Prop::getPerson,
 			"getParent", &Prop::getParent, "exist", &Prop::exist,
 			"addChild", &Prop::addChild, "getChild", &Prop::getChild,
 			"getAllChildren", &Prop::getAllChildren);
 
-		state->new_usertype<Button>("Button", "isHovered", &Button::isHovered, "isClicked", &Button::isClicked);
+		state->new_usertype<Button>("Button", sol::constructors<Button(Person *, Prop *, const std::string &, const vec4 &,
+			const vec4 &, const vec4 &, const vec4 &, const std::string &, Font *)>(),
+			"isHovered", &Button::isHovered, "isClicked", &Button::isClicked,
+			"getName", &Button::getName, "getPerson", &Button::getPerson,
+			"getParent", &Button::getParent, "exist", &Button::exist,
+			"addChild", &Button::addChild, "getChild", &Button::getChild,
+			"getAllChildren", &Button::getAllChildren);
+
+		state->new_usertype<Costumed>(
+			"Costumed", sol::constructors<Costumed(Person *, Prop *, const std::string &, Costume *)>(),
+			"getName", &Costumed::getName, "getPerson", &Costumed::getPerson,
+			"getParent", &Costumed::getParent, "exist", &Costumed::exist,
+			"addChild", &Costumed::addChild, "getChild", &Costumed::getChild,
+			"getAllChildren", &Costumed::getAllChildren, "setTexture", &Costumed::setTexture);
+
+		state->new_usertype<Label>(
+			"Label", sol::constructors<Label(Person *, Prop *, const std::string &, Font *, const std::string &, const vec4 &)>(),
+			"getName", &Label::getName, "getPerson", &Label::getPerson,
+			"getParent", &Label::getParent, "exist", &Label::exist,
+			"addChild", &Label::addChild, "getChild", &Label::getChild,
+			"getAllChildren", &Label::getAllChildren, "setText", &Label::setText, 
+			"setColor", &Label::setColor, "setFont", &Label::setFont);
+
+		state->new_usertype<Scriptable>(
+			"Scriptable", sol::constructors<Scriptable(Person *, Prop *, const std::string &, Script *)>(),
+			"getName", &Scriptable::getName, "getPerson", &Scriptable::getPerson,
+			"getParent", &Scriptable::getParent, "exist", &Scriptable::exist,
+			"addChild", &Scriptable::addChild, "getChild", &Scriptable::getChild,
+			"getAllChildren", &Scriptable::getAllChildren);
+
+		state->new_usertype<VertexArray>(
+			"VertexArray", sol::constructors<VertexArray(Person *, Prop *, const std::string &, const vec4 &, const bool &)>(),
+			"getName", &VertexArray::getName, "getPerson", &VertexArray::getPerson,
+			"getParent", &VertexArray::getParent, "exist", &VertexArray::exist,
+			"addChild", &VertexArray::addChild, "getChild", &VertexArray::getChild,
+			"getAllChildren", &VertexArray::getAllChildren, "setColor", &VertexArray::setColor,
+			"setIsTextured", &VertexArray::setIsTextured, "getColor", &VertexArray::getColor,
+			"isTextured", &VertexArray::isTextured);
 
 		//Resources scripting
 		state->new_usertype<Resource>("Resource", "use", &Resource::use);
