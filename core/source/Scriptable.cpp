@@ -375,6 +375,7 @@ namespace cerium
 		inputManager.set_function("isWindowClosed", &EventManager::isWindowClosed);
 		inputManager.set_function("isMouseButtonClicked", &EventManager::isMouseButtonClicked);
 		inputManager.set_function("closeWindow", &EventManager::closeWindow);
+		inputManager.set_function("getMousePosition", &EventManager::getMousePosition);
 
 		sol::table camera = state->create_named_table("camera");
 		camera.set_function("move", &Camera::move);

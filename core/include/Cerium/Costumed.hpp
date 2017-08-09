@@ -12,7 +12,6 @@ namespace cerium
 {
     class Person;
     class Costume;
-	class Clock;
     class Costumed : public Prop
     {
     public:
@@ -43,7 +42,6 @@ namespace cerium
         virtual void draw(void) override;
     private:
         GLuint texture;
-		Clock fadeClock;
     };
 }
 

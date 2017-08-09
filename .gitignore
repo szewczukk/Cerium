@@ -39,6 +39,7 @@ cmake-build-debug/
 
 .vs/
 Debug/
+Release/
 
 /res/
 

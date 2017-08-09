@@ -236,6 +236,7 @@ int main()
 
     load_resources();
     cerium::ResourceManager::add("shader", new cerium::ShaderProgram("vertexShader.glsl", "fragmentShader.glsl"));
+	cerium::ResourceManager::add("timer", new cerium::Clock);
 
     int frames = 0;
 
@@ -275,6 +276,8 @@ int main()
 				cerium::ResourceManager::add("shader", new cerium::ShaderProgram("vertexShader.glsl", "fragmentShader.glsl"));
 				cerium::ResourceManager::add("fpsTimer", new cerium::Clock);
 				cerium::ResourceManager::get("fpsTimer")->use();
+
+				cerium::ResourceManager::add("timer", new cerium::Clock);
 
 				getColorsOfUI(normalTextColor, hoveredTextColor, normalBackgroundColor, hoveredBackgroundColor);
 
