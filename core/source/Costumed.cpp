@@ -3,6 +3,8 @@
 #include "../include/Cerium/Person.hpp"
 #include "../include/Cerium/Costume.hpp"
 
+#include "../include/Cerium/Clock.hpp"
+
 namespace cerium
 {
     Costumed::Costumed(Person * basePerson, Prop * parent, const std::string & name, Costume * source) : Prop(basePerson, parent, name)

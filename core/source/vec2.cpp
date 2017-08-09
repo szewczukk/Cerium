@@ -104,10 +104,35 @@ namespace cerium
         return x == other.x && y == other.y;
     }
 
+
     bool vec2::operator!=(const vec2 & other)
     {
         return !operator==(other);
     }
+
+
+	bool vec2::operator>(const vec2 & other)
+	{
+		return x > other.x && y > other.y;
+	}
+
+
+	bool vec2::operator<(const vec2 & other)
+	{
+		return x < other.x && y < other.y;
+	}
+
+
+	bool vec2::operator>=(const vec2 & other)
+	{
+		return x >= other.x && y >= other.y;
+	}
+
+
+	bool vec2::operator<=(const vec2 & other)
+	{
+		return x <= other.x && y <= other.y;
+	}
 
 
     vec2 vec2::operator-()

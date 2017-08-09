@@ -63,6 +63,12 @@ namespace cerium
         bool operator==(const vec2 & other);
         bool operator!=(const vec2 & other);
 
+		bool operator>(const vec2 & other);
+		bool operator<(const vec2 & other);
+
+		bool operator>=(const vec2 & other);
+		bool operator<=(const vec2 & other);
+
         vec2 operator-();
 
         friend std::ostream & operator<<(std::ostream & o, const vec2 & v);

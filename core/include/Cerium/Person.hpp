@@ -168,10 +168,14 @@ namespace cerium
             ^[description][Getting all Props]
         */
         std::vector<std::pair<std::string, Prop*>> getAllProps(void); //^header
+
+		bool isCollideWithPersonWithName(const std::string & name);
+
+		bool isCollideWithPersonsWithTag(const std::string & tag);
     protected:
         vec2 position;
         vec2 size;
-        Act* baseAct;
+        Act * baseAct;
         Person * parent;
         float rotation;
         std::string name;

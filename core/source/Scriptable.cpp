@@ -187,6 +187,16 @@ namespace cerium
 		return dynamic_cast<Music*>(r);
 	}
 
+	bool l_isCollideWithPersonWithName(const std::string & name)
+	{
+		return bPerson->isCollideWithPersonWithName(name);
+	}
+
+	bool l_isCollideWithPersonsWithTag(const std::string & tag)
+	{
+		return bPerson->isCollideWithPersonsWithTag(tag);
+	}
+
 
 	Costume * l_cast_to_costume(Resource * r)
 	{
@@ -272,6 +282,9 @@ namespace cerium
 		state->set_function("cast_to_clock", l_cast_to_clock);
 		state->set_function("cast_to_font", l_cast_to_font);
 		state->set_function("cast_to_music", l_cast_to_music);
+
+		state->set_function("isCollideWithPersonsWithTag", l_isCollideWithPersonsWithTag);
+		state->set_function("isCollideWithPersonWithName", l_isCollideWithPersonWithName);
 
 		//Key scripting
 		state->set("KEY_LEFT", SDL_SCANCODE_LEFT);
@@ -429,6 +442,8 @@ namespace cerium
 		person.set_function("getChild", &Person::getChild);
 		person.set_function("getAllChildren", &Person::getAllChildren);
 		person.set_function("getAllProps", &Person::getAllProps);
+		person.set_function("isCollideWithPersonsWithTag", &Person::isCollideWithPersonsWithTag);
+		person.set_function("isCollideWithPersonWithName", &Person::isCollideWithPersonWithName);
 
 		//Props scripting
 		state->new_usertype<Prop>(
