@@ -172,6 +172,8 @@ namespace cerium
 		bool isCollideWithPersonWithName(const std::string & name);
 
 		bool isCollideWithPersonsWithTag(const std::string & tag);
+
+		Act * getBaseAct(void);
     protected:
         vec2 position;
         vec2 size;

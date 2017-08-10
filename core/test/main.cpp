@@ -64,7 +64,7 @@ bool is_debug_mode()
 }
 
 
-void load_resources()
+void load_resources(const int & musicVolume, const int & soundVolume)
 {
     rapidxml::file<> file("res/data.xml");
     rapidxml::xml_document<> document;
@@ -98,12 +98,12 @@ void load_resources()
         {
             bool looped = d->first_attribute("looped")->value() == "True";
             cerium::ResourceManager::add(name, new cerium::Music(d->first_attribute("path")->value(), looped,
-				(int)strtod(d->first_attribute("volume")->value(), nullptr)));
+				musicVolume));
         }
         else if (type == "sound")
         {
             std::string path = d->first_attribute("path")->value();
-            cerium::ResourceManager::add(name, new cerium::Sound(path));
+            cerium::ResourceManager::add(name, new cerium::Sound(path, soundVolume));
         }
     }
 }
@@ -221,6 +221,19 @@ void getColorsOfUI(cerium::vec4 & normalTextColor, cerium::vec4 & hoveredTextCol
                               strtof(hoveredBackground->first_attribute("a")->value(), nullptr)};
 }
 
+void getSoundsVolume(int & soundVolume, int & musicVolume)
+{
+	rapidxml::file <> file("res/settings.xml");
+	rapidxml::xml_document<> settings;
+	settings.parse<0>(file.data());
+
+	rapidxml::xml_node<> * musicNode = settings.first_node("settings")->first_node("music");
+	rapidxml::xml_node<> * soundNode = settings.first_node("settings")->first_node("sounds");
+
+	musicVolume = atoi(musicNode->first_attribute("volume")->value());
+	soundVolume = atoi(soundNode->first_attribute("volume")->value());
+}
+
 
 int main()
 {
@@ -234,7 +247,11 @@ int main()
 
     cerium::DebugLog::init();
 
-    load_resources();
+	int soundVolume;
+	int musicVolume;
+	getSoundsVolume(soundVolume, musicVolume);
+
+    load_resources(musicVolume, soundVolume);
     cerium::ResourceManager::add("shader", new cerium::ShaderProgram("vertexShader.glsl", "fragmentShader.glsl"));
 	cerium::ResourceManager::add("timer", new cerium::Clock);
 
@@ -272,7 +289,8 @@ int main()
 				cerium::ResourceManager::clear();
 				cerium::ActManager::clear();
 
-				load_resources();
+				getSoundsVolume(soundVolume, musicVolume);
+				load_resources(musicVolume, soundVolume);
 				cerium::ResourceManager::add("shader", new cerium::ShaderProgram("vertexShader.glsl", "fragmentShader.glsl"));
 				cerium::ResourceManager::add("fpsTimer", new cerium::Clock);
 				cerium::ResourceManager::get("fpsTimer")->use();

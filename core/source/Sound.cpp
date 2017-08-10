@@ -4,10 +4,11 @@
 
 namespace cerium
 {
-    Sound::Sound(std::string &path)
+    Sound::Sound(const std::string & path, const int & volume)
     {
         std::string filePath = "res/sounds/" + path;
 
+		Mix_VolumeChunk(chunk, volume);
         chunk = Mix_LoadWAV(filePath.c_str());
     }
 

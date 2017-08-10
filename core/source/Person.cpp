@@ -181,8 +181,7 @@ namespace cerium
 		otherPersonPosition = baseAct->get(name)->getPosition();
 		otherPersonSize = baseAct->get(name)->getSize();
 
-		if (position >= otherPersonPosition &&
-			position <= otherPersonPosition + size)
+		if (position >= otherPersonPosition && position <= otherPersonPosition + size)
 			return true;
 
 		return false;
@@ -203,5 +202,11 @@ namespace cerium
 				return true;
 		}
 		return false;
+	}
+
+
+	Act * Person::getBaseAct(void)
+	{
+		return baseAct;
 	}
 }

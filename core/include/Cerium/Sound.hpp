@@ -18,7 +18,7 @@ namespace cerium
             ^[description][Loading sound from res/sounds/ catalogue]
             ^[argument]<path>[Name and extension of sound to load]
          */
-        Sound(std::string & path);
+        Sound(const std::string & path, const int & volume);
         /*
             ^[name][~Sound]
             ^[class][Sound]

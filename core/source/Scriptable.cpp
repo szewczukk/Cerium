@@ -222,6 +222,12 @@ namespace cerium
 	}
 
 
+	Act * l_getBaseAct(void)
+	{
+		return bPerson->getBaseAct();
+	}
+
+
 	Scriptable::Scriptable(Person * basePerson, Prop * parent, const std::string & name, Script * script)
 		: Prop(basePerson, parent, name)
 	{
@@ -255,6 +261,7 @@ namespace cerium
 		state->set_function("propExist", l_propExist);
 
 		state->set_function("getParent", l_getParent);
+		state->set_function("getBaseAct", l_getBaseAct);
 
 		state->set_function("addPropToPerson", sol::overload(
 			l_add_prop_to_person<Costumed>,
@@ -445,6 +452,7 @@ namespace cerium
 		person.set_function("getAllProps", &Person::getAllProps);
 		person.set_function("isCollideWithPersonsWithTag", &Person::isCollideWithPersonsWithTag);
 		person.set_function("isCollideWithPersonWithName", &Person::isCollideWithPersonWithName);
+		person.set_function("getBaseAct", &Person::getBaseAct);
 
 		//Props scripting
 		state->new_usertype<Prop>(
@@ -502,7 +510,7 @@ namespace cerium
 
 		state->new_usertype<Font>("Font", sol::constructors<Font(const std::string &, const unsigned int &)>());
 
-		state->new_usertype<Sound>("Sound", sol::constructors<Sound(const std::string &)>(), "use", &Sound::use);
+		state->new_usertype<Sound>("Sound", sol::constructors<Sound(const std::string &, const int &)>(), "use", &Sound::use);
 
 		state->new_usertype<Script>("Script", sol::constructors<Script(const std::string &)>(), "run", &Script::run);
 

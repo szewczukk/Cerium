@@ -5,5 +5,5 @@
     <resource name="font" type="font" path="font.ttf" size="32"/>
     <resource name="script" type="script" path="script.lua"/>
     <resource name="playerScript" type="script" path="player.lua"/>
-    <resource name="music" type="music" path="music.mp3" looped="False" volume="0"/>
+    <resource name="music" type="music" path="music.mp3" looped="False"/>
 </data>
