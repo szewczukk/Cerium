@@ -57,6 +57,12 @@ namespace cerium
             ^[returns][Size of Camera]
         */
         static vec2 getSize(); //^header
+
+		static void setRotation(const float & angle);
+
+		static void rotate(const float & angle);
+
+		static float getRotationAngle(void);
     private:
         static Camera & instance();
 
@@ -69,8 +75,7 @@ namespace cerium
         glm::mat4 projection;
         vec2 position;
         vec2 size;
-
-        bool moved;
+		float angle;
     };
 }
 
