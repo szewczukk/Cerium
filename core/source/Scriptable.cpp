@@ -376,6 +376,9 @@ namespace cerium
 		state->set("KEY_SPACE", SDL_SCANCODE_SPACE);
 		state->set("KEY_RCTRL", SDL_SCANCODE_RCTRL);
 
+		state->set("MKEY_LEFT", SDL_BUTTON_LEFT);
+		state->set("MKEY_RIGHT", SDL_BUTTON_RIGHT);
+
 		//Managers scripting
 		sol::table inputManager = state->create_named_table("eventManager");
 		inputManager.set_function("isKeyPressed", &EventManager::isKeyPressed);
