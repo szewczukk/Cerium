@@ -24,7 +24,7 @@ namespace cerium
             ^[argument]<name>[Name of Prop]
             ^[description][Creating all buffers, vertexArray]
         */
-        VertexArray(Person * basePerson, Prop * parent, const std::string & name, const vec4 & color, const bool & textured); //^header
+        VertexArray(Person * basePerson, Prop * parent, const std::string & name, const vec4 & color); //^header
         /*
             ^[name][setColor]
             ^[class][VertexArray]

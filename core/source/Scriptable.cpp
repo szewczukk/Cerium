@@ -496,7 +496,7 @@ namespace cerium
 			"getAllChildren", &Scriptable::getAllChildren);
 
 		state->new_usertype<VertexArray>(
-			"VertexArray", sol::constructors<VertexArray(Person *, Prop *, const std::string &, const vec4 &, const bool &)>(),
+			"VertexArray", sol::constructors<VertexArray(Person *, Prop *, const std::string &, const vec4 &)>(),
 			"getName", &VertexArray::getName, "getPerson", &VertexArray::getPerson,
 			"getParent", &VertexArray::getParent, "exist", &VertexArray::exist,
 			"addChild", &VertexArray::addChild, "getChild", &VertexArray::getChild,

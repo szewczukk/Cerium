@@ -10,6 +10,11 @@ namespace cerium
 {
     class Act;
     class Prop;
+	class Costumed;
+	class Label;
+	class RigidBody;
+	class VertexArray;
+
     class Person
     {
     public:
@@ -175,6 +180,8 @@ namespace cerium
 
 		Act * getBaseAct(void);
     protected:
+		bool isTextured;
+		bool isRigided;
         vec2 position;
         vec2 size;
         Act * baseAct;
@@ -184,6 +191,11 @@ namespace cerium
 		std::string tag;
         std::vector<std::pair<std::string, Prop*>> props;
         std::vector<std::pair<std::string, Person*>> children;
+
+		friend class Costumed;
+		friend class Label;
+		friend class RigidBody;
+		friend class VertexArray;
     };
 }
 

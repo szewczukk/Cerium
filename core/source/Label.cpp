@@ -12,6 +12,8 @@ namespace cerium
         this->text = text;
         this->color = color;
         this->font = font;
+
+		basePerson->isTextured = true;
     }
 
 

@@ -11,9 +11,9 @@ namespace cerium
                    const std::string & text, Font * font)
                    : Prop(basePerson, parent, name)
     {
-        addChild(new VertexArray(basePerson, this, "background", normalBackgroundColor, false));
+        addChild(new VertexArray(basePerson, this, "background", normalBackgroundColor));
         addChild(new Label(basePerson, this, "label", font, text, normalTextColor));
-        addChild(new VertexArray(basePerson, this, "text", {255}, true));
+        addChild(new VertexArray(basePerson, this, "text", {255}));
 
         this->m_normalBackground = normalBackgroundColor;
         this->m_normalText = normalTextColor;
@@ -51,15 +51,13 @@ namespace cerium
 				m_isClicked = EventManager::isMouseButtonClicked(SDL_BUTTON_LEFT);
 			}
 		} 
-		else 
+		else if (m_isHovered)
 		{
-			if (m_isHovered)
-			{
-				dynamic_cast<VertexArray*>(getChild("background"))->setColor(m_normalBackground);
-				dynamic_cast<Label*>(getChild("label"))->setColor(m_normalText);
-				m_isHovered = false;
-				m_isClicked = false;
-			}
+			dynamic_cast<VertexArray*>(getChild("background"))->setColor(m_normalBackground);
+			dynamic_cast<Label*>(getChild("label"))->setColor(m_normalText);
+			
+			m_isHovered = false;
+			m_isClicked = false;
 		}
 	}
 

@@ -9,7 +9,7 @@
 
 namespace cerium
 {
-    VertexArray::VertexArray(Person * basePerson, Prop * parent, const std::string & name, const vec4 & color, const bool & textured) : Prop(basePerson, parent, name)
+    VertexArray::VertexArray(Person * basePerson, Prop * parent, const std::string & name, const vec4 & color) : Prop(basePerson, parent, name)
     {
         vec2 vertices[] = {
                 { 0, 1 },
@@ -59,7 +59,7 @@ namespace cerium
 
         glBindVertexArray(0);
 
-        this->textured = textured;
+        this->textured = basePerson->isTextured;
         this->color = color;
     }
 
