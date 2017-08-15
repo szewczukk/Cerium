@@ -2,6 +2,7 @@
 
 #include "../include/Cerium/Act.hpp"
 #include "../include/Cerium/Person.hpp"
+#include "../include/Cerium/DebugLog.hpp"
 
 namespace cerium
 {
@@ -18,16 +19,22 @@ namespace cerium
 
 	}
 
+
 	bool RigidBody::isCollideWithPersonWithName(const std::string & name)
 	{
 		vec2 otherPersonPosition, otherPersonSize;
 
-		otherPersonPosition = basePerson->getBaseAct()->get(name)->getPosition();
-		otherPersonSize = basePerson->getBaseAct()->get(name)->getSize();
+		if (basePerson->getBaseAct()->get(name)->isRigided)
+		{
+			otherPersonPosition = basePerson->getBaseAct()->get(name)->getPosition();
+			otherPersonSize = basePerson->getBaseAct()->get(name)->getSize();
 
-		if (basePerson->getPosition() >= otherPersonPosition &&
-			basePerson->getPosition() <= otherPersonPosition + otherPersonSize)
-			return true;
+			if (basePerson->getPosition() >= otherPersonPosition &&
+				basePerson->getPosition() <= otherPersonPosition + otherPersonSize)
+				return true;
+		}
+
+		DebugLog::add(name + " hasn't RigidBody!");
 		return false;
 	}
 
@@ -36,14 +43,17 @@ namespace cerium
 	{
 		vec2 otherPersonPosition, otherPersonSize;
 
-		for (int i = 0; i < basePerson->getBaseAct()->getAllPersonsWithTag(tag).size(); i++)
+		for (auto & person : basePerson->getBaseAct()->getAllPersonsWithTag(tag))
 		{
-			otherPersonPosition = basePerson->getBaseAct()->getAllPersonsWithTag(tag)[i]->getPosition();
-			otherPersonSize = basePerson->getBaseAct()->getAllPersonsWithTag(tag)[i]->getSize();
+			if (person->isRigided)
+			{
+				otherPersonPosition = person->getPosition();
+				otherPersonSize = person->getSize();
 
-			if (basePerson->getPosition() >= otherPersonPosition &&
-				basePerson->getPosition() <= otherPersonPosition + otherPersonSize)
-				return true;
+				if (basePerson->getPosition() >= otherPersonPosition &&
+					basePerson->getPosition() <= otherPersonPosition + otherPersonSize)
+					return true;
+			}
 		}
 		return false;
 	}
