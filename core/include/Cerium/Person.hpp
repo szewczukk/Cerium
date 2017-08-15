@@ -174,10 +174,6 @@ namespace cerium
         */
         std::vector<std::pair<std::string, Prop*>> getAllProps(void); //^header
 
-		bool isCollideWithPersonWithName(const std::string & name);
-
-		bool isCollideWithPersonsWithTag(const std::string & tag);
-
 		Act * getBaseAct(void);
     protected:
 		bool isTextured;

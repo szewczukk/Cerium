@@ -154,7 +154,6 @@ void load_scenes(const cerium::vec4 & normalTextColor, const cerium::vec4 & hove
                                           strtof(prop->first_attribute("g")->value(), nullptr),
                                           strtof(prop->first_attribute("b")->value(), nullptr),
                                           strtof(prop->first_attribute("a")->value(), nullptr)};
-                    std::string texturedValue = prop->first_attribute("textured")->value();
 
 					cerium::ActManager::get(sceneName)->get(personName)->addProp(new cerium::VertexArray(cerium::ActManager::get(sceneName)->get(personName), nullptr, name, color));
                 }

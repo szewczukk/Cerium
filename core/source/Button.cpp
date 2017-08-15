@@ -33,8 +33,8 @@ namespace cerium
         p.y = (int)EventManager::getMousePosition().y;
 
         SDL_Rect r;
-        r.x = (int)getPerson().getPosition().x + Camera::getPosition().x;
-        r.y = (int)getPerson().getPosition().y + Camera::getPosition().y;
+        r.x = int(getPerson().getPosition().x + Camera::getPosition().x);
+        r.y = int(getPerson().getPosition().y + Camera::getPosition().y);
         r.w = (int)getPerson().getSize().x;
         r.h = (int)getPerson().getSize().y;
 

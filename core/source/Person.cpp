@@ -177,37 +177,6 @@ namespace cerium
     }
 
 
-	bool Person::isCollideWithPersonWithName(const std::string & name)
-	{
-		vec2 otherPersonPosition, otherPersonSize;
-
-		otherPersonPosition = baseAct->get(name)->getPosition();
-		otherPersonSize = baseAct->get(name)->getSize();
-
-		if (position >= otherPersonPosition && position <= otherPersonPosition + size)
-			return true;
-
-		return false;
-	}
-
-
-	bool Person::isCollideWithPersonsWithTag(const std::string & tag)
-	{
-		vec2 otherPersonPosition, otherPersonSize;
-
-		for (int i = 0; i < baseAct->getAllPersonsWithTag(tag).size(); i++)
-		{
-			otherPersonPosition = baseAct->getAllPersonsWithTag(tag)[i]->getPosition();
-			otherPersonSize = baseAct->getAllPersonsWithTag(tag)[i]->getSize();
-
-			if (position >= otherPersonPosition &&
-				position <= otherPersonPosition + size)
-				return true;
-		}
-		return false;
-	}
-
-
 	Act * Person::getBaseAct(void)
 	{
 		return baseAct;
