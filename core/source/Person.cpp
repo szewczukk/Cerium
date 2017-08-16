@@ -3,6 +3,7 @@
 #include "../include/Cerium/Act.hpp"
 #include "../include/Cerium/Prop.hpp"
 #include "../include/Cerium/DebugLog.hpp"
+#include "../include/Cerium/EventManager.hpp"
 
 namespace cerium
 {
@@ -180,5 +181,22 @@ namespace cerium
 	Act * Person::getBaseAct(void)
 	{
 		return baseAct;
+	}
+
+
+	bool Person::isHovered()
+	{
+		if (EventManager::getMousePosition() >= position && position + size >= EventManager::getMousePosition())
+			return true;
+		return false;
+	}
+
+
+	bool Person::isClicked()
+	{
+		if (EventManager::getMousePosition() >= position && position + size >= EventManager::getMousePosition() &&
+			EventManager::isMouseButtonClicked(SDL_BUTTON_LEFT))
+			return true;
+		return false;
 	}
 }

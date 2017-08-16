@@ -175,6 +175,9 @@ namespace cerium
         std::vector<std::pair<std::string, Prop*>> getAllProps(void); //^header
 
 		Act * getBaseAct(void);
+		
+		bool isHovered();
+		bool isClicked();
     protected:
 		bool isTextured;
 		bool isRigided;
