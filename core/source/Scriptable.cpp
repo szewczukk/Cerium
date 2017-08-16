@@ -217,6 +217,16 @@ namespace cerium
 		return bPerson->getBaseAct();
 	}
 
+	bool l_isHovered(void)
+	{
+		return bPerson->isHovered();
+	}
+
+	bool l_isClicked(void)
+	{
+		return bPerson->isClicked();
+	}
+
 
 	Scriptable::Scriptable(Person * basePerson, Prop * parent, const std::string & name, Script * script)
 		: Prop(basePerson, parent, name)
@@ -252,6 +262,9 @@ namespace cerium
 
 		state->set_function("getParent", l_getParent);
 		state->set_function("getBaseAct", l_getBaseAct);
+
+		state->set_function("isHovered", l_isHovered);
+		state->set_function("isClicked", l_isClicked);
 
 		state->set_function("addPropToPerson", sol::overload(
 			l_add_prop_to_person<Costumed>,
@@ -441,6 +454,8 @@ namespace cerium
 		person.set_function("getAllChildren", &Person::getAllChildren);
 		person.set_function("getAllProps", &Person::getAllProps);
 		person.set_function("getBaseAct", &Person::getBaseAct);
+		person.set_function("isHovered", &Person::isHovered);
+		person.set_function("isClicked", &Person::isClicked);
 
 		//Props scripting
 		state->new_usertype<Prop>(
