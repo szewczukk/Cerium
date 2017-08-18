@@ -217,63 +217,65 @@ namespace cerium
 		return bPerson->getBaseAct();
 	}
 
-	bool l_isHovered(void)
+	bool l_isHovered()
 	{
 		return bPerson->isHovered();
 	}
 
-	bool l_isClicked(void)
+	bool l_isClicked()
 	{
-		return bPerson->isClicked();
+		bool a = bPerson->isClicked();
+		return a;
 	}
 
 
 	Scriptable::Scriptable(Person * basePerson, Prop * parent, const std::string & name, Script * script)
 		: Prop(basePerson, parent, name)
 	{
+		bPerson = basePerson;
 		this->state = &script->state;
 
-		bPerson = basePerson;
 
 		//Scripting THIS element
-		state->set_function("move", l_move);
-		state->set_function("rotate", l_rotate);
+		sol::table tis = state->create_named_table("this");
+		tis.set_function("move", l_move);
+		tis.set_function("rotate", l_rotate);
 
-		state->set_function("setPosition", l_setPosition);
-		state->set_function("setRotation", l_setRotation);
-		state->set_function("setSize", l_setSize);
+		tis.set_function("setPosition", l_setPosition);
+		tis.set_function("setRotation", l_setRotation);
+		tis.set_function("setSize", l_setSize);
 
-		state->set_function("getPosition", l_getPosition);
-		state->set_function("getRotation", l_getRotation);
-		state->set_function("getSize", l_getSize);
+		tis.set_function("getPosition", l_getPosition);
+		tis.set_function("getRotation", l_getRotation);
+		tis.set_function("getSize", l_getSize);
 
-		state->set_function("adddChild", l_addChild);
-		state->set_function("childExist", l_childExist);
-		state->set_function("getChild", l_getChild);
+		tis.set_function("adddChild", l_addChild);
+		tis.set_function("childExist", l_childExist);
+		tis.set_function("getChild", l_getChild);
 
-		state->set_function("getProp", l_getProp);
-		state->set_function("getName", l_getName);
+		tis.set_function("getProp", l_getProp);
+		tis.set_function("getName", l_getName);
 
-		state->set_function("getAllChildren", l_getAllChildren);
-		state->set_function("getAllProps", l_getAllProps);
+		tis.set_function("getAllChildren", l_getAllChildren);
+		tis.set_function("getAllProps", l_getAllProps);
 
-		state->set_function("addProp", l_addProp);
-		state->set_function("propExist", l_propExist);
+		tis.set_function("addProp", l_addProp);
+		tis.set_function("propExist", l_propExist);
 
-		state->set_function("getParent", l_getParent);
-		state->set_function("getBaseAct", l_getBaseAct);
+		tis.set_function("getParent", l_getParent);
+		tis.set_function("getBaseAct", l_getBaseAct);
 
-		state->set_function("isHovered", l_isHovered);
-		state->set_function("isClicked", l_isClicked);
+		tis.set_function("isHovered", l_isHovered);
+		tis.set_function("isClicked", l_isClicked);
 
-		state->set_function("addPropToPerson", sol::overload(
+		tis.set_function("addPropToPerson", sol::overload(
 			l_add_prop_to_person<Costumed>,
 			l_add_prop_to_person<Scriptable>,
 			l_add_prop_to_person<VertexArray>,
 			l_add_prop_to_person<Label>,
 			l_add_prop_to_person<Button>));
 
-		state->set_function("addChildToProp", sol::overload(
+		tis.set_function("addChildToProp", sol::overload(
 			l_add_child_to_prop<Costumed>,
 			l_add_child_to_prop<Scriptable>,
 			l_add_child_to_prop<VertexArray>,

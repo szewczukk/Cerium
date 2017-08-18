@@ -194,8 +194,7 @@ namespace cerium
 
 	bool Person::isClicked()
 	{
-		if (EventManager::getMousePosition() >= position && position + size >= EventManager::getMousePosition() &&
-			EventManager::isMouseButtonClicked(SDL_BUTTON_LEFT))
+		if (isHovered() && EventManager::isMouseButtonClicked(SDL_BUTTON_LEFT))
 			return true;
 		return false;
 	}

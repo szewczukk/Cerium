@@ -6,7 +6,7 @@ end
 
 -- Function running non-stop
 function update(deltaTime)
-    if eventManager.isKeyPressed(KEY_ESCAPE) or cast_to_button(getProp("button")):isClicked() then
+    if eventManager.isKeyPressed(KEY_ESCAPE) or cast_to_button(this.getProp("button")):isClicked() then
         eventManager.closeWindow()
     end
 end
