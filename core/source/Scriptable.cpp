@@ -18,6 +18,8 @@
 #include "../include/Cerium/ResourceManager.hpp"
 #include "../include/Cerium/Button.hpp"
 
+#include "../include/Cerium/RigidBody.hpp"
+
 namespace cerium
 {
 	Person * bPerson;
@@ -159,12 +161,15 @@ namespace cerium
 		return dynamic_cast<VertexArray*>(p);
 	}
 
+	RigidBody * l_cast_to_rigidBody(Prop * p)
+	{
+		return dynamic_cast<RigidBody*>(p);
+	}
 
 	Sound * l_cast_to_sound(Resource * r)
 	{
 		return dynamic_cast<Sound*>(r);
 	}
-
 
 	Script * l_cast_to_script(Resource * r)
 	{
@@ -273,19 +278,22 @@ namespace cerium
 			l_add_prop_to_person<Scriptable>,
 			l_add_prop_to_person<VertexArray>,
 			l_add_prop_to_person<Label>,
-			l_add_prop_to_person<Button>));
+			l_add_prop_to_person<Button>,
+			l_add_child_to_prop<RigidBody>));
 
 		tis.set_function("addChildToProp", sol::overload(
 			l_add_child_to_prop<Costumed>,
 			l_add_child_to_prop<Scriptable>,
 			l_add_child_to_prop<VertexArray>,
 			l_add_child_to_prop<Label>,
-			l_add_child_to_prop<Button>));
+			l_add_child_to_prop<Button>,
+			l_add_child_to_prop<RigidBody>));
 
 		state->set_function("cast_to_button", l_cast_to_button);
 		state->set_function("cast_to_label", l_cast_to_label);
 		state->set_function("cast_to_costumed", l_cast_to_costumed);
 		state->set_function("cast_to_scriptable", l_cast_to_scriptable);
+		state->set_function("l_cast_to_rigidbody", l_cast_to_rigidBody);
 		state->set_function("cast_to_vertex_array", l_cast_to_vertexArray);
 
 		state->set_function("cast_to_sound", l_cast_to_sound);
@@ -466,6 +474,14 @@ namespace cerium
 			"getParent", &Prop::getParent, "exist", &Prop::exist,
 			"addChild", &Prop::addChild, "getChild", &Prop::getChild,
 			"getAllChildren", &Prop::getAllChildren);
+
+		state->new_usertype<RigidBody>(
+			"Prop", sol::constructors<RigidBody(Person*, Prop*, const std::string &, const float &)>(),
+			"getName", &RigidBody::getName, "getPerson", &RigidBody::getPerson,
+			"getParent", &RigidBody::getParent, "exist", &RigidBody::exist,
+			"addChild", &RigidBody::addChild, "getChild", &RigidBody::getChild,
+			"getAllChildren", &RigidBody::getAllChildren, "isCollideWithPersonWithName", &RigidBody::isCollideWithPersonWithName,
+			"isCollideWithPersonsWithTag", &RigidBody::isCollideWithPersonsWithTag);
 
 		state->new_usertype<Button>("Button", sol::constructors<Button(Person *, Prop *, const std::string &, const vec4 &,
 			const vec4 &, const vec4 &, const vec4 &, const std::string &, Font *)>(),

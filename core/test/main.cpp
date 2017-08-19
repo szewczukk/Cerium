@@ -22,6 +22,8 @@
 #include "../include/Cerium/Music.hpp"
 #include "../include/Cerium/Sound.hpp"
 
+#include "../include/Cerium/RigidBody.hpp"
+
 #include <rapidxml.hpp>
 #include <rapidxml_utils.hpp>
 
@@ -179,6 +181,11 @@ void load_scenes(const cerium::vec4 & normalTextColor, const cerium::vec4 & hove
 					cerium::ActManager::get(sceneName)->get(personName)->addProp(new cerium::Button(cerium::ActManager::get(sceneName)->get(personName), nullptr, name, normalTextColor, hoveredTextColor, normalBackgroundColor, hoveredBackgroundColor, text,
 						cerium::ResourceManager::get(fontName)->cast_to<cerium::Font>()));
                 }
+				else if (type == "rigidBody")
+				{
+					float gravityStrength = strtof(prop->first_attribute("gravity")->value(), nullptr);
+					cerium::ActManager::get(sceneName)->get(personName)->addProp(new cerium::RigidBody(cerium::ActManager::get(sceneName)->get(personName), nullptr, name, gravityStrength));
+				}
             }
         }
     }

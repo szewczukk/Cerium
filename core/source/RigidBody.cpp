@@ -7,16 +7,37 @@
 namespace cerium
 {
 	RigidBody::RigidBody(Person * basePerson, Prop * parent, const std::string & name, 
-		const float & gravityStrength, const std::string & tag)
+		const float & gravityStrength)
 		: Prop(basePerson, parent, name)
 	{
 		basePerson->isRigided = true;
+		isOnGround = false;
 	}
 
 
 	void RigidBody::update(const float & deltaTime)
 	{
+		for (auto & person : basePerson->baseAct->getAllPersons())
+		{
+			if (isOnGround)
+				break;
 
+			if (person.second->isRigided)
+			{
+				if (basePerson->getPosition() >= person.second->getPosition() &&
+					basePerson->getPosition() <= person.second->getPosition() + person.second->getSize())
+				{
+					isOnGround = true;
+				}
+				else
+				{
+					isOnGround = false;
+				}
+			}
+		}
+
+		if (!isOnGround)
+			basePerson->move({ 0, 22 });
 	}
 
 
@@ -33,8 +54,8 @@ namespace cerium
 				basePerson->getPosition() <= otherPersonPosition + otherPersonSize)
 				return true;
 		}
-
-		DebugLog::add(name + " hasn't RigidBody!");
+		else
+			DebugLog::add(name + " hasn't RigidBody!");
 		return false;
 	}
 

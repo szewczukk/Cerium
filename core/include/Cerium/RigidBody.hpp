@@ -9,7 +9,7 @@ namespace cerium
 	{
 	public:
 		RigidBody(Person * basePerson, Prop * parent, const std::string & name, 
-			const float & gravityStrength, const std::string & tag);
+			const float & gravityStrength);
 		
 		bool isCollideWithPersonWithName(const std::string & name);
 
@@ -18,6 +18,7 @@ namespace cerium
 		virtual void update(const float & deltaTime);
 	private:
 		float gravityStrength;
+		bool isOnGround;
 	};
 }
 
