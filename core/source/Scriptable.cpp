@@ -482,7 +482,8 @@ namespace cerium
 			"addChild", &RigidBody::addChild, "getChild", &RigidBody::getChild,
 			"getAllChildren", &RigidBody::getAllChildren,
 			"isCollideWithPersonWithName", &RigidBody::isCollideWithPersonWithName,
-			"isCollideWithPersonsWithTag", &RigidBody::isCollideWithPersonsWithTag);
+			"isCollideWithPersonsWithTag", &RigidBody::isCollideWithPersonsWithTag,
+			"isOnGround", &RigidBody::isOnGround, "setIsOnGround", &RigidBody::setIsOnGround);
 
 		state->new_usertype<Button>("Button", sol::constructors<Button(Person *, Prop *, const std::string &, const vec4 &,
 			const vec4 &, const vec4 &, const vec4 &, const std::string &, Font *)>(),

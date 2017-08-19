@@ -15,10 +15,14 @@ namespace cerium
 
 		bool isCollideWithPersonsWithTag(const std::string & tag);
 
+		bool isOnGround();
+
+		void setIsOnGround(const bool & is);
+
 		virtual void update(const float & deltaTime);
 	private:
 		float gravityStrength;
-		bool isOnGround;
+		bool onGround;
 	};
 }
 

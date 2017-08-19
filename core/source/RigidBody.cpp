@@ -12,7 +12,7 @@ namespace cerium
 	{
 		this->gravityStrength = gravityStrength;
 		basePerson->isRigided = true;
-		isOnGround = false;
+		onGround = false;
 	}
 
 
@@ -20,22 +20,21 @@ namespace cerium
 	{
 		for (auto & person : basePerson->baseAct->getAllPersons())
 		{
-			if (!isOnGround)
+			if (!onGround || basePerson->getName() != person.second->getName())
 			{
 				if (person.second->isRigided)
 				{
-					if (abs(basePerson->getPosition().x - person.second->getPosition().x) * 2 < (basePerson->getSize().x + person.second->getSize().x) &&
-						abs(basePerson->getPosition().y - person.second->getPosition().y) * 2 < (basePerson->getSize().y + person.second->getSize().y))
-						isOnGround = true;
+					if (isCollideWithPersonWithName(person.second->getName()))
+						onGround = true;
 					else
-						isOnGround = false;
+						onGround = false;
 				}
 				else
-					isOnGround = false;
+					onGround = false;
 			}
 		}
 
-		if (!isOnGround)
+		if (!onGround)
 			basePerson->move({ 0, gravityStrength * deltaTime});
 	}
 
@@ -76,5 +75,17 @@ namespace cerium
 			}
 		}
 		return false;
+	}
+
+
+	bool RigidBody::isOnGround()
+	{
+		return onGround;
+	}
+
+
+	void RigidBody::setIsOnGround(const bool & is)
+	{
+		onGround = is;
 	}
 }
