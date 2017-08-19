@@ -37,7 +37,7 @@ namespace cerium
 		}
 
 		if (!isOnGround)
-			basePerson->move({ 0, 22 });
+			basePerson->move({ 0, gravityStrength * deltaTime});
 	}
 
 
