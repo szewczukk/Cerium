@@ -10,6 +10,7 @@ namespace cerium
 		const float & gravityStrength)
 		: Prop(basePerson, parent, name)
 	{
+		this->gravityStrength = gravityStrength;
 		basePerson->isRigided = true;
 		isOnGround = false;
 	}
@@ -19,20 +20,18 @@ namespace cerium
 	{
 		for (auto & person : basePerson->baseAct->getAllPersons())
 		{
-			if (isOnGround)
-				break;
-
-			if (person.second->isRigided)
+			if (!isOnGround)
 			{
-				if (basePerson->getPosition() >= person.second->getPosition() &&
-					basePerson->getPosition() <= person.second->getPosition() + person.second->getSize())
+				if (person.second->isRigided)
 				{
-					isOnGround = true;
+					if (abs(basePerson->getPosition().x - person.second->getPosition().x) * 2 < (basePerson->getSize().x + person.second->getSize().x) &&
+						abs(basePerson->getPosition().y - person.second->getPosition().y) * 2 < (basePerson->getSize().y + person.second->getSize().y))
+						isOnGround = true;
+					else
+						isOnGround = false;
 				}
 				else
-				{
 					isOnGround = false;
-				}
 			}
 		}
 
@@ -50,8 +49,8 @@ namespace cerium
 			otherPersonPosition = basePerson->getBaseAct()->get(name)->getPosition();
 			otherPersonSize = basePerson->getBaseAct()->get(name)->getSize();
 
-			if (basePerson->getPosition() >= otherPersonPosition &&
-				basePerson->getPosition() <= otherPersonPosition + otherPersonSize)
+			if (abs(basePerson->getPosition().x - otherPersonPosition.x) * 2 < (basePerson->getSize().x + otherPersonSize.x) &&
+				abs(basePerson->getPosition().y - otherPersonPosition.y) * 2 < (basePerson->getSize().y + otherPersonSize.y))
 				return true;
 		}
 		else
@@ -71,8 +70,8 @@ namespace cerium
 				otherPersonPosition = person->getPosition();
 				otherPersonSize = person->getSize();
 
-				if (basePerson->getPosition() >= otherPersonPosition &&
-					basePerson->getPosition() <= otherPersonPosition + otherPersonSize)
+				if (abs(basePerson->getPosition().x - otherPersonPosition.x) * 2 < (basePerson->getSize().x + otherPersonSize.x) &&
+					abs(basePerson->getPosition().y - otherPersonPosition.y) * 2 < (basePerson->getSize().y + otherPersonSize.y))
 					return true;
 			}
 		}

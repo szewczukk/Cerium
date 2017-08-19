@@ -293,7 +293,7 @@ namespace cerium
 		state->set_function("cast_to_label", l_cast_to_label);
 		state->set_function("cast_to_costumed", l_cast_to_costumed);
 		state->set_function("cast_to_scriptable", l_cast_to_scriptable);
-		state->set_function("l_cast_to_rigidbody", l_cast_to_rigidBody);
+		state->set_function("cast_to_rigidbody", l_cast_to_rigidBody);
 		state->set_function("cast_to_vertex_array", l_cast_to_vertexArray);
 
 		state->set_function("cast_to_sound", l_cast_to_sound);
@@ -480,7 +480,8 @@ namespace cerium
 			"getName", &RigidBody::getName, "getPerson", &RigidBody::getPerson,
 			"getParent", &RigidBody::getParent, "exist", &RigidBody::exist,
 			"addChild", &RigidBody::addChild, "getChild", &RigidBody::getChild,
-			"getAllChildren", &RigidBody::getAllChildren, "isCollideWithPersonWithName", &RigidBody::isCollideWithPersonWithName,
+			"getAllChildren", &RigidBody::getAllChildren,
+			"isCollideWithPersonWithName", &RigidBody::isCollideWithPersonWithName,
 			"isCollideWithPersonsWithTag", &RigidBody::isCollideWithPersonsWithTag);
 
 		state->new_usertype<Button>("Button", sol::constructors<Button(Person *, Prop *, const std::string &, const vec4 &,
