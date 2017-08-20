@@ -3,6 +3,8 @@
 
 #include "Prop.hpp"
 
+#include "vec2.hpp"
+
 namespace cerium
 {
 	class RigidBody : public Prop
@@ -23,6 +25,7 @@ namespace cerium
 	private:
 		float gravityStrength;
 		bool onGround;
+		vec2 velocity;
 	};
 }
 

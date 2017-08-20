@@ -10,6 +10,7 @@ namespace cerium
 		const float & gravityStrength)
 		: Prop(basePerson, parent, name)
 	{
+		this->velocity = { 0 };
 		this->gravityStrength = gravityStrength;
 		basePerson->isRigided = true;
 		onGround = false;
@@ -20,7 +21,7 @@ namespace cerium
 	{
 		for (auto & person : basePerson->baseAct->getAllPersons())
 		{
-			if (!onGround || basePerson->getName() != person.second->getName())
+			if (basePerson->getName() != person.second->getName())
 			{
 				if (person.second->isRigided)
 				{
@@ -35,7 +36,11 @@ namespace cerium
 		}
 
 		if (!onGround)
-			basePerson->move({ 0, gravityStrength * deltaTime});
+			velocity.y += gravityStrength;
+		else
+			velocity.y = 0;
+
+		basePerson->move(velocity * deltaTime);
 	}
 
 
