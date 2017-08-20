@@ -258,7 +258,6 @@ int main()
 
     load_resources(musicVolume, soundVolume);
     cerium::ResourceManager::add("shader", new cerium::ShaderProgram("vertexShader.glsl", "fragmentShader.glsl"));
-	cerium::ResourceManager::add("timer", new cerium::Clock);
 
     int frames = 0;
 
@@ -277,8 +276,15 @@ int main()
 
     load_scenes(normalTextColor, hoveredTextColor, normalBackgroundColor, hoveredBackgroundColor);
 
+	float now, last, deltaTime;
+
     while(!cerium::EventManager::isWindowClosed())
     {
+		now = SDL_GetPerformanceCounter();
+		last = now;
+
+		deltaTime = (now / last) / SDL_GetPerformanceFrequency();
+
         if(debug_mode)
         {
             if(cerium::ResourceManager::get("fpsTimer")->cast_to<cerium::Clock>()->getElapsedTime() > 1)
@@ -300,19 +306,16 @@ int main()
 				cerium::ResourceManager::add("fpsTimer", new cerium::Clock);
 				cerium::ResourceManager::get("fpsTimer")->use();
 
-				cerium::ResourceManager::add("timer", new cerium::Clock);
-
 				getColorsOfUI(normalTextColor, hoveredTextColor, normalBackgroundColor, hoveredBackgroundColor);
 
 				load_scenes(normalTextColor, hoveredTextColor, normalBackgroundColor, hoveredBackgroundColor);
 			}
         }
 		
-        cerium::ResourceManager::get("timer")->use();
         cerium::EventManager::pollEvents();
         cerium::Window::clear();
 
-        cerium::ActManager::updateCurrent(cerium::ResourceManager::get("timer")->cast_to<cerium::Clock>()->getElapsedTime());
+        cerium::ActManager::updateCurrent(deltaTime);
         cerium::ActManager::drawCurrent();
 
         cerium::DebugLog::update();

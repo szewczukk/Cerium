@@ -14,6 +14,7 @@ namespace cerium
 		this->gravityStrength = gravityStrength;
 		basePerson->isRigided = true;
 		onGround = false;
+		customRectangle = {0};
 	}
 
 
@@ -53,9 +54,18 @@ namespace cerium
 			otherPersonPosition = basePerson->getBaseAct()->get(name)->getPosition();
 			otherPersonSize = basePerson->getBaseAct()->get(name)->getSize();
 
-			if (abs(basePerson->getPosition().x - otherPersonPosition.x) * 2 < (basePerson->getSize().x + otherPersonSize.x) &&
-				abs(basePerson->getPosition().y - otherPersonPosition.y) * 2 < (basePerson->getSize().y + otherPersonSize.y))
-				return true;
+			if (customRectangle.w > 0)
+			{
+				if (abs(customRectangle.x - otherPersonPosition.x) * 2 < (customRectangle.z + otherPersonSize.x) &&
+					abs(customRectangle.y - otherPersonPosition.y) * 2 < (customRectangle.w + otherPersonSize.y))
+					return true;
+			}
+			else
+			{
+				if (abs(basePerson->getPosition().x - otherPersonPosition.x) * 2 < (basePerson->getSize().x + otherPersonSize.x) &&
+					abs(basePerson->getPosition().y - otherPersonPosition.y) * 2 < (basePerson->getSize().y + otherPersonSize.y))
+					return true;
+			}
 		}
 		else
 			DebugLog::add(name + " hasn't RigidBody!");
@@ -73,13 +83,27 @@ namespace cerium
 			{
 				otherPersonPosition = person->getPosition();
 				otherPersonSize = person->getSize();
-
-				if (abs(basePerson->getPosition().x - otherPersonPosition.x) * 2 < (basePerson->getSize().x + otherPersonSize.x) &&
-					abs(basePerson->getPosition().y - otherPersonPosition.y) * 2 < (basePerson->getSize().y + otherPersonSize.y))
-					return true;
+				if (customRectangle.w > 0)
+				{
+					if (abs(customRectangle.x - otherPersonPosition.x) * 2 < (customRectangle.z + otherPersonSize.x) &&
+						abs(customRectangle.y - otherPersonPosition.y) * 2 < (customRectangle.w + otherPersonSize.y))
+						return true;
+				}
+				else
+				{
+					if (abs(basePerson->getPosition().x - otherPersonPosition.x) * 2 < (basePerson->getSize().x + otherPersonSize.x) &&
+						abs(basePerson->getPosition().y - otherPersonPosition.y) * 2 < (basePerson->getSize().y + otherPersonSize.y))
+						return true;
+				}
 			}
 		}
 		return false;
+	}
+
+
+	void RigidBody::setCustomRectangle(const vec4 & rectangle)
+	{
+		customRectangle = rectangle;
 	}
 
 
