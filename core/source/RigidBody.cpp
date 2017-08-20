@@ -33,8 +33,6 @@ namespace cerium
 						else
 							onGround = false;
 					}
-					else
-						onGround = false;
 				}
 			}
 

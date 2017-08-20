@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<settings debug_mode="True">
+<settings debug_mode="False">
     <size width="800" height="600"/>
-    <caption title="Cerium SDL OpenGL"/>
-
+    <caption title="Cerium Benchmark"/>
+	
 	<music volume="100"/>
 	<sounds volume="100"/>
 	

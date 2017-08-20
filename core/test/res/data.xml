@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <data>
-    <resource name="texture" type="costume" path="texture.png"/>
-    <resource name="other" type="costume" path="other.png"/>
-    <resource name="font" type="font" path="font.ttf" size="32"/>
-    <resource name="script" type="script" path="script.lua"/>
-    <resource name="playerScript" type="script" path="player.lua"/>
-    <resource name="music" type="music" path="music.mp3" looped="False"/>
+    <resource name="playerMovement" type="script" path="playerMovement.lua"/>
+	<resource name="brickScript" type="script" path="brickScript.lua"/>
+	<resource name="labelScript" type="script" path="labelScript.lua"/>
+	
+	<resource name="defaultFont" type="font" path="font.ttf" size="32"/>
 </data>
