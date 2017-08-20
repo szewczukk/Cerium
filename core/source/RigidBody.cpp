@@ -20,28 +20,31 @@ namespace cerium
 
 	void RigidBody::update(const float & deltaTime)
 	{
-		for (auto & person : basePerson->baseAct->getAllPersons())
+		if (gravityStrength > 0)
 		{
-			if (basePerson->getName() != person.second->getName())
+			for (auto & person : basePerson->baseAct->getAllPersons())
 			{
-				if (person.second->isRigided)
+				if (basePerson->getName() != person.second->getName())
 				{
-					if (isCollideWithPersonWithName(person.second->getName()))
-						onGround = true;
+					if (person.second->isRigided)
+					{
+						if (isCollideWithPersonWithName(person.second->getName()))
+							onGround = true;
+						else
+							onGround = false;
+					}
 					else
 						onGround = false;
 				}
-				else
-					onGround = false;
 			}
+
+			if (!onGround)
+				velocity.y += gravityStrength;
+			else
+				velocity.y = 0;
+
+			basePerson->move(velocity * deltaTime);
 		}
-
-		if (!onGround)
-			velocity.y += gravityStrength;
-		else
-			velocity.y = 0;
-
-		basePerson->move(velocity * deltaTime);
 	}
 
 
