@@ -24,6 +24,8 @@ namespace cerium
 
 		void setIsOnGround(const bool & is);
 
+		void applyForce(const vec2 & force);
+
 		virtual void update(const float & deltaTime);
 	private:
 		float gravityStrength;

@@ -28,7 +28,7 @@ namespace cerium
 				{
 					if (person.second->isRigided)
 					{
-						if (isCollideWithPersonWithName(person.second->getName()))
+						if (isCollideWithPersonWithName(person.second->getName()) && velocity.y > 0)
 							onGround = true;
 						else
 							onGround = false;
@@ -119,5 +119,11 @@ namespace cerium
 	void RigidBody::setIsOnGround(const bool & is)
 	{
 		onGround = is;
+	}
+
+
+	void RigidBody::applyForce(const vec2 & force)
+	{
+		velocity += force;
 	}
 }
