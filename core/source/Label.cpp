@@ -19,6 +19,9 @@ namespace cerium
 
     Label::~Label()
     {
+		delete font;
+
+		SDL_FreeSurface(rawSurface);
         glDeleteTextures(1, &texture);
     }
 
@@ -48,9 +51,9 @@ namespace cerium
     {
         if(changed)
         {
-            SDL_Surface * surface = TTF_RenderText_Blended(font->font, text.c_str(), {(Uint8)color.x, (Uint8)color.y, (Uint8)color.z, (Uint8)color.w});
+			rawSurface = TTF_RenderText_Blended(font->font, text.c_str(), {(Uint8)color.x, (Uint8)color.y, (Uint8)color.z, (Uint8)color.w});
 
-            basePerson->setSize({(float)surface->w, (float)surface->h});
+            basePerson->setSize({(float)rawSurface->w, (float)rawSurface->h});
 
             glGenTextures(1, &texture);
 
@@ -59,14 +62,14 @@ namespace cerium
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 
-            GLenum colorMode = GL_RGB;
-            if (surface->format->BytesPerPixel == 4)
+            colorMode = GL_RGB;
+            if (rawSurface->format->BytesPerPixel == 4)
                 colorMode = GL_RGBA;
 
-            glTexImage2D(GL_TEXTURE_2D, 0, colorMode, surface->w, surface->h, 0, colorMode, GL_UNSIGNED_BYTE, surface->pixels);
+            glTexImage2D(GL_TEXTURE_2D, 0, colorMode, rawSurface->w, rawSurface->h, 0, colorMode, GL_UNSIGNED_BYTE, rawSurface->pixels);
             glGenerateMipmap(GL_TEXTURE_2D);
 
-            SDL_FreeSurface(surface);
+            SDL_FreeSurface(rawSurface);
 
             glBindTexture(GL_TEXTURE_2D, 0);
 

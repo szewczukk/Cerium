@@ -20,7 +20,7 @@ namespace cerium
 
 		void setCustomRectangle(const vec4 & rectangle);
 
-		bool isOnGround();
+		bool isOnGround(void);
 
 		void setIsOnGround(const bool & is);
 

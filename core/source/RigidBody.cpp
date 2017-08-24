@@ -108,7 +108,7 @@ namespace cerium
 	}
 
 
-	bool RigidBody::isOnGround()
+	bool RigidBody::isOnGround(void)
 	{
 		return onGround;
 	}

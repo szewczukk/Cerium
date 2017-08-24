@@ -65,6 +65,9 @@ namespace cerium
         Font * font;
         bool changed;
         std::string text;
+
+		SDL_Surface * rawSurface;
+		GLenum colorMode;
     };
 }
 
