@@ -15,12 +15,16 @@ while True:
             obj = input("  > object=")
             if obj == "resource" or obj == "res":
                 print("res")
+
             elif obj == "scene" or obj == "scn":
                 print("scn")
+
             elif obj == "person" or obj == "per":
                 print("Person")
+
             elif obj == "prop" or obj == "prp":
                 print("Prop")
+
             else:
                 print("   < Incorrect object to add")
         else:
@@ -33,9 +37,11 @@ while True:
     elif action == "set" or action == "s":
         what_to_set = input("  > what to set=")
         name_of = input("  > name=")
-        if what_to_set == "project":
+
+        if what_to_set == "project" or what_to_set == "p":
             project_name = name_of
-        elif what_to_set == "scene":
+
+        elif what_to_set == "scene" or what_to_set == "s":
             if project_name != "":
                 scene_name = name_of
             else:
