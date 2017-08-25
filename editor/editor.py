@@ -21,6 +21,8 @@ while True:
                 print("Person")
             elif obj == "prop" or obj == "prp":
                 print("Prop")
+            else:
+                print("   < Incorrect object to add")
         else:
             print("   < There is no set project")
 
@@ -38,6 +40,8 @@ while True:
                 scene_name = name_of
             else:
                 print("   < You must set project before setting scene")
+        else:
+            print("   < Incorrect object to set")
 
     elif action == "exit" or action == "e":
         break
@@ -48,3 +52,5 @@ while True:
         print("\"remove\" to remove object from project")
         print("\"set\" to set current project")
         print("\"exit\" to exit from editor")
+    else:
+        print("   < Incorrect command, type help to get list of all supported commands")
