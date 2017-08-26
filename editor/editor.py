@@ -1,7 +1,8 @@
-project_name = ""
-scene_name = ""
 print("Welcome to Cerium Game Editor v0.5")
 print("Type help to get all commands")
+
+project_name = ""
+scene_name = ""
 
 while True:
     action = input("{project_name} / {scene_name} > ".format(project_name=project_name, scene_name=scene_name))

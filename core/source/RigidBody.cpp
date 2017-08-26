@@ -41,6 +41,12 @@ namespace cerium
 			else
 				velocity.y = 0;
 
+			if (customRectangle.w > 0)
+			{
+				customRectangle.x *= velocity.x;
+				customRectangle.y *= velocity.y;
+			}
+
 			basePerson->move(velocity * deltaTime);
 		}
 	}
