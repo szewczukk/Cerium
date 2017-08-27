@@ -294,22 +294,6 @@ int main()
                 cerium::ResourceManager::get("fpsTimer")->use();
             }
 			frames++;
-
-			if (cerium::EventManager::isKeyPressed(SDL_SCANCODE_R))
-			{
-				cerium::ResourceManager::clear();
-				cerium::ActManager::clear();
-
-				getSoundsVolume(soundVolume, musicVolume);
-				load_resources(musicVolume, soundVolume);
-				cerium::ResourceManager::add("shader", new cerium::ShaderProgram("vertexShader.glsl", "fragmentShader.glsl"));
-				cerium::ResourceManager::add("fpsTimer", new cerium::Clock);
-				cerium::ResourceManager::get("fpsTimer")->use();
-
-				getColorsOfUI(normalTextColor, hoveredTextColor, normalBackgroundColor, hoveredBackgroundColor);
-
-				load_scenes(normalTextColor, hoveredTextColor, normalBackgroundColor, hoveredBackgroundColor);
-			}
         }
 		
         cerium::EventManager::pollEvents();

@@ -24,15 +24,12 @@ namespace cerium
 		{
 			for (auto & person : basePerson->baseAct->getAllPersons())
 			{
-				if (basePerson->getName() != person.second->getName())
+				if (basePerson->getName() != person.second->getName() && person.second->isRigided)
 				{
-					if (person.second->isRigided)
-					{
 						if (isCollideWithPersonWithName(person.second->getName()) && velocity.y > 0)
-							onGround = true;
-						else
-							onGround = false;
-					}
+						onGround = true;
+					else
+						onGround = false;
 				}
 			}
 
@@ -40,37 +37,37 @@ namespace cerium
 				velocity.y += gravityStrength;
 			else
 				velocity.y = 0;
-
-			if (customRectangle.w > 0)
-			{
-				customRectangle.x *= velocity.x;
-				customRectangle.y *= velocity.y;
-			}
-
-			basePerson->move(velocity * deltaTime);
 		}
+
+		if (customRectangle.w > 0)
+		{
+			customRectangle.x *= velocity.x;
+			customRectangle.y *= velocity.y;
+		}
+
+		basePerson->move(velocity * deltaTime);
 	}
 
 
 	bool RigidBody::isCollideWithPersonWithName(const std::string & name)
 	{
-		vec2 otherPersonPosition, otherPersonSize;
-
 		if (basePerson->getBaseAct()->get(name)->isRigided)
 		{
-			otherPersonPosition = basePerson->getBaseAct()->get(name)->getPosition();
-			otherPersonSize = basePerson->getBaseAct()->get(name)->getSize();
+			vec2 * otherPersonPosition, * otherPersonSize;
+
+			otherPersonPosition = &basePerson->getBaseAct()->get(name)->getPosition();
+			otherPersonSize = &basePerson->getBaseAct()->get(name)->getSize();
 
 			if (customRectangle.w > 0)
 			{
-				if (abs(customRectangle.x - otherPersonPosition.x) * 2 < (customRectangle.z + otherPersonSize.x) &&
-					abs(customRectangle.y - otherPersonPosition.y) * 2 < (customRectangle.w + otherPersonSize.y))
+				if (abs(customRectangle.x - otherPersonPosition->x) * 2 < (customRectangle.z + otherPersonSize->x) &&
+					abs(customRectangle.y - otherPersonPosition->y) * 2 < (customRectangle.w + otherPersonSize->y))
 					return true;
 			}
 			else
 			{
-				if (abs(basePerson->getPosition().x - otherPersonPosition.x) * 2 < (basePerson->getSize().x + otherPersonSize.x) &&
-					abs(basePerson->getPosition().y - otherPersonPosition.y) * 2 < (basePerson->getSize().y + otherPersonSize.y))
+				if (abs(basePerson->getPosition().x - otherPersonPosition->x) * 2 < (basePerson->getSize().x + otherPersonSize->x) &&
+					abs(basePerson->getPosition().y - otherPersonPosition->y) * 2 < (basePerson->getSize().y + otherPersonSize->y))
 					return true;
 			}
 		}
@@ -82,24 +79,24 @@ namespace cerium
 
 	bool RigidBody::isCollideWithPersonsWithTag(const std::string & tag)
 	{
-		vec2 otherPersonPosition, otherPersonSize;
+		vec2 * otherPersonPosition, *otherPersonSize;
 
 		for (auto & person : basePerson->getBaseAct()->getAllPersonsWithTag(tag))
 		{
 			if (person->isRigided)
 			{
-				otherPersonPosition = person->getPosition();
-				otherPersonSize = person->getSize();
+				otherPersonPosition = &person->getPosition();
+				otherPersonSize = &person->getSize();
 				if (customRectangle.w > 0)
 				{
-					if (abs(customRectangle.x - otherPersonPosition.x) * 2 < (customRectangle.z + otherPersonSize.x) &&
-						abs(customRectangle.y - otherPersonPosition.y) * 2 < (customRectangle.w + otherPersonSize.y))
+					if (abs(customRectangle.x - otherPersonPosition->x) * 2 < (customRectangle.z + otherPersonSize->x) &&
+						abs(customRectangle.y - otherPersonPosition->y) * 2 < (customRectangle.w + otherPersonSize->y))
 						return true;
 				}
 				else
 				{
-					if (abs(basePerson->getPosition().x - otherPersonPosition.x) * 2 < (basePerson->getSize().x + otherPersonSize.x) &&
-						abs(basePerson->getPosition().y - otherPersonPosition.y) * 2 < (basePerson->getSize().y + otherPersonSize.y))
+					if (abs(basePerson->getPosition().x - otherPersonPosition->x) * 2 < (basePerson->getSize().x + otherPersonSize->x) &&
+						abs(basePerson->getPosition().y - otherPersonPosition->y) * 2 < (basePerson->getSize().y + otherPersonSize->y))
 						return true;
 				}
 			}
