@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<data>
-    <resource name="playerMovement" type="script" path="playerMovement.lua"/>
-	<resource name="brickScript" type="script" path="brickScript.lua"/>
-	<resource name="labelScript" type="script" path="labelScript.lua"/>
-	
-	<resource name="defaultFont" type="font" path="font.ttf" size="32"/>
-</data>
