@@ -1,28 +1,28 @@
-#include "../include/Cerium/vec2.hpp"
-#include "../include/Cerium/Window.hpp"
-#include "../include/Cerium/EventManager.hpp"
-#include "../include/Cerium/Act.hpp"
-#include "../include/Cerium/VertexArray.hpp"
-#include "../include/Cerium/Scriptable.hpp"
-#include "../include/Cerium/Camera.hpp"
-#include "../include/Cerium/ActManager.hpp"
-#include "../include/Cerium/ResourceManager.hpp"
-#include "../include/Cerium/ShaderProgram.hpp"
-#include "../include/Cerium/Person.hpp"
-#include "../include/Cerium/Clock.hpp"
-#include "../include/Cerium/Costumed.hpp"
-#include "../include/Cerium/Costume.hpp"
-#include "../include/Cerium/Font.hpp"
-#include "../include/Cerium/Label.hpp"
+#include "include/Cerium/vec2.hpp"
+#include "include/Cerium/Window.hpp"
+#include "include/Cerium/EventManager.hpp"
+#include "include/Cerium/Act.hpp"
+#include "include/Cerium/VertexArray.hpp"
+#include "include/Cerium/Scriptable.hpp"
+#include "include/Cerium/Camera.hpp"
+#include "include/Cerium/ActManager.hpp"
+#include "include/Cerium/ResourceManager.hpp"
+#include "include/Cerium/ShaderProgram.hpp"
+#include "include/Cerium/Person.hpp"
+#include "include/Cerium/Clock.hpp"
+#include "include/Cerium/Costumed.hpp"
+#include "include/Cerium/Costume.hpp"
+#include "include/Cerium/Font.hpp"
+#include "include/Cerium/Label.hpp"
 
-#include "../include/Cerium/Button.hpp"
-#include "../include/Cerium/DebugLog.hpp"
+#include "include/Cerium/Button.hpp"
+#include "include/Cerium/DebugLog.hpp"
 
-#include "../include/Cerium/Script.hpp"
-#include "../include/Cerium/Music.hpp"
-#include "../include/Cerium/Sound.hpp"
+#include "include/Cerium/Script.hpp"
+#include "include/Cerium/Music.hpp"
+#include "include/Cerium/Sound.hpp"
 
-#include "../include/Cerium/RigidBody.hpp"
+#include "include/Cerium/RigidBody.hpp"
 
 #include <rapidxml.hpp>
 #include <rapidxml_utils.hpp>
@@ -271,7 +271,7 @@ int main()
     cerium::vec4 hoveredTextColor;
     cerium::vec4 normalBackgroundColor;
     cerium::vec4 hoveredBackgroundColor;
-
+	
     getColorsOfUI(normalTextColor, hoveredTextColor, normalBackgroundColor, hoveredBackgroundColor);
 
     load_scenes(normalTextColor, hoveredTextColor, normalBackgroundColor, hoveredBackgroundColor);
@@ -280,7 +280,7 @@ int main()
 
     while(!cerium::EventManager::isWindowClosed())
     {
-		now = SDL_GetPerformanceCounter();
+		now = (float)SDL_GetPerformanceCounter();
 		last = now;
 
 		deltaTime = (now / last) / SDL_GetPerformanceFrequency();
