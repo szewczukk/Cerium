@@ -19,12 +19,12 @@ end
 
 -- Function running non-stop
 function update(deltaTime)
-    if inputManager.isKeyPressed(KEY_RIGHT) then
-        move(vec2.new(speed * deltaTime, 0))
-    elseif inputManager.isKeyPressed(KEY_LEFT) then
-        move(vec2.new(-speed * deltaTime, 0))
-    elseif inputManager.isKeyPressed(KEY_UP) then
-        move(vec2.new(0, -speed * deltaTime))
+    if eventManager.isKeyPressed(KEY_RIGHT) then
+        this.move(vec2.new(speed * deltaTime, 0))
+    elseif eventManager.isKeyPressed(KEY_LEFT) then
+        this.move(vec2.new(-speed * deltaTime, 0))
+    elseif eventManager.isKeyPressed(KEY_UP) then
+        this.move(vec2.new(0, -speed * deltaTime))
     end
 end
 ```
@@ -34,10 +34,10 @@ Coming soon!
 
 
 ## Third parts
-* <a href="https://github.com/bjornus/Bromine">Bromine</a>
 * <a href="https://www.libsdl.org">SDL</a>
 * <a href="https://www.libsdl.org/projects/SDL_image/">SDL_image</a>
 * <a href="https://www.libsdl.org/projects/SDL_ttf/">SDL_ttf</a>
+* <a href="https://www.libsdl.org/projects/SDL_mixer/">SDL_mixer</a>
 * <a href="http://glew.sourceforge.net">GLEW</a>
 * <a href="http://glm.g-truc.net/0.9.8/index.html">GLM</a>
 * <a href="https://github.com/ThePhD/sol2">sol2</a>
