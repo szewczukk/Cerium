@@ -14,7 +14,7 @@ namespace cerium
 		this->gravityStrength = gravityStrength;
 		basePerson->isRigided = true;
 		onGround = false;
-		customRectangle = {0};
+		customRectangle = { 0 };
 	}
 
 
