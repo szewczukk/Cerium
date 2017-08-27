@@ -9,7 +9,7 @@ namespace cerium
                    const vec4 & normalTextColor, const vec4 & hoveredTextColor,
                    const vec4 & normalBackgroundColor, const vec4 & hoveredBackgroundColor,
                    const std::string & text, Font * font)
-                   : Prop(basePerson, parent, name)
+                   : Prop(basePerson, parent, name, "Button")
     {
         addChild(new VertexArray(basePerson, this, "background", normalBackgroundColor));
         addChild(new Label(basePerson, this, "label", font, text, normalTextColor));

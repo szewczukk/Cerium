@@ -7,7 +7,8 @@
 
 namespace cerium
 {
-    Costumed::Costumed(Person * basePerson, Prop * parent, const std::string & name, Costume * source) : Prop(basePerson, parent, name)
+    Costumed::Costumed(Person * basePerson, Prop * parent, const std::string & name, Costume * source) 
+		: Prop(basePerson, parent, name, "Costumed")
     {
         glGenTextures(1, &texture);
 

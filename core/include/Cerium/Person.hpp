@@ -110,6 +110,7 @@ namespace cerium
             ^[class][Person]
             ^[description][Adding new Prop to Person]
             ^[argument]<component>[Pointer to Prop to add]
+			^[argument]<type>[Name of Type]
         */
         void addProp(Prop * component); //^header
         /*

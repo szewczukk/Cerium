@@ -6,9 +6,8 @@
 
 namespace cerium
 {
-	RigidBody::RigidBody(Person * basePerson, Prop * parent, const std::string & name, 
-		const float & gravityStrength)
-		: Prop(basePerson, parent, name)
+	RigidBody::RigidBody(Person * basePerson, Prop * parent, const std::string & name, const float & gravityStrength)
+		: Prop(basePerson, parent, name, "RigidBody")
 	{
 		this->velocity = { 0 };
 		this->gravityStrength = gravityStrength;

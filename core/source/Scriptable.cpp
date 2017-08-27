@@ -235,7 +235,7 @@ namespace cerium
 
 
 	Scriptable::Scriptable(Person * basePerson, Prop * parent, const std::string & name, Script * script)
-		: Prop(basePerson, parent, name)
+		: Prop(basePerson, parent, name, "Scriptable")
 	{
 		bPerson = basePerson;
 		this->state = &script->state;
@@ -469,7 +469,7 @@ namespace cerium
 
 		//Props scripting
 		state->new_usertype<Prop>(
-			"Prop", sol::constructors<Prop(Person*, Prop*, const std::string &)>(),
+			"Prop", sol::constructors<Prop(Person*, Prop*, const std::string &, const std::string &)>(),
 			"getName", &Prop::getName, "getPerson", &Prop::getPerson,
 			"getParent", &Prop::getParent, "exist", &Prop::exist,
 			"addChild", &Prop::addChild, "getChild", &Prop::getChild,

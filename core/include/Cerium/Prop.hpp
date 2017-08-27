@@ -18,11 +18,13 @@ namespace cerium
             ^[argument]<basePerson>[Person where the Prop is]
             ^[argument]<parent>[Parent Prop of this Prop]
             ^[argument]<name>[Name of Prop]
+			^[argument]<type>[Type of Prop]
          */
-        Prop(Person * basePerson, Prop * parent, const std::string & name)
+		Prop(Person * basePerson, Prop * parent, const std::string & name, const std::string & type) //^header
         {
             this->basePerson = basePerson;
             this->name = name;
+			this->type = type;
             this->parent = parent;
         }
         /*
@@ -139,6 +141,8 @@ namespace cerium
         Person * basePerson;
         Prop * parent;
         std::string name;
+		std::string type;
+
         std::vector<std::pair<std::string, Prop*>> children;
     };
 }
