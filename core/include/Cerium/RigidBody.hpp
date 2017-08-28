@@ -18,8 +18,6 @@ namespace cerium
 
 		bool isCollideWithPersonsWithTag(const std::string & tag);
 
-		void setCustomRectangle(const vec4 & rectangle);
-
 		bool isOnGround(void);
 
 		void setIsOnGround(const bool & is);
@@ -31,8 +29,6 @@ namespace cerium
 		float gravityStrength;
 		bool onGround;
 		vec2 velocity;
-
-		vec4 customRectangle;
 	};
 }
 
