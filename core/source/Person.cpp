@@ -57,12 +57,22 @@ namespace cerium
     void Person::move(const vec2 & relative)
     {
         setPosition(this->position + relative);
+
+		for (auto & child : children)
+		{
+			child.second->setPosition(child.second->getPosition() + relative);
+		}
     }
 
 
     void Person::rotate(const float & relative)
     {
         setRotation(this->rotation + relative);
+
+		for (auto & child : children)
+		{
+			child.second->setRotation(child.second->getRotation() + relative);
+		}
     }
 
 
