@@ -124,9 +124,10 @@ void load_scenes(const cerium::vec4 & normalTextColor, const cerium::vec4 & hove
         std::string sceneName = scene->first_attribute("name")->value();
         cerium::ActManager::add(sceneName);
 
+		cerium::Act * act = cerium::ActManager::get(sceneName);
+
         std::string isCurrent = scene->first_attribute("current")->value();
         if(isCurrent == "True") cerium::ActManager::setCurrent(sceneName);
-
         for(rapidxml::xml_node <> * person = scene->first_node("person"); person;person=person->next_sibling("person"))
         {
             std::string personName = person->first_attribute("name")->value();
@@ -135,10 +136,12 @@ void load_scenes(const cerium::vec4 & normalTextColor, const cerium::vec4 & hove
             cerium::vec2 size = {strtof(person->first_attribute("w")->value(), nullptr), strtof(person->first_attribute("h")->value(), nullptr)};
             float angle = strtof(person->first_attribute("angle")->value(), nullptr);
 
-			cerium::ActManager::get(sceneName)->add(new cerium::Person(personName, nullptr, cerium::ActManager::get(sceneName), personTag));
-			cerium::ActManager::get(sceneName)->get(personName)->setPosition(position);
-			cerium::ActManager::get(sceneName)->get(personName)->setSize(size);
-			cerium::ActManager::get(sceneName)->get(personName)->setRotation(angle);
+			act->add(new cerium::Person(personName, nullptr, cerium::ActManager::get(sceneName), personTag));
+			cerium::Person * per = act->get(personName);
+
+			per->setPosition(position);
+			per->setSize(size);
+			per->setRotation(angle);
 
             for(rapidxml::xml_node <> * prop = person->first_node("prop"); prop;prop=prop->next_sibling("prop"))
             {
@@ -148,7 +151,7 @@ void load_scenes(const cerium::vec4 & normalTextColor, const cerium::vec4 & hove
                 if(type == "costumed")
                 {
                     std::string costumeName = prop->first_attribute("costume_name")->value();
-					cerium::ActManager::get(sceneName)->get(personName)->addProp(new cerium::Costumed(cerium::ActManager::get(sceneName)->get(personName), nullptr, name, cerium::ResourceManager::get(costumeName)->cast_to<cerium::Costume>()));
+					per->addProp(new cerium::Costumed(cerium::ActManager::get(sceneName)->get(personName), nullptr, name, cerium::ResourceManager::get(costumeName)->cast_to<cerium::Costume>()));
                 }
                 else if (type == "vertexArray")
                 {
@@ -157,12 +160,12 @@ void load_scenes(const cerium::vec4 & normalTextColor, const cerium::vec4 & hove
                                           strtof(prop->first_attribute("b")->value(), nullptr),
                                           strtof(prop->first_attribute("a")->value(), nullptr)};
 
-					cerium::ActManager::get(sceneName)->get(personName)->addProp(new cerium::VertexArray(cerium::ActManager::get(sceneName)->get(personName), nullptr, name, color));
+					per->addProp(new cerium::VertexArray(cerium::ActManager::get(sceneName)->get(personName), nullptr, name, color));
                 }
                 else if (type == "scriptable")
                 {
                     std::string scriptName = prop->first_attribute("script")->value();
-					cerium::ActManager::get(sceneName)->get(personName)->addProp(new cerium::Scriptable(cerium::ActManager::get(sceneName)->get(personName), nullptr, name, cerium::ResourceManager::get(scriptName)->cast_to<cerium::Script>()));
+					per->addProp(new cerium::Scriptable(cerium::ActManager::get(sceneName)->get(personName), nullptr, name, cerium::ResourceManager::get(scriptName)->cast_to<cerium::Script>()));
                 }
                 else if (type == "label")
                 {
@@ -172,19 +175,19 @@ void load_scenes(const cerium::vec4 & normalTextColor, const cerium::vec4 & hove
                                           strtof(prop->first_attribute("g")->value(), nullptr),
                                           strtof(prop->first_attribute("b")->value(), nullptr),
                                           strtof(prop->first_attribute("a")->value(), nullptr)};
-					cerium::ActManager::get(sceneName)->get(personName)->addProp(new cerium::Label(cerium::ActManager::get(sceneName)->get(personName), nullptr, name, cerium::ResourceManager::get(fontName)->cast_to<cerium::Font>(), text, color));
+					per->addProp(new cerium::Label(cerium::ActManager::get(sceneName)->get(personName), nullptr, name, cerium::ResourceManager::get(fontName)->cast_to<cerium::Font>(), text, color));
                 }
                 else if (type == "button")
                 {
                     std::string fontName = prop->first_attribute("font")->value();
                     std::string text = prop->first_attribute("text")->value();
-					cerium::ActManager::get(sceneName)->get(personName)->addProp(new cerium::Button(cerium::ActManager::get(sceneName)->get(personName), nullptr, name, normalTextColor, hoveredTextColor, normalBackgroundColor, hoveredBackgroundColor, text,
+					per->addProp(new cerium::Button(cerium::ActManager::get(sceneName)->get(personName), nullptr, name, normalTextColor, hoveredTextColor, normalBackgroundColor, hoveredBackgroundColor, text,
 						cerium::ResourceManager::get(fontName)->cast_to<cerium::Font>()));
                 }
 				else if (type == "rigidBody")
 				{
 					float gravityStrength = strtof(prop->first_attribute("gravity")->value(), nullptr);
-					cerium::ActManager::get(sceneName)->get(personName)->addProp(new cerium::RigidBody(cerium::ActManager::get(sceneName)->get(personName), nullptr, name, gravityStrength));
+					per->addProp(new cerium::RigidBody(cerium::ActManager::get(sceneName)->get(personName), nullptr, name, gravityStrength));
 				}
             }
         }
