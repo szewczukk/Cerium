@@ -118,13 +118,16 @@ void load_scenes(const cerium::vec4 & normalTextColor, const cerium::vec4 & hove
     rapidxml::xml_document<> document;
     document.parse<0>(file.data());
 
+	cerium::Person * per = nullptr;
+	cerium::Act * act = nullptr;
+
     rapidxml::xml_node <> * root = document.first_node("scenes");
     for(rapidxml::xml_node <> * scene = root->first_node("scene"); scene; scene=scene->next_sibling("scene"))
     {
         std::string sceneName = scene->first_attribute("name")->value();
         cerium::ActManager::add(sceneName);
 
-		cerium::Act * act = cerium::ActManager::get(sceneName);
+		act = cerium::ActManager::get(sceneName);
 
         std::string isCurrent = scene->first_attribute("current")->value();
         if(isCurrent == "True") cerium::ActManager::setCurrent(sceneName);
@@ -136,8 +139,8 @@ void load_scenes(const cerium::vec4 & normalTextColor, const cerium::vec4 & hove
             cerium::vec2 size = {strtof(person->first_attribute("w")->value(), nullptr), strtof(person->first_attribute("h")->value(), nullptr)};
             float angle = strtof(person->first_attribute("angle")->value(), nullptr);
 
-			act->add(new cerium::Person(personName, nullptr, cerium::ActManager::get(sceneName), personTag));
-			cerium::Person * per = act->get(personName);
+			act->add(new cerium::Person(personName, nullptr, act, personTag));
+			per = act->get(personName);
 
 			per->setPosition(position);
 			per->setSize(size);
