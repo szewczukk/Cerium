@@ -12,6 +12,7 @@ namespace cerium
         this->name = name;
         this->baseAct = baseAct;
         this->parent = parent;
+		this->tag = tag;
 
 		this->isTextured = false;
 		this->isRigided = false;

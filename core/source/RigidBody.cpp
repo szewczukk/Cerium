@@ -20,16 +20,10 @@ namespace cerium
 	{
 		if (gravityStrength > 0)
 		{
-			for (auto & person : basePerson->baseAct->getAllPersons())
-			{
-				if (basePerson->getName() != person.second->getName() && person.second->isRigided)
-				{
-					if (isCollideWithPersonWithName(person.second->getName()) && velocity.y > 0)
-						onGround = true;
-					else
-						onGround = false;
-				}
-			}
+			if (isCollideWithPersonsWithTag("collideable") && velocity.y > 0)
+				onGround = true;
+			else
+				onGround = false;
 
 			if (!onGround)
 				velocity.y += gravityStrength;
@@ -62,7 +56,7 @@ namespace cerium
 
 	bool RigidBody::isCollideWithPersonsWithTag(const std::string & tag)
 	{
-		vec2 * otherPersonPosition, *otherPersonSize;
+		vec2 * otherPersonPosition, * otherPersonSize;
 
 		for (auto & person : basePerson->getBaseAct()->getAllPersonsWithTag(tag))
 		{
