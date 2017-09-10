@@ -4,6 +4,8 @@
 #include "../include/Cerium/Person.hpp"
 #include "../include/Cerium/DebugLog.hpp"
 
+#include <memory>
+
 namespace cerium
 {
 	RigidBody::RigidBody(Person * basePerson, Prop * parent, const std::string & name, const float & gravityStrength)
@@ -13,6 +15,11 @@ namespace cerium
 		this->gravityStrength = gravityStrength;
 		basePerson->isRigided = true;
 		onGround = false;
+	}
+
+	RigidBody::~RigidBody()
+	{
+		delete otherPersonPosition, otherPersonSize;
 	}
 
 
@@ -39,8 +46,6 @@ namespace cerium
 	{
 		if (basePerson->getBaseAct()->get(name)->isRigided)
 		{
-			vec2 * otherPersonPosition, * otherPersonSize;
-
 			otherPersonPosition = &basePerson->getBaseAct()->get(name)->getPosition();
 			otherPersonSize = &basePerson->getBaseAct()->get(name)->getSize();
 
@@ -56,8 +61,6 @@ namespace cerium
 
 	bool RigidBody::isCollideWithPersonsWithTag(const std::string & tag)
 	{
-		vec2 * otherPersonPosition, * otherPersonSize;
-
 		for (auto & person : basePerson->getBaseAct()->getAllPersonsWithTag(tag))
 		{
 			if (person->isRigided)
@@ -67,7 +70,9 @@ namespace cerium
 
 				if (abs(basePerson->getPosition().x - otherPersonPosition->x) * 2 < (basePerson->getSize().x + otherPersonSize->x) &&
 					abs(basePerson->getPosition().y - otherPersonPosition->y) * 2 < (basePerson->getSize().y + otherPersonSize->y))
+				{
 					return true;
+				}
 			}
 		}
 		return false;
