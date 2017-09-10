@@ -60,6 +60,17 @@ namespace cerium
         void operator/=(const vec4 & other);
         void operator*=(const vec4 & other);
 
+		bool operator==(const vec4 & other);
+		bool operator!=(const vec4 & other);
+
+		bool operator>(const vec4 & other);
+		bool operator<(const vec4 & other);
+
+		bool operator>=(const vec4 & other);
+		bool operator<=(const vec4 & other);
+
+		vec4 operator-();
+
         friend std::ostream & operator<<(std::ostream & o, const vec4 & v);
     };
 }

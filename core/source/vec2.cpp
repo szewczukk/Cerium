@@ -119,7 +119,7 @@ namespace cerium
 
 	bool vec2::operator<(const vec2 & other)
 	{
-		return x < other.x && y < other.y;
+		return !operator<(other);
 	}
 
 
@@ -131,7 +131,7 @@ namespace cerium
 
 	bool vec2::operator<=(const vec2 & other)
 	{
-		return x <= other.x && y <= other.y;
+		return !operator>=(other);
 	}
 
 

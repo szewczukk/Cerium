@@ -112,6 +112,41 @@ namespace cerium
         w *= other.w;
     }
 
+	bool vec4::operator==(const vec4 & other)
+	{
+		return x == other.x && y == other.y && z == other.z == other.w;;
+	}
+
+	bool vec4::operator!=(const vec4 & other)
+	{
+		return !operator==(other);
+	}
+
+	bool vec4::operator>(const vec4 & other)
+	{
+		return x > other.x && y > other.y && z > other.z > other.w;
+	}
+
+	bool vec4::operator<(const vec4 & other)
+	{
+		return !operator>(other);
+	}
+
+	bool vec4::operator>=(const vec4 & other)
+	{
+		return x >= other.x && y >= other.y && z >= other.z >= other.w;
+	}
+
+	bool vec4::operator<=(const vec4 & other)
+	{
+		return !operator>=(other);
+	}
+
+	vec4 vec4::operator-()
+	{
+		return {-x, -y, -z, -w};
+	}
+
 
     std::ostream & operator<<(std::ostream & o, const vec4 & v)
     {
