@@ -19,6 +19,7 @@
 
 		<person name="dsab" tag="None" x="10" y="10" w="64" h="64" angle="0">
 		  <prop name="btn" type="button" font="defaultFont" text="Hello"/>
+		  <prop name="script" type="scriptable" script="h"/>
 		</person>
     </scene>
 </scenes>

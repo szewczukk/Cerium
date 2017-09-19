@@ -245,6 +245,17 @@ void getSoundsVolume(int & soundVolume, int & musicVolume)
 	soundVolume = atoi(soundNode->first_attribute("volume")->value());
 }
 
+void getBackgroundColor(float & r, float & g, float & b)
+{
+	rapidxml::file <> file("res/settings.xml");
+	rapidxml::xml_document<> settings;
+	settings.parse<0>(file.data());
+
+	rapidxml::xml_node<> * backgroundNode = settings.first_node("settings")->first_node("background");
+	r = atoi(backgroundNode->first_attribute("r")->value());
+	g = atoi(backgroundNode->first_attribute("g")->value());
+	b = atoi(backgroundNode->first_attribute("b")->value());
+}
 
 int main()
 {
@@ -284,6 +295,10 @@ int main()
 
 	float now, last, deltaTime;
 
+	float cR, cG, cB;
+
+	getBackgroundColor(cR, cG, cB);
+
     while(!cerium::EventManager::isWindowClosed())
     {
 		now = (float)SDL_GetPerformanceCounter();
@@ -303,7 +318,7 @@ int main()
         }
 		
         cerium::EventManager::pollEvents();
-        cerium::Window::clear();
+        cerium::Window::clear(cR / 255, cG / 255, cB / 255);
 
         cerium::ActManager::updateCurrent(deltaTime);
         cerium::ActManager::drawCurrent();

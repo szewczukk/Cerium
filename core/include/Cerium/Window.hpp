@@ -52,7 +52,7 @@ namespace cerium
             ^[class][Window]
             ^[description][Clearing window back buffer]
         */
-        static void clear(void); //^header
+        static void clear(const float & r, const float & g, const float & b); //^header
         /*
             ^[name][render]
             ^[class][Window]

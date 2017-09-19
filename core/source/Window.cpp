@@ -54,9 +54,9 @@ namespace cerium
     }
 
 
-    void Window::clear(void)
+    void Window::clear(const float & r, const float & g, const float & b)
     {
-        glClearColor(0.5f, 0.2f, 0.3f, 1.0f);
+        glClearColor(r, g, b, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
     }
 
