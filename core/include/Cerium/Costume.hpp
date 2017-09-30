@@ -7,6 +7,8 @@
 
 #include "Resource.hpp"
 
+#include "vec2.hpp"
+
 namespace cerium
 {
     class Costumed;
@@ -27,9 +29,12 @@ namespace cerium
          */
         ~Costume(); //^header
 
+		vec2 getSize(void);
+
         virtual void use(void) override {};
     private:
         SDL_Surface * surface;
+		vec2 size;
 
         friend class Costumed;
     };

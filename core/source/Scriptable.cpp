@@ -530,7 +530,8 @@ namespace cerium
 
 		state->new_usertype<Clock>("Clock", "getElapsedTime", &Clock::getElapsedTime, "use", &Clock::use);
 
-		state->new_usertype<Costume>("Costume", sol::constructors<Costume(const std::string &)>());
+		state->new_usertype<Costume>("Costume", sol::constructors<Costume(const std::string &)>(),
+			"getSize", &Costume::getSize);
 
 		state->new_usertype<Font>("Font", sol::constructors<Font(const std::string &, const unsigned int &)>());
 

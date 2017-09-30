@@ -9,6 +9,9 @@ namespace cerium
 
         surface = IMG_Load(filePath.c_str());
 
+		size.x = (int)surface->w;
+		size.y = (int)surface->h;
+
         if(surface == NULL)
         {
             cerium::DebugLog::add(filePath + " texture loading error!");
@@ -20,4 +23,10 @@ namespace cerium
     {
         SDL_FreeSurface(surface);
     }
+
+
+	vec2 Costume::getSize(void)
+	{
+		return size;
+	}
 }
