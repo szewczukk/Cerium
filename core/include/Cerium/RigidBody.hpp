@@ -15,10 +15,12 @@ namespace cerium
 			const float & gravityStrength);
 
 		~RigidBody();
-		
-		bool isCollideWithPersonWithName(const std::string & name);
 
-		bool isCollideWithPersonsWithTag(const std::string & tag);
+		bool isColliding(void);
+		
+		bool isCollidingWithPersonWithName(const std::string & name);
+
+		bool isCollidingWithPersonsWithTag(const std::string & tag);
 
 		bool isOnGround(void);
 

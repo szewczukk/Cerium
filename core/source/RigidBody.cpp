@@ -17,6 +17,7 @@ namespace cerium
 		onGround = false;
 	}
 
+
 	RigidBody::~RigidBody()
 	{
 		delete otherPersonPosition, otherPersonSize;
@@ -27,7 +28,7 @@ namespace cerium
 	{
 		if (gravityStrength > 0)
 		{
-			if (isCollideWithPersonsWithTag("collideable") && velocity.y > 0)
+			if (velocity.y > 0 && isColliding())
 				onGround = true;
 			else
 				onGround = false;
@@ -42,7 +43,7 @@ namespace cerium
 	}
 
 
-	bool RigidBody::isCollideWithPersonWithName(const std::string & name)
+	bool RigidBody::isCollidingWithPersonWithName(const std::string & name)
 	{
 		if (basePerson->getBaseAct()->get(name)->isRigided)
 		{
@@ -59,21 +60,26 @@ namespace cerium
 	}
 
 
-	bool RigidBody::isCollideWithPersonsWithTag(const std::string & tag)
+	bool RigidBody::isColliding(void)
+	{
+		for (auto & person : basePerson->getBaseAct()->getAllPersons())
+		{
+			if (person.first != getPerson().getName() && person.second->isRigided)
+			{
+				if (isCollidingWithPersonWithName(person.first))
+					return true;
+			}
+		}
+		return false;
+	}
+
+
+	bool RigidBody::isCollidingWithPersonsWithTag(const std::string & tag)
 	{
 		for (auto & person : basePerson->getBaseAct()->getAllPersonsWithTag(tag))
 		{
-			if (person->isRigided)
-			{
-				otherPersonPosition = &person->getPosition();
-				otherPersonSize = &person->getSize();
-
-				if (abs(basePerson->getPosition().x - otherPersonPosition->x) * 2 < (basePerson->getSize().x + otherPersonSize->x) &&
-					abs(basePerson->getPosition().y - otherPersonPosition->y) * 2 < (basePerson->getSize().y + otherPersonSize->y))
-				{
-					return true;
-				}
-			}
+			if (person->isRigided && isCollidingWithPersonWithName(person->getName()))
+				return true;
 		}
 		return false;
 	}
