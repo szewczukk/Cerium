@@ -18,7 +18,7 @@ function update(deltaTime)
 	end
 	
 	if eventManager.isKeyPressed(KEY_UP) and cast_to_rigidbody(this.getProp("rigidbody")):isOnGround() then
-		acceleration.y = -300000
+		acceleration.y = -600000
 	else
 		acceleration.y = 0
 	end
