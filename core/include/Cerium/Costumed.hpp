@@ -2,7 +2,7 @@
 #define CERIUM_TEXTURE_HPP
 
 #include <GL/glew.h>
-#include <SDL2/SDL_surface.h>
+#include <SDL_surface.h>
 
 #include <string>
 

@@ -1,6 +1,7 @@
 #include <SDL2/SDL_mixer.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>
+
 #include "../include/Cerium/Window.hpp"
 
 #include "../include/Cerium/ResourceManager.hpp"

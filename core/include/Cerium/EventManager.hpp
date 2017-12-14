@@ -1,7 +1,7 @@
 #ifndef CERIUM_EVENTMANAGER_HPP
 #define CERIUM_EVENTMANAGER_HPP
 
-#include <SDL2/SDL_events.h>
+#include <SDL_events.h>
 
 #include "vec2.hpp"
 

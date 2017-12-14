@@ -3,7 +3,7 @@
     <scene name="main" current="True">
         <person name="player" tag="Player" x="200" y="100" w="64" h="64" angle="0">
             <prop name="vertexArray" type="vertexArray" r="0" g="0.5" b="1" a="1"/>
-			<prop name="rigidbody" type="rigidBody" gravity="600"/>
+			<prop name="rigidbody" type="rigidBody" gravity="500"/>
 			<prop name="script" type="scriptable" script="playerMovement"/>
         </person>
 		
@@ -19,7 +19,6 @@
 
 		<person name="dsab" tag="None" x="10" y="10" w="64" h="64" angle="0">
 		  <prop name="btn" type="button" font="defaultFont" text="Hello"/>
-		  <prop name="script" type="scriptable" script="h"/>
 		</person>
     </scene>
 </scenes>

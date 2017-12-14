@@ -3,7 +3,7 @@
 
 #include <string>
 
-#include <SDL2/SDL.h>
+#include <SDL.h>
 #include <GL/glew.h>
 
 #include "vec2.hpp"

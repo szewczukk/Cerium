@@ -7,6 +7,8 @@
 	<sounds volume="100"/>
 	
 	<background r="135" g="206" b="250"/>
+
+	<vsync value="1"/>
   
     <ui>
         <normalText r="0" g="0" b="0" a="255"/>

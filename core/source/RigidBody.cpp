@@ -67,7 +67,9 @@ namespace cerium
 			if (person.first != getPerson().getName() && person.second->isRigided)
 			{
 				if (isCollidingWithPersonWithName(person.first))
+				{
 					return true;
+				}
 			}
 		}
 		return false;
