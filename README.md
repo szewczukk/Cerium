@@ -41,6 +41,7 @@ Coming soon!
 * <a href="http://glew.sourceforge.net">GLEW</a>
 * <a href="http://glm.g-truc.net/0.9.8/index.html">GLM</a>
 * <a href="https://github.com/ThePhD/sol2">sol2</a>
+* <a href="http://www.lua.org">lua</a>
 * <a href="http://rapidxml.sourceforge.net">RapidXML</a>
 
 ## Licensing
